@@ -20,7 +20,7 @@ import de.gurkenlabs.litiengine.resources.Resources;
 
 public final class GameManager {
   public static final Font GUI_FONT = Resources.fonts().get("fsex300.ttf").deriveFont(10f);
-  
+
   public static final String MAP_PLAYGROUND = "playground";
   private static final Map<String, List<EnemyFarmerSpawnEvent>> spawnEvents = new ConcurrentHashMap<>();
   private static final Map<String, AStarGrid> grids = new ConcurrentHashMap<>();
@@ -36,7 +36,8 @@ public final class GameManager {
 
   public static void init() {
     GuiProperties.setDefaultFont(GUI_FONT);
-    
+    Game.audio().setListenerLocationCallback((e) -> Farmer.instance().getCenter());
+
     CreatureMapObjectLoader.registerCustomCreatureType(Farmer.class);
     PropMapObjectLoader.registerCustomPropType(Pumpkin.class);
 

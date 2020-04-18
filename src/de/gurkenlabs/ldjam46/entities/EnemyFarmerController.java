@@ -14,13 +14,14 @@ import de.gurkenlabs.litiengine.physics.MovementController;
 public class EnemyFarmerController extends MovementController<EnemyFarmer> {
 
   private static final int NAVIGATE_DELAY = 500;
-  private static final int FART_RUN_DELAY = 1000;
+  private static final int FART_RUN_DELAY = 3000;
   private final int pumpkinDist;
 
   private EntityNavigator navi;
   private long lastNavigate;
 
   private long initialFart;
+  private boolean removed;
 
   public EnemyFarmerController(EnemyFarmer mobileEntity) {
     super(mobileEntity);
@@ -35,7 +36,7 @@ public class EnemyFarmerController extends MovementController<EnemyFarmer> {
   public void update() {
     super.update();
 
-    if (this.getEntity().getTarget() == null) {
+    if (this.getEntity().getTarget() == null || this.removed) {
       return;
     }
 
@@ -46,11 +47,17 @@ public class EnemyFarmerController extends MovementController<EnemyFarmer> {
         }
 
         this.initialFart = Game.loop().getTicks();
-        SpeechBubble bubble = SpeechBubble.create(this.getEntity(), "...", new SpeechBubbleAppearance(Color.WHITE, new Color(0, 0, 0, 100), new Color(0, 0, 0, 0), 2), GameManager.GUI_FONT.deriveFont(5f));
+
+        Game.loop().perform(2000, () -> {
+          SpeechBubble bubble = SpeechBubble.create(this.getEntity(), "...", new SpeechBubbleAppearance(Color.WHITE, new Color(0, 0, 0, 100), new Color(0, 0, 0, 0), 2), GameManager.GUI_FONT.deriveFont(5f));
+        });
       } else {
         double dist = this.getEntity().getSpawn().getCenter().distance(this.getEntity().getCenter());
         if (dist <= pumpkinDist) {
-          Game.world().environment().remove(this.getEntity());
+          removed = true;
+          Game.loop().perform(1000, () -> {
+            Game.world().environment().remove(this.getEntity());
+          });
           return;
         }
         if (Game.time().since(initialFart) > FART_RUN_DELAY && !this.navi.isNavigating()) {

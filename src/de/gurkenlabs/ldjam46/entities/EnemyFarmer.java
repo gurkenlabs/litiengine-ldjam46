@@ -10,11 +10,10 @@ import de.gurkenlabs.litiengine.entities.ICollisionEntity;
 import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.entities.Spawnpoint;
 import de.gurkenlabs.litiengine.environment.Environment;
-import de.gurkenlabs.litiengine.graphics.RenderType;
 import de.gurkenlabs.litiengine.physics.IMovementController;
 
 @EntityInfo(width = 11, height = 20)
-@CollisionInfo(collision = true, collisionBoxWidth = 4, collisionBoxHeight = 4, align = Align.CENTER, valign = Valign.DOWN)
+@CollisionInfo(collision = false, collisionBoxWidth = 4, collisionBoxHeight = 4, align = Align.CENTER, valign = Valign.DOWN)
 @MovementInfo(velocity = 70)
 public class EnemyFarmer extends Creature {
   private final Spawnpoint spawn;
