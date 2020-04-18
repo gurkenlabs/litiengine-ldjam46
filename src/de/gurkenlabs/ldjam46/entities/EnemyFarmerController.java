@@ -32,6 +32,14 @@ public class EnemyFarmerController extends MovementController<EnemyFarmer> {
       return;
     }
 
+    if (this.getEntity().getTarget().isDead()) {
+      this.getEntity().updateTarget();
+
+      if (this.getEntity().getTarget() == null) {
+        return;
+      }
+    }
+
     if (Game.time().since(this.lastNavigate) < NAVIGATE_DELAY) {
       return;
     }

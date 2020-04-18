@@ -31,7 +31,11 @@ public class EnemyFarmer extends Creature {
   public void loaded(Environment environment) {
     super.loaded(environment);
 
-    Pumpkin pumpkin = Game.random().choose(Game.world().environment().getEntities(Pumpkin.class));
+    this.updateTarget();
+  }
+  
+  public void updateTarget() {
+    Pumpkin pumpkin = Game.random().choose(Game.world().environment().getEntities(Pumpkin.class, e -> !e.isDead()));
     this.setTarget(pumpkin);
   }
 
