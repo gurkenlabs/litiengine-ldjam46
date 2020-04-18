@@ -1,4 +1,7 @@
-// java plugin is required for e.g. compilation, the application plugin is used to execute the game via gradle
+plugins {
+  id 'edu.sc.seis.launch4j' version '2.4.6'
+}
+
 apply plugin: 'java'
 apply plugin: 'application'
 
@@ -6,7 +9,7 @@ apply plugin: 'application'
 archivesBaseName = "Pumpkin Keeper"
 version = "v0.0.1"
 targetCompatibility = "1.8.0"
-mainClassName = "com.litiengine.gurknukem.Program"
+mainClassName = "de.gurkenlabs.ldjam46.Program"
 
 repositories {
   mavenCentral()
@@ -21,4 +24,91 @@ sourceSets {
   main.resources.srcDirs = ["sprites", "audio", "maps", "misc"]
 
   // main.resources.includes = ["game.litidata"]
+}
+
+
+jar {
+  from {
+    configurations.runtimeClasspath.collect {
+      it.isDirectory() ? it : zipTree(it)
+    }
+    configurations.compileClasspath.collect {
+      it.isDirectory() ? it : zipTree(it)
+    }
+  }  {
+    exclude 'META-INF/services/**'
+  }
+  
+  // make sure to only include service providers from the litiengine when directly referencing the project
+  from ("${project(':litiengine').projectDir}/resources/") {
+    include 'META-INF/services/**'
+  }
+  
+  from 'game.litidata'
+  
+  exclude '**/*.dll'
+  exclude '**/*.jnilib'
+  exclude '**/*.dylib'
+  exclude '**/*.so'
+  exclude 'junit**/**'
+  
+  manifest {
+    attributes 'Class-Path': ".",
+               'Main-Class': mainClassName
+  }
+}
+
+launch4j {
+  mainClassName = 'de.gurkenlabs.drlepus.Program'
+  icon = 'drlepus.ico'
+  outputDir = 'libs'
+  outfile = archivesBaseName +'.exe'
+  companyName = 'gurkenlabs.de'
+  version = '1.0.0'
+  textVersion = 'v1.0.0'
+  copyright = '2019 gurkenlabs.de'
+  bundledJrePath = 'jre'
+  jvmOptions = ['-Xms256m', '-Xmx1024m']
+  cmdLine = '-release'
+}
+
+task copyNativeLibs(type: Copy) {
+  def litiengineLibs ='../litiengine/build/libs'
+  def buildFolder = new File(buildDir, 'libs')
+  
+  from(litiengineLibs) {
+   include '**/*'
+   exclude '**/*.jar'
+   exclude '**/*.zip'
+   exclude 'LICENSE'
+   exclude 'lib/**'
+  }
+  
+  from('/dist/'){
+    include 'drlepus.ico'
+    include 'config.properties'
+    // include 'steam_appid.txt'
+    include 'jre/**'
+  }
+  
+  into buildFolder
+}
+
+build.dependsOn copyNativeLibs
+
+task distZipWindow(type: Zip) {
+  group 'build'
+  from 'build/libs/'
+  include '*.exe'
+  include '*.dll'
+  include 'config.properties'
+  include 'jre/**'
+
+  archiveClassifier = 'win'
+  exclude archiveName
+  exclude 'jinput-dx8.dll'
+  exclude 'jinput-raw.dll'
+  exclude 'steam_api.dll'
+  exclude 'steamworks4j.dll'
+  destinationDirectory = file('build/libs/')
 }
