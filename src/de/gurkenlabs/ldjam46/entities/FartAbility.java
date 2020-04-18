@@ -15,7 +15,8 @@ public class FartAbility extends Ability {
     super(executor);
 
     this.addEffect(new FartEffect(this));
-    this.addEffect(new SoundEffect(this, "fart.wav", "fart2.wav", "fart3.wav", "fart4.wav", "fart5.mp3"));
+    this.addEffect(new SoundEffect(this, "fart.wav", "fart2.wav", "fart3.wav"));
+    this.addEffect(new ScreenShakeEffect(this, 1.5, 1000));
   }
 
   private static class FartEffect extends Effect {
