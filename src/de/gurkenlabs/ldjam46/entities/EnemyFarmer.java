@@ -16,6 +16,8 @@ import de.gurkenlabs.litiengine.physics.IMovementController;
 @MovementInfo(velocity = 70)
 public class EnemyFarmer extends Creature {
 
+  private final StabAbility stabAbility = new StabAbility(this);
+
   public EnemyFarmer() {
     super(Game.random().choose("enemyfarmer1", "enemyfarmer2"));
   }
@@ -36,5 +38,9 @@ public class EnemyFarmer extends Creature {
   @Override
   protected IMovementController createMovementController() {
     return new EnemyFarmerController(this);
+  }
+
+  public StabAbility getStabAbility() {
+    return stabAbility;
   }
 }

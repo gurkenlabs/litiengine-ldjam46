@@ -44,6 +44,10 @@ public class EnemyFarmerController extends MovementController<EnemyFarmer> {
       if (this.navi.isNavigating()) {
         this.navi.stop();
       }
+
+      if (this.getEntity().getStabAbility().canCast()) {
+        this.getEntity().getStabAbility().cast();
+      }
     }
   }
 }
