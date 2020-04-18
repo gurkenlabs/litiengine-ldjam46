@@ -17,6 +17,9 @@ public class Hud extends GuiComponent {
   @Override
   public void render(Graphics2D g) {
     super.render(g);
+    if (Game.world().environment() == null) {
+      return;
+    }
 
     this.renderPumpkinUI(g);
   }

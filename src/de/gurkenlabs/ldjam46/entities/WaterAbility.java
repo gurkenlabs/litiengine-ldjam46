@@ -9,6 +9,8 @@ import de.gurkenlabs.litiengine.attributes.AttributeModifier;
 import de.gurkenlabs.litiengine.attributes.Modification;
 import de.gurkenlabs.litiengine.attributes.RangeAttribute;
 import de.gurkenlabs.litiengine.entities.ICombatEntity;
+import de.gurkenlabs.litiengine.entities.IEntity;
+import de.gurkenlabs.litiengine.entities.RelativeEntityComparator;
 
 @AbilityInfo(name = "WaterAbility", cooldown = 1000, range = 0, impact = 30, impactAngle = 360, value = 1, duration = 400)
 public class WaterAbility extends Ability {
@@ -37,6 +39,40 @@ public class WaterAbility extends Ability {
 
     WaterEffect(Ability ability) {
       super(ability, EffectTarget.CUSTOM);
+      this.setTargetPriorityComparator(new RelativeEntityComparator() {
+
+        @Override
+        public int compare(IEntity entity1, IEntity entity2) {
+          if (entity1 instanceof Pumpkin && entity2 instanceof Pumpkin) {
+            Pumpkin p1 = (Pumpkin) entity1;
+            Pumpkin p2 = (Pumpkin) entity2;
+            if (p1.getHitPoints().get() < p2.getHitPoints().get()) {
+              return -1;
+            }
+
+            if (p1.getHitPoints().get() >= p2.getHitPoints().get()) {
+              return 1;
+            }
+
+            return 0;
+          }
+
+          if (this.getRelativeEntity() == null) {
+            return 0;
+          }
+
+          final double distance1 = entity1.getLocation().distance(this.getRelativeEntity().getLocation());
+          final double distance2 = entity2.getLocation().distance(this.getRelativeEntity().getLocation());
+          if (distance1 < distance2) {
+            return -1;
+          }
+          if (distance1 > distance2) {
+            return 1;
+          }
+
+          return 0;
+        }
+      });
     }
 
     @Override

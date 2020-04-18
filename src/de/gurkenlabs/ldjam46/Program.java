@@ -31,11 +31,9 @@ public class Program {
 
     // load data from the utiLITI game file
     Resources.load("game.litidata");
-
-    Game.world().loadEnvironment("playground");
-
     Game.screens().add(new IngameScreen());
 
     Game.start();
+    GameManager.levelTransition();
   }
 }
