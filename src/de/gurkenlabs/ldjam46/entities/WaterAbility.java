@@ -12,7 +12,7 @@ import de.gurkenlabs.litiengine.entities.ICombatEntity;
 @AbilityInfo(name = "WaterAbility", cooldown = 1000, range = 0, impact = 30, impactAngle = 90, value = 1, duration = 400)
 public class WaterAbility extends Ability {
 
-  private RangeAttribute<Integer> charges = new RangeAttribute<>(5, 0, 1);
+  private RangeAttribute<Integer> charges = new RangeAttribute<>(5, 0, 2);
 
   //TODO: refill 
   WaterAbility(Farmer farmer) {
@@ -41,7 +41,7 @@ public class WaterAbility extends Ability {
     @Override
     protected void apply(ICombatEntity entity) {
       Pumpkin pumpkin = (Pumpkin) entity;
-      pumpkin.getHitPoints().modifyBaseValue(new AttributeModifier<>(Modification.ADD, 25));
+      pumpkin.getHitPoints().modifyBaseValue(new AttributeModifier<>(Modification.ADD, 33));
 
       System.out.println("pumpkin healed");
       WaterAbility.this.charges.modifyBaseValue(new AttributeModifier<>(Modification.SUBSTRACT, 1));
