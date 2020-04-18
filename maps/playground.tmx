@@ -55,11 +55,12 @@
    </properties>
   </object>
   <object id="6" name="farmer" type="SPAWNPOINT" x="288" y="144" width="16" height="16"/>
-  <object id="7" type="PROP" x="248" y="137" width="16" height="16">
+  <object id="7" type="PROP" x="240" y="112" width="16" height="16">
    <properties>
     <property name="addShadow" type="bool" value="false"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
     <property name="collisionValign" value="MIDDLE"/>
     <property name="collisionboxHeight" value="16.0"/>
     <property name="collisionboxWidth" value="16.0"/>
@@ -87,11 +88,12 @@
     <property name="tags" value="refillwater"/>
    </properties>
   </object>
-  <object id="10" type="PROP" x="200" y="136" width="16" height="16">
+  <object id="10" type="PROP" x="192" y="128" width="16" height="16">
    <properties>
     <property name="addShadow" type="bool" value="false"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
     <property name="collisionValign" value="MIDDLE"/>
     <property name="collisionboxHeight" value="16.0"/>
     <property name="collisionboxWidth" value="16.0"/>
@@ -104,11 +106,12 @@
     <property name="spritesheetName" value="pumpkin"/>
    </properties>
   </object>
-  <object id="11" type="PROP" x="152" y="136" width="16" height="16">
+  <object id="11" type="PROP" x="144" y="128" width="16" height="16">
    <properties>
     <property name="addShadow" type="bool" value="false"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
     <property name="collisionValign" value="MIDDLE"/>
     <property name="collisionboxHeight" value="16.0"/>
     <property name="collisionboxWidth" value="16.0"/>
@@ -121,11 +124,12 @@
     <property name="spritesheetName" value="pumpkin"/>
    </properties>
   </object>
-  <object id="12" type="PROP" x="199" y="103" width="16" height="16">
+  <object id="12" type="PROP" x="192" y="96" width="16" height="16">
    <properties>
     <property name="addShadow" type="bool" value="false"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
     <property name="collisionValign" value="MIDDLE"/>
     <property name="collisionboxHeight" value="16.0"/>
     <property name="collisionboxWidth" value="16.0"/>
@@ -138,5 +142,7 @@
     <property name="spritesheetName" value="pumpkin"/>
    </properties>
   </object>
+  <object id="13" name="enemy" type="SPAWNPOINT" x="32" y="128" width="16" height="16"/>
+  <object id="14" name="enemy2" type="SPAWNPOINT" x="176" y="48" width="16" height="16"/>
  </objectgroup>
 </map>
