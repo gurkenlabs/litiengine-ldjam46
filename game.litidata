@@ -56,12 +56,39 @@
       <property name="collisionType" value="STATIC"/>
      </properties>
     </object>
+    <object id="6" name="farmer" type="SPAWNPOINT" x="288" y="144" width="16" height="16"/>
+    <object id="7" type="PROP" x="248" y="137" width="16" height="16">
+     <properties>
+      <property name="addShadow" type="bool" value="false"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionAlign" value="CENTER"/>
+      <property name="collisionValign" value="MIDDLE"/>
+      <property name="collisionboxHeight" value="16.0"/>
+      <property name="collisionboxWidth" value="16.0"/>
+      <property name="flipHorizontally" type="bool" value="false"/>
+      <property name="flipVertically" type="bool" value="false"/>
+      <property name="hitpoints" value="100"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="rotationSprite" value="NONE"/>
+      <property name="scaling" type="bool" value="true"/>
+      <property name="spritesheetName" value="pumpkin"/>
+     </properties>
+    </object>
    </objectgroup>
   </map>
  </maps>
  <spriteSheets>
+  <sprite width="11" height="20" imageformat="PNG" name="farmer-idle">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAsAAAAUCAYAAABbLMdoAAAAqklEQVR42mNgIBcc3lz+Hx3jVHjp6PT/2GicpqIrxKmYoMnY3IkLwzVdyHD+/7/EEYJXr4azQeIoToAJghSVhDqi0DBDsGpAtgGvQhC9SM0YjGF8DGdg0wTDWBU+/fD///LjH1CsB/FB4igKYYIwGuQxZD6IRlGMTROyOMKtQJPwKYbJk69YTdvlPzrGUAwDE7rL/u/fuRCOQXyciR8kCVOAzMYeKWjWofMBRop6HI6RFW4AAAAASUVORK5CYII=</image>
+  </sprite>
   <sprite width="16" height="16" imageformat="PNG" name="placeholder-tileset">
    <image>iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAATUlEQVR42u3QMREAIAwAMZa6xAc7PjowIxJEdIPk7g18i56nUsYotdcs1aoMMMAAAwwwwAADDDDAAAMMMODDAQAAAAAAAAAAAAAAwHMu1WPiW3s7Gi8AAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="11" height="10" imageformat="PNG" name="prop-pumpkin">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAsAAAAKCAYAAABi8KSDAAAAdklEQVR42mNgQAMW2Wb/43dH/WfABXZ5K///2cj2H0SDFIPwhQxnMP6/Px1MwxXeLGABKwRhkKkgxauN2DA1wBShmwwzHaYQrhhkMkwxjIYpAtEoJsOcAVKIrAlZA2WK0Z2DoRgWIugYpBjmMbhC5LDGhpEVAgC17N5XDNSr+wAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="16" height="15" imageformat="PNG" name="prop-pumpkin-destroyed">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAB7UlEQVR42s3SyWuTQRjH8VSUSNJC4watpq1NKmKRNiqa7X0nC4rkIriVGJutlmZpYhRPnjx4EP1HBLVgIoIXkzeNQRBabG3SBasX/QNEBGvt12kFEw9CEQSfy8wc5vM8P2Z0un9VtwJeUgOHyY8k+Ssg4RwjcdzOPZ+yecBrfEaqdQV3V5Fg/w0SBw+RstmI+xcJ+T8SUV/zIAmj3rnfUZf1BUM7XzGiX0LZV0VYNG4H7pK/eIa04xjWlgLBExI5uUDEM81DiUTc9QYizCU8nSWUIxrpraDsrXBu8CZJ9egGkBwYJOqvMuyskx9dJSQWCJ1ebAAeS4ULe2qEt33gqh7EgSKhtvX9N9TdJR6NwSVbjahzmnxsjXwO4sqbpgmssqOpRqR9GbvpJSnjZ7JtMG5gI0629QsTcZi4BpftUzy9LiM4Z5uBSc7umCeqf4vo1sgY1sjIKJnt3/GY5XmLvByGgswe9dUppOXqnmkA6n7tF6B2l8i1fyVnlIhhFWEubwLoqzBkmiFsfIfaVSFmnOWK4RPju1bwWZ6TNsL9GDyRo4dOzfM4K9fmV1ivgOMODtlN7dFQeiYRvUWEtfwzQou80P+emHeKYV+N867lP38upa+KR3YVnWVEh4aQoNpbReko4jJXCIoldP9V/QAnHEAx8im6rAAAAABJRU5ErkJggg==</image>
   </sprite>
  </spriteSheets>
  <tilesets/>

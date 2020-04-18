@@ -21,7 +21,7 @@ dependencies {
 
 sourceSets {
   main.java.srcDir "src"
-  main.resources.srcDirs = ["sprites", "audio", "maps", "misc"]
+  main.resources.srcDirs = ["sprites", "audio", "misc"]
 
   // main.resources.includes = ["game.litidata"]
 }
@@ -38,23 +38,23 @@ jar {
   }  {
     exclude 'META-INF/services/**'
   }
-  
+
   // make sure to only include service providers from the litiengine when directly referencing the project
   from ("${project(':litiengine').projectDir}/resources/") {
     include 'META-INF/services/**'
   }
-  
+
   from 'game.litidata'
-  
+
   exclude '**/*.dll'
   exclude '**/*.jnilib'
   exclude '**/*.dylib'
   exclude '**/*.so'
   exclude 'junit**/**'
-  
+
   manifest {
     attributes 'Class-Path': ".",
-               'Main-Class': mainClassName
+    'Main-Class': mainClassName
   }
 }
 
@@ -75,22 +75,22 @@ launch4j {
 task copyNativeLibs(type: Copy) {
   def litiengineLibs ='../litiengine/build/libs'
   def buildFolder = new File(buildDir, 'libs')
-  
+
   from(litiengineLibs) {
-   include '**/*'
-   exclude '**/*.jar'
-   exclude '**/*.zip'
-   exclude 'LICENSE'
-   exclude 'lib/**'
+    include '**/*'
+    exclude '**/*.jar'
+    exclude '**/*.zip'
+    exclude 'LICENSE'
+    exclude 'lib/**'
   }
-  
+
   from('/dist/'){
     include 'drlepus.ico'
     include 'config.properties'
     // include 'steam_appid.txt'
     include 'jre/**'
   }
-  
+
   into buildFolder
 }
 
