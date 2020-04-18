@@ -26,12 +26,11 @@ public class Farmer extends Creature {
 
   private final WaterAbility waterAbility = new WaterAbility(this);
 
-  private Ability currentAbility;
+  private final FartAbility fartAbility = new FartAbility(this);
 
   private long lastWaterRefill;
 
   private Farmer() {
-    this.pickupWater();
   }
 
   public static Farmer instance() {
@@ -44,30 +43,24 @@ public class Farmer extends Creature {
 
   @Action()
   public void use() {
-    if (this.currentAbility == this.waterAbility) {
-
-      if (Game.time().since(this.lastWaterRefill) > WATER_REFILL_DELAY && this.waterAbility.getCharges().get() < this.waterAbility.getCharges().getMax()) {
-        Collection<MapArea> refillAreas = Game.world().environment().getByTag(MapArea.class, "refillwater");
-        for (MapArea area : refillAreas) {
-          if (area.getBoundingBox().intersects(this.getCollisionBox())) {
-            this.waterAbility.getCharges().setToMax();
-            System.out.println("water refilled");
-          }
+    if (Game.time().since(this.lastWaterRefill) > WATER_REFILL_DELAY && this.waterAbility.getCharges().get() < this.waterAbility.getCharges().getMax()) {
+      Collection<MapArea> refillAreas = Game.world().environment().getByTag(MapArea.class, "refillwater");
+      for (MapArea area : refillAreas) {
+        if (area.getBoundingBox().intersects(this.getCollisionBox())) {
+          this.waterAbility.getCharges().setToMax();
+          System.out.println("water refilled");
         }
       }
     }
 
-    if (this.currentAbility == null) {
-      return;
-    }
-
-    if (this.currentAbility.canCast()) {
-      this.currentAbility.cast();
+    if (this.waterAbility.canCast()) {
+      this.waterAbility.cast();
     }
   }
 
-  public void pickupWater() {
-    this.currentAbility = this.waterAbility;
+  @Action
+  public void fart() {
+    this.fartAbility.cast();
   }
 
   @Override

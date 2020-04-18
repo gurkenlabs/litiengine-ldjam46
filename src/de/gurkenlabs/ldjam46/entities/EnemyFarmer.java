@@ -8,18 +8,26 @@ import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.EntityInfo;
 import de.gurkenlabs.litiengine.entities.ICollisionEntity;
 import de.gurkenlabs.litiengine.entities.MovementInfo;
+import de.gurkenlabs.litiengine.entities.Spawnpoint;
 import de.gurkenlabs.litiengine.environment.Environment;
+import de.gurkenlabs.litiengine.graphics.RenderType;
 import de.gurkenlabs.litiengine.physics.IMovementController;
 
 @EntityInfo(width = 11, height = 20)
 @CollisionInfo(collision = true, collisionBoxWidth = 4, collisionBoxHeight = 4, align = Align.CENTER, valign = Valign.DOWN)
 @MovementInfo(velocity = 70)
 public class EnemyFarmer extends Creature {
+  private final Spawnpoint spawn;
 
   private final StabAbility stabAbility = new StabAbility(this);
 
-  public EnemyFarmer() {
+  private boolean fartedOn;
+
+  public EnemyFarmer(Spawnpoint spawn) {
     super(Game.random().choose("enemyfarmer1", "enemyfarmer2"));
+
+    this.spawn = spawn;
+    this.setTeam(2);
   }
 
   @Override
@@ -33,7 +41,7 @@ public class EnemyFarmer extends Creature {
 
     this.updateTarget();
   }
-  
+
   public void updateTarget() {
     Pumpkin pumpkin = Game.random().choose(Game.world().environment().getEntities(Pumpkin.class, e -> !e.isDead()));
     this.setTarget(pumpkin);
@@ -46,5 +54,18 @@ public class EnemyFarmer extends Creature {
 
   public StabAbility getStabAbility() {
     return stabAbility;
+  }
+
+  public boolean isFartedOn() {
+    return fartedOn;
+  }
+
+  public void fartOn() {
+    this.fartedOn = true;
+    this.setCollision(false);
+  }
+
+  public Spawnpoint getSpawn() {
+    return spawn;
   }
 }

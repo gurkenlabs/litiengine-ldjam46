@@ -16,6 +16,10 @@ public class FarmerController extends KeyboardEntityController<Farmer> {
     if (keyCode.getKeyCode() == KeyEvent.VK_SPACE) {
       this.getEntity().perform("use");
     }
+
+    if (keyCode.getKeyCode() == KeyEvent.VK_E) {
+      this.getEntity().perform("fart");
+    }
   }
 
 }

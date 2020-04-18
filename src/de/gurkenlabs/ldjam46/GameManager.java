@@ -1,5 +1,6 @@
 package de.gurkenlabs.ldjam46;
 
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +15,12 @@ import de.gurkenlabs.litiengine.entities.behavior.AStarGrid;
 import de.gurkenlabs.litiengine.entities.behavior.AStarNode;
 import de.gurkenlabs.litiengine.environment.CreatureMapObjectLoader;
 import de.gurkenlabs.litiengine.environment.PropMapObjectLoader;
+import de.gurkenlabs.litiengine.gui.GuiProperties;
+import de.gurkenlabs.litiengine.resources.Resources;
 
 public final class GameManager {
+  public static final Font GUI_FONT = Resources.fonts().get("fsex300.ttf").deriveFont(10f);
+  
   public static final String MAP_PLAYGROUND = "playground";
   private static final Map<String, List<EnemyFarmerSpawnEvent>> spawnEvents = new ConcurrentHashMap<>();
   private static final Map<String, AStarGrid> grids = new ConcurrentHashMap<>();
@@ -30,6 +35,8 @@ public final class GameManager {
   }
 
   public static void init() {
+    GuiProperties.setDefaultFont(GUI_FONT);
+    
     CreatureMapObjectLoader.registerCustomCreatureType(Farmer.class);
     PropMapObjectLoader.registerCustomPropType(Pumpkin.class);
 
@@ -93,7 +100,7 @@ public final class GameManager {
       return;
     }
 
-    spawn.spawn(new EnemyFarmer());
+    spawn.spawn(new EnemyFarmer(spawn));
   }
 
   private static class EnemyFarmerSpawnEvent {
