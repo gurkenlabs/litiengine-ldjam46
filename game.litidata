@@ -74,6 +74,21 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
+    <object id="8" type="PROP" x="379" y="28" width="9" height="18">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="7.2"/>
+      <property name="collisionboxWidth" type="float" value="3.6"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="toilet1"/>
+     </properties>
+    </object>
+    <object id="9" type="AREA" x="368" y="32" width="32" height="32">
+     <properties>
+      <property name="tags" value="refillwater"/>
+     </properties>
+    </object>
    </objectgroup>
   </map>
  </maps>
@@ -84,11 +99,17 @@
   <sprite width="16" height="16" imageformat="PNG" name="placeholder-tileset">
    <image>iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAATUlEQVR42u3QMREAIAwAMZa6xAc7PjowIxJEdIPk7g18i56nUsYotdcs1aoMMMAAAwwwwAADDDDAAAMMMODDAQAAAAAAAAAAAAAAwHMu1WPiW3s7Gi8AAAAASUVORK5CYII=</image>
   </sprite>
-  <sprite width="11" height="10" imageformat="PNG" name="prop-pumpkin">
-   <image>iVBORw0KGgoAAAANSUhEUgAAAAsAAAAKCAYAAABi8KSDAAAAdklEQVR42mNgQAMW2Wb/43dH/WfABXZ5K///2cj2H0SDFIPwhQxnMP6/Px1MwxXeLGABKwRhkKkgxauN2DA1wBShmwwzHaYQrhhkMkwxjIYpAtEoJsOcAVKIrAlZA2WK0Z2DoRgWIugYpBjmMbhC5LDGhpEVAgC17N5XDNSr+wAAAABJRU5ErkJggg==</image>
+  <sprite width="19" height="16" imageformat="PNG" name="prop-pumpkin">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABMAAAAQCAYAAAD0xERiAAAAxklEQVR42rXSsQ3CMBCFYReIRdgB0VOyQRpKkGhYgTFYBYqsQIuoGYLq0LP0o9MltuyCSE9nJ/DlTk5K4bJ3susrGWtV7Vk3XZvT2hT+GGsXtL8POR4kdNoNsRdAeK40YUC6B8Y9nyrokdoLSr9tPozaJF2Y3992K/tclqbKix7HbY6Nh1ybuhLwPC8ypDC+1hPQtz03HkjsjO6Aft0BlDB1BkYFUZ2MWjp6P6Ygj3rwf1gJ9Fgct4rVwBhhAjjVro92DozQF1f6jC/UHh+9AAAAAElFTkSuQmCC</image>
   </sprite>
-  <sprite width="16" height="15" imageformat="PNG" name="prop-pumpkin-destroyed">
-   <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAB7UlEQVR42s3SyWuTQRjH8VSUSNJC4watpq1NKmKRNiqa7X0nC4rkIriVGJutlmZpYhRPnjx4EP1HBLVgIoIXkzeNQRBabG3SBasX/QNEBGvt12kFEw9CEQSfy8wc5vM8P2Z0un9VtwJeUgOHyY8k+Ssg4RwjcdzOPZ+yecBrfEaqdQV3V5Fg/w0SBw+RstmI+xcJ+T8SUV/zIAmj3rnfUZf1BUM7XzGiX0LZV0VYNG4H7pK/eIa04xjWlgLBExI5uUDEM81DiUTc9QYizCU8nSWUIxrpraDsrXBu8CZJ9egGkBwYJOqvMuyskx9dJSQWCJ1ebAAeS4ULe2qEt33gqh7EgSKhtvX9N9TdJR6NwSVbjahzmnxsjXwO4sqbpgmssqOpRqR9GbvpJSnjZ7JtMG5gI0629QsTcZi4BpftUzy9LiM4Z5uBSc7umCeqf4vo1sgY1sjIKJnt3/GY5XmLvByGgswe9dUppOXqnmkA6n7tF6B2l8i1fyVnlIhhFWEubwLoqzBkmiFsfIfaVSFmnOWK4RPju1bwWZ6TNsL9GDyRo4dOzfM4K9fmV1ivgOMODtlN7dFQeiYRvUWEtfwzQou80P+emHeKYV+N867lP38upa+KR3YVnWVEh4aQoNpbReko4jJXCIoldP9V/QAnHEAx8im6rAAAAABJRU5ErkJggg==</image>
+  <sprite width="19" height="16" imageformat="PNG" name="prop-pumpkin-damaged">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABMAAAAQCAYAAAD0xERiAAAA3klEQVR42u3SMQrCQBAF0C3EUygigRxB7IQEbXIDG0sFG6+QNheQCHoQU3gFW7H2EFYjf+Gvm2EDq1gaGHaS7D5mJjHmf8nDyM+g+m6E61fIdDuxh31o1SxdfAThAFdAyP2IBkOYfo+IxriZ7Yb2RGOh/Fwk8iz7sp+NXLvXTS51lohc1jaPqhDAbdezEFCOAffACJ4WqXRCPoZAZcDwvMrGrjpAAFvV8SvpIQM65AOHHedDu7I9W1WRvjENaYxtAiKKlVW15qYHr/8nHGawbcCAkHd+gFB1BAn5AZB7XsXAECFqg+wpAAAAAElFTkSuQmCC</image>
+  </sprite>
+  <sprite width="19" height="16" imageformat="PNG" name="prop-pumpkin-destroyed">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABMAAAAQCAYAAAD0xERiAAAAWElEQVR42mNgGAWjYBSgAYtss//xu6P+g2gYmyxDkDGygSQZClKMTKOzQSAj0ANsaIWzwX8Qm2jXoYu7yQv+j9OTgbsSxCdoID7DYAaCDIHxKXIdMkaXBwAumk4ngHfW1gAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="9" height="18" imageformat="PNG" name="prop-toilet1-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAkAAAASCAYAAACJgPRIAAAAbElEQVR42q2SwQnAMAhF3X+X3NINHMApXMKDRaiCJmlCqfAv4fnjFwGeYmatglpHEBFpFXwqsxeRpO083rSF0vD/QbP4aQ3e0VpTREwKNwdcM3CAKhzQCozvrt71LV0kNHCm4RLs8egK3KECNyLTkkRPWMLUAAAAAElFTkSuQmCC</image>
   </sprite>
  </spriteSheets>
  <tilesets/>

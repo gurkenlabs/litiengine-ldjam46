@@ -1,7 +1,7 @@
 package de.gurkenlabs.ldjam46;
 
+import de.gurkenlabs.ldjam46.gui.IngameScreen;
 import de.gurkenlabs.litiengine.Game;
-import de.gurkenlabs.litiengine.gui.screens.GameScreen;
 import de.gurkenlabs.litiengine.resources.Resources;
 
 public class Program {
@@ -26,7 +26,7 @@ public class Program {
     GameManager.init();
 
     // set the icon for the game (this has to be done after initialization because the ScreenManager will not be present otherwise)
-    //Game.window().setIcon(Resources.images().get("icon.png"));
+    Game.window().setIcon(Resources.images().get("icon.png"));
     Game.graphics().setBaseRenderScale(4.001f);
 
     // load data from the utiLITI game file
@@ -34,7 +34,7 @@ public class Program {
 
     Game.world().loadEnvironment("playground");
 
-    Game.screens().add(new GameScreen());
+    Game.screens().add(new IngameScreen());
 
     Game.start();
   }
