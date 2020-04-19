@@ -1,5 +1,6 @@
 package de.gurkenlabs.ldjam46;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import de.gurkenlabs.ldjam46.entities.EnemyFarmer;
 import de.gurkenlabs.ldjam46.entities.Farmer;
 import de.gurkenlabs.ldjam46.entities.Pumpkin;
 import de.gurkenlabs.litiengine.Game;
+import de.gurkenlabs.litiengine.GameRandom;
 import de.gurkenlabs.litiengine.entities.Spawnpoint;
 import de.gurkenlabs.litiengine.entities.behavior.AStarGrid;
 import de.gurkenlabs.litiengine.entities.behavior.AStarNode;
@@ -19,6 +21,8 @@ import de.gurkenlabs.litiengine.environment.EnvironmentListener;
 import de.gurkenlabs.litiengine.environment.PropMapObjectLoader;
 import de.gurkenlabs.litiengine.gui.GuiProperties;
 import de.gurkenlabs.litiengine.resources.Resources;
+import de.gurkenlabs.litiengine.util.TimeUtilities;
+import de.gurkenlabs.litiengine.util.TimeUtilities.TimerFormat;
 
 public final class GameManager {
   public enum Day {
@@ -69,6 +73,11 @@ public final class GameManager {
 
   private static Day currentDay;
   private static boolean isLoading;
+
+  // time properties
+  private static String currentTime;
+  private static int currentHour;
+  private static int currentMinutes;
 
   // TODO: Day night cycle
   // TODO: duration of days
@@ -164,7 +173,7 @@ public final class GameManager {
           event.finished = false;
         }
       }
-      
+
       Game.world().loadEnvironment(maps.get(currentDay));
 
       Game.window().getRenderComponent().fadeIn(1000);
@@ -184,7 +193,75 @@ public final class GameManager {
   }
 
   private static void update() {
+    if (Game.world().environment() == null) {
+      return;
+    }
+
     handleEnemyFarmerSpawns();
+
+    handleDayTime();
+  }
+
+  private static void handleDayTime() {
+    final int STARTING = 6;
+    final int ENDING = 18;
+
+    final double DAY_LENGTH = 3.0; // minutes
+    final double DAY_LENGTH_IN_MS = DAY_LENGTH * 60 * 1000;
+    final double HOUR_LENGTH = DAY_LENGTH_IN_MS / (ENDING - STARTING);
+    final double MINUTE_LENGTH = DAY_LENGTH_IN_MS / (ENDING - STARTING) / 60;
+
+    // time in ms
+    long elapsed = Game.time().sinceEnvironmentLoad();
+
+    int hour = (int) (elapsed / HOUR_LENGTH) + STARTING % 24;
+    currentMinutes = (int) (elapsed % HOUR_LENGTH / MINUTE_LENGTH);
+
+    if (hour > currentHour) {
+      adjustAmbientLight(hour);
+    }
+
+    currentHour = hour;
+
+    String ampm = currentHour >= 12 ? "PM" : "AM";
+
+    if (currentHour == ENDING && currentMinutes > 0 || currentHour > ENDING) {
+      // TODO END DAY and transition
+      return;
+    }
+
+    long formatHours = currentHour;
+    if (currentHour > 12) {
+      formatHours = currentHour % 12;
+    }
+
+    currentTime = formatHours + ":" + String.format("%02d", currentMinutes) + " " + ampm;
+  }
+
+  private static void adjustAmbientLight(int hour) {
+    if (Game.world().environment() == null || Game.world().environment().getAmbientLight() == null) {
+      return;
+    }
+
+    if (hour < 7 || hour >= 17) {
+      Game.world().environment().getAmbientLight().setColor(new Color(51, 51, 255, 50));
+    }
+
+    if (hour >= 7 && hour < 9) {
+      Game.world().environment().getAmbientLight().setColor(new Color(53, 233, 123, 30));
+    }
+    
+    if (hour >= 9 && hour < 12) {
+      Game.world().environment().getAmbientLight().setColor(new Color(181, 233, 53, 29));
+    }
+    
+    if (hour >= 12 && hour < 15) {
+      Game.world().environment().getAmbientLight().setColor(new Color(233, 176, 53, 39));
+    }
+    
+    if (hour >= 15 && hour < 17) {
+      Game.world().environment().getAmbientLight().setColor(new Color(233, 51, 122, 19));
+    }
   }
 
   private static void handleEnemyFarmerSpawns() {
@@ -217,6 +294,10 @@ public final class GameManager {
     }
 
     spawn.spawn(new EnemyFarmer(spawn));
+  }
+
+  public static String getCurrentTime() {
+    return currentTime;
   }
 
   private static class EnemyFarmerSpawnEvent {
