@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.3.4" name="tiles-greenhouse" tilewidth="16" tileheight="16" tilecount="480" columns="24">
- <image source="../../../gurkenlabs/Jams/ludum-dare-46/Art/tileset/tiles-greenhouse.png" width="384" height="320"/>
+<tileset firstgid="0" name="tiles-greenhouse" tilewidth="16" tileheight="16" tilecount="480" columns="24">
+ <image source="tiles-greenhouse.png" width="384" height="320"/>
  <terraintypes>
   <terrain name="DarkDirt" tile="221"/>
   <terrain name="BrightDirt" tile="222"/>
