@@ -4,8 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.RoundRectangle2D;
 
+import de.gurkenlabs.ldjam46.GameManager;
 import de.gurkenlabs.ldjam46.entities.Pumpkin;
+import de.gurkenlabs.litiengine.Align;
 import de.gurkenlabs.litiengine.Game;
+import de.gurkenlabs.litiengine.Valign;
+import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
 
 public class Hud extends GuiComponent {
@@ -22,6 +26,20 @@ public class Hud extends GuiComponent {
     }
 
     this.renderPumpkinUI(g);
+
+    this.renderTime(g);
+  }
+
+  private void renderTime(Graphics2D g) {
+
+    if (GameManager.getCurrentTime() == null) {
+      return;
+    }
+
+    g.setColor(Color.WHITE);
+    g.setFont(GameManager.GUI_FONT.deriveFont(24f));
+    TextRenderer.render(g, GameManager.getCurrentTime(), Align.CENTER, Valign.DOWN, 0, -20);
+
   }
 
   private void renderPumpkinUI(Graphics2D g) {
