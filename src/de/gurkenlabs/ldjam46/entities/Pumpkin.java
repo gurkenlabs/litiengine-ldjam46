@@ -1,5 +1,7 @@
 package de.gurkenlabs.ldjam46.entities;
 
+import de.gurkenlabs.ldjam46.GameManager;
+import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.IUpdateable;
 import de.gurkenlabs.litiengine.attributes.AttributeModifier;
@@ -27,7 +29,7 @@ public class Pumpkin extends Prop implements IUpdateable {
 
   @Override
   public void update() {
-    if (this.isDead()) {
+    if (this.isDead() || GameManager.getState() != GameState.INGAME) {
       return;
     }
 

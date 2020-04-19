@@ -3,6 +3,7 @@ package de.gurkenlabs.ldjam46.entities;
 import java.awt.Color;
 
 import de.gurkenlabs.ldjam46.GameManager;
+import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.behavior.AStarGrid;
 import de.gurkenlabs.litiengine.entities.behavior.AStarPathFinder;
@@ -35,6 +36,10 @@ public class EnemyFarmerController extends MovementController<EnemyFarmer> {
   @Override
   public void update() {
     super.update();
+    
+    if (GameManager.getState() != GameState.INGAME) {
+      return;
+    }
 
     if (this.getEntity().getTarget() == null || this.removed) {
       return;

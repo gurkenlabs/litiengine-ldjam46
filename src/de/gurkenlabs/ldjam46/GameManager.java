@@ -20,19 +20,27 @@ import de.gurkenlabs.litiengine.environment.Environment;
 import de.gurkenlabs.litiengine.environment.EnvironmentListener;
 import de.gurkenlabs.litiengine.environment.PropMapObjectLoader;
 import de.gurkenlabs.litiengine.gui.GuiProperties;
+import de.gurkenlabs.litiengine.net.IIncomingPacketObserver;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.gurkenlabs.litiengine.util.TimeUtilities;
 import de.gurkenlabs.litiengine.util.TimeUtilities.TimerFormat;
 
 public final class GameManager {
+  public enum GameState {
+    MENU,
+    LOADING,
+    LOCKED,
+    INGAME,
+  }
+
   public enum Day {
-    monday("Howdy partner, let's learn how to farm, aii.."),
-    tuesday("Well that just dills my pickle!"),
-    wednesday("These farmers are nuttier than a squirrel turd!"),
-    thursday("I gotta hit the bushes."),
-    friday("I’m as busy as a one-legged cat in a sandbox!"),
-    saturday("Don't put your cart before your horse."),
-    sunday("Today I'm happy as a dead pig in the sunshine!");
+    Monday("Howdy partner, let's learn how to farm, aii.."),
+    Tuesday("Well that just dills my pickle!"),
+    Wednesday("These farmers are nuttier than a squirrel turd!"),
+    Thursday("I gotta hit the bushes."),
+    Friday("I’m as busy as a one-legged cat in a sandbox!"),
+    Saturday("Don't put your cart before your horse."),
+    Sunday("Today I'm happy as a dead pig in the sunshine!");
 
     private final String description;
 
@@ -46,18 +54,18 @@ public final class GameManager {
 
     public Day getNext() {
       switch (this) {
-      case monday:
-        return tuesday;
-      case tuesday:
-        return wednesday;
-      case wednesday:
-        return thursday;
-      case thursday:
-        return friday;
-      case friday:
-        return saturday;
-      case saturday:
-        return sunday;
+      case Monday:
+        return Tuesday;
+      case Tuesday:
+        return Wednesday;
+      case Wednesday:
+        return Thursday;
+      case Thursday:
+        return Friday;
+      case Friday:
+        return Saturday;
+      case Saturday:
+        return Sunday;
       default:
         return null;
       }
@@ -71,30 +79,31 @@ public final class GameManager {
   private static final Map<String, AStarGrid> grids = new ConcurrentHashMap<>();
   private static final Map<Day, String> maps = new ConcurrentHashMap<>();
 
+  private static GameState state;
+
   private static Day currentDay;
-  private static boolean isLoading;
+  private static long ingameStartedTick;
 
   // time properties
   private static String currentTime;
   private static int currentHour;
   private static int currentMinutes;
 
-  // TODO: Day night cycle
-  // TODO: duration of days
+  private static long lastLoaded;
+
   // TODO: End screen after every day
   // TODO: traverse to next level
   // TODO: fail level if all pumpkins are dead
   // TODO: fail level if not enough pumpkins are alive
   // TODO: track score (alive pumpkins * life)
-  // TODO: default water ability charges? always 0 ?
   static {
-    maps.put(Day.monday, "monday");
-    maps.put(Day.tuesday, "playground");
-    maps.put(Day.wednesday, "playground");
-    maps.put(Day.thursday, "playground");
-    maps.put(Day.friday, "playground");
-    maps.put(Day.saturday, "playground");
-    maps.put(Day.sunday, "playground");
+    maps.put(Day.Monday, "monday");
+    maps.put(Day.Tuesday, "playground");
+    maps.put(Day.Wednesday, "playground");
+    maps.put(Day.Thursday, "playground");
+    maps.put(Day.Friday, "playground");
+    maps.put(Day.Saturday, "playground");
+    maps.put(Day.Sunday, "playground");
 
     spawnEvents.put(MAP_PLAYGROUND, new ArrayList<>());
     spawnEvents.get(MAP_PLAYGROUND).add(new EnemyFarmerSpawnEvent("enemy", 5000));
@@ -142,7 +151,7 @@ public final class GameManager {
 
   public static void levelTransition() {
     if (currentDay == null) {
-      currentDay = Day.monday;
+      currentDay = Day.Monday;
     } else {
       currentDay = currentDay.getNext();
     }
@@ -151,21 +160,20 @@ public final class GameManager {
   }
 
   public static synchronized void loadCurrentDay() {
-
-    if (isLoading) {
+    if (state == GameState.LOADING) {
       return;
     }
 
-    isLoading = true;
+    state = GameState.LOADING;
 
-    String currentMap = maps.get(GameManager.currentDay);
+    String currentMap = maps.get(currentDay);
 
     Game.window().getRenderComponent().fadeOut(1000);
     Game.loop().perform(1000, () -> {
-      if (Game.world().environment() != null && Game.world().environment().getMap().getName().equals(maps.get(GameManager.currentDay))) {
+      if (Game.world().environment() != null && Game.world().environment().getMap().getName().equals(maps.get(currentDay))) {
 
         Game.world().environment().remove(Farmer.instance());
-        Game.world().reset(maps.get(GameManager.currentDay));
+        Game.world().reset(maps.get(currentDay));
       }
 
       if (spawnEvents.containsKey(currentMap)) {
@@ -175,11 +183,18 @@ public final class GameManager {
       }
 
       Game.world().loadEnvironment(maps.get(currentDay));
+      Game.world().environment().getAmbientLight().setColor(new Color(51, 51, 255, 50));
 
       Game.window().getRenderComponent().fadeIn(1000);
 
       Game.loop().perform(1000, () -> {
-        isLoading = false;
+        state = GameState.LOCKED;
+        lastLoaded = Game.loop().getTicks();
+      });
+
+      Game.loop().perform(6000, () -> {
+        ingameStartedTick = Game.loop().getTicks();
+        state = GameState.INGAME;
       });
     });
   }
@@ -190,6 +205,18 @@ public final class GameManager {
     }
 
     return grids.get(Game.world().environment().getMap().getName());
+  }
+
+  public static long getTimeSinceLastLoad() {
+    return state == GameState.LOADING ? 0 : Game.time().since(lastLoaded);
+  }
+
+  public static Day getCurrentDay() {
+    return currentDay;
+  }
+
+  public static GameState getState() {
+    return state;
   }
 
   private static void update() {
@@ -203,6 +230,10 @@ public final class GameManager {
   }
 
   private static void handleDayTime() {
+    if (getState() != GameState.INGAME) {
+      return;
+    }
+
     final int STARTING = 6;
     final int ENDING = 18;
 
@@ -212,7 +243,7 @@ public final class GameManager {
     final double MINUTE_LENGTH = DAY_LENGTH_IN_MS / (ENDING - STARTING) / 60;
 
     // time in ms
-    long elapsed = Game.time().sinceEnvironmentLoad();
+    long elapsed = ingameStartedTick != 0 ? Game.time().since(ingameStartedTick) : 0;
 
     int hour = (int) (elapsed / HOUR_LENGTH) + STARTING % 24;
     currentMinutes = (int) (elapsed % HOUR_LENGTH / MINUTE_LENGTH);
@@ -226,7 +257,9 @@ public final class GameManager {
     String ampm = currentHour >= 12 ? "PM" : "AM";
 
     if (currentHour == ENDING && currentMinutes > 0 || currentHour > ENDING) {
-      // TODO END DAY and transition
+      state = GameState.LOCKED;
+      // TODO show result and either reload current map or transition to the next level
+      levelTransition();
       return;
     }
 
@@ -250,15 +283,15 @@ public final class GameManager {
     if (hour >= 7 && hour < 9) {
       Game.world().environment().getAmbientLight().setColor(new Color(53, 233, 123, 30));
     }
-    
+
     if (hour >= 9 && hour < 12) {
       Game.world().environment().getAmbientLight().setColor(new Color(181, 233, 53, 29));
     }
-    
+
     if (hour >= 12 && hour < 15) {
       Game.world().environment().getAmbientLight().setColor(new Color(233, 176, 53, 39));
     }
-    
+
     if (hour >= 15 && hour < 17) {
       Game.world().environment().getAmbientLight().setColor(new Color(233, 51, 122, 19));
     }

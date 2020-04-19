@@ -28,6 +28,24 @@ public class Hud extends GuiComponent {
     this.renderPumpkinUI(g);
 
     this.renderTime(g);
+    this.renderCurrentLevelInfo(g);
+  }
+
+  private void renderCurrentLevelInfo(Graphics2D g) {
+    final int LEVEL_INFO_DURATION = 5000;
+    final int LEVEL_DESC_DURATION = 1500;
+
+    final long timeSince = GameManager.getTimeSinceLastLoad();
+    if (timeSince < LEVEL_INFO_DURATION && timeSince != 0) {
+      g.setColor(Color.WHITE);
+      g.setFont(GameManager.GUI_FONT.deriveFont(48f));
+      TextRenderer.render(g, GameManager.getCurrentDay().name(), Align.CENTER, Valign.MIDDLE, 0, 0);
+
+      if (timeSince > LEVEL_DESC_DURATION) {
+        g.setFont(GameManager.GUI_FONT.deriveFont(24f));
+        TextRenderer.render(g, GameManager.getCurrentDay().getDescription(), Align.CENTER, Valign.MIDDLE, 0, 70);
+      }
+    }
   }
 
   private void renderTime(Graphics2D g) {
