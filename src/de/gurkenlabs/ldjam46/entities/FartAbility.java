@@ -10,6 +10,7 @@ import de.gurkenlabs.litiengine.entities.ICombatEntity;
 
 @AbilityInfo(name = "FartAbility", cooldown = 5000, range = 0, impact = 60, impactAngle = 360, value = 1, duration = 400, multiTarget = true)
 public class FartAbility extends Ability {
+  private boolean enabled;
 
   protected FartAbility(Creature executor) {
     super(executor);
@@ -17,6 +18,19 @@ public class FartAbility extends Ability {
     this.addEffect(new FartEffect(this));
     this.addEffect(new SoundEffect(this, "fart.wav", "fart2.wav", "fart3.wav"));
     this.addEffect(new ScreenShakeEffect(this, 1.5, 1000));
+  }
+
+  public boolean isEnabled() {
+    return enabled;
+  }
+
+  public void setEnabled(boolean enabled) {
+    this.enabled = enabled;
+  }
+
+  @Override
+  public boolean canCast() {
+    return super.canCast() && isEnabled();
   }
 
   private static class FartEffect extends Effect {

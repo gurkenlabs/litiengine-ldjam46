@@ -31,22 +31,28 @@ public final class GameManager {
   }
 
   public enum Day {
-    Monday("Howdy partner, let's learn how to farm, aii.."),
-    Tuesday("Well that just dills my pickle!"),
-    Wednesday("These farmers are nuttier than a squirrel turd!"),
-    Thursday("I gotta hit the bushes."),
-    Friday("I’m as busy as a one-legged cat in a sandbox!"),
-    Saturday("Don't put your cart before your horse."),
-    Sunday("Today I'm happy as a dead pig in the sunshine!");
+    Monday(1, "Howdy partner, let's learn how to farm, aii.."),
+    Tuesday(2, "Well that just dills my pickle!"),
+    Wednesday(3, "These farmers are nuttier than a squirrel turd!"),
+    Thursday(4, "I gotta hit the bushes."),
+    Friday(5, "I’m as busy as a one-legged cat in a sandbox!"),
+    Saturday(6, "Don't put your cart before your horse."),
+    Sunday(7, "Today I'm happy as a dead pig in the sunshine!");
 
     private final String description;
+    private final int day;
 
-    private Day(String description) {
+    private Day(int day, String description) {
+      this.day = day;
       this.description = description;
     }
 
     public String getDescription() {
       return description;
+    }
+
+    public int getDay() {
+      return this.day;
     }
 
     public Day getNext() {
@@ -93,9 +99,6 @@ public final class GameManager {
   private static boolean levelFailed;
 
   // TODO: End screen after every day
-  // TODO: traverse to next level
-  // TODO: fail level if all pumpkins are dead
-  // TODO: fail level if not enough pumpkins are alive
   // TODO: track score (alive pumpkins * life)
   static {
     maps.put(Day.Monday, "monday");
@@ -145,7 +148,6 @@ public final class GameManager {
         grid.setAllowCuttingCorners(false);
         grids.put(e.getMap().getName(), grid);
       };
-
     });
 
     Game.loop().attach(GameManager::update);
@@ -157,6 +159,10 @@ public final class GameManager {
     } else {
       currentDay = currentDay.getNext();
     }
+    
+    // TODO currentDay null -> transition to menu screen
+
+    Farmer.instance().getFartAbility().setEnabled(currentDay.getDay() >= Day.Wednesday.getDay());
 
     loadCurrentDay();
   }
