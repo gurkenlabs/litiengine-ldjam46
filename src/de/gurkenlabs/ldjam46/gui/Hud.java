@@ -28,7 +28,7 @@ public class Hud extends GuiComponent {
   static {
     PUMPKIN = Imaging.scale(Resources.images().get("pumpkin-ui.png"), Game.graphics().getBaseRenderScale() / 2);
     DROP = Imaging.scale(Resources.images().get("drop-ui.png"), Game.graphics().getBaseRenderScale() / 2);
-    DROP_DISABLED = Imaging.scale(Resources.images().get("drop-disabled-ui.png"), Game.graphics().getBaseRenderScale() / 2);
+    DROP_DISABLED = Imaging.setOpacity(Imaging.scale(Resources.images().get("drop-disabled-ui.png"), Game.graphics().getBaseRenderScale() / 2), 0.5f);
   }
 
   public Hud() {

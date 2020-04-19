@@ -24,6 +24,8 @@ public class FarmerController extends KeyboardEntityController<Farmer> {
     }
 
     if (GameManager.getState() != GameState.INGAME) {
+      this.setDx(0);
+      this.setDy(0);
       return;
     }
 
