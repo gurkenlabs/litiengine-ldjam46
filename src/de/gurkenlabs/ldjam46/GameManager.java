@@ -11,7 +11,6 @@ import de.gurkenlabs.ldjam46.entities.EnemyFarmer;
 import de.gurkenlabs.ldjam46.entities.Farmer;
 import de.gurkenlabs.ldjam46.entities.Pumpkin;
 import de.gurkenlabs.litiengine.Game;
-import de.gurkenlabs.litiengine.GameRandom;
 import de.gurkenlabs.litiengine.entities.Spawnpoint;
 import de.gurkenlabs.litiengine.entities.behavior.AStarGrid;
 import de.gurkenlabs.litiengine.entities.behavior.AStarNode;
@@ -20,10 +19,7 @@ import de.gurkenlabs.litiengine.environment.Environment;
 import de.gurkenlabs.litiengine.environment.EnvironmentListener;
 import de.gurkenlabs.litiengine.environment.PropMapObjectLoader;
 import de.gurkenlabs.litiengine.gui.GuiProperties;
-import de.gurkenlabs.litiengine.net.IIncomingPacketObserver;
 import de.gurkenlabs.litiengine.resources.Resources;
-import de.gurkenlabs.litiengine.util.TimeUtilities;
-import de.gurkenlabs.litiengine.util.TimeUtilities.TimerFormat;
 
 public final class GameManager {
   public enum GameState {

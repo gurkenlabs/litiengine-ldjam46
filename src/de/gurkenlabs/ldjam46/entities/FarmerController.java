@@ -15,10 +15,14 @@ public class FarmerController extends KeyboardEntityController<Farmer> {
 
   @Override
   public void handlePressedKey(KeyEvent keyCode) {
-    if (Game.isDebug() && keyCode.getKeyCode() == KeyEvent.VK_F5) {
+    if (Game.isDebug() && keyCode.getKeyCode() == KeyEvent.VK_F5 && GameManager.getState() == GameState.INGAME) {
       GameManager.loadCurrentDay();
     }
-    
+
+    if (Game.isDebug() && keyCode.getKeyCode() == KeyEvent.VK_F6 && GameManager.getState() == GameState.INGAME) {
+      GameManager.levelTransition();
+    }
+
     if (GameManager.getState() != GameState.INGAME) {
       return;
     }
