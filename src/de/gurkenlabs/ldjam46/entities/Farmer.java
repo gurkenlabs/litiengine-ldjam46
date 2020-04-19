@@ -22,72 +22,72 @@ import de.gurkenlabs.litiengine.physics.IMovementController;
 @MovementInfo(velocity = 70)
 @AnimationInfo(spritePrefix = "keeper")
 public class Farmer extends Creature {
-	private static final int WATER_REFILL_DELAY = 1000;
+  private static final int WATER_REFILL_DELAY = 1000;
 
-	private static Farmer instance;
+  private static Farmer instance;
 
-	private final WaterAbility waterAbility = new WaterAbility(this);
+  private final WaterAbility waterAbility = new WaterAbility(this);
 
-	private final FartAbility fartAbility = new FartAbility(this);
+  private final FartAbility fartAbility = new FartAbility(this);
 
-	private long lastWaterRefill;
+  private long lastWaterRefill;
 
-	private Farmer() {
-		this.onMoved(new WalkDustSpawner());
-	}
+  private Farmer() {
+    this.onMoved(new WalkDustSpawner());
+  }
 
-	public static Farmer instance() {
-		if (instance == null) {
-			instance = new Farmer();
-		}
+  public static Farmer instance() {
+    if (instance == null) {
+      instance = new Farmer();
+    }
 
-		return instance;
-	}
+    return instance;
+  }
 
-	private boolean speechbubbleActive;
+  private boolean speechbubbleActive;
 
-	@Action()
-	public void use() {
-		if (Game.time().since(this.lastWaterRefill) > WATER_REFILL_DELAY
-				&& this.waterAbility.getCharges().get() < this.waterAbility.getCharges().getMax()) {
-			Collection<MapArea> refillAreas = Game.world().environment().getByTag(MapArea.class, "refillwater");
-			for (MapArea area : refillAreas) {
-				if (area.getBoundingBox().intersects(this.getCollisionBox())) {
-					this.waterAbility.getCharges().setToMax();
-					System.out.println("water refilled");
-				}
-			}
-		}
+  @Action()
+  public void use() {
+    if (Game.time().since(this.lastWaterRefill) > WATER_REFILL_DELAY
+        && this.waterAbility.getCharges().get() < this.waterAbility.getCharges().getMax()) {
+      Collection<MapArea> refillAreas = Game.world().environment().getByTag(MapArea.class, "refillwater");
+      for (MapArea area : refillAreas) {
+        if (area.getBoundingBox().intersects(this.getCollisionBox())) {
+          this.waterAbility.getCharges().setToMax();
+          System.out.println("water refilled");
+        }
+      }
+    }
 
-		if (this.waterAbility.canCast()) {
-			this.waterAbility.cast();
-		} else if (!this.waterAbility.isOnCooldown() && this.waterAbility.getCharges().get() == 0
-				&& !speechbubbleActive) {
+    if (this.waterAbility.canCast()) {
+      this.waterAbility.cast();
+    } else if (!this.waterAbility.isOnCooldown() && this.waterAbility.getCharges().get() == 0
+        && !speechbubbleActive) {
 
-			SpeechBubble bubble = SpeechBubble.create(this, "need to refill ma can",
-					GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
-			speechbubbleActive = true;
-			bubble.addListener(() -> {
-				speechbubbleActive = false;
-			});
-		}
-	}
+      SpeechBubble bubble = SpeechBubble.create(this, "need to refill ma can",
+          GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
+      speechbubbleActive = true;
+      bubble.addListener(() -> {
+        speechbubbleActive = false;
+      });
+    }
+  }
 
-	@Action
-	public void fart() {
-		this.fartAbility.cast();
-	}
+  @Action
+  public void fart() {
+    this.fartAbility.cast();
+  }
 
-	public WaterAbility getWaterAbility() {
-		return this.waterAbility;
-	}
+  public WaterAbility getWaterAbility() {
+    return this.waterAbility;
+  }
 
-	public FartAbility getFartAbility() {
-		return this.fartAbility;
-	}
+  public FartAbility getFartAbility() {
+    return this.fartAbility;
+  }
 
-	@Override
-	protected IMovementController createMovementController() {
-		return new FarmerController(this);
-	}
+  @Override
+  protected IMovementController createMovementController() {
+    return new FarmerController(this);
+  }
 }

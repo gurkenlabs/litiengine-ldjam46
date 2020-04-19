@@ -75,7 +75,7 @@ public class Hud extends GuiComponent {
       }
     }
 
-    if (GameManager.getState() == GameState.INGAME) {
+    if (GameManager.getState() == GameState.INGAME && g.getClipBounds() != null) {
       TextRenderer.render(g, "req. harvest: " + GameManager.getRequiredPumpkins() + "x", Align.RIGHT, Valign.DOWN, -60, -PADDING);
 
       double locationX = g.getClipBounds().getX() + Align.RIGHT.getLocation(g.getClipBounds().getWidth(), PUMPKIN.getWidth()) + -PADDING;
@@ -85,7 +85,7 @@ public class Hud extends GuiComponent {
   }
 
   private void renderCanUI(Graphics2D g) {
-    if (GameManager.getState() == GameState.INGAME) {
+    if (GameManager.getState() == GameState.INGAME && g.getClipBounds() != null) {
       for (int i = 0; i < Farmer.instance().getWaterAbility().getCharges().getMax(); i++) {
         double locationX = g.getClipBounds().getX() + Align.LEFT.getLocation(g.getClipBounds().getWidth(), DROP.getWidth()) + i * DROP.getWidth() + i * PADDING + PADDING;
         double locationY = g.getClipBounds().getY() + Valign.DOWN.getLocation(g.getClipBounds().getHeight(), DROP.getHeight()) + -PADDING;

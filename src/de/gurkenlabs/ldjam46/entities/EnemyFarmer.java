@@ -18,58 +18,58 @@ import de.gurkenlabs.litiengine.physics.IMovementController;
 @CollisionInfo(collision = false, collisionBoxWidth = 4, collisionBoxHeight = 4, align = Align.CENTER, valign = Valign.DOWN)
 @MovementInfo(velocity = 70)
 public class EnemyFarmer extends Creature {
-	private final Spawnpoint spawn;
+  private final Spawnpoint spawn;
 
-	private final StabAbility stabAbility = new StabAbility(this);
+  private final StabAbility stabAbility = new StabAbility(this);
 
-	private boolean fartedOn;
+  private boolean fartedOn;
 
-	public EnemyFarmer(Spawnpoint spawn) {
-		super(Game.random().choose("enemyfarmer1", "enemyfarmer2"));
+  public EnemyFarmer(Spawnpoint spawn) {
+    super(Game.random().choose("enemyfarmer1", "enemyfarmer2"));
 
-		this.spawn = spawn;
-		this.setTeam(2);
-		this.onMoved(new WalkDustSpawner());
-	}
+    this.spawn = spawn;
+    this.setTeam(2);
+    this.onMoved(new WalkDustSpawner());
+  }
 
-	@Override
-	public boolean canCollideWith(ICollisionEntity otherEntity) {
-		return super.canCollideWith(otherEntity) && !(otherEntity instanceof EnemyFarmer);
-	}
+  @Override
+  public boolean canCollideWith(ICollisionEntity otherEntity) {
+    return super.canCollideWith(otherEntity) && !(otherEntity instanceof EnemyFarmer);
+  }
 
-	@Override
-	public void loaded(Environment environment) {
-		super.loaded(environment);
+  @Override
+  public void loaded(Environment environment) {
+    super.loaded(environment);
 
-		this.updateTarget();
-	}
+    this.updateTarget();
+  }
 
-	public void updateTarget() {
-		Pumpkin pumpkin = Game.random().choose(Game.world().environment().getEntities(Pumpkin.class, e -> !e.isDead()));
-		this.setTarget(pumpkin);
-	}
+  public void updateTarget() {
+    Pumpkin pumpkin = Game.random().choose(Game.world().environment().getEntities(Pumpkin.class, e -> !e.isDead()));
+    this.setTarget(pumpkin);
+  }
 
-	@Override
-	protected IMovementController createMovementController() {
-		return new EnemyFarmerController(this);
-	}
+  @Override
+  protected IMovementController createMovementController() {
+    return new EnemyFarmerController(this);
+  }
 
-	public StabAbility getStabAbility() {
-		return stabAbility;
-	}
+  public StabAbility getStabAbility() {
+    return stabAbility;
+  }
 
-	public boolean isFartedOn() {
-		return fartedOn;
-	}
+  public boolean isFartedOn() {
+    return fartedOn;
+  }
 
-	public void fartOn() {
-		this.fartedOn = true;
-		this.setCollision(false);
-		SmellEmitter smell = new SmellEmitter(this);
-		Game.world().environment().add(smell);
-	}
+  public void fartOn() {
+    this.fartedOn = true;
+    this.setCollision(false);
+    SmellEmitter smell = new SmellEmitter(this);
+    Game.world().environment().add(smell);
+  }
 
-	public Spawnpoint getSpawn() {
-		return spawn;
-	}
+  public Spawnpoint getSpawn() {
+    return spawn;
+  }
 }
