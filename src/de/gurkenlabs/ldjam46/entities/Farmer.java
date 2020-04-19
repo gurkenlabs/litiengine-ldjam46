@@ -62,6 +62,10 @@ public class Farmer extends Creature {
     this.fartAbility.cast();
   }
 
+  public WaterAbility getWaterAbility() {
+    return this.waterAbility;
+  }
+
   @Override
   protected IMovementController createMovementController() {
     return new FarmerController(this);

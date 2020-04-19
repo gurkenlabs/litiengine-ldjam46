@@ -14,6 +14,8 @@ import de.gurkenlabs.litiengine.entities.Spawnpoint;
 import de.gurkenlabs.litiengine.entities.behavior.AStarGrid;
 import de.gurkenlabs.litiengine.entities.behavior.AStarNode;
 import de.gurkenlabs.litiengine.environment.CreatureMapObjectLoader;
+import de.gurkenlabs.litiengine.environment.Environment;
+import de.gurkenlabs.litiengine.environment.EnvironmentListener;
 import de.gurkenlabs.litiengine.environment.PropMapObjectLoader;
 import de.gurkenlabs.litiengine.gui.GuiProperties;
 import de.gurkenlabs.litiengine.resources.Resources;
@@ -66,6 +68,7 @@ public final class GameManager {
   private static final Map<Day, String> maps = new ConcurrentHashMap<>();
 
   private static Day currentDay;
+  private static boolean isLoading;
 
   // TODO: Day night cycle
   // TODO: duration of days
@@ -99,20 +102,30 @@ public final class GameManager {
     CreatureMapObjectLoader.registerCustomCreatureType(Farmer.class);
     PropMapObjectLoader.registerCustomPropType(Pumpkin.class);
 
-    Game.world().onLoaded(e -> {
-      Game.world().camera().setFocus(e.getCenter());
-      Spawnpoint spawn = e.getSpawnpoint("farmer");
-      if (spawn != null) {
-        spawn.spawn(Farmer.instance());
-      }
-      AStarGrid grid = new AStarGrid(e.getMap().getSizeInPixels(), 8);
-      for (Pumpkin pumpkin : e.getEntities(Pumpkin.class)) {
-        for (AStarNode node : grid.getIntersectedNodes(pumpkin.getBoundingBox())) {
-          node.setPenalty(AStarGrid.PENALTY_STATIC_PROP);
+    Game.world().addListener(new EnvironmentListener() {
+      @Override
+      public void initialized(Environment e) {
+        if (e.getMap().getName().equals("playground")) {
+          Farmer.instance().getWaterAbility().getCharges().setBaseValue(2);
+        } else {
+          Farmer.instance().getWaterAbility().getCharges().setToMin();
         }
-      }
-      grid.setAllowCuttingCorners(false);
-      grids.put(e.getMap().getName(), grid);
+
+        Game.world().camera().setFocus(e.getCenter());
+        Spawnpoint spawn = e.getSpawnpoint("farmer");
+        if (spawn != null) {
+          spawn.spawn(Farmer.instance());
+        }
+        AStarGrid grid = new AStarGrid(e.getMap().getSizeInPixels(), 8);
+        for (Pumpkin pumpkin : e.getEntities(Pumpkin.class)) {
+          for (AStarNode node : grid.getIntersectedNodes(pumpkin.getBoundingBox())) {
+            node.setPenalty(AStarGrid.PENALTY_STATIC_PROP);
+          }
+        }
+        grid.setAllowCuttingCorners(false);
+        grids.put(e.getMap().getName(), grid);
+      };
+
     });
 
     Game.loop().attach(GameManager::update);
@@ -128,15 +141,34 @@ public final class GameManager {
     loadCurrentDay();
   }
 
-  public static void loadCurrentDay() {
+  public static synchronized void loadCurrentDay() {
+
+    if (isLoading) {
+      return;
+    }
+
+    isLoading = true;
+    
+    String currentMap = maps.get(GameManager.currentDay);
+
     Game.window().getRenderComponent().fadeOut(1000);
     Game.loop().perform(1000, () -> {
       if (Game.world().environment() != null && Game.world().environment().getMap().getName().equals(maps.get(GameManager.currentDay))) {
-        Game.world().unloadEnvironment();
-      }
 
+        Game.world().environment().remove(Farmer.instance());
+        Game.world().reset(maps.get(GameManager.currentDay));
+      }
+      
+      for (EnemyFarmerSpawnEvent event : spawnEvents.get(currentMap)) {
+        event.finished = false;
+      }
       Game.world().loadEnvironment(maps.get(currentDay));
+
       Game.window().getRenderComponent().fadeIn(1000);
+
+      Game.loop().perform(1000, () -> {
+        isLoading = false;
+      });
     });
   }
 
