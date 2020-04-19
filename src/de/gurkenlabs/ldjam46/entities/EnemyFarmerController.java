@@ -36,7 +36,7 @@ public class EnemyFarmerController extends MovementController<EnemyFarmer> {
   @Override
   public void update() {
     super.update();
-    
+
     if (GameManager.getState() != GameState.INGAME) {
       return;
     }
@@ -94,10 +94,11 @@ public class EnemyFarmerController extends MovementController<EnemyFarmer> {
     } else {
       if (this.navi.isNavigating()) {
         this.navi.stop();
-      }
+      } else {
 
-      if (this.getEntity().getStabAbility().canCast()) {
-        this.getEntity().getStabAbility().cast();
+        if (this.getEntity().getStabAbility().canCast()) {
+          this.getEntity().getStabAbility().cast();
+        }
       }
     }
   }

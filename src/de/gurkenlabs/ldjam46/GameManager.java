@@ -112,6 +112,7 @@ public final class GameManager {
   public static void init() {
     GuiProperties.setDefaultFont(GUI_FONT);
     Game.audio().setListenerLocationCallback((e) -> Farmer.instance().getCenter());
+    Game.audio().setMaxDistance(300);
 
     CreatureMapObjectLoader.registerCustomCreatureType(Farmer.class);
     PropMapObjectLoader.registerCustomPropType(Pumpkin.class);

@@ -8,6 +8,7 @@ import de.gurkenlabs.litiengine.abilities.Ability;
 import de.gurkenlabs.litiengine.abilities.AbilityInfo;
 import de.gurkenlabs.litiengine.abilities.effects.Effect;
 import de.gurkenlabs.litiengine.abilities.effects.EffectTarget;
+import de.gurkenlabs.litiengine.abilities.effects.SoundEffect;
 import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.EmitterInfo;
 import de.gurkenlabs.litiengine.entities.ICombatEntity;
@@ -24,7 +25,7 @@ public class StabAbility extends Ability {
   protected StabAbility(Creature executor) {
     super(executor);
 
-    // TODO hit sound effect
+    this.addEffect(new SoundEffect(this, "pumpkinhit1.wav", "pumpkinhit2.wav", "pumpkinhit3.wav"));
     this.addEffect(new StabEffect(this));
   }
 
