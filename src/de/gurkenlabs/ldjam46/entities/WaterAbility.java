@@ -1,5 +1,7 @@
 package de.gurkenlabs.ldjam46.entities;
 
+import de.gurkenlabs.ldjam46.gfx.FartEmitter;
+import de.gurkenlabs.ldjam46.gfx.WaterSplashEmitter;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.abilities.Ability;
 import de.gurkenlabs.litiengine.abilities.AbilityInfo;
@@ -17,11 +19,12 @@ public class WaterAbility extends Ability {
 
   private RangeAttribute<Integer> charges = new RangeAttribute<>(5, 0, 2);
 
-  //TODO: refill 
+  // TODO: refill
   WaterAbility(Farmer farmer) {
     super(farmer);
 
     this.addEffect(new WaterEffect(this));
+    this.addEffect(new WaterSplashEffect(this));
     // TODO animation effect
     // TODO sound effect
   }
@@ -92,6 +95,18 @@ public class WaterAbility extends Ability {
     @Override
     protected boolean customTarget(ICombatEntity entity) {
       return entity instanceof Pumpkin && !entity.isDead();
+    }
+  }
+
+  private static class WaterSplashEffect extends Effect {
+    protected WaterSplashEffect(Ability ability) {
+      super(ability, EffectTarget.EXECUTINGENTITY);
+    }
+
+    @Override
+    protected void apply(ICombatEntity entity) {
+      WaterSplashEmitter splash = new WaterSplashEmitter(entity);
+      Game.world().environment().add(splash);
     }
   }
 }
