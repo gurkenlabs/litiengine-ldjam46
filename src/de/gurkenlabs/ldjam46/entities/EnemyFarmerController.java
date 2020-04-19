@@ -1,7 +1,5 @@
 package de.gurkenlabs.ldjam46.entities;
 
-import java.awt.Color;
-
 import de.gurkenlabs.ldjam46.GameManager;
 import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.litiengine.Game;
@@ -9,7 +7,6 @@ import de.gurkenlabs.litiengine.entities.behavior.AStarGrid;
 import de.gurkenlabs.litiengine.entities.behavior.AStarPathFinder;
 import de.gurkenlabs.litiengine.entities.behavior.EntityNavigator;
 import de.gurkenlabs.litiengine.gui.SpeechBubble;
-import de.gurkenlabs.litiengine.gui.SpeechBubbleAppearance;
 import de.gurkenlabs.litiengine.physics.MovementController;
 
 public class EnemyFarmerController extends MovementController<EnemyFarmer> {
@@ -54,7 +51,7 @@ public class EnemyFarmerController extends MovementController<EnemyFarmer> {
         this.initialFart = Game.loop().getTicks();
 
         Game.loop().perform(2000, () -> {
-          SpeechBubble bubble = SpeechBubble.create(this.getEntity(), "...", GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.GUI_FONT.deriveFont(5f));
+          SpeechBubble bubble = SpeechBubble.create(this.getEntity(), " ...", GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT.deriveFont(5f));
         });
       } else {
         double dist = this.getEntity().getSpawn().getCenter().distance(this.getEntity().getCenter());

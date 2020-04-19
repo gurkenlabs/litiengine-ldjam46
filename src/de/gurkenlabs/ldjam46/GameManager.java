@@ -70,7 +70,8 @@ public final class GameManager {
   }
 
   public static final Font GUI_FONT = Resources.fonts().get("fsex300.ttf").deriveFont(10f);
-  public static final SpeechBubbleAppearance SPEECHBUBBLE_APPEARANCE = new SpeechBubbleAppearance(Color.BLACK, new Color(255, 255, 255, 100), new Color(0, 0, 0, 0), 2);
+  public static final Font SPEECHBUBBLE_FONT = GUI_FONT.deriveFont(6f);
+  public static final SpeechBubbleAppearance SPEECHBUBBLE_APPEARANCE = new SpeechBubbleAppearance(Color.BLACK, new Color(255, 255, 255, 200), Color.BLACK, 2);
 
   public static final String MAP_PLAYGROUND = "playground";
   private static final Map<String, List<EnemyFarmerSpawnEvent>> spawnEvents = new ConcurrentHashMap<>();
@@ -88,6 +89,8 @@ public final class GameManager {
   private static int currentMinutes;
 
   private static long lastLoaded;
+
+  private static boolean levelFailed;
 
   // TODO: End screen after every day
   // TODO: traverse to next level
@@ -238,7 +241,7 @@ public final class GameManager {
     final int STARTING = 6;
     final int ENDING = 18;
 
-    final double DAY_LENGTH = 3.0; // minutes
+    final double DAY_LENGTH = 2.0; // minutes
     final double DAY_LENGTH_IN_MS = DAY_LENGTH * 60 * 1000;
     final double HOUR_LENGTH = DAY_LENGTH_IN_MS / (ENDING - STARTING);
     final double MINUTE_LENGTH = DAY_LENGTH_IN_MS / (ENDING - STARTING) / 60;
@@ -334,6 +337,14 @@ public final class GameManager {
     return currentTime;
   }
 
+  public static int getRequiredPumpkins() {
+    if (Game.world().environment() == null) {
+      return 0;
+    }
+
+    return Game.world().environment().getMap().getIntValue("minPumpkins", Game.world().environment().getEntities(Pumpkin.class).size() / 2);
+  }
+
   private static class EnemyFarmerSpawnEvent {
     private final String spawnPoint;
     private final int time;
@@ -343,5 +354,24 @@ public final class GameManager {
       this.spawnPoint = spawnPoint;
       this.time = time;
     }
+  }
+
+  public static void trackPumpkinDeath(Pumpkin pumpkin) {
+    int alive = Game.world().environment().getEntities(Pumpkin.class, x -> !x.isDead()).size();
+    if (alive < getRequiredPumpkins()) {
+      state = GameState.LOCKED;
+      levelFailed = true;
+
+      Game.loop().perform(5000, () -> {
+        levelFailed = false;
+        loadCurrentDay();
+      });
+    } else {
+      // TODO pumpkin died events
+    }
+  }
+
+  public static boolean isLevelFailed() {
+    return levelFailed;
   }
 }

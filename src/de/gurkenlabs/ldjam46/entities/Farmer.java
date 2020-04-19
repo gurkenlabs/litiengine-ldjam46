@@ -1,8 +1,8 @@
 package de.gurkenlabs.ldjam46.entities;
 
-import java.awt.geom.Point2D;
 import java.util.Collection;
 
+import de.gurkenlabs.ldjam46.GameManager;
 import de.gurkenlabs.ldjam46.gfx.WalkDustSpawner;
 import de.gurkenlabs.litiengine.Align;
 import de.gurkenlabs.litiengine.Game;
@@ -12,14 +12,10 @@ import de.gurkenlabs.litiengine.entities.AnimationInfo;
 import de.gurkenlabs.litiengine.entities.CollisionInfo;
 import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.EntityInfo;
-import de.gurkenlabs.litiengine.entities.EntityMovedEvent;
 import de.gurkenlabs.litiengine.entities.MapArea;
 import de.gurkenlabs.litiengine.entities.MovementInfo;
-import de.gurkenlabs.litiengine.graphics.RenderType;
-import de.gurkenlabs.litiengine.graphics.Spritesheet;
-import de.gurkenlabs.litiengine.graphics.emitters.AnimationEmitter;
+import de.gurkenlabs.litiengine.gui.SpeechBubble;
 import de.gurkenlabs.litiengine.physics.IMovementController;
-import de.gurkenlabs.litiengine.resources.Resources;
 
 @EntityInfo(width = 11, height = 20)
 @CollisionInfo(collision = true, collisionBoxWidth = 8, collisionBoxHeight = 8, align = Align.CENTER, valign = Valign.DOWN)
@@ -48,6 +44,8 @@ public class Farmer extends Creature {
     return instance;
   }
 
+  private boolean speechbubbleActive;
+
   @Action()
   public void use() {
     if (Game.time().since(this.lastWaterRefill) > WATER_REFILL_DELAY && this.waterAbility.getCharges().get() < this.waterAbility.getCharges().getMax()) {
@@ -62,6 +60,13 @@ public class Farmer extends Creature {
 
     if (this.waterAbility.canCast()) {
       this.waterAbility.cast();
+    } else if (!this.waterAbility.isOnCooldown() && this.waterAbility.getCharges().get() == 0 && !speechbubbleActive) {
+
+      SpeechBubble bubble = SpeechBubble.create(this, "need to refill ma can", GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
+      speechbubbleActive = true;
+      bubble.addListener(() -> {
+        speechbubbleActive = false;
+      });
     }
   }
 

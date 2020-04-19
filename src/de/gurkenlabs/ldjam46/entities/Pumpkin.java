@@ -4,8 +4,6 @@ import de.gurkenlabs.ldjam46.GameManager;
 import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.IUpdateable;
-import de.gurkenlabs.litiengine.attributes.AttributeModifier;
-import de.gurkenlabs.litiengine.attributes.Modification;
 import de.gurkenlabs.litiengine.entities.AnimationInfo;
 import de.gurkenlabs.litiengine.entities.Prop;
 import de.gurkenlabs.litiengine.environment.Environment;
@@ -18,6 +16,11 @@ public class Pumpkin extends Prop implements IUpdateable {
 
   public Pumpkin() {
     super("pumpkin");
+
+    this.onDeath(l -> {
+      GameManager.trackPumpkinDeath(this);
+      System.out.println("pumpkin died");
+    });
   }
 
   @Override
@@ -34,7 +37,7 @@ public class Pumpkin extends Prop implements IUpdateable {
     }
 
     if (Game.time().since(this.lastMoistureDecay) > MOISTURE_DECAY) {
-      this.getHitPoints().modifyBaseValue(new AttributeModifier<>(Modification.SUBSTRACT, 1));
+      this.hit(1);
       this.lastMoistureDecay = Game.loop().getTicks();
     }
 
