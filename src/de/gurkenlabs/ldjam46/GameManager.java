@@ -102,7 +102,7 @@ public final class GameManager {
   // TODO: track score (alive pumpkins * life)
   static {
     maps.put(Day.Monday, "monday");
-    maps.put(Day.Tuesday, "playground");
+    maps.put(Day.Tuesday, "tuesday");
     maps.put(Day.Wednesday, "playground");
     maps.put(Day.Thursday, "playground");
     maps.put(Day.Friday, "playground");
