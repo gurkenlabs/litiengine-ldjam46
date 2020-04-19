@@ -54,7 +54,7 @@ public class EnemyFarmerController extends MovementController<EnemyFarmer> {
         this.initialFart = Game.loop().getTicks();
 
         Game.loop().perform(2000, () -> {
-          SpeechBubble bubble = SpeechBubble.create(this.getEntity(), "...", new SpeechBubbleAppearance(Color.WHITE, new Color(0, 0, 0, 100), new Color(0, 0, 0, 0), 2), GameManager.GUI_FONT.deriveFont(5f));
+          SpeechBubble bubble = SpeechBubble.create(this.getEntity(), "...", GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.GUI_FONT.deriveFont(5f));
         });
       } else {
         double dist = this.getEntity().getSpawn().getCenter().distance(this.getEntity().getCenter());

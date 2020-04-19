@@ -19,6 +19,7 @@ import de.gurkenlabs.litiengine.environment.Environment;
 import de.gurkenlabs.litiengine.environment.EnvironmentListener;
 import de.gurkenlabs.litiengine.environment.PropMapObjectLoader;
 import de.gurkenlabs.litiengine.gui.GuiProperties;
+import de.gurkenlabs.litiengine.gui.SpeechBubbleAppearance;
 import de.gurkenlabs.litiengine.resources.Resources;
 
 public final class GameManager {
@@ -69,6 +70,7 @@ public final class GameManager {
   }
 
   public static final Font GUI_FONT = Resources.fonts().get("fsex300.ttf").deriveFont(10f);
+  public static final SpeechBubbleAppearance SPEECHBUBBLE_APPEARANCE = new SpeechBubbleAppearance(Color.BLACK, new Color(255, 255, 255, 100), new Color(0, 0, 0, 0), 2);
 
   public static final String MAP_PLAYGROUND = "playground";
   private static final Map<String, List<EnemyFarmerSpawnEvent>> spawnEvents = new ConcurrentHashMap<>();
@@ -167,6 +169,8 @@ public final class GameManager {
 
     Game.window().getRenderComponent().fadeOut(1000);
     Game.loop().perform(1000, () -> {
+      currentTime = null;
+      ingameStartedTick = 0;
       if (Game.world().environment() != null && Game.world().environment().getMap().getName().equals(maps.get(currentDay))) {
 
         Game.world().environment().remove(Farmer.instance());
@@ -308,7 +312,7 @@ public final class GameManager {
         continue;
       }
 
-      if (Game.time().sinceEnvironmentLoad() >= event.time) {
+      if (ingameStartedTick > 0 && Game.time().since(ingameStartedTick) >= event.time) {
         spawnEnemyFarmer(event);
       }
     }

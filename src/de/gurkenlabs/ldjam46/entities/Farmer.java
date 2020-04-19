@@ -1,7 +1,9 @@
 package de.gurkenlabs.ldjam46.entities;
 
+import java.awt.geom.Point2D;
 import java.util.Collection;
 
+import de.gurkenlabs.ldjam46.gfx.WalkDustSpawner;
 import de.gurkenlabs.litiengine.Align;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.Valign;
@@ -10,9 +12,14 @@ import de.gurkenlabs.litiengine.entities.AnimationInfo;
 import de.gurkenlabs.litiengine.entities.CollisionInfo;
 import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.EntityInfo;
+import de.gurkenlabs.litiengine.entities.EntityMovedEvent;
 import de.gurkenlabs.litiengine.entities.MapArea;
 import de.gurkenlabs.litiengine.entities.MovementInfo;
+import de.gurkenlabs.litiengine.graphics.RenderType;
+import de.gurkenlabs.litiengine.graphics.Spritesheet;
+import de.gurkenlabs.litiengine.graphics.emitters.AnimationEmitter;
 import de.gurkenlabs.litiengine.physics.IMovementController;
+import de.gurkenlabs.litiengine.resources.Resources;
 
 @EntityInfo(width = 11, height = 20)
 @CollisionInfo(collision = true, collisionBoxWidth = 8, collisionBoxHeight = 8, align = Align.CENTER, valign = Valign.DOWN)
@@ -30,6 +37,7 @@ public class Farmer extends Creature {
   private long lastWaterRefill;
 
   private Farmer() {
+    this.onMoved(new WalkDustSpawner());
   }
 
   public static Farmer instance() {

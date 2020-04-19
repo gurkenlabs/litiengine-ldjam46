@@ -1,5 +1,6 @@
 package de.gurkenlabs.ldjam46.entities;
 
+import de.gurkenlabs.ldjam46.gfx.WalkDustSpawner;
 import de.gurkenlabs.litiengine.Align;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.Valign;
@@ -27,6 +28,7 @@ public class EnemyFarmer extends Creature {
 
     this.spawn = spawn;
     this.setTeam(2);
+    this.onMoved(new WalkDustSpawner());
   }
 
   @Override
