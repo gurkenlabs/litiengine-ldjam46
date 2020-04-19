@@ -79,7 +79,7 @@ public final class GameManager {
   // TODO: track score (alive pumpkins * life)
   // TODO: default water ability charges? always 0 ?
   static {
-    maps.put(Day.monday, "playground");
+    maps.put(Day.monday, "monday");
     maps.put(Day.tuesday, "playground");
     maps.put(Day.wednesday, "playground");
     maps.put(Day.thursday, "playground");
@@ -148,7 +148,7 @@ public final class GameManager {
     }
 
     isLoading = true;
-    
+
     String currentMap = maps.get(GameManager.currentDay);
 
     Game.window().getRenderComponent().fadeOut(1000);
@@ -158,10 +158,13 @@ public final class GameManager {
         Game.world().environment().remove(Farmer.instance());
         Game.world().reset(maps.get(GameManager.currentDay));
       }
-      
-      for (EnemyFarmerSpawnEvent event : spawnEvents.get(currentMap)) {
-        event.finished = false;
+
+      if (spawnEvents.containsKey(currentMap)) {
+        for (EnemyFarmerSpawnEvent event : spawnEvents.get(currentMap)) {
+          event.finished = false;
+        }
       }
+      
       Game.world().loadEnvironment(maps.get(currentDay));
 
       Game.window().getRenderComponent().fadeIn(1000);
