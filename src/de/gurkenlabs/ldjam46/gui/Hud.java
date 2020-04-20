@@ -26,6 +26,7 @@ public class Hud extends GuiComponent {
   private static final BufferedImage DROP_DISABLED;
 
   private static final BufferedImage CONTROLS1;
+  private static final BufferedImage CONTROLS2;
 
   static {
     PUMPKIN = Imaging.scale(Resources.images().get("pumpkin-ui.png"), GameManager.INGAME_RENDER_SCALE / 2);
@@ -33,9 +34,11 @@ public class Hud extends GuiComponent {
     DROP_DISABLED = Imaging.setOpacity(Imaging.scale(Resources.images().get("drop-disabled-ui.png"), GameManager.INGAME_RENDER_SCALE / 2), 0.5f);
 
     CONTROLS1 = Resources.images().get("controls1.png");
+    CONTROLS2 = Resources.images().get("controls2.png");
   }
 
   public static boolean displayControl1;
+  public static boolean displayControl2;
 
   public Hud() {
     super(0, 0);
@@ -50,6 +53,7 @@ public class Hud extends GuiComponent {
 
     this.renderPumpkinUI(g);
     this.renderCanUI(g);
+    this.renderFartUI(g);
 
     this.renderTime(g);
     this.renderCurrentLevelInfo(g);
@@ -59,6 +63,11 @@ public class Hud extends GuiComponent {
     this.renderControls(g);
   }
 
+  private void renderFartUI(Graphics2D g) {
+    // TODO Auto-generated method stub
+    
+  }
+
   private void renderControls(Graphics2D g) {
     if (displayControl1) {
       double locationX = g.getClipBounds().getX() + Align.CENTER.getLocation(g.getClipBounds().getWidth(), CONTROLS1.getWidth());
@@ -66,6 +75,11 @@ public class Hud extends GuiComponent {
       ImageRenderer.render(g, CONTROLS1, locationX, locationY);
     }
 
+    if (displayControl2) {
+      double locationX = g.getClipBounds().getX() + Align.CENTER.getLocation(g.getClipBounds().getWidth(), CONTROLS2.getWidth());
+      double locationY = g.getClipBounds().getY() + Valign.MIDDLE_TOP.getLocation(g.getClipBounds().getHeight(), CONTROLS2.getHeight());
+      ImageRenderer.render(g, CONTROLS2, locationX, locationY);
+    }
   }
 
   private void renderLevelEnd(Graphics2D g) {
@@ -77,19 +91,13 @@ public class Hud extends GuiComponent {
   }
 
   private void renderCurrentLevelInfo(Graphics2D g) {
-    final int LEVEL_INFO_DURATION = 5000;
-    final int LEVEL_DESC_DURATION = 1500;
+    final int LEVEL_INFO_DURATION = 3500;
 
     final long timeSince = GameManager.getTimeSinceLastLoad();
     if (timeSince < LEVEL_INFO_DURATION && timeSince != 0) {
       g.setColor(Color.WHITE);
       g.setFont(GameManager.GUI_FONT.deriveFont(56f));
       TextRenderer.render(g, GameManager.getCurrentDay().name(), Align.CENTER, Valign.MIDDLE, 0, 0);
-
-      if (timeSince > LEVEL_DESC_DURATION) {
-        g.setFont(GameManager.GUI_FONT.deriveFont(24f));
-        TextRenderer.render(g, GameManager.getCurrentDay().getDescription(), Align.CENTER, Valign.MIDDLE, 0, 70);
-      }
     }
 
     if (GameManager.getState() == GameState.INGAME && g.getClipBounds() != null || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible()) {

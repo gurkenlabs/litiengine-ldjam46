@@ -36,25 +36,19 @@ public final class GameManager {
   }
 
   public enum Day {
-    Monday(1, 2.0, ""),
-    Tuesday(2, 1.6, "Well that just dills my pickle!"),
-    Wednesday(3, 2.0, "These farmers are nuttier than a squirrel turd!"),
-    Thursday(4, 2.0, "I gotta hit the bushes."),
-    Friday(5, 2.0, "Don't put your cart before your horse."),
-    Saturday(6, 2.0, "Today I'm happy as a dead pig in the sunshine!");
+    Monday(1, 2.0),
+    Tuesday(2, 1.6),
+    Wednesday(3, 2.0),
+    Thursday(4, 2.0),
+    Friday(5, 2.0),
+    Saturday(6, 2.0);
 
-    private final String description;
     private final int day;
     private final double length;
 
-    private Day(int day, double length, String description) {
+    private Day(int day, double length) {
       this.day = day;
       this.length = length;
-      this.description = description;
-    }
-
-    public String getDescription() {
-      return description;
     }
 
     public int getDay() {
@@ -241,11 +235,11 @@ public final class GameManager {
     state = GameState.LOADING;
     harvesting = true;
     int delay = harvestPumpkin();
-    levelFailed = false;
 
     final String currentMap = maps.get(day);
 
     Game.loop().perform(delay, () -> {
+      levelFailed = false;
       Game.window().getRenderComponent().fadeOut(1000);
       Game.loop().perform(1000, () -> {
         harvesting = false;
@@ -266,7 +260,6 @@ public final class GameManager {
         Game.world().loadEnvironment(currentMap);
         currentDay = day;
 
-        Farmer.instance().getFartAbility().setEnabled(day.getDay() >= Day.Wednesday.getDay());
         Game.world().environment().getAmbientLight().setColor(new Color(51, 51, 255, 50));
 
         Game.window().getRenderComponent().fadeIn(1000);
@@ -276,7 +269,7 @@ public final class GameManager {
           lastLoaded = Game.loop().getTicks();
         });
 
-        if (currentDay == Day.Monday) {
+        if (currentDay == Day.Monday || currentDay == Day.Thursday) {
           Game.loop().perform(3000, () -> {
             Game.world().camera().setZoom(2, 3000);
           });
@@ -292,7 +285,7 @@ public final class GameManager {
                 tutorial("Today I've got to harvest me 2 pumpkins!").addListener(() -> {
                   pumpkinCountVisible = true;
 
-                  tutorial("Gotta keep em pumpkins alive until        6:00 PM!").addListener(() -> {
+                  tutorial("Gotta keep em pumpkins alive until 6:00 PM!").addListener(() -> {
                     clockVisible = true;
 
                     tutorial("Lemme grab mah water can first!").addListener(() -> {
@@ -310,6 +303,31 @@ public final class GameManager {
                         state = GameState.INGAME;
                         transitioning = false;
                       });
+                    });
+                  });
+                });
+              });
+            });
+          } else if (currentDay == Day.Thursday) {
+            // TUTORIAL
+            tutorialActive = true;
+
+            Game.loop().perform(1000, () -> {
+              tutorial("WATCH OUT!").addListener(() -> {
+                tutorial("Ma rivals Billy and Tilly tryna sabotage dah harvest!").addListener(() -> {
+                  tutorial("Let's see if I can scare dem away!").addListener(() -> {
+                    Farmer.instance().getFartAbility().setEnabled(true);
+
+                    Game.world().camera().setZoom(1, 2000);
+                    Game.loop().perform(2000, () -> {
+                      Hud.displayControl2 = true;
+                      Game.loop().perform(4000, () -> {
+                        Hud.displayControl2 = false;
+                      });
+
+                      ingameStartedTick = Game.loop().getTicks();
+                      state = GameState.INGAME;
+                      transitioning = false;
                     });
                   });
                 });
@@ -360,7 +378,7 @@ public final class GameManager {
 
     Game.loop().perform(4000, () -> {
       tutorial("You're gettin' the hang of it!").addListener(() -> {
-        tutorial("Let's see if you can handle the farm tomorrow...").addListener(() -> {
+        tutorial("Let's see if you can handle dah farm tomorrow...").addListener(() -> {
           Game.loop().perform(1000, () -> {
             endingFaded = true;
             Game.world().camera().setZoom(1, 1000);
@@ -377,7 +395,13 @@ public final class GameManager {
 
   private static SpeechBubble tutorial(String text) {
     SpeechBubble bubble = SpeechBubble.create(Farmer.instance(), text, SPEECHBUBBLE_APPEARANCE, SPEECHBUBBLE_FONT);
-    bubble.setTextDisplayTime(3000);
+
+    int duration = 3000;
+    if (text.contains("Billy and Tilly")) {
+      duration = 4500;
+    }
+
+    bubble.setTextDisplayTime(duration);
 
     return bubble;
   }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="22" nextobjectid="36">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="22" nextobjectid="36" name="thursday">
  <properties>
   <property name="GRAVITY" type="int" value="0"/>
   <property name="minPumpkins" value="5"/>
@@ -153,19 +153,19 @@
 </data>
  </layer>
  <objectgroup color="#0033ff" id="10" name="Areas">
-  <object id="31" type="AREA" x="219" y="116" width="55" height="43">
+  <object id="31" type="AREA" x="216" y="128" width="55" height="43">
    <properties>
     <property name="tags" value="refillwater"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup id="11" name="Spawns">
-  <object id="25" name="farmer" type="SPAWNPOINT" x="232" y="72" width="16" height="16"/>
+  <object id="25" name="farmer" type="SPAWNPOINT" x="288" y="152" width="16" height="16"/>
   <object id="26" name="enemy1" type="SPAWNPOINT" x="18" y="158" width="16" height="16"/>
   <object id="27" name="enemy2" type="SPAWNPOINT" x="442" y="142" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="12" name="Props">
-  <object id="22" type="PROP" x="233" y="39" width="16" height="10">
+  <object id="22" type="PROP" x="233" y="88" width="16" height="10">
    <properties>
     <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
@@ -175,15 +175,15 @@
     <property name="spritesheetName" value="can"/>
    </properties>
   </object>
-  <object id="23" name="can-pickup" type="TRIGGER" x="225" y="27" width="32" height="31">
+  <object id="23" name="can-pickup" type="TRIGGER" x="225" y="76" width="32" height="31">
    <properties>
     <property name="triggerActivation" value="INTERACT"/>
     <property name="triggerOneTime" type="bool" value="true"/>
-    <property name="triggerTarget" value="36"/>
+    <property name="triggerTarget" value="22"/>
     <property name="triggermessage" value="picked-up"/>
    </properties>
   </object>
-  <object id="30" type="PROP" x="230" y="104" width="30" height="48">
+  <object id="30" type="PROP" x="228" y="117" width="30" height="48">
    <properties>
     <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
@@ -196,7 +196,7 @@
   </object>
  </objectgroup>
  <objectgroup id="13" name="Lights">
-  <object id="28" name="canlight" type="LIGHTSOURCE" x="225" y="27" width="32" height="31">
+  <object id="28" name="canlight" type="LIGHTSOURCE" x="225" y="76" width="32" height="31">
    <properties>
     <property name="lightActive" type="bool" value="true"/>
     <property name="lightColor" type="color" value="#ffffffff"/>
