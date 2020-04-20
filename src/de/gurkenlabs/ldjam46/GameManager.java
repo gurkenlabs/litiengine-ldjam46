@@ -113,15 +113,13 @@ public final class GameManager {
 
   private static boolean transitioning;
 
-  // TODO: End screen after every day
-  // TODO: track score (alive pumpkins * life) between levels
   static {
     maps.put(Day.Monday, "monday");
     maps.put(Day.Tuesday, "tuesday");
     maps.put(Day.Wednesday, "wednesday");
     maps.put(Day.Thursday, "thursday");
-    maps.put(Day.Friday, "playground");
-    maps.put(Day.Saturday, "playground");
+    maps.put(Day.Friday, "friday");
+    maps.put(Day.Saturday, "saturday");
 
     spawnEvents.put(MAP_PLAYGROUND, new ArrayList<>());
     spawnEvents.get(MAP_PLAYGROUND).add(new EnemyFarmerSpawnEvent("enemy", 5000));
@@ -134,6 +132,8 @@ public final class GameManager {
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 15000));
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 30000));
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 50000));
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 60000));
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 70000));
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 80000));
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 90000));
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 100000));

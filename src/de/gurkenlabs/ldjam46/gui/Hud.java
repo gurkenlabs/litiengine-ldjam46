@@ -19,11 +19,13 @@ import de.gurkenlabs.litiengine.resources.Resources;
 import de.gurkenlabs.litiengine.util.Imaging;
 
 public class Hud extends GuiComponent {
-  private static final int PADDING = 20;
+  private static final int PADDING = 30;
 
   private static final BufferedImage PUMPKIN;
   private static final BufferedImage DROP;
   private static final BufferedImage DROP_DISABLED;
+  private static final BufferedImage FART;
+  private static final BufferedImage FART_DISABLED;
 
   private static final BufferedImage CONTROLS1;
   private static final BufferedImage CONTROLS2;
@@ -32,6 +34,9 @@ public class Hud extends GuiComponent {
     PUMPKIN = Imaging.scale(Resources.images().get("pumpkin-ui.png"), GameManager.INGAME_RENDER_SCALE / 2);
     DROP = Imaging.scale(Resources.images().get("drop-ui.png"), GameManager.INGAME_RENDER_SCALE / 2);
     DROP_DISABLED = Imaging.setOpacity(Imaging.scale(Resources.images().get("drop-disabled-ui.png"), GameManager.INGAME_RENDER_SCALE / 2), 0.5f);
+
+    FART = Imaging.scale(Resources.images().get("cloud-ui.png"), GameManager.INGAME_RENDER_SCALE);
+    FART_DISABLED = Imaging.setOpacity(Imaging.scale(Resources.images().get("cloud-disabled-ui.png"), GameManager.INGAME_RENDER_SCALE), 0.5f);
 
     CONTROLS1 = Resources.images().get("controls1.png");
     CONTROLS2 = Resources.images().get("controls2.png");
@@ -64,8 +69,20 @@ public class Hud extends GuiComponent {
   }
 
   private void renderFartUI(Graphics2D g) {
-    // TODO Auto-generated method stub
-    
+    if (!Farmer.instance().getFartAbility().isEnabled()) {
+      return;
+    }
+
+    int cans = Farmer.instance().getWaterAbility().getCharges().getMax();
+
+    double locationX = g.getClipBounds().getX() + Align.LEFT.getLocation(g.getClipBounds().getWidth(), FART.getWidth()) + cans * DROP.getWidth() + cans * PADDING + PADDING * 4;
+    double locationY = g.getClipBounds().getY() + Valign.DOWN.getLocation(g.getClipBounds().getHeight(), FART.getHeight()) + -PADDING;
+
+    if (!Farmer.instance().getFartAbility().isOnCooldown()) {
+      ImageRenderer.render(g, FART, locationX, locationY);
+    } else {
+      ImageRenderer.render(g, FART_DISABLED, locationX, locationY);
+    }
   }
 
   private void renderControls(Graphics2D g) {

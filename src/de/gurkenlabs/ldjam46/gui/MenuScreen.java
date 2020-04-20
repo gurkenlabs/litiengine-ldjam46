@@ -70,7 +70,7 @@ public class MenuScreen extends Screen implements IUpdateable {
     double scale = 1.4 + 0.15 * Math.sin(Game.time().sinceEnvironmentLoad() / 400.0);
     ImageRenderer.render(g, Imaging.scale(LOGO, scale), Game.window().getCenter().getX() - (scale * LOGO.getWidth()) / 2,
         Game.window().getHeight() * 2.5 / 8 - (scale * LOGO.getHeight()) / 2);
-    g.setFont(HillBillyFonts.UI_FONT2);
+    g.setFont(HillBillyFonts.MENU_FONT);
     g.setColor(Color.WHITE);
     TextRenderer.renderWithOutline(g, "a Gurkenlabs game", Game.window().getWidth() * 1 / 32, Game.window().getHeight() * 30 / 32, Color.DARK_GRAY,
         Game.window().getResolutionScale() * 4, true);
