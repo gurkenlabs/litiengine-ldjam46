@@ -99,7 +99,7 @@ public final class GameManager {
   private static boolean levelFailed;
 
   // TODO: End screen after every day
-  // TODO: track score (alive pumpkins * life)
+  // TODO: track score (alive pumpkins * life) between levels
   static {
     maps.put(Day.Monday, "playground");
     maps.put(Day.Tuesday, "tuesday");
