@@ -28,7 +28,7 @@ public class Hud extends GuiComponent {
 
   private static final BufferedImage CONTROLS1;
   private static final BufferedImage CONTROLS2;
-  
+
   final int LEVEL_INFO_DURATION = 3500;
 
   static {
@@ -68,7 +68,7 @@ public class Hud extends GuiComponent {
       this.renderLevelEnd(g);
 
       this.renderControls(g);
-    } else if(GameManager.getTimeSinceLastLoad() > LEVEL_INFO_DURATION + 500){
+    } else if (GameManager.getTimeSinceLastLoad() > LEVEL_INFO_DURATION + 500) {
       g.setColor(Color.WHITE);
       g.setFont(GameManager.GUI_FONT.deriveFont(80f));
 
@@ -166,6 +166,8 @@ public class Hud extends GuiComponent {
     String currentTime = GameManager.getCurrentTime();
     if (currentTime.equals("6:00 PM")) {
       g.setFont(GameManager.GUI_FONT.deriveFont(48f));
+    } else if (GameManager.currentHour > 16) {
+      g.setFont(GameManager.GUI_FONT.deriveFont(32f));
     } else {
       g.setFont(GameManager.GUI_FONT.deriveFont(24f));
     }

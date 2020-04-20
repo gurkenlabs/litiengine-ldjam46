@@ -99,7 +99,7 @@ public final class GameManager {
 
   // time properties
   private static String currentTime;
-  private static int currentHour;
+  public static int currentHour;
   private static int currentMinutes;
 
   private static long lastLoaded;
@@ -243,16 +243,13 @@ public final class GameManager {
     if (currentDay == null) {
       if (Game.isDebug()) {
         // CHANGE THIS TO TEST OTHER LEVELS AND SKIPP ALL OTHES
-        day = Day.Saturday;
+        day = Day.Tuesday;
       } else {
         day = Day.Monday;
       }
     } else {
       day = currentDay.getNext();
     }
-
-    // TODO currentDay null -> transition to menu screen
-
     loadDay(day);
   }
 
@@ -274,14 +271,14 @@ public final class GameManager {
 
       return;
     }
-    
+
     transitioning = true;
     state = GameState.LOADING;
     harvesting = true;
     int delay = harvestPumpkin();
 
     final String currentMap = maps.get(day);
-
+    Game.audio().fadeMusic((int) Game.time().toTicks(delay + 1000));
     Game.loop().perform(delay, () -> {
       levelFailed = false;
       Game.window().getRenderComponent().fadeOut(1000);
@@ -553,6 +550,10 @@ public final class GameManager {
 
       int hour = (int) (elapsed / HOUR_LENGTH) + STARTING % 24;
       currentMinutes = (int) (elapsed % HOUR_LENGTH / MINUTE_LENGTH);
+
+      if (hour > currentHour && hour == 16) {
+        Game.audio().playMusic("sabotage!.ogg");
+      }
 
       currentHour = hour;
     }
