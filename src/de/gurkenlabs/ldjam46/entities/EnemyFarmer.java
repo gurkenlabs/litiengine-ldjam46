@@ -3,6 +3,7 @@ package de.gurkenlabs.ldjam46.entities;
 import de.gurkenlabs.ldjam46.gfx.SmellEmitter;
 import de.gurkenlabs.ldjam46.gfx.WalkDustSpawner;
 import de.gurkenlabs.litiengine.Align;
+import de.gurkenlabs.litiengine.Direction;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.Valign;
 import de.gurkenlabs.litiengine.entities.CollisionInfo;
@@ -67,6 +68,12 @@ public class EnemyFarmer extends Creature {
     this.setCollision(false);
     SmellEmitter smell = new SmellEmitter(this);
     Game.world().environment().add(smell);
+  }
+
+  @Override
+  public Direction getFacingDirection() {
+    Direction dir = Direction.fromAngle(this.getAngle());
+    return super.getFacingDirection();
   }
 
   public Spawnpoint getSpawn() {
