@@ -2,13 +2,11 @@ package de.gurkenlabs.ldjam46.gui;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 
 import de.gurkenlabs.ldjam46.GameManager;
 import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.ldjam46.entities.Farmer;
-import de.gurkenlabs.ldjam46.entities.Pumpkin;
 import de.gurkenlabs.litiengine.Align;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.Valign;

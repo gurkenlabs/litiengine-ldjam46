@@ -140,6 +140,22 @@ public final class GameManager {
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 110000));
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 100000));
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 105000));
+
+    spawnEvents.put(Day.Friday.name().toLowerCase(), new ArrayList<>());
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 5000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy3", 15000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 30000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy3", 50000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 60000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 60000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 60000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 70000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy3", 80000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 90000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 100000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 110000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 100000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy3", 105000));
   }
 
   public static void init() {
@@ -184,7 +200,7 @@ public final class GameManager {
         }
         grid.setAllowCuttingCorners(false);
         grids.put(e.getMap().getName(), grid);
-        
+
         e.getAmbientLight().setColor(new Color(233, 176, 53, 39));
       };
 
@@ -218,7 +234,7 @@ public final class GameManager {
     }
     Day day;
     if (currentDay == null) {
-      day = Day.Monday;
+      day = Day.Friday;
     } else {
       day = currentDay.getNext();
     }
@@ -334,6 +350,11 @@ public final class GameManager {
               });
             });
           } else {
+
+            if (currentDay == Day.Friday) {
+              Farmer.instance().getFartAbility().setEnabled(true);
+            }
+
             ingameStartedTick = Game.loop().getTicks();
             state = GameState.INGAME;
             transitioning = false;
@@ -571,7 +592,7 @@ public final class GameManager {
   }
 
   public static boolean isClockVisible() {
-    return clockVisible;
+    return clockVisible || currentDay != null && currentDay.getDay() > Day.Monday.getDay();
   }
 
   public static boolean isHarvesting() {
