@@ -184,6 +184,8 @@ public final class GameManager {
         }
         grid.setAllowCuttingCorners(false);
         grids.put(e.getMap().getName(), grid);
+        
+        e.getAmbientLight().setColor(new Color(233, 176, 53, 39));
       };
 
       @Override
@@ -259,8 +261,6 @@ public final class GameManager {
 
         Game.world().loadEnvironment(currentMap);
         currentDay = day;
-
-        Game.world().environment().getAmbientLight().setColor(new Color(51, 51, 255, 50));
 
         Game.window().getRenderComponent().fadeIn(1000);
 
@@ -395,7 +395,6 @@ public final class GameManager {
 
   private static SpeechBubble tutorial(String text) {
     SpeechBubble bubble = SpeechBubble.create(Farmer.instance(), text, SPEECHBUBBLE_APPEARANCE, SPEECHBUBBLE_FONT);
-
     int duration = 3000;
     if (text.contains("Billy and Tilly")) {
       duration = 4500;
@@ -439,7 +438,7 @@ public final class GameManager {
       handleAllPumpkinsWatered();
     }
   }
-  
+
   private static void handleAllPumpkinsWatered() {
 
     if (Game.world().environment().getEntities(Pumpkin.class, p -> !p.wasWatered()).isEmpty()) {
@@ -470,10 +469,6 @@ public final class GameManager {
       int hour = (int) (elapsed / HOUR_LENGTH) + STARTING % 24;
       currentMinutes = (int) (elapsed % HOUR_LENGTH / MINUTE_LENGTH);
 
-      if (hour > currentHour) {
-        adjustAmbientLight(hour);
-      }
-
       currentHour = hour;
     }
 
@@ -492,32 +487,6 @@ public final class GameManager {
     }
 
     currentTime = formatHours + ":" + String.format("%02d", currentMinutes) + " " + ampm;
-  }
-
-  private static void adjustAmbientLight(int hour) {
-    if (Game.world().environment() == null || Game.world().environment().getAmbientLight() == null || currentDay == Day.Monday) {
-      return;
-    }
-
-    if (hour < 7 || hour >= 17) {
-      Game.world().environment().getAmbientLight().setColor(new Color(51, 51, 255, 50));
-    }
-
-    if (hour >= 7 && hour < 9) {
-      Game.world().environment().getAmbientLight().setColor(new Color(53, 233, 123, 30));
-    }
-
-    if (hour >= 9 && hour < 12) {
-      Game.world().environment().getAmbientLight().setColor(new Color(181, 233, 53, 29));
-    }
-
-    if (hour >= 12 && hour < 15) {
-      Game.world().environment().getAmbientLight().setColor(new Color(233, 176, 53, 39));
-    }
-
-    if (hour >= 15 && hour < 17) {
-      Game.world().environment().getAmbientLight().setColor(new Color(233, 51, 122, 19));
-    }
   }
 
   private static void handleEnemyFarmerSpawns() {

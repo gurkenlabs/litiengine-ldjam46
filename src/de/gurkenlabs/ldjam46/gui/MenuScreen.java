@@ -2,6 +2,7 @@ package de.gurkenlabs.ldjam46.gui;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import de.gurkenlabs.ldjam46.GameManager;
@@ -10,8 +11,10 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.IUpdateable;
 import de.gurkenlabs.litiengine.graphics.ImageRenderer;
 import de.gurkenlabs.litiengine.graphics.TextRenderer;
+import de.gurkenlabs.litiengine.gui.ImageComponent;
 import de.gurkenlabs.litiengine.gui.Menu;
 import de.gurkenlabs.litiengine.gui.screens.Screen;
+import de.gurkenlabs.litiengine.input.Input;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.gurkenlabs.litiengine.util.ColorHelper;
 import de.gurkenlabs.litiengine.util.Imaging;
@@ -53,6 +56,7 @@ public class MenuScreen extends Screen implements IUpdateable {
     Game.window().getRenderComponent().setBackground(Color.BLACK);
     Game.graphics().setBaseRenderScale(6f * Game.window().getResolutionScale());
 
+    this.mainMenu.setForwardMouseEvents(false);
     this.mainMenu.getCellComponents().forEach(comp -> {
       comp.setFont(HillBillyFonts.MENU_FONT);
       comp.setSpriteSheet(Resources.spritesheets().get("button-background"));
@@ -60,7 +64,10 @@ public class MenuScreen extends Screen implements IUpdateable {
       comp.getAppearanceHovered().setTextAntialiasing(true);
       comp.getAppearance().setForeColor(CARVING_COLOR);
       comp.getAppearanceHovered().setForeColor(CARVING_COLOR.brighter());
+      comp.setForwardMouseEvents(false);
     });
+
+    this.mainMenu.getCellComponents().get(0).setHovered(true);
   }
 
   @Override
@@ -86,32 +93,56 @@ public class MenuScreen extends Screen implements IUpdateable {
 
     this.mainMenu = new Menu(centerX - buttonWidth / 2, centerY * 1.3, buttonWidth, centerY / 2, "Play", "Exit");
 
-    this.getComponents().add(this.mainMenu);
-    this.mainMenu.onChange(c -> {
-      switch (c) {
-      case 0:
-        this.startGame();
-        // // load the first level (resources for the map were implicitly loaded
-        // // from
-        // // the
-        // // game file)
-        // Game.world().loadEnvironment("SlaveMarket_Nubia");
-        break;
-      case 1:
-        System.exit(0);
-        break;
-      default:
-        break;
+    Input.keyboard().onKeyReleased(event -> {
+      if (this.isSuspended()) {
+        return;
+      }
+
+      if (event.getKeyCode() == KeyEvent.VK_UP || event.getKeyCode() == KeyEvent.VK_W) {
+        this.mainMenu.setCurrentSelection(Math.max(0, this.mainMenu.getCurrentSelection() - 1));
+        for (ImageComponent comp : this.mainMenu.getCellComponents()) {
+          comp.setHovered(false);
+        }
+        this.mainMenu.getCellComponents().get(this.mainMenu.getCurrentSelection()).setHovered(true);
+        Game.audio().playSound("select.wav");
+      }
+
+      if (event.getKeyCode() == KeyEvent.VK_DOWN || event.getKeyCode() == KeyEvent.VK_S) {
+        this.mainMenu.setCurrentSelection(Math.min(1, this.mainMenu.getCurrentSelection() + 1));
+        for (ImageComponent comp : this.mainMenu.getCellComponents()) {
+          comp.setHovered(false);
+        }
+        this.mainMenu.getCellComponents().get(this.mainMenu.getCurrentSelection()).setHovered(true);
+        Game.audio().playSound("select.wav");
+      }
+
+      if (event.getKeyCode() == KeyEvent.VK_ENTER || event.getKeyCode() == KeyEvent.VK_SPACE) {
+        Game.audio().playSound("confirm.wav");
+        switch (this.mainMenu.getCurrentSelection()) {
+        case 0:
+          this.startGame();
+          break;
+        case 1:
+          System.exit(0);
+          break;
+        }
+
       }
     });
+
+    this.getComponents().add(this.mainMenu);
   }
 
   private void startGame() {
     this.mainMenu.setEnabled(false);
-    // Game.window().getRenderComponent().fadeOut(2500);
-    Game.screens().display("GAME");
-    GameManager.levelTransition();
-    Game.audio().playMusic(Resources.sounds().get("highlife.ogg"));
+    Game.window().getRenderComponent().fadeOut(1500);
+
+    Game.loop().perform(1500, () -> {
+      Game.window().getRenderComponent().fadeIn(1500);
+      Game.screens().display("GAME");
+      GameManager.levelTransition();
+      Game.audio().playMusic(Resources.sounds().get("highlife.ogg"));
+    });
   }
 
   @Override

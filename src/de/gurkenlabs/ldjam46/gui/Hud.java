@@ -56,7 +56,6 @@ public class Hud extends GuiComponent {
       return;
     }
 
-    this.renderPumpkinUI(g);
     this.renderCanUI(g);
     this.renderFartUI(g);
 
@@ -164,26 +163,5 @@ public class Hud extends GuiComponent {
 
     TextRenderer.render(g, GameManager.getCurrentDay().name() + ", " + GameManager.getCurrentTime(), Align.CENTER, Valign.DOWN, 0, -PADDING);
 
-  }
-
-  private void renderPumpkinUI(Graphics2D g) {
-    for (Pumpkin pumpkin : Game.world().environment().getEntities(Pumpkin.class)) {
-      if (!pumpkin.isDead()) {
-        final double width = 16;
-        final double height = 2;
-        double x = pumpkin.getX() - (width - pumpkin.getWidth()) / 2.0;
-        double y = pumpkin.getY() - height * 2;
-        RoundRectangle2D rect = new RoundRectangle2D.Double(x, y, width, height, 1.5, 1.5);
-
-        final double currentWidth = width * (pumpkin.getHitPoints().get() / (double) pumpkin.getHitPoints().getMax());
-        RoundRectangle2D actualRect = new RoundRectangle2D.Double(x, y, currentWidth, height, 1.5, 1.5);
-
-        g.setColor(new Color(40, 42, 43, 150));
-        Game.graphics().renderShape(g, rect);
-
-        g.setColor(new Color(228, 59, 68));
-        Game.graphics().renderShape(g, actualRect);
-      }
-    }
   }
 }

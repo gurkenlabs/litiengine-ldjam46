@@ -611,7 +611,6 @@
   </map>
   <map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="14" name="monday">
    <properties>
-    <property name="AMBIENTLIGHT" value="#143333ff"/>
     <property name="GRAVITY" type="int" value="0"/>
     <property name="minPumpkins" value="2"/>
    </properties>
@@ -1177,7 +1176,6 @@
   </map>
   <map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="1" name="playground">
    <properties>
-    <property name="AMBIENTLIGHT" value="#28add6f1"/>
     <property name="GRAVITY" type="int" value="0"/>
    </properties>
    <tileset firstgid="1" name="placeholder-tileset" tilewidth="16" tileheight="16" tilecount="16" columns="4">
