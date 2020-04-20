@@ -66,7 +66,7 @@ public class Hud extends GuiComponent {
     final long timeSince = GameManager.getTimeSinceLastLoad();
     if (timeSince < LEVEL_INFO_DURATION && timeSince != 0) {
       g.setColor(Color.WHITE);
-      g.setFont(GameManager.GUI_FONT.deriveFont(48f));
+      g.setFont(GameManager.GUI_FONT.deriveFont(56f));
       TextRenderer.render(g, GameManager.getCurrentDay().name(), Align.CENTER, Valign.MIDDLE, 0, 0);
 
       if (timeSince > LEVEL_DESC_DURATION) {
@@ -78,7 +78,7 @@ public class Hud extends GuiComponent {
     if (GameManager.getState() == GameState.INGAME && g.getClipBounds() != null || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible()) {
       g.setColor(Color.WHITE);
       g.setFont(GameManager.GUI_FONT.deriveFont(24f));
-      TextRenderer.render(g, "req. harvest: " + GameManager.getRequiredPumpkins() + "x", Align.RIGHT, Valign.DOWN, -60, -PADDING);
+      TextRenderer.render(g, "req. harvest: " + GameManager.getRequiredPumpkins() + "x", Align.RIGHT, Valign.DOWN, -70, -PADDING);
 
       double locationX = g.getClipBounds().getX() + Align.RIGHT.getLocation(g.getClipBounds().getWidth(), PUMPKIN.getWidth()) + -PADDING;
       double locationY = g.getClipBounds().getY() + Valign.DOWN.getLocation(g.getClipBounds().getHeight(), PUMPKIN.getHeight()) + -PADDING;

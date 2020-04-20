@@ -269,16 +269,14 @@ public final class GameManager {
               tutorial("Today I've got to harvest 2 pumpkins!").addListener(() -> {
                 pumpkinCountVisible = true;
 
-                tutorial("I gotta keep ma pumpkins alive!").addListener(() -> {
-                  tutorial("Pumpkins are harvested at 6:00 PM!").addListener(() -> {
-                    clockVisible = true;
+                tutorial("I gotta keep ma pumpkins alive until   6:00 PM!").addListener(() -> {
+                  clockVisible = true;
 
-                    tutorial("Let me grab ma water can first!").addListener(() -> {
-                      Game.world().camera().setZoom(1, 2000);
-                      Game.loop().perform(2000, () -> {
-                        ingameStartedTick = Game.loop().getTicks();
-                        state = GameState.INGAME;
-                      });
+                  tutorial("Let me grab ma water can first!").addListener(() -> {
+                    Game.world().camera().setZoom(1, 2000);
+                    Game.loop().perform(2000, () -> {
+                      ingameStartedTick = Game.loop().getTicks();
+                      state = GameState.INGAME;
                     });
                   });
                 });
@@ -289,7 +287,7 @@ public final class GameManager {
           ingameStartedTick = Game.loop().getTicks();
           state = GameState.INGAME;
         }
-        
+
         // TODO WEdnesday tutorial tutorial("Gotta work all week to beat em other farmers!").addListener(() -> {
       });
     });
@@ -323,7 +321,10 @@ public final class GameManager {
   }
 
   private static SpeechBubble tutorial(String text) {
-    return SpeechBubble.create(Farmer.instance(), text, SPEECHBUBBLE_APPEARANCE, SPEECHBUBBLE_FONT);
+    SpeechBubble bubble = SpeechBubble.create(Farmer.instance(), text, SPEECHBUBBLE_APPEARANCE, SPEECHBUBBLE_FONT);
+    bubble.setTextDisplayTime(3000);
+
+    return bubble;
   }
 
   public static AStarGrid getCurrentGrid() {
