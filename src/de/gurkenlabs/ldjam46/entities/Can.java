@@ -14,6 +14,7 @@ public class Can extends Prop {
   @Override
   public String sendMessage(Object sender, String message) {
     if (message.equals("picked-up")) {
+      Game.audio().playSound("can.wav");
       Game.world().environment().remove(this);
       Game.world().environment().remove("canlight");
       Farmer.instance().setHasCan(true);
