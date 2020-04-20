@@ -1,5 +1,7 @@
 package de.gurkenlabs.ldjam46.entities;
 
+import java.awt.Color;
+
 import de.gurkenlabs.ldjam46.gfx.FartEmitter;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.abilities.Ability;
@@ -9,6 +11,7 @@ import de.gurkenlabs.litiengine.abilities.effects.EffectTarget;
 import de.gurkenlabs.litiengine.abilities.effects.SoundEffect;
 import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.ICombatEntity;
+import de.gurkenlabs.litiengine.graphics.OverlayPixelsImageEffect;
 
 @AbilityInfo(name = "FartAbility", cooldown = 5000, range = 0, impact = 60, impactAngle = 360, value = 1, duration = 400, multiTarget = true)
 public class FartAbility extends Ability {
@@ -51,6 +54,9 @@ public class FartAbility extends Ability {
 
       EnemyFarmer farmer = (EnemyFarmer) entity;
       farmer.fartOn();
+      entity.animations().add(new OverlayPixelsImageEffect(120, new Color(255, 255, 255, 170)));
+      Game.loop().perform(130, () -> entity.animations().add(new OverlayPixelsImageEffect(120, new Color(174, 237, 0, 170))));
+
     }
   }
 

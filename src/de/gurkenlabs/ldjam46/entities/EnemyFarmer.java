@@ -62,12 +62,7 @@ public class EnemyFarmer extends Creature {
 
   @Override
   protected IEntityAnimationController<?> createAnimationController() {
-    IEntityAnimationController<?> controller = super.createAnimationController();
-
-    CreatureShadowImageEffect effect = new CreatureShadowImageEffect(this, new Color(24, 30, 28, 100));
-    effect.setOffsetY(1);
-    controller.add(effect);
-
+    IEntityAnimationController<?> controller = new EnemyFarmerAnimationController(this);
     return controller;
   }
 
