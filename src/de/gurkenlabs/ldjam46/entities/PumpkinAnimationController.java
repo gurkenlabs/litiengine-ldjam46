@@ -25,6 +25,7 @@ public class PumpkinAnimationController extends PropAnimationController<Pumpkin>
     }
 
     boolean highlight = GameManager.getState() == GameState.INGAME
+        && !this.getEntity().isDead()
         && Farmer.instance().getWaterAbility().canCast()
         && Farmer.instance().hasCan()
         && GeometricUtilities.shapeIntersects(this.getEntity().getHitBox(), Farmer.instance().getWaterAbility().calculateImpactArea());

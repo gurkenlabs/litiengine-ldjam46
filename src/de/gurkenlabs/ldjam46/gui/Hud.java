@@ -66,7 +66,7 @@ public class Hud extends GuiComponent {
   }
 
   private void renderFartUI(Graphics2D g) {
-    if (!Farmer.instance().getFartAbility().isEnabled()) {
+    if (!Farmer.instance().getFartAbility().isEnabled() || GameManager.getState() != GameState.INGAME) {
       return;
     }
 

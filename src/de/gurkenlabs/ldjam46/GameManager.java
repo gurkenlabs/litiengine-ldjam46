@@ -161,7 +161,7 @@ public final class GameManager {
   public static void init() {
     GuiProperties.setDefaultFont(GUI_FONT);
     Game.audio().setListenerLocationCallback((e) -> Farmer.instance().getCenter());
-    Game.audio().setMaxDistance(300);
+    Game.audio().setMaxDistance(1000);
 
     CreatureMapObjectLoader.registerCustomCreatureType(Farmer.class);
     PropMapObjectLoader.registerCustomPropType(Pumpkin.class);
@@ -234,7 +234,12 @@ public final class GameManager {
     }
     Day day;
     if (currentDay == null) {
-      day = Day.Friday;
+      if (Game.isDebug()) {
+        // CHANGE THIS TO TEST OTHER LEVELS AND SKIPP ALL OTHES
+        day = Day.Friday;
+      } else {
+        day = Day.Monday;
+      }
     } else {
       day = currentDay.getNext();
     }
@@ -368,8 +373,20 @@ public final class GameManager {
 
   private static int harvestPumpkin() {
     int delay = 2000;
-    if (levelFailed || Game.world().environment() == null) {
+    if (Game.world().environment() == null) {
       return delay;
+    }
+
+    if (levelFailed) {
+      int i = 0;
+      for (Pumpkin pumpkin : Game.world().environment().getEntities(Pumpkin.class, p -> !p.isDead())) {
+        i++;
+        Game.loop().perform(i * 300, () -> {
+          pumpkin.die();
+        });
+      }
+
+      return delay + i * 500;
     }
 
     System.out.println("harvesting...");

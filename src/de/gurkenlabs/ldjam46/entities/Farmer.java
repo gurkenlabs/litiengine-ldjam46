@@ -19,6 +19,7 @@ import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.entities.Trigger;
 import de.gurkenlabs.litiengine.graphics.CreatureShadowImageEffect;
 import de.gurkenlabs.litiengine.graphics.animation.Animation;
+import de.gurkenlabs.litiengine.graphics.animation.CreatureAnimationController;
 import de.gurkenlabs.litiengine.graphics.animation.IEntityAnimationController;
 import de.gurkenlabs.litiengine.gui.SpeechBubble;
 import de.gurkenlabs.litiengine.physics.IMovementController;
@@ -56,6 +57,11 @@ public class Farmer extends Creature {
   public boolean firstRefillEver = true;
 
   public boolean movementBlocked;
+
+  @Override
+  public String getSpritesheetName() {
+    return this.hasCan() ? "keepercan" : "keeper";
+  }
 
   @Action()
   public void use() {
@@ -137,9 +143,17 @@ public class Farmer extends Creature {
 
   @Override
   protected IEntityAnimationController<?> createAnimationController() {
-    IEntityAnimationController<?> controller = super.createAnimationController();
+    IEntityAnimationController<?> controller = new CreatureAnimationController<>(this, false);
+    controller.add(new Animation("keepercan-walk-up", true, true));
+    controller.add(new Animation("keepercan-walk-down", true, true));
+    controller.add(new Animation("keepercan-idle", true, true));
+
     controller.add(new Animation("keeper-celebrate", true, true));
+    controller.add(new Animation("keeper-pout", true, true));
+    controller.addRule(x -> Farmer.instance().isIdle() && !Farmer.instance().hasCan(), x -> "keeper-idle");
+    controller.addRule(x -> Farmer.instance().isIdle() && Farmer.instance().hasCan(), x -> "keepercan-idle");
     controller.addRule(x -> GameManager.isHarvesting(), x -> "keeper-celebrate");
+    controller.addRule(x -> GameManager.isLevelFailed(), x -> "keeper-pout");
 
     CreatureShadowImageEffect effect = new CreatureShadowImageEffect(this, new Color(24, 30, 28, 100));
     effect.setOffsetY(1);
