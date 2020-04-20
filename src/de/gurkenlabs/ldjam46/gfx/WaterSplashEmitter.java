@@ -19,9 +19,9 @@ public class WaterSplashEmitter extends EntityEmitter {
 
   public WaterSplashEmitter(IEntity entity) {
     super(entity,true);
-    this.addParticleColor(ColorHelper.decode("#501054A7"));
-    this.addParticleColor(ColorHelper.decode("#50163963"));
-    this.addParticleColor(ColorHelper.decode("#500791BE"));
+    this.addParticleColor(ColorHelper.decode("#801054A7"));
+    this.addParticleColor(ColorHelper.decode("#80163963"));
+    this.addParticleColor(ColorHelper.decode("#800791BE"));
   }
 
   @Override

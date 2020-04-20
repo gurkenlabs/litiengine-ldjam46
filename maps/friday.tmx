@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="20" nextobjectid="14">
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="20" nextobjectid="14" name="friday">
  <properties>
   <property name="GRAVITY" type="int" value="0"/>
   <property name="minPumpkins" value="2"/>
@@ -423,4 +423,84 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="0" name="Emitters">
+  <object id="13" type="EMITTER" x="240" y="136" width="0" height="0">
+   <properties>
+    <property name="emitterAlphaDeviation" type="float" value="0.0"/>
+    <property name="emitterColorDeviation" type="float" value="0.0"/>
+    <property name="emitterColors" value="#000000|40"/>
+    <property name="emitterMaxParticles" type="int" value="400"/>
+    <property name="emitterOriginAlign" value="LEFT"/>
+    <property name="emitterOriginValign" value="TOP"/>
+    <property name="emitterSpawnAmount" type="int" value="4"/>
+    <property name="emitterSpawnRate" type="int" value="0"/>
+    <property name="emitterTimeToLive" type="int" value="7000"/>
+    <property name="emitterUpdateDelay" type="int" value="8"/>
+    <property name="particleAnimateSprite" type="bool" value="false"/>
+    <property name="particleFade" type="bool" value="true"/>
+    <property name="particleMaxDeltaHeight" type="float" value="1.0"/>
+    <property name="particleMaxDeltaWidth" type="float" value="1.0"/>
+    <property name="particleMaxDeltaX" type="float" value="0.2"/>
+    <property name="particleMaxDeltaY" type="float" value="1.0"/>
+    <property name="particleMaxGravityX" type="float" value="0.1"/>
+    <property name="particleMaxGravityY" type="float" value="-0.1"/>
+    <property name="particleMaxStartHeight" type="float" value="2.0"/>
+    <property name="particleMaxStartWidth" type="float" value="2.0"/>
+    <property name="particleMaxTTL" type="int" value="1000"/>
+    <property name="particleMaxX" type="float" value="6.0"/>
+    <property name="particleMaxY" type="float" value="6.0"/>
+    <property name="particleMinDeltaHeight" type="float" value="-1.0"/>
+    <property name="particleMinDeltaWidth" type="float" value="-1.0"/>
+    <property name="particleMinDeltaX" type="float" value="-0.2"/>
+    <property name="particleMinDeltaY" type="float" value="-2.0"/>
+    <property name="particleMinGravityX" type="float" value="-0.1"/>
+    <property name="particleMinGravityY" type="float" value="-1.0"/>
+    <property name="particleMinStartHeight" type="float" value="0.5"/>
+    <property name="particleMinStartWidth" type="float" value="0.5"/>
+    <property name="particleMinTTL" type="int" value="500"/>
+    <property name="particleMinX" type="float" value="0.0"/>
+    <property name="particleMinY" type="float" value="0.0"/>
+    <property name="particlePhysics" value="NONE"/>
+   </properties>
+  </object>
+  <object id="14" type="EMITTER" x="240" y="136" width="0" height="0">
+   <properties>
+    <property name="emitterAlphaDeviation" type="float" value="0.0"/>
+    <property name="emitterColorDeviation" type="float" value="0.0"/>
+    <property name="emitterColors" value="#000000|40"/>
+    <property name="emitterMaxParticles" type="int" value="400"/>
+    <property name="emitterOriginAlign" value="LEFT"/>
+    <property name="emitterOriginValign" value="TOP"/>
+    <property name="emitterSpawnAmount" type="int" value="4"/>
+    <property name="emitterSpawnRate" type="int" value="0"/>
+    <property name="emitterTimeToLive" type="int" value="7000"/>
+    <property name="emitterUpdateDelay" type="int" value="8"/>
+    <property name="particleAnimateSprite" type="bool" value="false"/>
+    <property name="particleFade" type="bool" value="true"/>
+    <property name="particleMaxDeltaHeight" type="float" value="1.0"/>
+    <property name="particleMaxDeltaWidth" type="float" value="1.0"/>
+    <property name="particleMaxDeltaX" type="float" value="0.2"/>
+    <property name="particleMaxDeltaY" type="float" value="1.0"/>
+    <property name="particleMaxGravityX" type="float" value="0.1"/>
+    <property name="particleMaxGravityY" type="float" value="-0.1"/>
+    <property name="particleMaxStartHeight" type="float" value="2.0"/>
+    <property name="particleMaxStartWidth" type="float" value="2.0"/>
+    <property name="particleMaxTTL" type="int" value="1000"/>
+    <property name="particleMaxX" type="float" value="6.0"/>
+    <property name="particleMaxY" type="float" value="6.0"/>
+    <property name="particleMinDeltaHeight" type="float" value="-1.0"/>
+    <property name="particleMinDeltaWidth" type="float" value="-1.0"/>
+    <property name="particleMinDeltaX" type="float" value="-0.2"/>
+    <property name="particleMinDeltaY" type="float" value="-2.0"/>
+    <property name="particleMinGravityX" type="float" value="-0.1"/>
+    <property name="particleMinGravityY" type="float" value="-1.0"/>
+    <property name="particleMinStartHeight" type="float" value="0.5"/>
+    <property name="particleMinStartWidth" type="float" value="0.5"/>
+    <property name="particleMinTTL" type="int" value="500"/>
+    <property name="particleMinX" type="float" value="0.0"/>
+    <property name="particleMinY" type="float" value="0.0"/>
+    <property name="particlePhysics" value="NONE"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

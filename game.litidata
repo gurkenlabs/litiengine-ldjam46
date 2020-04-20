@@ -504,86 +504,6 @@
       <property name="particlePhysics" value="NONE"/>
      </properties>
     </object>
-    <object id="15" type="EMITTER" x="288" y="96" width="12" height="12">
-     <properties>
-      <property name="emitterAlphaDeviation" type="float" value="0.0"/>
-      <property name="emitterColorDeviation" value="0.05"/>
-      <property name="emitterColors" value="#00cc00|255,#508d1f|255,#a2eb36|255"/>
-      <property name="emitterMaxParticles" value="100"/>
-      <property name="emitterOriginAlign" value="LEFT"/>
-      <property name="emitterOriginValign" value="TOP"/>
-      <property name="emitterSpawnAmount" value="50"/>
-      <property name="emitterSpawnRate" value="50"/>
-      <property name="emitterTimeToLive" value="0"/>
-      <property name="emitterUpdateDelay" value="5"/>
-      <property name="particleAnimateSprite" type="bool" value="false"/>
-      <property name="particleFade" type="bool" value="true"/>
-      <property name="particleMaxDeltaHeight" type="float" value="1.0"/>
-      <property name="particleMaxDeltaWidth" type="float" value="1.0"/>
-      <property name="particleMaxDeltaX" value="0.0"/>
-      <property name="particleMaxDeltaY" value="0.0"/>
-      <property name="particleMaxGravityX" value="0.3"/>
-      <property name="particleMaxGravityY" type="float" value="-0.1"/>
-      <property name="particleMaxStartHeight" value="1.0"/>
-      <property name="particleMaxStartWidth" value="1.0"/>
-      <property name="particleMaxTTL" value="800"/>
-      <property name="particleMaxX" value="12.0"/>
-      <property name="particleMaxY" value="12.0"/>
-      <property name="particleMinDeltaHeight" type="float" value="-1.0"/>
-      <property name="particleMinDeltaWidth" type="float" value="-1.0"/>
-      <property name="particleMinDeltaX" type="float" value="-0.2"/>
-      <property name="particleMinDeltaY" value="-3.0"/>
-      <property name="particleMinGravityX" value="-0.3"/>
-      <property name="particleMinGravityY" type="float" value="-1.0"/>
-      <property name="particleMinStartHeight" type="float" value="0.5"/>
-      <property name="particleMinStartWidth" type="float" value="0.5"/>
-      <property name="particleMinTTL" value="200"/>
-      <property name="particleMinX" type="float" value="0.0"/>
-      <property name="particleMinY" type="float" value="0.0"/>
-      <property name="particlePhysics" value="NONE"/>
-     </properties>
-    </object>
-    <object id="16" type="EMITTER" x="320" y="80" width="12" height="12">
-     <properties>
-      <property name="emitterAlphaDeviation" type="float" value="0.0"/>
-      <property name="emitterColorDeviation" value="0.05"/>
-      <property name="emitterColors" value="#00cc00|255,#508d1f|255,#a2eb36|255"/>
-      <property name="emitterMaxParticles" value="50"/>
-      <property name="emitterOriginAlign" value="CENTER"/>
-      <property name="emitterOriginValign" value="MIDDLE"/>
-      <property name="emitterParticleType" value="SPRITE"/>
-      <property name="emitterSpawnAmount" value="50"/>
-      <property name="emitterSpawnRate" value="1"/>
-      <property name="emitterTimeToLive" value="0"/>
-      <property name="emitterUpdateDelay" value="5"/>
-      <property name="particleAnimateSprite" type="bool" value="false"/>
-      <property name="particleFade" type="bool" value="true"/>
-      <property name="particleMaxDeltaHeight" type="float" value="1.0"/>
-      <property name="particleMaxDeltaWidth" value="1.0"/>
-      <property name="particleMaxDeltaX" value="8.0"/>
-      <property name="particleMaxDeltaY" value="8.0"/>
-      <property name="particleMaxGravityX" value="0.0"/>
-      <property name="particleMaxGravityY" value="0.0"/>
-      <property name="particleMaxStartHeight" value="1.0"/>
-      <property name="particleMaxStartWidth" value="1.0"/>
-      <property name="particleMaxTTL" value="500"/>
-      <property name="particleMaxX" value="0.0"/>
-      <property name="particleMaxY" value="0.0"/>
-      <property name="particleMinDeltaHeight" value="0.0"/>
-      <property name="particleMinDeltaWidth" value="0.0"/>
-      <property name="particleMinDeltaX" value="-8.0"/>
-      <property name="particleMinDeltaY" value="-8.0"/>
-      <property name="particleMinGravityX" value="0.0"/>
-      <property name="particleMinGravityY" value="0.0"/>
-      <property name="particleMinStartHeight" type="float" value="0.5"/>
-      <property name="particleMinStartWidth" type="float" value="0.5"/>
-      <property name="particleMinTTL" value="200"/>
-      <property name="particleMinX" type="float" value="0.0"/>
-      <property name="particleMinY" type="float" value="0.0"/>
-      <property name="particlePhysics" value="NONE"/>
-      <property name="particleSprite" value="walk-dust"/>
-     </properties>
-    </object>
    </objectgroup>
   </map>
   <map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="20" nextobjectid="14" name="monday">
@@ -2640,6 +2560,9 @@
   </map>
  </maps>
  <spriteSheets>
+  <sprite width="100" height="20" imageformat="PNG" name="button-background">
+   <image>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</image>
+  </sprite>
   <sprite width="11" height="20" imageformat="PNG" name="enemyfarmer1-idle">
    <image>iVBORw0KGgoAAAANSUhEUgAAAAsAAAAUCAYAAABbLMdoAAAAg0lEQVR42mNgGOIg1032PzqmXDG6ov8XtoAxVg0wRZJ9K8GKYDSGYmwm4jQZXeEiNWMwJsnk5ig9/B5EVtzgfBtMYyiGWQmizyxsx60YJgCSRMfI8mDw4TwfXsUweTA4uFwAzNH2af2PjpHlUYBX1Zn/6Bhn2iBJMYrbsPBRALrb0PkApBrxtt5884MAAAAASUVORK5CYII=</image>
   </sprite>

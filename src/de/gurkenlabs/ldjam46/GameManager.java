@@ -101,7 +101,7 @@ public final class GameManager {
   // TODO: End screen after every day
   // TODO: track score (alive pumpkins * life)
   static {
-    maps.put(Day.Monday, "monday");
+    maps.put(Day.Monday, "playground");
     maps.put(Day.Tuesday, "tuesday");
     maps.put(Day.Wednesday, "playground");
     maps.put(Day.Thursday, "playground");
@@ -162,7 +162,7 @@ public final class GameManager {
     
     // TODO currentDay null -> transition to menu screen
 
-    Farmer.instance().getFartAbility().setEnabled(currentDay.getDay() >= Day.Wednesday.getDay());
+    Farmer.instance().getFartAbility().setEnabled(currentDay.getDay() >= Day.Monday.getDay());
 
     loadCurrentDay();
   }
