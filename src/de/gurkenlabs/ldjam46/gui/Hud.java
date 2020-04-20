@@ -28,6 +28,8 @@ public class Hud extends GuiComponent {
 
   private static final BufferedImage CONTROLS1;
   private static final BufferedImage CONTROLS2;
+  
+  final int LEVEL_INFO_DURATION = 3500;
 
   static {
     PUMPKIN = Imaging.scale(Resources.images().get("pumpkin-ui.png"), GameManager.INGAME_RENDER_SCALE / 2);
@@ -66,6 +68,12 @@ public class Hud extends GuiComponent {
       this.renderLevelEnd(g);
 
       this.renderControls(g);
+    } else if(GameManager.getTimeSinceLastLoad() > LEVEL_INFO_DURATION + 500){
+      g.setColor(Color.WHITE);
+      g.setFont(GameManager.GUI_FONT.deriveFont(80f));
+
+      Valign valign = GameManager.getCurrentDay() == Day.Saturday ? Valign.MIDDLE_TOP : Valign.MIDDLE;
+      TextRenderer.render(g, "YOU ARE THE PUMPKING!", Align.CENTER, valign, 0, -80);
     }
   }
 
@@ -109,8 +117,6 @@ public class Hud extends GuiComponent {
   }
 
   private void renderCurrentLevelInfo(Graphics2D g) {
-    final int LEVEL_INFO_DURATION = 3500;
-
     final long timeSince = GameManager.getTimeSinceLastLoad();
     if (timeSince < LEVEL_INFO_DURATION && timeSince != 0) {
       g.setColor(Color.WHITE);
@@ -129,6 +135,7 @@ public class Hud extends GuiComponent {
       double locationY = g.getClipBounds().getY() + Valign.DOWN.getLocation(g.getClipBounds().getHeight(), PUMPKIN.getHeight()) + -PADDING;
       ImageRenderer.render(g, PUMPKIN, locationX, locationY);
     }
+
   }
 
   private void renderCanUI(Graphics2D g) {
