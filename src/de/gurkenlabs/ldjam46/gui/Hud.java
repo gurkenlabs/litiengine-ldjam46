@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import de.gurkenlabs.ldjam46.GameManager;
+import de.gurkenlabs.ldjam46.GameManager.Day;
 import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.ldjam46.entities.Farmer;
 import de.gurkenlabs.litiengine.Align;
@@ -54,15 +55,18 @@ public class Hud extends GuiComponent {
       return;
     }
 
-    this.renderCanUI(g);
-    this.renderFartUI(g);
-
-    this.renderTime(g);
     this.renderCurrentLevelInfo(g);
 
-    this.renderLevelEnd(g);
+    if (GameManager.getCurrentDay() != Day.Saturday) {
+      this.renderCanUI(g);
+      this.renderFartUI(g);
 
-    this.renderControls(g);
+      this.renderTime(g);
+
+      this.renderLevelEnd(g);
+
+      this.renderControls(g);
+    }
   }
 
   private void renderFartUI(Graphics2D g) {
@@ -111,10 +115,12 @@ public class Hud extends GuiComponent {
     if (timeSince < LEVEL_INFO_DURATION && timeSince != 0) {
       g.setColor(Color.WHITE);
       g.setFont(GameManager.GUI_FONT.deriveFont(56f));
-      TextRenderer.render(g, GameManager.getCurrentDay().name(), Align.CENTER, Valign.MIDDLE, 0, 0);
+
+      Valign valign = GameManager.getCurrentDay() == Day.Saturday ? Valign.MIDDLE_TOP : Valign.MIDDLE;
+      TextRenderer.render(g, GameManager.getCurrentDay().name(), Align.CENTER, valign, 0, 0);
     }
 
-    if (GameManager.getState() == GameState.INGAME && g.getClipBounds() != null || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible()) {
+    if (GameManager.getCurrentDay() != Day.Saturday && GameManager.getState() == GameState.INGAME && g.getClipBounds() != null || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible()) {
       g.setColor(Color.WHITE);
       g.setFont(GameManager.GUI_FONT.deriveFont(24f));
       TextRenderer.render(g, "req. harvest: " + GameManager.getRequiredPumpkins() + "x", Align.RIGHT, Valign.DOWN, -70, -PADDING);

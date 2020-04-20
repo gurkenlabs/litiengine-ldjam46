@@ -16,8 +16,35 @@
   <image source="../../../gurkenlabs/Jams/ludum-dare-46/Art/scorescreen.png" width="96" height="54"/>
  </imagelayer>
  <objectgroup id="0" name="spawnpoints">
-  <object id="1" name="farmer" type="SPAWNPOINT" x="62" y="26" width="16" height="16"/>
-  <object id="3" name="farmer" type="SPAWNPOINT" x="74" y="36" width="16" height="16"/>
-  <object id="4" name="farmer" type="SPAWNPOINT" x="48" y="28" width="16" height="16"/>
+  <object id="3" type="CREATURE" x="28" y="14" width="12" height="20">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="8.0"/>
+    <property name="collisionboxWidth" type="float" value="4.800000000000001"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="willy"/>
+   </properties>
+  </object>
+  <object id="4" name="pumpking" type="CREATURE" x="39" y="11" width="13" height="20">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="8.0"/>
+    <property name="collisionboxWidth" type="float" value="5.2"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="keeper-pumpking"/>
+   </properties>
+  </object>
+  <object id="5" type="CREATURE" x="50" y="18" width="12" height="20">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="8.0"/>
+    <property name="collisionboxWidth" type="float" value="4.800000000000001"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="tilly"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -1370,9 +1370,36 @@
     <image source="../../../gurkenlabs/Jams/ludum-dare-46/Art/scorescreen.png" width="96" height="54"/>
    </imagelayer>
    <objectgroup id="0" name="spawnpoints">
-    <object id="1" name="farmer" type="SPAWNPOINT" x="62" y="26" width="16" height="16"/>
-    <object id="3" name="farmer" type="SPAWNPOINT" x="74" y="36" width="16" height="16"/>
-    <object id="4" name="farmer" type="SPAWNPOINT" x="48" y="28" width="16" height="16"/>
+    <object id="3" type="CREATURE" x="28" y="14" width="12" height="20">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="8.0"/>
+      <property name="collisionboxWidth" type="float" value="4.800000000000001"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="willy"/>
+     </properties>
+    </object>
+    <object id="4" name="pumpking" type="CREATURE" x="39" y="11" width="13" height="20">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="8.0"/>
+      <property name="collisionboxWidth" type="float" value="5.2"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="keeper-pumpking"/>
+     </properties>
+    </object>
+    <object id="5" type="CREATURE" x="50" y="18" width="12" height="20">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="8.0"/>
+      <property name="collisionboxWidth" type="float" value="4.800000000000001"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="tilly"/>
+     </properties>
+    </object>
    </objectgroup>
   </map>
   <map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="22" nextobjectid="36" name="thursday">
@@ -3197,8 +3224,8 @@
   <sprite width="13" height="20" imageformat="PNG" name="keeper-pout">
    <image>iVBORw0KGgoAAAANSUhEUgAAADQAAAAUCAYAAADC1B7dAAABPklEQVR42u2UMQ7CMAxFew0uwMLICRBcgTtwAAQDGysLGwsLSIgDwMLEgIC14g7s3CDgoF+5wUlJKkGKqGSldvxi+6dqkvz6c9gMlWmxMEHDXI4zJa3fZoJEQJJZpKi5TzHeIsR8Q14iSFdps08zpW4o7bWV6reelm6zd4pL+bXRSrkY2i/LBIuAA6nAaT7OrWjAbI5i1ADl9Lut3KrjFsa3TojYWTF9OEDmuxibmWrDd9XhDM/3FoGC6/NNby7rTW1IprhzmMfB1wdKhsI2EXidHMPqSJ+qt9g4LFODgXxf4rgIYGz5Icw7IrwIQRuUCJADiEuN+TLgJEbKR5MuEaQb1Q+aoBWfEXxbYy7GNpBvHV8RnE0WApEz/4GiH6je6CjTqswk08lA7XeLzMivMqMhJPL3qjIJ/UZdfuzMHXn/rVutdd7ZAAAAAElFTkSuQmCC</image>
   </sprite>
-  <sprite width="13" height="20" imageformat="PNG" name="keeper-pumpking">
-   <image>iVBORw0KGgoAAAANSUhEUgAAAEEAAAAUCAYAAADStFABAAABeElEQVR4Xu2UMU4DMRBFfZo0ocsJEFyBO3CAiAMgUdFwAJrQ0KM0SUMHbS5Bnxs4/I1mMvk7tuxVWG2WfGk0nvV/cfyzSggXXdRS/LiKuf4vhMui1k/To54LgYPi7ok93D2xh7sn9nB3hU0OQDp7Rdjz/OfKKOQVe0XeISXBsXcoTNjc38Q4v97XZqlrPGevCB+YKvaK2DcYRi6Ly8/v9iFIl3CYgboEN2RGg7BwLgDdrwiub+br9bEpeGWdYg4H/fa3yawpmXPJ1QSHL1LDiL+Esd5SJilrlGp56DLoJcHJK1nCNN6Kc9RbwVi/6mcb4/v39uiLYsZz67Mg9uxBWKOYgYQrYWwIJQyHYBn+UfkcheSy0vHczuj2EHS75wXXlbEX6YtRCGtrshdpQUanZHL6cyb1RgiUugx0SianvphO0NiYMJneRi72sNh/7kx4eX6In6uFFmb2sMbGNJAY7TqnsTGtPzOePbGHZ0/s4dkTe3j2xB6eoR1/y0oAIwRMhgAAAABJRU5ErkJggg==</image>
+  <sprite width="13" height="20" imageformat="PNG" name="keeper-pumpking-idle">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAEEAAAAUCAYAAADStFABAAABN0lEQVR42u2UMQ7CIBRAOU2XunmCRq/gHTxA4wFMnFw8gIsu7sZFFzddewn33gDzMZ/8UopAsKKU5OcXygv8RyljQxtaq/HjiJtyMhIgLqu8kU0SfMTFzDCdAMyhxcXKSEgXocXFyrBqPuG8LF5RneQzjIcWFyWDxULx5axoZJQTSlzMjBRBYZMAH3F9M7ftUgTMxefOmmjB+2wsAvvG6+AgDjbiwuB8G4bO9T1UrQyMd8XYisNP0oYRcx3WkXMd99aS96g5P9zrxkahD+NdJwTv6EIoTmUoZ8NQCTaMKoEy6qGq60gIi8UM47QPWV2MvtOJ82Ua16AnRkI6GXRcd+9CM6b2cabri1BP02UhH+arEn5hc71JyPIpVyM1hm3WC34972RAPzVGQDiRPqfEtH5mpp/bvzBPf8tKAL169cIAAAAASUVORK5CYII=</image>
   </sprite>
   <sprite width="13" height="20" imageformat="PNG" name="keeper-walk-down">
    <image>iVBORw0KGgoAAAANSUhEUgAAAEEAAAAUCAYAAADStFABAAABZElEQVR42tWVPQ7CMAyFcxoWRk6A4ArcgQMg2FlZ2FhYYOEAsDAxIGBF3IGdGwS5yMg1+alNSGklK4mbr/Z7aVVjElzH7cTyME2+pILg/u20sK6xkcZpBKEAvj/G5DJOzOQSlLOO2GwJ5HLYF3UaV5n5RtB12LN21H3FdfeeQ/4fjBO/CRJBJQb2sogyPzRObTY2AU2NBt3SiE3zBjVMDuO+Yd6iKBwSo2FymY3MeTktAvbi3NsfbX7d6hSBa59zGsZlHJ3XzXwIw4j9iyUM3ys1W8NIDsjcH9ZuLo/SKw1ryKdmXMbVzmDjOMI3RNcwpmZcxqViKFfpgOhDuDC8xwtpGJrzMaFaEgZzLsZpGpxgTBDdo2VoLiTIV0vCYC6JCfgPT8FQNvTp+OpJGcxzJtRbcbXafcsj9ndoGhM1YT4b28N+VQTMIWKFtAzn/oUxXETUNSVD91Q1LhdTSUAKpq66LuYJzbchZcJl0voAAAAASUVORK5CYII=</image>

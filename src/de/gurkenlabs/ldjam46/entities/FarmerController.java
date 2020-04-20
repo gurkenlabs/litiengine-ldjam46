@@ -3,6 +3,7 @@ package de.gurkenlabs.ldjam46.entities;
 import java.awt.event.KeyEvent;
 
 import de.gurkenlabs.ldjam46.GameManager;
+import de.gurkenlabs.ldjam46.GameManager.Day;
 import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.input.KeyboardEntityController;
@@ -27,7 +28,7 @@ public class FarmerController extends KeyboardEntityController<Farmer> {
       GameManager.levelTransition();
     }
 
-    if (GameManager.getState() != GameState.INGAME || Farmer.instance().movementBlocked) {
+    if (GameManager.getState() != GameState.INGAME || Farmer.instance().movementBlocked || GameManager.getCurrentDay() == Day.Saturday) {
       this.getEntity().setAcceleration(0);
       this.setDx(0);
       this.setVelocityX(0);

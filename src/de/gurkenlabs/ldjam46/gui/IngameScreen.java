@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 import de.gurkenlabs.ldjam46.GameManager;
+import de.gurkenlabs.ldjam46.GameManager.Day;
 import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.gui.screens.GameScreen;
@@ -15,7 +16,7 @@ public class IngameScreen extends GameScreen {
   @Override
   public void render(Graphics2D g) {
 
-    if (GameManager.getState() != GameState.INGAME) {
+    if (GameManager.getState() != GameState.INGAME && GameManager.getCurrentDay() != Day.Saturday) {
       g.setClip(new Rectangle2D.Double(0, CINEMATIC_BORDER, Game.window().getResolution().getWidth(), Game.window().getResolution().getHeight() - CINEMATIC_BORDER * 2));
     }
 

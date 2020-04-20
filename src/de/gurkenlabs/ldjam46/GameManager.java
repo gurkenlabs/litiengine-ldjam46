@@ -22,6 +22,8 @@ import de.gurkenlabs.litiengine.environment.CreatureMapObjectLoader;
 import de.gurkenlabs.litiengine.environment.Environment;
 import de.gurkenlabs.litiengine.environment.EnvironmentListener;
 import de.gurkenlabs.litiengine.environment.PropMapObjectLoader;
+import de.gurkenlabs.litiengine.graphics.Camera;
+import de.gurkenlabs.litiengine.graphics.PositionLockCamera;
 import de.gurkenlabs.litiengine.gui.GuiProperties;
 import de.gurkenlabs.litiengine.gui.SpeechBubble;
 import de.gurkenlabs.litiengine.gui.SpeechBubbleAppearance;
@@ -216,7 +218,12 @@ public final class GameManager {
         }
 
         if (e != null) {
-          Game.world().camera().setFocus(e.getCenter());
+          if (e.getMap().getName().equals("saturday")) {
+            Game.world().setCamera(new PositionLockCamera(Game.world().environment().get("pumpking")));
+          } else {
+            Game.world().setCamera(new Camera());
+            Game.world().camera().setFocus(e.getCenter());
+          }
           endingFaded = false;
           tutorialEnding = false;
 
@@ -236,7 +243,7 @@ public final class GameManager {
     if (currentDay == null) {
       if (Game.isDebug()) {
         // CHANGE THIS TO TEST OTHER LEVELS AND SKIPP ALL OTHES
-        day = Day.Friday;
+        day = Day.Saturday;
       } else {
         day = Day.Monday;
       }
@@ -254,6 +261,20 @@ public final class GameManager {
       return;
     }
 
+    if (day == null) {
+      currentDay = null;
+      Game.window().getRenderComponent().fadeOut(1500);
+
+      Game.loop().perform(1500, () -> {
+        Game.world().unloadEnvironment();
+        Game.window().getRenderComponent().fadeIn(1500);
+        Game.screens().display("MENU");
+        Game.audio().playMusic(Resources.sounds().get("pumpkinville.ogg"));
+      });
+
+      return;
+    }
+    
     transitioning = true;
     state = GameState.LOADING;
     harvesting = true;
@@ -283,12 +304,21 @@ public final class GameManager {
         Game.world().loadEnvironment(currentMap);
         currentDay = day;
 
+        if (currentDay == Day.Saturday) {
+          Game.world().camera().setZoom(3, 0);
+        }
+
         Game.window().getRenderComponent().fadeIn(1000);
 
         Game.loop().perform(1000, () -> {
           state = GameState.LOCKED;
           lastLoaded = Game.loop().getTicks();
 
+          if (currentDay == Day.Saturday) {
+            Game.audio().playMusic("a-king-is-born.ogg");
+          } else {
+            Game.audio().playMusic("highlife.ogg");
+          }
         });
 
         if (currentDay != Day.Saturday) {
@@ -301,6 +331,19 @@ public final class GameManager {
           Game.loop().perform(3000, () -> {
             Game.world().camera().setZoom(2, 3000);
           });
+        }
+
+        if (currentDay == Day.Saturday) {
+          Game.loop().perform(20000, () -> {
+            Game.audio().fadeMusic((int) Game.time().toTicks(10000));
+          });
+
+          Game.loop().perform(30000, () -> {
+            transitioning = false;
+            levelTransition();
+          });
+
+          return;
         }
 
         Game.loop().perform(6000, () -> {
@@ -362,7 +405,6 @@ public final class GameManager {
               });
             });
           } else {
-
             if (currentDay == Day.Friday) {
               Farmer.instance().getFartAbility().setEnabled(true);
             }
@@ -371,8 +413,6 @@ public final class GameManager {
             state = GameState.INGAME;
             transitioning = false;
           }
-
-          // TODO WEdnesday tutorial tutorial("Gotta work all week to beat em other farmers!").addListener(() -> {
         });
       });
     });
@@ -471,7 +511,7 @@ public final class GameManager {
   }
 
   private static void update() {
-    if (Game.world().environment() == null) {
+    if (Game.world().environment() == null || !Game.screens().current().getName().equals("GAME")) {
       return;
     }
 
@@ -492,7 +532,7 @@ public final class GameManager {
   }
 
   private static void handleDayTime() {
-    if (getState() != GameState.INGAME && !isTutorialActive() && !transitioning) {
+    if (getState() != GameState.INGAME && !isTutorialActive() && !transitioning || currentDay == null) {
       return;
     }
 
