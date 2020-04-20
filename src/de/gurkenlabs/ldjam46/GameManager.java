@@ -288,7 +288,14 @@ public final class GameManager {
         Game.loop().perform(1000, () -> {
           state = GameState.LOCKED;
           lastLoaded = Game.loop().getTicks();
+
         });
+
+        if (currentDay != Day.Saturday) {
+          Game.loop().perform(2000, () -> {
+            Game.audio().playSound("rooster.wav");
+          });
+        }
 
         if (currentDay == Day.Monday || currentDay == Day.Thursday) {
           Game.loop().perform(3000, () -> {

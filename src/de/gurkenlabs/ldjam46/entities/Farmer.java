@@ -75,6 +75,7 @@ public class Farmer extends Creature {
       for (MapArea area : refillAreas) {
         if (area.getBoundingBox().intersects(this.getCollisionBox())) {
           this.waterAbility.getCharges().setToMax();
+          Game.audio().playSound("splash.ogg", this);
 
           for (LightSource light : Game.world().environment().getByTag(LightSource.class, "fountainlight")) {
             light.deactivate();
