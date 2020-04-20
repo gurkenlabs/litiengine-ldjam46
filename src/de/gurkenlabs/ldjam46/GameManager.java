@@ -266,20 +266,18 @@ public final class GameManager {
 
           Game.loop().perform(1000, () -> {
             tutorial("Howdy partner, let's learn how to farm, aii!").addListener(() -> {
-              tutorial("Gotta work all week to beat em other farmers!").addListener(() -> {
-                tutorial("Today I've got to harvest 2 pumpkins!").addListener(() -> {
-                  pumpkinCountVisible = true;
+              tutorial("Today I've got to harvest 2 pumpkins!").addListener(() -> {
+                pumpkinCountVisible = true;
 
-                  tutorial("I gotta keep ma pumpkins alive!").addListener(() -> {
-                    tutorial("Pumpkins are harvested at 6:00 PM!").addListener(() -> {
-                      clockVisible = true;
+                tutorial("I gotta keep ma pumpkins alive!").addListener(() -> {
+                  tutorial("Pumpkins are harvested at 6:00 PM!").addListener(() -> {
+                    clockVisible = true;
 
-                      tutorial("Let me grab ma water can first!").addListener(() -> {
-                        Game.world().camera().setZoom(1, 2000);
-                        Game.loop().perform(2000, () -> {
-                          ingameStartedTick = Game.loop().getTicks();
-                          state = GameState.INGAME;
-                        });
+                    tutorial("Let me grab ma water can first!").addListener(() -> {
+                      Game.world().camera().setZoom(1, 2000);
+                      Game.loop().perform(2000, () -> {
+                        ingameStartedTick = Game.loop().getTicks();
+                        state = GameState.INGAME;
                       });
                     });
                   });
@@ -291,6 +289,8 @@ public final class GameManager {
           ingameStartedTick = Game.loop().getTicks();
           state = GameState.INGAME;
         }
+        
+        // TODO WEdnesday tutorial tutorial("Gotta work all week to beat em other farmers!").addListener(() -> {
       });
     });
   }
@@ -309,8 +309,10 @@ public final class GameManager {
         Game.window().getRenderComponent().fadeOut(1000);
         Game.loop().perform(1000, () -> {
           endingFaded = true;
+
+          Game.world().camera().setZoom(1, 0);
           Game.window().getRenderComponent().fadeIn(1000);
-          Game.world().camera().setZoom(1, 2000);
+
           Game.loop().perform(5000, () -> {
             levelTransition();
           });
