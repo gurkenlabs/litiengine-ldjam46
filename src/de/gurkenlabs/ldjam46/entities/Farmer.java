@@ -52,6 +52,8 @@ public class Farmer extends Creature {
   private boolean speechbubbleActive;
   private boolean grabSpeechbubbleActive;
   public boolean firstRefillEver = true;
+  
+  public boolean movementBlocked;
 
   @Action()
   public void use() {
@@ -59,7 +61,7 @@ public class Farmer extends Creature {
       Trigger trigger = Game.world().environment().interact(this);
     }
 
-    if (Game.time().since(this.lastWaterRefill) > WATER_REFILL_DELAY
+    if (this.hasCan() && Game.time().since(this.lastWaterRefill) > WATER_REFILL_DELAY
         && this.waterAbility.getCharges().get() < this.waterAbility.getCharges().getMax()) {
       Collection<MapArea> refillAreas = Game.world().environment().getByTag(MapArea.class, "refillwater");
       for (MapArea area : refillAreas) {

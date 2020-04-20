@@ -110,6 +110,8 @@ public final class GameManager {
   private static boolean endingFaded;
   private static boolean harvesting;
 
+  private static boolean transitioning;
+
   // TODO: End screen after every day
   // TODO: track score (alive pumpkins * life) between levels
   static {
@@ -149,6 +151,7 @@ public final class GameManager {
     PropMapObjectLoader.registerCustomPropType(Can.class);
 
     Game.world().camera().setClampToMap(true);
+    Game.window().cursor().hideDefaultCursor();
 
     Game.world().addListener(new EnvironmentListener() {
       @Override
@@ -189,6 +192,8 @@ public final class GameManager {
           clockVisible = false;
 
           Farmer.instance().firstRefillEver = true;
+        } else {
+          Farmer.instance().firstRefillEver = false;
         }
 
         if (e != null) {
@@ -205,6 +210,9 @@ public final class GameManager {
   }
 
   public static void levelTransition() {
+    if (transitioning) {
+      return;
+    }
     Day day;
     if (currentDay == null) {
       day = Day.Monday;
@@ -218,10 +226,11 @@ public final class GameManager {
   }
 
   public static synchronized void loadDay(Day day) {
-    if (state == GameState.LOADING) {
+    if (state == GameState.LOADING || transitioning) {
       return;
     }
 
+    transitioning = true;
     state = GameState.LOADING;
     harvesting = true;
     int delay = harvestPumpkin();
@@ -287,6 +296,7 @@ public final class GameManager {
                       Game.loop().perform(2000, () -> {
                         ingameStartedTick = Game.loop().getTicks();
                         state = GameState.INGAME;
+                        transitioning = false;
                       });
                     });
                   });
@@ -296,6 +306,7 @@ public final class GameManager {
           } else {
             ingameStartedTick = Game.loop().getTicks();
             state = GameState.INGAME;
+            transitioning = false;
           }
 
           // TODO WEdnesday tutorial tutorial("Gotta work all week to beat em other farmers!").addListener(() -> {
@@ -310,6 +321,7 @@ public final class GameManager {
       return delay;
     }
 
+    System.out.println("harvesting...");
     int i = 0;
     for (Pumpkin pumpkin : Game.world().environment().getEntities(Pumpkin.class, p -> !p.isDead())) {
       i++;
@@ -318,6 +330,7 @@ public final class GameManager {
       });
     }
 
+    System.out.println("processed " + i);
     return delay + i * 500;
   }
 
@@ -335,15 +348,14 @@ public final class GameManager {
 
     Game.loop().perform(4000, () -> {
       tutorial("Seems like you got it in you!").addListener(() -> {
-        Game.window().getRenderComponent().fadeOut(1000);
-        Game.loop().perform(1000, () -> {
-          endingFaded = true;
+        tutorial("Let's see if you can handle the farm tomorrow...").addListener(() -> {
+          Game.loop().perform(1000, () -> {
+            endingFaded = true;
+            Game.world().camera().setZoom(1, 1000);
+            Game.loop().perform(2000, () -> {
 
-          Game.world().camera().setZoom(1, 0);
-          Game.window().getRenderComponent().fadeIn(1000);
-
-          Game.loop().perform(5000, () -> {
-            levelTransition();
+              levelTransition();
+            });
           });
         });
       });
@@ -400,7 +412,7 @@ public final class GameManager {
   }
 
   private static void handleDayTime() {
-    if (getState() != GameState.INGAME && !isTutorialActive()) {
+    if (getState() != GameState.INGAME && !isTutorialActive() && !transitioning) {
       return;
     }
 
@@ -447,7 +459,7 @@ public final class GameManager {
   }
 
   private static void adjustAmbientLight(int hour) {
-    if (Game.world().environment() == null || Game.world().environment().getAmbientLight() == null) {
+    if (Game.world().environment() == null || Game.world().environment().getAmbientLight() == null || currentDay == Day.Monday) {
       return;
     }
 

@@ -13,7 +13,7 @@ import de.gurkenlabs.litiengine.entities.ICombatEntity;
 import de.gurkenlabs.litiengine.entities.IEntity;
 import de.gurkenlabs.litiengine.entities.RelativeEntityComparator;
 
-@AbilityInfo(name = "WaterAbility", cooldown = 1000, range = 0, impact = 30, impactAngle = 360, value = 1, duration = 400)
+@AbilityInfo(name = "WaterAbility", cooldown = 1000, range = 0, impact = 30, impactAngle = 360, value = 1, duration = 700)
 public class WaterAbility extends Ability {
 
   private RangeAttribute<Integer> charges = new RangeAttribute<>(5, 0, 2);
@@ -85,9 +85,9 @@ public class WaterAbility extends Ability {
       System.out.println("pumpkin healed");
       WaterAbility.this.charges.modifyBaseValue(new AttributeModifier<>(Modification.SUBSTRACT, 1));
 
-      this.getAbility().getExecutor().setVelocity(0);
-      Game.loop().perform(1000, () -> {
-        this.getAbility().getExecutor().setVelocity(70);
+      Farmer.instance().movementBlocked = true;
+      Game.loop().perform(700, () -> {
+        Farmer.instance().movementBlocked = false;
       });
     }
 

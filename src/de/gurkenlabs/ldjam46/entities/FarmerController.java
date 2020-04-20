@@ -23,13 +23,16 @@ public class FarmerController extends KeyboardEntityController<Farmer> {
       GameManager.levelTransition();
     }
 
-    if (GameManager.getState() != GameState.INGAME) {
+    if (GameManager.getState() != GameState.INGAME || Farmer.instance().movementBlocked) {
       this.setDx(0);
+      this.setVelocityX(0);
       this.setDy(0);
+      this.setVelocityY(0);
       return;
     }
 
     super.handlePressedKey(keyCode);
+
     if (keyCode.getKeyCode() == KeyEvent.VK_SPACE) {
       this.getEntity().perform("use");
     }
