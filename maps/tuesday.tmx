@@ -2,7 +2,7 @@
 <map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="20" nextobjectid="14" name="tuesday">
  <properties>
   <property name="GRAVITY" type="int" value="0"/>
-  <property name="minPumpkins" value="2"/>
+  <property name="minPumpkins" value="4"/>
  </properties>
  <tileset firstgid="1" source="tiles-greenhouse.tsx"/>
  <layer id="1" name="ground" width="30" height="17">
@@ -153,7 +153,7 @@
 </data>
  </layer>
  <objectgroup color="#0033ff" id="10" name="Areas">
-  <object id="9" type="AREA" x="21" y="52" width="48" height="38">
+  <object id="9" type="AREA" x="48" y="59" width="48" height="38">
    <properties>
     <property name="tags" value="refillwater"/>
    </properties>
@@ -217,7 +217,7 @@
     <property name="spritesheetName" value="pumpkin"/>
    </properties>
   </object>
-  <object id="10" type="PROP" x="30" y="34" width="30" height="48">
+  <object id="10" type="PROP" x="57" y="41" width="30" height="48">
    <properties>
     <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
@@ -536,7 +536,7 @@
    <properties>
     <property name="triggerActivation" value="INTERACT"/>
     <property name="triggerOneTime" type="bool" value="true"/>
-    <property name="triggerTarget" value="11"/>
+    <property name="triggerTarget" value="15"/>
     <property name="triggermessage" value="picked-up"/>
    </properties>
   </object>

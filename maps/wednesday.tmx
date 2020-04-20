@@ -375,7 +375,7 @@
    <properties>
     <property name="triggerActivation" value="INTERACT"/>
     <property name="triggerOneTime" type="bool" value="true"/>
-    <property name="triggerTarget" value="11"/>
+    <property name="triggerTarget" value="33"/>
     <property name="triggermessage" value="picked-up"/>
    </properties>
   </object>
