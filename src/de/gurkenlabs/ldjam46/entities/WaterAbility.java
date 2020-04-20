@@ -1,6 +1,5 @@
 package de.gurkenlabs.ldjam46.entities;
 
-import de.gurkenlabs.ldjam46.gfx.FartEmitter;
 import de.gurkenlabs.ldjam46.gfx.WaterSplashEmitter;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.abilities.Ability;

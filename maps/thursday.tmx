@@ -2,20 +2,20 @@
 <map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="20" nextobjectid="14" name="thursday">
  <properties>
   <property name="GRAVITY" type="int" value="0"/>
-  <property name="minPumpkins" value="2"/>
+  <property name="minPumpkins" value="5"/>
  </properties>
  <tileset firstgid="1" source="tiles-greenhouse.tsx"/>
  <layer id="1" name="ground" width="30" height="17">
   <data encoding="csv">
-193,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,194,
-217,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,218,
-193,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,169,194,
+193,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,194,
+217,217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,218,
+193,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,194,
 193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,
 217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,194,219,220,217,218,219,220,217,218,219,220,217,218,
 193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,
 217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,218,
 193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,
-217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,195,218,219,220,217,218,219,220,217,218,219,220,217,218,
+217,218,219,220,217,218,219,220,217,218,219,220,217,218,193,220,195,218,219,220,217,218,219,220,217,218,219,220,217,218,
 193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,
 217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,218,219,220,217,218,
 193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,194,195,196,193,218,219,220,193,194,195,196,193,194,
@@ -30,21 +30,21 @@
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,225,225,225,225,225,225,225,225,225,225,225,0,0,0,0,225,225,225,225,225,225,225,225,225,225,225,0,0,
+0,0,225,207,208,209,208,209,208,209,209,210,225,0,0,0,0,225,207,209,209,208,208,209,209,208,210,225,0,0,
+0,0,225,255,222,222,222,222,222,222,222,234,225,0,0,0,0,225,255,222,222,222,222,222,222,222,234,225,0,0,
+0,0,225,279,281,280,280,281,280,281,280,282,225,0,0,0,0,225,279,280,281,280,280,281,281,280,282,225,0,0,
+0,0,225,225,225,111,112,113,112,114,225,225,225,113,113,113,113,225,225,225,111,112,113,113,114,225,225,225,0,0,
+112,113,112,113,113,92,223,223,223,160,113,113,161,223,223,223,223,160,112,112,92,223,223,223,160,113,112,112,113,112,
+223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,
+185,185,184,185,184,184,185,184,185,184,184,185,68,223,223,223,223,136,185,184,184,184,184,184,184,184,184,184,185,185,
+0,0,0,0,0,0,0,0,0,0,0,0,183,185,185,184,185,186,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,111,112,113,113,114,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,135,223,223,223,138,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,111,112,112,113,113,113,112,113,113,161,223,223,223,91,112,112,112,112,113,113,113,114,0,0,0,0,
-0,0,0,0,135,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223,138,0,0,0,0,
-0,0,0,0,183,184,185,185,185,185,185,185,185,137,223,223,223,67,184,184,184,185,184,184,185,186,0,0,0,0,
-0,0,0,0,207,209,208,209,208,209,208,208,210,135,223,223,223,162,207,208,209,208,208,208,208,208,210,0,0,0,
-0,0,0,0,231,222,222,222,222,222,222,222,258,183,184,185,185,186,255,222,222,222,222,222,222,222,234,0,0,0,
-0,0,0,0,279,280,280,281,281,280,281,281,282,0,0,0,0,0,279,280,280,280,281,281,281,281,282,0,0,0,
-0,0,0,0,0,0,0,0,0,207,209,209,208,209,208,209,209,208,209,209,208,210,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,231,222,222,222,222,222,222,222,222,222,222,222,258,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,279,281,280,280,281,280,280,281,281,280,280,280,282,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <layer id="9" name="ground-overlay2" width="30" height="17">
@@ -94,7 +94,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-308,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,335,309,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -126,16 +126,16 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,342,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,177,0,0,0,0,0,0,342,0,0,177,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <layer id="3" name="walls" width="30" height="17">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-3,2,9,2,2,9,2,2,9,2,9,2,2,9,2,10,2,2,2,10,2,9,2,2,9,2,2,9,2,4,
-27,26,33,26,26,33,26,26,33,26,33,26,26,33,26,34,26,26,26,34,26,33,26,26,33,26,26,33,26,28,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -157,22 +157,199 @@
  <objectgroup id="12" name="Props"/>
  <objectgroup id="13" name="Lights"/>
  <objectgroup id="14" name="Collision">
-  <object id="1" type="COLLISIONBOX" x="0" y="0" width="8" height="272">
+  <object id="1" type="COLLISIONBOX" x="0" y="0" width="16" height="272">
    <properties>
     <property name="collisionType" value="STATIC"/>
    </properties>
   </object>
-  <object id="2" type="COLLISIONBOX" x="8" y="0" width="464" height="48">
+  <object id="2" type="COLLISIONBOX" x="16" y="0" width="464" height="16">
    <properties>
     <property name="collisionType" value="STATIC"/>
    </properties>
   </object>
-  <object id="3" type="COLLISIONBOX" x="472" y="0" width="8" height="272">
+  <object id="3" type="COLLISIONBOX" x="464" y="16" width="16" height="240">
    <properties>
     <property name="collisionType" value="STATIC"/>
    </properties>
   </object>
-  <object id="4" type="COLLISIONBOX" x="8" y="264" width="464" height="8">
+  <object id="4" type="COLLISIONBOX" x="16" y="256" width="464" height="16">
+   <properties>
+    <property name="collisionType" value="STATIC"/>
+   </properties>
+  </object>
+  <object id="6" type="AREA" x="215" y="112" width="55" height="43">
+   <properties>
+    <property name="tags" value="refillwater"/>
+   </properties>
+  </object>
+  <object id="7" type="PROP" x="226" y="100" width="30" height="48">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionType" value="STATIC"/>
+    <property name="collisionboxHeight" value="16.0"/>
+    <property name="collisionboxWidth" value="30.0"/>
+    <property name="indestructible" type="bool" value="true"/>
+    <property name="spritesheetName" value="well"/>
+   </properties>
+  </object>
+  <object id="8" name="farmer" type="SPAWNPOINT" x="232" y="40" width="16" height="16"/>
+  <object id="9" name="enemy1" type="SPAWNPOINT" x="32" y="128" width="16" height="16"/>
+  <object id="10" name="enemy2" type="SPAWNPOINT" x="432" y="128" width="16" height="16"/>
+  <object id="12" type="PROP" x="160" y="64" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="MIDDLE"/>
+    <property name="collisionboxHeight" value="16.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="false"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="true"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
+  <object id="13" type="PROP" x="64" y="64" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="MIDDLE"/>
+    <property name="collisionboxHeight" value="16.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="false"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="true"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
+  <object id="14" type="PROP" x="397" y="64" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="MIDDLE"/>
+    <property name="collisionboxHeight" value="16.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="false"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="true"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
+  <object id="15" type="PROP" x="304" y="64" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="MIDDLE"/>
+    <property name="collisionboxHeight" value="16.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="false"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="true"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
+  <object id="16" type="PROP" x="351" y="64" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="MIDDLE"/>
+    <property name="collisionboxHeight" value="16.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="false"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="true"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
+  <object id="17" type="PROP" x="111" y="64" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="false"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="MIDDLE"/>
+    <property name="collisionboxHeight" value="16.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="false"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="true"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
+  <object id="18" type="COLLISIONBOX" x="272" y="32" width="176" height="16">
+   <properties>
+    <property name="collisionType" value="STATIC"/>
+   </properties>
+  </object>
+  <object id="19" type="COLLISIONBOX" x="32" y="32" width="176" height="16">
+   <properties>
+    <property name="collisionType" value="STATIC"/>
+   </properties>
+  </object>
+  <object id="24" type="COLLISIONBOX" x="272" y="96" width="48" height="16">
+   <properties>
+    <property name="collisionType" value="STATIC"/>
+   </properties>
+  </object>
+  <object id="25" type="COLLISIONBOX" x="400" y="96" width="48" height="16">
+   <properties>
+    <property name="collisionType" value="STATIC"/>
+   </properties>
+  </object>
+  <object id="26" type="COLLISIONBOX" x="160" y="96" width="48" height="16">
+   <properties>
+    <property name="collisionType" value="STATIC"/>
+   </properties>
+  </object>
+  <object id="27" type="COLLISIONBOX" x="32" y="96" width="48" height="16">
+   <properties>
+    <property name="collisionType" value="STATIC"/>
+   </properties>
+  </object>
+  <object id="32" type="COLLISIONBOX" x="32" y="48" width="16" height="48">
+   <properties>
+    <property name="collisionType" value="STATIC"/>
+   </properties>
+  </object>
+  <object id="33" type="COLLISIONBOX" x="192" y="48" width="16" height="48">
+   <properties>
+    <property name="collisionType" value="STATIC"/>
+   </properties>
+  </object>
+  <object id="34" type="COLLISIONBOX" x="272" y="48" width="16" height="48">
+   <properties>
+    <property name="collisionType" value="STATIC"/>
+   </properties>
+  </object>
+  <object id="35" type="COLLISIONBOX" x="432" y="48" width="16" height="48">
    <properties>
     <property name="collisionType" value="STATIC"/>
    </properties>
@@ -181,8 +358,8 @@
  <layer id="4" name="walls-overlay1" width="30" height="17">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,122,0,0,0,0,0,0,0,0,0,0,0,0,
-0,197,200,198,199,197,201,201,201,201,198,200,200,201,198,201,197,146,201,197,198,198,197,198,197,200,198,200,200,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -267,8 +444,8 @@
  </layer>
  <layer id="15" name="roof" width="30" height="17">
   <data encoding="csv">
-292,265,266,267,265,266,267,265,266,267,265,266,267,265,266,267,265,266,267,265,266,267,265,266,267,265,266,267,267,268,
-293,289,290,291,289,290,291,289,290,291,289,290,291,289,290,291,289,290,291,289,290,291,289,290,291,289,290,291,291,269,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
