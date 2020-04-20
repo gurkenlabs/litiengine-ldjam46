@@ -26,9 +26,9 @@ public class Hud extends GuiComponent {
   private static final BufferedImage DROP_DISABLED;
 
   static {
-    PUMPKIN = Imaging.scale(Resources.images().get("pumpkin-ui.png"), Game.graphics().getBaseRenderScale() / 2);
-    DROP = Imaging.scale(Resources.images().get("drop-ui.png"), Game.graphics().getBaseRenderScale() / 2);
-    DROP_DISABLED = Imaging.setOpacity(Imaging.scale(Resources.images().get("drop-disabled-ui.png"), Game.graphics().getBaseRenderScale() / 2), 0.5f);
+    PUMPKIN = Imaging.scale(Resources.images().get("pumpkin-ui.png"), GameManager.INGAME_RENDER_SCALE / 2);
+    DROP = Imaging.scale(Resources.images().get("drop-ui.png"), GameManager.INGAME_RENDER_SCALE / 2);
+    DROP_DISABLED = Imaging.setOpacity(Imaging.scale(Resources.images().get("drop-disabled-ui.png"), GameManager.INGAME_RENDER_SCALE / 2), 0.5f);
   }
 
   public Hud() {
@@ -75,7 +75,9 @@ public class Hud extends GuiComponent {
       }
     }
 
-    if (GameManager.getState() == GameState.INGAME && g.getClipBounds() != null) {
+    if (GameManager.getState() == GameState.INGAME && g.getClipBounds() != null || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible()) {
+      g.setColor(Color.WHITE);
+      g.setFont(GameManager.GUI_FONT.deriveFont(24f));
       TextRenderer.render(g, "req. harvest: " + GameManager.getRequiredPumpkins() + "x", Align.RIGHT, Valign.DOWN, -60, -PADDING);
 
       double locationX = g.getClipBounds().getX() + Align.RIGHT.getLocation(g.getClipBounds().getWidth(), PUMPKIN.getWidth()) + -PADDING;
@@ -85,6 +87,10 @@ public class Hud extends GuiComponent {
   }
 
   private void renderCanUI(Graphics2D g) {
+    if (!Farmer.instance().hasCan()) {
+      return;
+    }
+
     if (GameManager.getState() == GameState.INGAME && g.getClipBounds() != null) {
       for (int i = 0; i < Farmer.instance().getWaterAbility().getCharges().getMax(); i++) {
         double locationX = g.getClipBounds().getX() + Align.LEFT.getLocation(g.getClipBounds().getWidth(), DROP.getWidth()) + i * DROP.getWidth() + i * PADDING + PADDING;
@@ -101,12 +107,19 @@ public class Hud extends GuiComponent {
 
   private void renderTime(Graphics2D g) {
 
-    if (GameManager.getCurrentTime() == null) {
+    if (GameManager.getCurrentTime() == null || !GameManager.isClockVisible()) {
       return;
     }
 
+    String currentTime = GameManager.getCurrentTime();
+    if (currentTime.equals("6:00 PM")) {
+      g.setFont(GameManager.GUI_FONT.deriveFont(48f));
+    } else {
+      g.setFont(GameManager.GUI_FONT.deriveFont(24f));
+    }
+    
     g.setColor(Color.WHITE);
-    g.setFont(GameManager.GUI_FONT.deriveFont(24f));
+
     TextRenderer.render(g, GameManager.getCurrentDay().name() + ", " + GameManager.getCurrentTime(), Align.CENTER, Valign.DOWN, 0, -PADDING);
 
   }

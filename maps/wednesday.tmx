@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="21">
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="21" name="wednesday">
  <properties>
   <property name="GRAVITY" type="int" value="0"/>
   <property name="minPumpkins" value="4"/>
@@ -359,6 +359,24 @@
   <object id="29" type="COLLISIONBOX" x="96" y="112" width="16" height="96">
    <properties>
     <property name="collisionType" value="STATIC"/>
+   </properties>
+  </object>
+  <object id="33" type="PROP" x="148" y="114" width="16" height="10">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="4"/>
+    <property name="collisionboxWidth" type="float" value="6.4"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="can"/>
+   </properties>
+  </object>
+  <object id="34" name="can-pickup" type="TRIGGER" x="140" y="102" width="32" height="31">
+   <properties>
+    <property name="triggerActivation" value="INTERACT"/>
+    <property name="triggerOneTime" type="bool" value="true"/>
+    <property name="triggerTarget" value="11"/>
+    <property name="triggermessage" value="picked-up"/>
    </properties>
   </object>
  </objectgroup>

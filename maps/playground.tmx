@@ -144,5 +144,23 @@
   </object>
   <object id="13" name="enemy" type="SPAWNPOINT" x="32" y="128" width="16" height="16"/>
   <object id="14" name="enemy2" type="SPAWNPOINT" x="176" y="48" width="16" height="16"/>
+  <object id="15" type="PROP" x="381" y="105" width="16" height="10">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="4"/>
+    <property name="collisionboxWidth" type="float" value="6.4"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="can"/>
+   </properties>
+  </object>
+  <object id="16" name="can-pickup" type="TRIGGER" x="373" y="93" width="32" height="31">
+   <properties>
+    <property name="triggerActivation" value="INTERACT"/>
+    <property name="triggerOneTime" type="bool" value="true"/>
+    <property name="triggerTarget" value="11"/>
+    <property name="triggermessage" value="picked-up"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

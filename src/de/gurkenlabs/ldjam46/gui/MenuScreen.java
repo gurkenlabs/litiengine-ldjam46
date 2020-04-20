@@ -1,17 +1,13 @@
 package de.gurkenlabs.ldjam46.gui;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 import de.gurkenlabs.ldjam46.GameManager;
 import de.gurkenlabs.ldjam46.gfx.HillBillyFonts;
-import de.gurkenlabs.litiengine.Align;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.IUpdateable;
-import de.gurkenlabs.litiengine.Valign;
 import de.gurkenlabs.litiengine.graphics.ImageRenderer;
 import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.Menu;

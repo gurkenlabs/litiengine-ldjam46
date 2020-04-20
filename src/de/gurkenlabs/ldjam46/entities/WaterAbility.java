@@ -34,7 +34,7 @@ public class WaterAbility extends Ability {
 
   @Override
   public boolean canCast() {
-    return super.canCast() && this.charges.get() > 0;
+    return super.canCast() && this.charges.get() > 0 && Farmer.instance().hasCan();
   }
 
   private class WaterEffect extends Effect {
@@ -80,7 +80,7 @@ public class WaterAbility extends Ability {
     @Override
     protected void apply(ICombatEntity entity) {
       Pumpkin pumpkin = (Pumpkin) entity;
-      pumpkin.getHitPoints().modifyBaseValue(new AttributeModifier<>(Modification.ADD, 33));
+      pumpkin.water();
 
       System.out.println("pumpkin healed");
       WaterAbility.this.charges.modifyBaseValue(new AttributeModifier<>(Modification.SUBSTRACT, 1));

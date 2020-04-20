@@ -354,6 +354,24 @@
     <property name="collisionType" value="STATIC"/>
    </properties>
   </object>
+  <object id="36" type="PROP" x="232" y="24" width="16" height="10">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="4"/>
+    <property name="collisionboxWidth" type="float" value="6.4"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="can"/>
+   </properties>
+  </object>
+  <object id="37" name="can-pickup" type="TRIGGER" x="224" y="12" width="32" height="31">
+   <properties>
+    <property name="triggerActivation" value="INTERACT"/>
+    <property name="triggerOneTime" type="bool" value="true"/>
+    <property name="triggerTarget" value="11"/>
+    <property name="triggermessage" value="picked-up"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer id="4" name="walls-overlay1" width="30" height="17">
   <data encoding="csv">

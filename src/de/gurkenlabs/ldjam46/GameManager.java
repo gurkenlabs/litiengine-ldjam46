@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import de.gurkenlabs.ldjam46.entities.Can;
 import de.gurkenlabs.ldjam46.entities.EnemyFarmer;
 import de.gurkenlabs.ldjam46.entities.Farmer;
 import de.gurkenlabs.ldjam46.entities.Pumpkin;
@@ -20,6 +21,7 @@ import de.gurkenlabs.litiengine.environment.Environment;
 import de.gurkenlabs.litiengine.environment.EnvironmentListener;
 import de.gurkenlabs.litiengine.environment.PropMapObjectLoader;
 import de.gurkenlabs.litiengine.gui.GuiProperties;
+import de.gurkenlabs.litiengine.gui.SpeechBubble;
 import de.gurkenlabs.litiengine.gui.SpeechBubbleAppearance;
 import de.gurkenlabs.litiengine.resources.Resources;
 
@@ -32,13 +34,12 @@ public final class GameManager {
   }
 
   public enum Day {
-    Monday(1, "Howdy partner, let's learn how to farm, aii.."),
+    Monday(1, ""),
     Tuesday(2, "Well that just dills my pickle!"),
     Wednesday(3, "These farmers are nuttier than a squirrel turd!"),
     Thursday(4, "I gotta hit the bushes."),
-    Friday(5, "I’m as busy as a one-legged cat in a sandbox!"),
-    Saturday(6, "Don't put your cart before your horse."),
-    Sunday(7, "Today I'm happy as a dead pig in the sunshine!");
+    Friday(5, "Don't put your cart before your horse."),
+    Saturday(6, "Today I'm happy as a dead pig in the sunshine!");
 
     private final String description;
     private final int day;
@@ -69,7 +70,6 @@ public final class GameManager {
       case Friday:
         return Saturday;
       case Saturday:
-        return Sunday;
       default:
         return null;
       }
@@ -79,6 +79,8 @@ public final class GameManager {
   public static final Font GUI_FONT = Resources.fonts().get("fsex300.ttf").deriveFont(10f);
   public static final Font SPEECHBUBBLE_FONT = GUI_FONT.deriveFont(6f);
   public static final SpeechBubbleAppearance SPEECHBUBBLE_APPEARANCE = new SpeechBubbleAppearance(Color.BLACK, new Color(255, 255, 255, 200), Color.BLACK, 2);
+
+  public static float INGAME_RENDER_SCALE = 4.001f;
 
   public static final String MAP_PLAYGROUND = "playground";
 
@@ -99,17 +101,22 @@ public final class GameManager {
   private static long lastLoaded;
 
   private static boolean levelFailed;
+  private static boolean pumpkinCountVisible;
+  private static boolean clockVisible;
+
+  private static boolean tutorialActive;
+  private static boolean tutorialEnding;
+  private static boolean endingFaded;
 
   // TODO: End screen after every day
   // TODO: track score (alive pumpkins * life) between levels
   static {
-    maps.put(Day.Monday, "playground");
+    maps.put(Day.Monday, "monday");
     maps.put(Day.Tuesday, "tuesday");
     maps.put(Day.Wednesday, "wednesday");
-    maps.put(Day.Thursday, "playground");
+    maps.put(Day.Thursday, "thursday");
     maps.put(Day.Friday, "playground");
     maps.put(Day.Saturday, "playground");
-    maps.put(Day.Sunday, "playground");
 
     spawnEvents.put(MAP_PLAYGROUND, new ArrayList<>());
     spawnEvents.get(MAP_PLAYGROUND).add(new EnemyFarmerSpawnEvent("enemy", 5000));
@@ -137,6 +144,9 @@ public final class GameManager {
 
     CreatureMapObjectLoader.registerCustomCreatureType(Farmer.class);
     PropMapObjectLoader.registerCustomPropType(Pumpkin.class);
+    PropMapObjectLoader.registerCustomPropType(Can.class);
+
+    Game.world().camera().setClampToMap(true);
 
     Game.world().addListener(new EnvironmentListener() {
       @Override
@@ -169,42 +179,59 @@ public final class GameManager {
         grid.setAllowCuttingCorners(false);
         grids.put(e.getMap().getName(), grid);
       };
+
+      @Override
+      public void loaded(Environment e) {
+        if (e != null && e.getMap().getName().equals("monday")) {
+          pumpkinCountVisible = false;
+          clockVisible = false;
+
+          Farmer.instance().firstRefillEver = true;
+        }
+
+        if (e != null) {
+          Game.world().camera().setFocus(e.getCenter());
+          endingFaded = false;
+          tutorialEnding = false;
+
+          Farmer.instance().setHasCan(false);
+        }
+      };
     });
 
     Game.loop().attach(GameManager::update);
   }
 
   public static void levelTransition() {
+    Day day;
     if (currentDay == null) {
-      currentDay = Day.Monday;
+      day = Day.Monday;
     } else {
-      currentDay = currentDay.getNext();
+      day = currentDay.getNext();
     }
 
     // TODO currentDay null -> transition to menu screen
 
-    Farmer.instance().getFartAbility().setEnabled(currentDay.getDay() >= Day.Monday.getDay());
-
-    loadCurrentDay();
+    loadDay(day);
   }
 
-  public static synchronized void loadCurrentDay() {
+  public static synchronized void loadDay(Day day) {
     if (state == GameState.LOADING) {
       return;
     }
 
     state = GameState.LOADING;
 
-    String currentMap = maps.get(currentDay);
+    final String currentMap = maps.get(day);
 
     Game.window().getRenderComponent().fadeOut(1000);
     Game.loop().perform(1000, () -> {
       currentTime = null;
       ingameStartedTick = 0;
-      if (Game.world().environment() != null && Game.world().environment().getMap().getName().equals(maps.get(currentDay))) {
+      if (Game.world().environment() != null && Game.world().environment().getMap().getName().equals(currentMap)) {
 
         Game.world().environment().remove(Farmer.instance());
-        Game.world().reset(maps.get(currentDay));
+        Game.world().reset(currentMap);
       }
 
       if (spawnEvents.containsKey(currentMap)) {
@@ -213,7 +240,10 @@ public final class GameManager {
         }
       }
 
-      Game.world().loadEnvironment(maps.get(currentDay));
+      Game.world().loadEnvironment(currentMap);
+      currentDay = day;
+
+      Farmer.instance().getFartAbility().setEnabled(day.getDay() >= Day.Wednesday.getDay());
       Game.world().environment().getAmbientLight().setColor(new Color(51, 51, 255, 50));
 
       Game.window().getRenderComponent().fadeIn(1000);
@@ -223,11 +253,73 @@ public final class GameManager {
         lastLoaded = Game.loop().getTicks();
       });
 
+      if (currentDay == Day.Monday) {
+        Game.loop().perform(3000, () -> {
+          Game.world().camera().setZoom(2, 3000);
+        });
+      }
+
       Game.loop().perform(6000, () -> {
-        ingameStartedTick = Game.loop().getTicks();
-        state = GameState.INGAME;
+        if (currentDay == Day.Monday) {
+          // TUTORIAL
+          tutorialActive = true;
+
+          Game.loop().perform(1000, () -> {
+            tutorial("Howdy partner, let's learn how to farm, aii!").addListener(() -> {
+              tutorial("Today I have to harvest 2 pumpkins!").addListener(() -> {
+                pumpkinCountVisible = true;
+
+                tutorial("I gotta keep ma pumpkins alive!").addListener(() -> {
+                  tutorial("Pumpkins are harvested at 6:00 PM!").addListener(() -> {
+                    clockVisible = true;
+
+                    tutorial("Let me grab ma water can first!").addListener(() -> {
+                      Game.world().camera().setZoom(1, 2000);
+                      Game.loop().perform(2000, () -> {
+                        ingameStartedTick = Game.loop().getTicks();
+                        state = GameState.INGAME;
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        } else {
+          ingameStartedTick = Game.loop().getTicks();
+          state = GameState.INGAME;
+        }
       });
     });
+  }
+
+  private static void endTutorial() {
+    tutorialEnding = true;
+    state = GameState.LOCKED;
+    Game.world().camera().setFocus(Farmer.instance().getCenter());
+
+    Game.loop().perform(2000, () -> {
+      Game.world().camera().setZoom(1.5f, 2000);
+    });
+
+    Game.loop().perform(4000, () -> {
+      tutorial("Seems like you got it in you!").addListener(() -> {
+        Game.window().getRenderComponent().fadeOut(1000);
+        Game.loop().perform(1000, () -> {
+          endingFaded = true;
+          Game.window().getRenderComponent().fadeIn(1000);
+          Game.world().camera().setZoom(1, 2000);
+          Game.loop().perform(5000, () -> {
+            levelTransition();
+          });
+        });
+      });
+    });
+    // FORCE 6PM
+  }
+
+  private static SpeechBubble tutorial(String text) {
+    return SpeechBubble.create(Farmer.instance(), text, SPEECHBUBBLE_APPEARANCE, SPEECHBUBBLE_FONT);
   }
 
   public static AStarGrid getCurrentGrid() {
@@ -258,10 +350,21 @@ public final class GameManager {
     handleEnemyFarmerSpawns();
 
     handleDayTime();
+
+    if (currentDay == Day.Monday && !tutorialEnding) {
+      handleAllPumpkinsWatered();
+    }
+  }
+
+  private static void handleAllPumpkinsWatered() {
+
+    if (Game.world().environment().getEntities(Pumpkin.class, p -> !p.wasWatered()).isEmpty()) {
+      endTutorial();
+    }
   }
 
   private static void handleDayTime() {
-    if (getState() != GameState.INGAME) {
+    if (getState() != GameState.INGAME && !isTutorialActive()) {
       return;
     }
 
@@ -273,21 +376,26 @@ public final class GameManager {
     final double HOUR_LENGTH = DAY_LENGTH_IN_MS / (ENDING - STARTING);
     final double MINUTE_LENGTH = DAY_LENGTH_IN_MS / (ENDING - STARTING) / 60;
 
-    // time in ms
-    long elapsed = ingameStartedTick != 0 ? Game.time().since(ingameStartedTick) : 0;
+    if (endingFaded) {
+      currentHour = 18;
+      currentMinutes = 0;
+    } else {
+      // time in ms
+      long elapsed = ingameStartedTick != 0 ? Game.time().since(ingameStartedTick) : 0;
 
-    int hour = (int) (elapsed / HOUR_LENGTH) + STARTING % 24;
-    currentMinutes = (int) (elapsed % HOUR_LENGTH / MINUTE_LENGTH);
+      int hour = (int) (elapsed / HOUR_LENGTH) + STARTING % 24;
+      currentMinutes = (int) (elapsed % HOUR_LENGTH / MINUTE_LENGTH);
 
-    if (hour > currentHour) {
-      adjustAmbientLight(hour);
+      if (hour > currentHour) {
+        adjustAmbientLight(hour);
+      }
+
+      currentHour = hour;
     }
-
-    currentHour = hour;
 
     String ampm = currentHour >= 12 ? "PM" : "AM";
 
-    if (currentHour == ENDING && currentMinutes > 0 || currentHour > ENDING) {
+    if (!endingFaded && (currentHour == ENDING && currentMinutes > 0 || currentHour > ENDING)) {
       state = GameState.LOCKED;
       // TODO show result and either reload current map or transition to the next level
       levelTransition();
@@ -391,7 +499,7 @@ public final class GameManager {
 
       Game.loop().perform(5000, () -> {
         levelFailed = false;
-        loadCurrentDay();
+        loadDay(currentDay);
       });
     } else {
       // TODO pumpkin died events
@@ -400,5 +508,17 @@ public final class GameManager {
 
   public static boolean isLevelFailed() {
     return levelFailed;
+  }
+
+  public static boolean isPumpkinCountVisible() {
+    return pumpkinCountVisible;
+  }
+
+  public static boolean isTutorialActive() {
+    return tutorialActive;
+  }
+
+  public static boolean isClockVisible() {
+    return clockVisible;
   }
 }

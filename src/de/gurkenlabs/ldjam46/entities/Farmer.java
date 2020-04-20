@@ -14,6 +14,7 @@ import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.EntityInfo;
 import de.gurkenlabs.litiengine.entities.MapArea;
 import de.gurkenlabs.litiengine.entities.MovementInfo;
+import de.gurkenlabs.litiengine.entities.Trigger;
 import de.gurkenlabs.litiengine.gui.SpeechBubble;
 import de.gurkenlabs.litiengine.physics.IMovementController;
 
@@ -31,6 +32,7 @@ public class Farmer extends Creature {
   private final FartAbility fartAbility = new FartAbility(this);
 
   private long lastWaterRefill;
+  private boolean hasCan;
 
   private Farmer() {
     this.onMoved(new WalkDustSpawner());
@@ -45,15 +47,27 @@ public class Farmer extends Creature {
   }
 
   private boolean speechbubbleActive;
+  private boolean grabSpeechbubbleActive;
+  public boolean firstRefillEver = true;
 
   @Action()
   public void use() {
+    if (!this.hasCan()) {
+      Trigger trigger = Game.world().environment().interact(this);
+    }
+
     if (Game.time().since(this.lastWaterRefill) > WATER_REFILL_DELAY
         && this.waterAbility.getCharges().get() < this.waterAbility.getCharges().getMax()) {
       Collection<MapArea> refillAreas = Game.world().environment().getByTag(MapArea.class, "refillwater");
       for (MapArea area : refillAreas) {
         if (area.getBoundingBox().intersects(this.getCollisionBox())) {
           this.waterAbility.getCharges().setToMax();
+          if (firstRefillEver) {
+            SpeechBubble.create(this, "Hurry! The pumpkins need water!",
+                GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
+          }
+
+          firstRefillEver = false;
           System.out.println("water refilled");
         }
       }
@@ -61,14 +75,22 @@ public class Farmer extends Creature {
 
     if (this.waterAbility.canCast()) {
       this.waterAbility.cast();
-    } else if (!this.waterAbility.isOnCooldown() && this.waterAbility.getCharges().get() == 0
+    } else if (this.hasCan() && !this.waterAbility.isOnCooldown() && this.waterAbility.getCharges().get() == 0
         && !speechbubbleActive) {
 
-      SpeechBubble bubble = SpeechBubble.create(this, "need to refill ma can",
+      String text = firstRefillEver ? "I Need to use the fountain to refill ma can!" : "Need to refill ma can!";
+      SpeechBubble bubble = SpeechBubble.create(this, text,
           GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
       speechbubbleActive = true;
       bubble.addListener(() -> {
         speechbubbleActive = false;
+      });
+    } else if (!this.hasCan() && !grabSpeechbubbleActive) {
+      SpeechBubble bubble = SpeechBubble.create(this, "I need to grab ma can first!",
+          GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
+      grabSpeechbubbleActive = true;
+      bubble.addListener(() -> {
+        grabSpeechbubbleActive = false;
       });
     }
   }
@@ -89,5 +111,13 @@ public class Farmer extends Creature {
   @Override
   protected IMovementController createMovementController() {
     return new FarmerController(this);
+  }
+
+  public boolean hasCan() {
+    return hasCan;
+  }
+
+  public void setHasCan(boolean hasCan) {
+    this.hasCan = hasCan;
   }
 }
