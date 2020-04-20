@@ -76,7 +76,7 @@ public class Pumpkin extends Prop implements IUpdateable {
 
     System.out.println("harvest " + this.getMapId());
     Game.world().environment().remove(this);
-    Game.audio().playSound("harvest.ogg", this);
+    Game.audio().playSound("harvest.ogg");
 
     Prop harvestedPumpkin = new Prop("pumpkin2");
     harvestedPumpkin.setSize(22, 18);

@@ -36,18 +36,20 @@ public final class GameManager {
   }
 
   public enum Day {
-    Monday(1, ""),
-    Tuesday(2, "Well that just dills my pickle!"),
-    Wednesday(3, "These farmers are nuttier than a squirrel turd!"),
-    Thursday(4, "I gotta hit the bushes."),
-    Friday(5, "Don't put your cart before your horse."),
-    Saturday(6, "Today I'm happy as a dead pig in the sunshine!");
+    Monday(1, 2.0, ""),
+    Tuesday(2, 1.6, "Well that just dills my pickle!"),
+    Wednesday(3, 2.0, "These farmers are nuttier than a squirrel turd!"),
+    Thursday(4, 2.0, "I gotta hit the bushes."),
+    Friday(5, 2.0, "Don't put your cart before your horse."),
+    Saturday(6, 2.0, "Today I'm happy as a dead pig in the sunshine!");
 
     private final String description;
     private final int day;
+    private final double length;
 
-    private Day(int day, String description) {
+    private Day(int day, double length, String description) {
       this.day = day;
+      this.length = length;
       this.description = description;
     }
 
@@ -57,6 +59,10 @@ public final class GameManager {
 
     public int getDay() {
       return this.day;
+    }
+
+    public double getLength() {
+      return this.length;
     }
 
     public Day getNext() {
@@ -425,7 +431,7 @@ public final class GameManager {
     final int STARTING = 6;
     final int ENDING = 18;
 
-    final double DAY_LENGTH = 2.0; // minutes
+    final double DAY_LENGTH = currentDay.getLength(); // minutes
     final double DAY_LENGTH_IN_MS = DAY_LENGTH * 60 * 1000;
     final double HOUR_LENGTH = DAY_LENGTH_IN_MS / (ENDING - STARTING);
     final double MINUTE_LENGTH = DAY_LENGTH_IN_MS / (ENDING - STARTING) / 60;
