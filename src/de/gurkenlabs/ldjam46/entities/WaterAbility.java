@@ -18,12 +18,10 @@ public class WaterAbility extends Ability {
 
   private RangeAttribute<Integer> charges = new RangeAttribute<>(5, 0, 2);
 
-  // TODO: refill
   WaterAbility(Farmer farmer) {
     super(farmer);
 
     this.addEffect(new WaterEffect(this));
-    this.addEffect(new WaterSplashEffect(this));
     // TODO animation effect
     // TODO sound effect
   }
@@ -85,6 +83,9 @@ public class WaterAbility extends Ability {
       System.out.println("pumpkin healed");
       WaterAbility.this.charges.modifyBaseValue(new AttributeModifier<>(Modification.SUBSTRACT, 1));
 
+      WaterSplashEmitter splash = new WaterSplashEmitter(Farmer.instance());
+      Game.world().environment().add(splash);
+
       Farmer.instance().movementBlocked = true;
       Game.loop().perform(700, () -> {
         Farmer.instance().movementBlocked = false;
@@ -94,18 +95,6 @@ public class WaterAbility extends Ability {
     @Override
     protected boolean customTarget(ICombatEntity entity) {
       return entity instanceof Pumpkin && !entity.isDead();
-    }
-  }
-
-  private static class WaterSplashEffect extends Effect {
-    protected WaterSplashEffect(Ability ability) {
-      super(ability, EffectTarget.EXECUTINGENTITY);
-    }
-
-    @Override
-    protected void apply(ICombatEntity entity) {
-      WaterSplashEmitter splash = new WaterSplashEmitter(entity);
-      Game.world().environment().add(splash);
     }
   }
 }
