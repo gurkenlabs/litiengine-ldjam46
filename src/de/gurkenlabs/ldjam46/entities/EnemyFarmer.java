@@ -1,7 +1,5 @@
 package de.gurkenlabs.ldjam46.entities;
 
-import java.awt.Color;
-
 import de.gurkenlabs.ldjam46.gfx.SmellEmitter;
 import de.gurkenlabs.ldjam46.gfx.WalkDustSpawner;
 import de.gurkenlabs.litiengine.Align;
@@ -15,7 +13,6 @@ import de.gurkenlabs.litiengine.entities.ICollisionEntity;
 import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.entities.Spawnpoint;
 import de.gurkenlabs.litiengine.environment.Environment;
-import de.gurkenlabs.litiengine.graphics.CreatureShadowImageEffect;
 import de.gurkenlabs.litiengine.graphics.animation.IEntityAnimationController;
 import de.gurkenlabs.litiengine.physics.IMovementController;
 import de.gurkenlabs.litiengine.util.geom.GeometricUtilities;
@@ -62,12 +59,7 @@ public class EnemyFarmer extends Creature {
 
   @Override
   protected IEntityAnimationController<?> createAnimationController() {
-    IEntityAnimationController<?> controller = super.createAnimationController();
-
-    CreatureShadowImageEffect effect = new CreatureShadowImageEffect(this, new Color(24, 30, 28, 100));
-    effect.setOffsetY(1);
-    controller.add(effect);
-
+    IEntityAnimationController<?> controller = new EnemyFarmerAnimationController(this);
     return controller;
   }
 

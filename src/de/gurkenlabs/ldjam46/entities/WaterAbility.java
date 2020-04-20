@@ -101,6 +101,8 @@ public class WaterAbility extends Ability {
       entity.animations().add(new OverlayPixelsImageEffect(120, new Color(255, 255, 255, 170)));
       Game.loop().perform(130, () -> entity.animations().add(new OverlayPixelsImageEffect(120, new Color(16, 84, 167, 170))));
 
+      Game.audio().playSound("water.ogg");
+
       Farmer.instance().movementBlocked = true;
       Game.loop().perform(700, () -> {
         Farmer.instance().movementBlocked = false;

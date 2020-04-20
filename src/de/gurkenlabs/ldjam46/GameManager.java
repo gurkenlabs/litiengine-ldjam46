@@ -140,12 +140,28 @@ public final class GameManager {
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 110000));
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 100000));
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 105000));
+
+    spawnEvents.put(Day.Friday.name().toLowerCase(), new ArrayList<>());
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 5000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy3", 15000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 30000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy3", 50000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 60000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 60000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 60000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 70000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy3", 80000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 90000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 100000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 110000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 100000));
+    spawnEvents.get(Day.Friday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy3", 105000));
   }
 
   public static void init() {
     GuiProperties.setDefaultFont(GUI_FONT);
     Game.audio().setListenerLocationCallback((e) -> Farmer.instance().getCenter());
-    Game.audio().setMaxDistance(300);
+    Game.audio().setMaxDistance(1000);
 
     CreatureMapObjectLoader.registerCustomCreatureType(Farmer.class);
     PropMapObjectLoader.registerCustomPropType(Pumpkin.class);
@@ -184,7 +200,7 @@ public final class GameManager {
         }
         grid.setAllowCuttingCorners(false);
         grids.put(e.getMap().getName(), grid);
-        
+
         e.getAmbientLight().setColor(new Color(233, 176, 53, 39));
       };
 
@@ -218,7 +234,12 @@ public final class GameManager {
     }
     Day day;
     if (currentDay == null) {
-      day = Day.Monday;
+      if (Game.isDebug()) {
+        // CHANGE THIS TO TEST OTHER LEVELS AND SKIPP ALL OTHES
+        day = Day.Friday;
+      } else {
+        day = Day.Monday;
+      }
     } else {
       day = currentDay.getNext();
     }
@@ -267,7 +288,14 @@ public final class GameManager {
         Game.loop().perform(1000, () -> {
           state = GameState.LOCKED;
           lastLoaded = Game.loop().getTicks();
+
         });
+
+        if (currentDay != Day.Saturday) {
+          Game.loop().perform(2000, () -> {
+            Game.audio().playSound("rooster.wav");
+          });
+        }
 
         if (currentDay == Day.Monday || currentDay == Day.Thursday) {
           Game.loop().perform(3000, () -> {
@@ -334,6 +362,11 @@ public final class GameManager {
               });
             });
           } else {
+
+            if (currentDay == Day.Friday) {
+              Farmer.instance().getFartAbility().setEnabled(true);
+            }
+
             ingameStartedTick = Game.loop().getTicks();
             state = GameState.INGAME;
             transitioning = false;
@@ -347,8 +380,20 @@ public final class GameManager {
 
   private static int harvestPumpkin() {
     int delay = 2000;
-    if (levelFailed || Game.world().environment() == null) {
+    if (Game.world().environment() == null) {
       return delay;
+    }
+
+    if (levelFailed) {
+      int i = 0;
+      for (Pumpkin pumpkin : Game.world().environment().getEntities(Pumpkin.class, p -> !p.isDead())) {
+        i++;
+        Game.loop().perform(i * 300, () -> {
+          pumpkin.die();
+        });
+      }
+
+      return delay + i * 500;
     }
 
     System.out.println("harvesting...");
@@ -571,7 +616,7 @@ public final class GameManager {
   }
 
   public static boolean isClockVisible() {
-    return clockVisible;
+    return clockVisible || currentDay != null && currentDay.getDay() > Day.Monday.getDay();
   }
 
   public static boolean isHarvesting() {

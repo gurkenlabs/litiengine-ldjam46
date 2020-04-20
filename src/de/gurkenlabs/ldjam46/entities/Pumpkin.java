@@ -11,7 +11,6 @@ import de.gurkenlabs.litiengine.IUpdateable;
 import de.gurkenlabs.litiengine.attributes.AttributeModifier;
 import de.gurkenlabs.litiengine.attributes.Modification;
 import de.gurkenlabs.litiengine.entities.AnimationInfo;
-import de.gurkenlabs.litiengine.entities.EntityActionMap;
 import de.gurkenlabs.litiengine.entities.LightSource;
 import de.gurkenlabs.litiengine.entities.Prop;
 import de.gurkenlabs.litiengine.environment.Environment;
@@ -43,8 +42,10 @@ public class Pumpkin extends Prop implements IUpdateable {
     super.loaded(environment);
 
     // first and second level
-    if (GameManager.getCurrentDay() == null || GameManager.getCurrentDay() == Day.Monday) {
+    if (environment.getMap().getName().equals("monday") || environment.getMap().getName().equals("tuesday")) {
       this.getHitPoints().setBaseValue(75);
+    } else if (environment.getMap().getName().equals("friday")) {
+      this.getHitPoints().setToMax();
     } else {
       this.getHitPoints().setBaseValue(Game.random().nextInt(75, 100));
     }
