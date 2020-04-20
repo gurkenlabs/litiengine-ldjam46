@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="26" name="wednesday">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="26">
  <properties>
   <property name="GRAVITY" type="int" value="0"/>
-  <property name="minPumpkins" value="4"/>
+  <property name="minPumpkins" value="5"/>
  </properties>
  <tileset firstgid="1" source="tiles-greenhouse.tsx"/>
  <layer id="1" name="ground" width="30" height="17">
@@ -158,7 +158,7 @@
     <property name="tags" value="refillwater"/>
    </properties>
   </object>
-  <object id="30" type="AREA" x="189" y="107" width="55" height="43">
+  <object id="30" type="AREA" x="174" y="84" width="55" height="43">
    <properties>
     <property name="tags" value="refillwater"/>
    </properties>
@@ -222,7 +222,7 @@
     <property name="spritesheetName" value="pumpkin"/>
    </properties>
   </object>
-  <object id="10" type="PROP" x="200" y="95" width="30" height="48">
+  <object id="10" type="PROP" x="185" y="72" width="30" height="48">
    <properties>
     <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
