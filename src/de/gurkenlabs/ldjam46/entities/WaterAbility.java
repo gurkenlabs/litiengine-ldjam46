@@ -13,6 +13,7 @@ import de.gurkenlabs.litiengine.attributes.Modification;
 import de.gurkenlabs.litiengine.attributes.RangeAttribute;
 import de.gurkenlabs.litiengine.entities.ICombatEntity;
 import de.gurkenlabs.litiengine.entities.IEntity;
+import de.gurkenlabs.litiengine.entities.LightSource;
 import de.gurkenlabs.litiengine.entities.RelativeEntityComparator;
 import de.gurkenlabs.litiengine.graphics.OverlayPixelsImageEffect;
 
@@ -85,6 +86,14 @@ public class WaterAbility extends Ability {
 
       System.out.println("pumpkin healed");
       WaterAbility.this.charges.modifyBaseValue(new AttributeModifier<>(Modification.SUBSTRACT, 1));
+
+      for (LightSource light : Game.world().environment().getByTag(LightSource.class, "fountainlight")) {
+        if (WaterAbility.this.charges.get() == 0) {
+          light.activate();
+        } else {
+          light.deactivate();
+        }
+      }
 
       WaterSplashEmitter splash = new WaterSplashEmitter(Farmer.instance());
       Game.world().environment().add(splash);

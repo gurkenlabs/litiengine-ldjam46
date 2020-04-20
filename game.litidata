@@ -1087,11 +1087,12 @@
       <property name="lightShape" value="ellipse"/>
      </properties>
     </object>
-    <object id="29" name="fountainlight" type="LIGHTSOURCE" x="59" y="105" width="55" height="62">
+    <object id="29" name="fountainlight" type="LIGHTSOURCE" x="56" y="107" width="62" height="62">
      <properties>
       <property name="lightActive" type="bool" value="false"/>
       <property name="lightColor" type="color" value="#ffffff"/>
       <property name="lightShape" value="ellipse"/>
+      <property name="tags" value="fountainlight"/>
      </properties>
     </object>
     <object id="30" type="LIGHTSOURCE" x="216" y="216" width="33" height="31">
@@ -1733,6 +1734,14 @@
     <object id="33" type="COLLISIONBOX" x="16" y="214" width="51" height="42">
      <properties>
       <property name="collisionType" value="STATIC"/>
+     </properties>
+    </object>
+    <object id="36" name="fountainlight" type="LIGHTSOURCE" x="213" y="112" width="62" height="62">
+     <properties>
+      <property name="lightActive" type="bool" value="false"/>
+      <property name="lightColor" type="color" value="#ffffff"/>
+      <property name="lightShape" value="ellipse"/>
+      <property name="tags" value="fountainlight"/>
      </properties>
     </object>
    </objectgroup>
@@ -2495,6 +2504,14 @@
       <property name="lightShape" value="ellipse"/>
      </properties>
     </object>
+    <object id="18" name="fountainlight" type="LIGHTSOURCE" x="41" y="37" width="62" height="62">
+     <properties>
+      <property name="lightActive" type="bool" value="false"/>
+      <property name="lightColor" type="color" value="#ffffff"/>
+      <property name="lightShape" value="ellipse"/>
+      <property name="tags" value="fountainlight"/>
+     </properties>
+    </object>
    </objectgroup>
   </map>
   <map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="26" name="wednesday">
@@ -2907,6 +2924,22 @@
     <object id="25" type="COLLISIONBOX" x="87" y="201" width="16" height="13">
      <properties>
       <property name="collisionType" value="STATIC"/>
+     </properties>
+    </object>
+    <object id="36" name="fountainlight" type="LIGHTSOURCE" x="168" y="70" width="62" height="62">
+     <properties>
+      <property name="lightActive" type="bool" value="false"/>
+      <property name="lightColor" type="color" value="#ffffff"/>
+      <property name="lightShape" value="ellipse"/>
+      <property name="tags" value="fountainlight"/>
+     </properties>
+    </object>
+    <object id="37" name="fountainlight" type="LIGHTSOURCE" x="183" y="195" width="62" height="62">
+     <properties>
+      <property name="lightActive" type="bool" value="false"/>
+      <property name="lightColor" type="color" value="#ffffff"/>
+      <property name="lightShape" value="ellipse"/>
+      <property name="tags" value="fountainlight"/>
      </properties>
     </object>
    </objectgroup>

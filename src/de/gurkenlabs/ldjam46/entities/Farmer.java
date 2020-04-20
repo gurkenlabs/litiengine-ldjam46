@@ -69,20 +69,20 @@ public class Farmer extends Creature {
       for (MapArea area : refillAreas) {
         if (area.getBoundingBox().intersects(this.getCollisionBox())) {
           this.waterAbility.getCharges().setToMax();
+
+          for (LightSource light : Game.world().environment().getByTag(LightSource.class, "fountainlight")) {
+            light.deactivate();
+          }
+
           if (firstRefillEver) {
             SpeechBubble.create(this, "Hurry! Mah pumpkins need water!",
                 GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
 
-            if (firstRefillEver) {
-              LightSource light = Game.world().environment().getLightSource("fountainlight");
-              light.deactivate();
-
-              Game.loop().perform(500, () -> {
-                for (LightSource l : Game.world().environment().getByTag(LightSource.class, "pumpkinlight")) {
-                  l.activate();
-                }
-              });
-            }
+            Game.loop().perform(500, () -> {
+              for (LightSource l : Game.world().environment().getByTag(LightSource.class, "pumpkinlight")) {
+                l.activate();
+              }
+            });
           }
 
           firstRefillEver = false;
@@ -100,8 +100,7 @@ public class Farmer extends Creature {
       SpeechBubble bubble = SpeechBubble.create(this, text,
           GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
       speechbubbleActive = true;
-      if (firstRefillEver) {
-        LightSource light = Game.world().environment().getLightSource("fountainlight");
+      for (LightSource light : Game.world().environment().getByTag(LightSource.class, "fountainlight")) {
         light.activate();
       }
 

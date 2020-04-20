@@ -547,5 +547,13 @@
     <property name="lightShape" value="ellipse"/>
    </properties>
   </object>
+  <object id="18" name="fountainlight" type="LIGHTSOURCE" x="41" y="37" width="62" height="62">
+   <properties>
+    <property name="lightActive" type="bool" value="false"/>
+    <property name="lightColor" type="color" value="#ffffff"/>
+    <property name="lightShape" value="ellipse"/>
+    <property name="tags" value="fountainlight"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

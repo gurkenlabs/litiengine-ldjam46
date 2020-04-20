@@ -539,11 +539,12 @@
     <property name="lightShape" value="ellipse"/>
    </properties>
   </object>
-  <object id="29" name="fountainlight" type="LIGHTSOURCE" x="59" y="105" width="55" height="62">
+  <object id="29" name="fountainlight" type="LIGHTSOURCE" x="56" y="107" width="62" height="62">
    <properties>
     <property name="lightActive" type="bool" value="false"/>
     <property name="lightColor" type="color" value="#ffffff"/>
     <property name="lightShape" value="ellipse"/>
+    <property name="tags" value="fountainlight"/>
    </properties>
   </object>
   <object id="30" type="LIGHTSOURCE" x="216" y="216" width="33" height="31">

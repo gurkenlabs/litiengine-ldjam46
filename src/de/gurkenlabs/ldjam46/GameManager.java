@@ -439,7 +439,7 @@ public final class GameManager {
       handleAllPumpkinsWatered();
     }
   }
-
+  
   private static void handleAllPumpkinsWatered() {
 
     if (Game.world().environment().getEntities(Pumpkin.class, p -> !p.wasWatered()).isEmpty()) {

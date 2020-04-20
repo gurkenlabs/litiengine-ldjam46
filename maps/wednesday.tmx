@@ -411,6 +411,22 @@
     <property name="collisionType" value="STATIC"/>
    </properties>
   </object>
+  <object id="36" name="fountainlight" type="LIGHTSOURCE" x="168" y="70" width="62" height="62">
+   <properties>
+    <property name="lightActive" type="bool" value="false"/>
+    <property name="lightColor" type="color" value="#ffffff"/>
+    <property name="lightShape" value="ellipse"/>
+    <property name="tags" value="fountainlight"/>
+   </properties>
+  </object>
+  <object id="37" name="fountainlight" type="LIGHTSOURCE" x="183" y="195" width="62" height="62">
+   <properties>
+    <property name="lightActive" type="bool" value="false"/>
+    <property name="lightColor" type="color" value="#ffffff"/>
+    <property name="lightShape" value="ellipse"/>
+    <property name="tags" value="fountainlight"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer id="4" name="walls-overlay1" width="30" height="17">
   <data encoding="csv">
