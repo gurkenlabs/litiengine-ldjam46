@@ -11,6 +11,7 @@ import de.gurkenlabs.ldjam46.entities.Can;
 import de.gurkenlabs.ldjam46.entities.EnemyFarmer;
 import de.gurkenlabs.ldjam46.entities.Farmer;
 import de.gurkenlabs.ldjam46.entities.Pumpkin;
+import de.gurkenlabs.ldjam46.gui.Hud;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.CollisionBox;
 import de.gurkenlabs.litiengine.entities.LightSource;
@@ -294,6 +295,11 @@ public final class GameManager {
 
                       Game.world().camera().setZoom(1, 2000);
                       Game.loop().perform(2000, () -> {
+                        Hud.displayControl1 = true;
+                        Game.loop().perform(4000, () -> {
+                          Hud.displayControl1 = false;
+                        });
+
                         ingameStartedTick = Game.loop().getTicks();
                         state = GameState.INGAME;
                         transitioning = false;

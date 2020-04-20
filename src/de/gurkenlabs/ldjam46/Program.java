@@ -1,4 +1,4 @@
-package de.gurkenlabs.ldjam46;
+ package de.gurkenlabs.ldjam46;
 
 import de.gurkenlabs.ldjam46.gui.IngameScreen;
 import de.gurkenlabs.ldjam46.gui.MenuScreen;

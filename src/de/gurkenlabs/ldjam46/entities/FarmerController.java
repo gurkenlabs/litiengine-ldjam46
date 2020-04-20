@@ -11,6 +11,10 @@ public class FarmerController extends KeyboardEntityController<Farmer> {
 
   public FarmerController(Farmer entity) {
     super(entity);
+    this.addUpKey(KeyEvent.VK_UP);
+    this.addDownKey(KeyEvent.VK_DOWN);
+    this.addLeftKey(KeyEvent.VK_LEFT);
+    this.addRightKey(KeyEvent.VK_RIGHT);
   }
 
   @Override
@@ -38,7 +42,7 @@ public class FarmerController extends KeyboardEntityController<Farmer> {
       this.getEntity().perform("use");
     }
 
-    if (keyCode.getKeyCode() == KeyEvent.VK_E) {
+    if (keyCode.getKeyCode() == KeyEvent.VK_E || keyCode.getKeyCode() == KeyEvent.VK_X) {
       this.getEntity().perform("fart");
     }
 

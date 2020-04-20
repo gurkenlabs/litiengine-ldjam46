@@ -8,6 +8,7 @@ import de.gurkenlabs.litiengine.IUpdateable;
 import de.gurkenlabs.litiengine.attributes.AttributeModifier;
 import de.gurkenlabs.litiengine.attributes.Modification;
 import de.gurkenlabs.litiengine.entities.AnimationInfo;
+import de.gurkenlabs.litiengine.entities.LightSource;
 import de.gurkenlabs.litiengine.entities.Prop;
 import de.gurkenlabs.litiengine.environment.Environment;
 
@@ -32,7 +33,7 @@ public class Pumpkin extends Prop implements IUpdateable {
 
     // first and second level
     if (GameManager.getCurrentDay() == null || GameManager.getCurrentDay() == Day.Monday) {
-      this.getHitPoints().setBaseValue(50);
+      this.getHitPoints().setBaseValue(75);
     } else {
       this.getHitPoints().setBaseValue(Game.random().nextInt(75, 100));
     }
@@ -43,6 +44,12 @@ public class Pumpkin extends Prop implements IUpdateable {
   public void water() {
     this.getHitPoints().modifyBaseValue(new AttributeModifier<>(Modification.ADD, 33));
     watered = true;
+
+    if (GameManager.getCurrentDay() == Day.Monday) {
+      for (LightSource light : Game.world().environment().getEntities(LightSource.class, e -> e.getBoundingBox().intersects(this.getBoundingBox()))) {
+        light.deactivate();
+      }
+    }
   }
 
   @Override

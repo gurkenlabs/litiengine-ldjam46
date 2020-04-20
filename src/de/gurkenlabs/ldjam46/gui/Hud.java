@@ -25,11 +25,17 @@ public class Hud extends GuiComponent {
   private static final BufferedImage DROP;
   private static final BufferedImage DROP_DISABLED;
 
+  private static final BufferedImage CONTROLS1;
+
   static {
     PUMPKIN = Imaging.scale(Resources.images().get("pumpkin-ui.png"), GameManager.INGAME_RENDER_SCALE / 2);
     DROP = Imaging.scale(Resources.images().get("drop-ui.png"), GameManager.INGAME_RENDER_SCALE / 2);
     DROP_DISABLED = Imaging.setOpacity(Imaging.scale(Resources.images().get("drop-disabled-ui.png"), GameManager.INGAME_RENDER_SCALE / 2), 0.5f);
+
+    CONTROLS1 = Resources.images().get("controls1.png");
   }
+
+  public static boolean displayControl1;
 
   public Hud() {
     super(0, 0);
@@ -49,6 +55,17 @@ public class Hud extends GuiComponent {
     this.renderCurrentLevelInfo(g);
 
     this.renderLevelEnd(g);
+
+    this.renderControls(g);
+  }
+
+  private void renderControls(Graphics2D g) {
+    if (displayControl1) {
+      double locationX = g.getClipBounds().getX() + Align.CENTER.getLocation(g.getClipBounds().getWidth(), CONTROLS1.getWidth());
+      double locationY = g.getClipBounds().getY() + Valign.MIDDLE_TOP.getLocation(g.getClipBounds().getHeight(), CONTROLS1.getHeight());
+      ImageRenderer.render(g, CONTROLS1, locationX, locationY);
+    }
+
   }
 
   private void renderLevelEnd(Graphics2D g) {
@@ -117,7 +134,7 @@ public class Hud extends GuiComponent {
     } else {
       g.setFont(GameManager.GUI_FONT.deriveFont(24f));
     }
-    
+
     g.setColor(Color.WHITE);
 
     TextRenderer.render(g, GameManager.getCurrentDay().name() + ", " + GameManager.getCurrentTime(), Align.CENTER, Valign.DOWN, 0, -PADDING);
