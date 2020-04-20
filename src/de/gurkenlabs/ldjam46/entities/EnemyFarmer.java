@@ -25,7 +25,7 @@ public class EnemyFarmer extends Creature {
   private boolean fartedOn;
 
   public EnemyFarmer(Spawnpoint spawn) {
-    super(Game.random().choose("enemyfarmer1", "enemyfarmer2"));
+    super(Game.random().choose("willy", "tilly"));
 
     this.spawn = spawn;
     this.setTeam(2);
