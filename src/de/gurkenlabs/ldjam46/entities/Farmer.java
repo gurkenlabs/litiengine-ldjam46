@@ -103,7 +103,7 @@ public class Farmer extends Creature {
     } else if (this.hasCan() && !this.waterAbility.isOnCooldown() && this.waterAbility.getCharges().get() == 0
         && !speechbubbleActive) {
 
-      String text = firstRefillEver ? "I need to use the fountain to refill ma can!" : "Need to refill ma can...";
+      String text = firstRefillEver ? "I need to use the fountain to refill ma can!" : "Need to refill mah can...";
       SpeechBubble bubble = SpeechBubble.create(this, text,
           GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
       speechbubbleActive = true;
@@ -115,7 +115,7 @@ public class Farmer extends Creature {
         speechbubbleActive = false;
       });
     } else if (!this.hasCan() && !grabSpeechbubbleActive) {
-      SpeechBubble bubble = SpeechBubble.create(this, "I need to grab ma can first!",
+      SpeechBubble bubble = SpeechBubble.create(this, "I need to grab mah can first!",
           GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
       grabSpeechbubbleActive = true;
       bubble.addListener(() -> {

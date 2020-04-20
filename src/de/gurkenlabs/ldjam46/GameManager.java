@@ -310,10 +310,10 @@ public final class GameManager {
 
             Game.loop().perform(1000, () -> {
               tutorial("Howdy partner, let's learn how to farm, aye?").addListener(() -> {
-                tutorial("Today I've got to harvest me 2 pumpkins!").addListener(() -> {
+                tutorial("Today I gotta harvest me 2 pumpkins!").addListener(() -> {
                   pumpkinCountVisible = true;
 
-                  tutorial("Gotta keep em pumpkins alive until 6:00 PM!").addListener(() -> {
+                  tutorial("Gotta keep enough pumpkins alive until 6:00 PM!").addListener(() -> {
                     clockVisible = true;
 
                     tutorial("Lemme grab mah water can first!").addListener(() -> {
@@ -342,7 +342,7 @@ public final class GameManager {
 
             Game.loop().perform(1000, () -> {
               tutorial("WATCH OUT!").addListener(() -> {
-                tutorial("Ma rivals Billy and Tilly tryna sabotage dah harvest!").addListener(() -> {
+                tutorial("Mah rivals Billy and Tilly tryna sabotage da harvest!").addListener(() -> {
                   tutorial("Let's see if I can scare dem away!").addListener(() -> {
                     Farmer.instance().getFartAbility().setEnabled(true);
 
@@ -423,7 +423,7 @@ public final class GameManager {
 
     Game.loop().perform(4000, () -> {
       tutorial("You're gettin' the hang of it!").addListener(() -> {
-        tutorial("Let's see if you can handle dah farm tomorrow...").addListener(() -> {
+        tutorial("Let's see if you can handle da farm tomorrow...").addListener(() -> {
           Game.loop().perform(1000, () -> {
             endingFaded = true;
             Game.world().camera().setZoom(1, 1000);
