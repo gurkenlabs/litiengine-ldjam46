@@ -11,6 +11,7 @@ import de.gurkenlabs.ldjam46.entities.EnemyFarmer;
 import de.gurkenlabs.ldjam46.entities.Farmer;
 import de.gurkenlabs.ldjam46.entities.Pumpkin;
 import de.gurkenlabs.litiengine.Game;
+import de.gurkenlabs.litiengine.entities.CollisionBox;
 import de.gurkenlabs.litiengine.entities.Spawnpoint;
 import de.gurkenlabs.litiengine.entities.behavior.AStarGrid;
 import de.gurkenlabs.litiengine.entities.behavior.AStarNode;
@@ -80,6 +81,7 @@ public final class GameManager {
   public static final SpeechBubbleAppearance SPEECHBUBBLE_APPEARANCE = new SpeechBubbleAppearance(Color.BLACK, new Color(255, 255, 255, 200), Color.BLACK, 2);
 
   public static final String MAP_PLAYGROUND = "playground";
+
   private static final Map<String, List<EnemyFarmerSpawnEvent>> spawnEvents = new ConcurrentHashMap<>();
   private static final Map<String, AStarGrid> grids = new ConcurrentHashMap<>();
   private static final Map<Day, String> maps = new ConcurrentHashMap<>();
@@ -103,7 +105,7 @@ public final class GameManager {
   static {
     maps.put(Day.Monday, "monday");
     maps.put(Day.Tuesday, "tuesday");
-    maps.put(Day.Wednesday, "playground");
+    maps.put(Day.Wednesday, "wednesday");
     maps.put(Day.Thursday, "playground");
     maps.put(Day.Friday, "playground");
     maps.put(Day.Saturday, "playground");
@@ -114,7 +116,18 @@ public final class GameManager {
     spawnEvents.get(MAP_PLAYGROUND).add(new EnemyFarmerSpawnEvent("enemy", 10000));
     spawnEvents.get(MAP_PLAYGROUND).add(new EnemyFarmerSpawnEvent("enemy", 15000));
     spawnEvents.get(MAP_PLAYGROUND).add(new EnemyFarmerSpawnEvent("enemy", 20000));
-    spawnEvents.get(MAP_PLAYGROUND).add(new EnemyFarmerSpawnEvent("enemy2", 30000));
+
+    spawnEvents.put(Day.Thursday.name().toLowerCase(), new ArrayList<>());
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 5000));
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 15000));
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 30000));
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 50000));
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 80000));
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 90000));
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 100000));
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 110000));
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 100000));
+    spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy2", 105000));
   }
 
   public static void init() {
@@ -139,9 +152,17 @@ public final class GameManager {
         if (spawn != null) {
           spawn.spawn(Farmer.instance());
         }
+
+        // workaround for astar grid not considering static collisionboxes
         AStarGrid grid = new AStarGrid(e.getMap().getSizeInPixels(), 8);
         for (Pumpkin pumpkin : e.getEntities(Pumpkin.class)) {
           for (AStarNode node : grid.getIntersectedNodes(pumpkin.getBoundingBox())) {
+            node.setPenalty(AStarGrid.PENALTY_STATIC_PROP);
+          }
+        }
+
+        for (CollisionBox collisionBox : e.getEntities(CollisionBox.class)) {
+          for (AStarNode node : grid.getIntersectedNodes(collisionBox.getBoundingBox())) {
             node.setPenalty(AStarGrid.PENALTY_STATIC_PROP);
           }
         }
@@ -159,7 +180,7 @@ public final class GameManager {
     } else {
       currentDay = currentDay.getNext();
     }
-    
+
     // TODO currentDay null -> transition to menu screen
 
     Farmer.instance().getFartAbility().setEnabled(currentDay.getDay() >= Day.Wednesday.getDay());
