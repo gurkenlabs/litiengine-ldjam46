@@ -1,5 +1,7 @@
 package de.gurkenlabs.ldjam46.entities;
 
+import java.awt.Color;
+
 import de.gurkenlabs.ldjam46.gfx.WaterSplashEmitter;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.abilities.Ability;
@@ -12,18 +14,17 @@ import de.gurkenlabs.litiengine.attributes.RangeAttribute;
 import de.gurkenlabs.litiengine.entities.ICombatEntity;
 import de.gurkenlabs.litiengine.entities.IEntity;
 import de.gurkenlabs.litiengine.entities.RelativeEntityComparator;
+import de.gurkenlabs.litiengine.graphics.OverlayPixelsImageEffect;
 
 @AbilityInfo(name = "WaterAbility", cooldown = 1000, range = 0, impact = 30, impactAngle = 360, value = 1, duration = 700)
 public class WaterAbility extends Ability {
 
   private RangeAttribute<Integer> charges = new RangeAttribute<>(5, 0, 2);
 
-  // TODO: refill
   WaterAbility(Farmer farmer) {
     super(farmer);
 
     this.addEffect(new WaterEffect(this));
-    this.addEffect(new WaterSplashEffect(this));
     // TODO animation effect
     // TODO sound effect
   }
@@ -85,6 +86,12 @@ public class WaterAbility extends Ability {
       System.out.println("pumpkin healed");
       WaterAbility.this.charges.modifyBaseValue(new AttributeModifier<>(Modification.SUBSTRACT, 1));
 
+      WaterSplashEmitter splash = new WaterSplashEmitter(Farmer.instance());
+      Game.world().environment().add(splash);
+
+      entity.animations().add(new OverlayPixelsImageEffect(120, new Color(255, 255, 255, 170)));
+      Game.loop().perform(130, () -> entity.animations().add(new OverlayPixelsImageEffect(120, new Color(16, 84, 167, 170))));
+
       Farmer.instance().movementBlocked = true;
       Game.loop().perform(700, () -> {
         Farmer.instance().movementBlocked = false;
@@ -94,18 +101,6 @@ public class WaterAbility extends Ability {
     @Override
     protected boolean customTarget(ICombatEntity entity) {
       return entity instanceof Pumpkin && !entity.isDead();
-    }
-  }
-
-  private static class WaterSplashEffect extends Effect {
-    protected WaterSplashEffect(Ability ability) {
-      super(ability, EffectTarget.EXECUTINGENTITY);
-    }
-
-    @Override
-    protected void apply(ICombatEntity entity) {
-      WaterSplashEmitter splash = new WaterSplashEmitter(entity);
-      Game.world().environment().add(splash);
     }
   }
 }

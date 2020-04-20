@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="26">
+<map version="1.2" tiledversion="1.3.4" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="26" name="wednesday">
  <properties>
   <property name="GRAVITY" type="int" value="0"/>
   <property name="minPumpkins" value="5"/>
@@ -168,9 +168,9 @@
   <object id="8" name="farmer" type="SPAWNPOINT" x="288" y="58" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="12" name="Props">
-  <object id="5" type="PROP" x="62" y="160" width="19" height="16">
+  <object id="5" type="PROP" x="62" y="156" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>
@@ -186,9 +186,9 @@
     <property name="spritesheetName" value="pumpkin"/>
    </properties>
   </object>
-  <object id="6" type="PROP" x="367" y="160" width="19" height="16">
+  <object id="6" type="PROP" x="367" y="151" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>
@@ -204,9 +204,9 @@
     <property name="spritesheetName" value="pumpkin"/>
    </properties>
   </object>
-  <object id="7" type="PROP" x="286" y="144" width="19" height="16">
+  <object id="7" type="PROP" x="287" y="136" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>
@@ -244,9 +244,9 @@
     <property name="spritesheetName" value="well"/>
    </properties>
   </object>
-  <object id="31" type="PROP" x="126" y="160" width="19" height="16">
+  <object id="31" type="PROP" x="126" y="159" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>
@@ -262,9 +262,9 @@
     <property name="spritesheetName" value="pumpkin"/>
    </properties>
   </object>
-  <object id="32" type="PROP" x="287" y="208" width="19" height="16">
+  <object id="32" type="PROP" x="287" y="201" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>
@@ -303,9 +303,9 @@
     <property name="collisionType" value="STATIC"/>
    </properties>
   </object>
-  <object id="12" type="PROP" x="110" y="224" width="19" height="16">
+  <object id="12" type="PROP" x="110" y="217" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>
