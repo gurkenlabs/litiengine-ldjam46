@@ -1,5 +1,6 @@
 package de.gurkenlabs.ldjam46.entities;
 
+import java.awt.Color;
 import java.util.Collection;
 
 import de.gurkenlabs.ldjam46.GameManager;
@@ -16,6 +17,7 @@ import de.gurkenlabs.litiengine.entities.LightSource;
 import de.gurkenlabs.litiengine.entities.MapArea;
 import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.entities.Trigger;
+import de.gurkenlabs.litiengine.graphics.CreatureShadowImageEffect;
 import de.gurkenlabs.litiengine.graphics.animation.Animation;
 import de.gurkenlabs.litiengine.graphics.animation.IEntityAnimationController;
 import de.gurkenlabs.litiengine.gui.SpeechBubble;
@@ -139,6 +141,10 @@ public class Farmer extends Creature {
     IEntityAnimationController<?> controller = super.createAnimationController();
     controller.add(new Animation("keeper-celebrate", true, true));
     controller.addRule(x -> GameManager.isHarvesting(), x -> "keeper-celebrate");
+
+    CreatureShadowImageEffect effect = new CreatureShadowImageEffect(this, new Color(24, 30, 28, 100));
+    effect.setOffsetY(1);
+    controller.add(effect);
     return controller;
   }
 
