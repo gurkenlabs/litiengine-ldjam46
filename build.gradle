@@ -59,14 +59,14 @@ jar {
 }
 
 launch4j {
-  mainClassName = 'de.gurkenlabs.drlepus.Program'
-  icon = 'drlepus.ico'
+  mainClassName = 'de.gurkenlabs.ldjam46.Program'
+  icon = 'game.ico'
   outputDir = 'libs'
   outfile = archivesBaseName +'.exe'
   companyName = 'gurkenlabs.de'
   version = '1.0.0'
   textVersion = 'v1.0.0'
-  copyright = '2019 gurkenlabs.de'
+  copyright = '2020 gurkenlabs.de'
   bundledJrePath = 'jre'
   jvmOptions = ['-Xms256m', '-Xmx1024m']
   cmdLine = '-release'
@@ -85,7 +85,7 @@ task copyNativeLibs(type: Copy) {
   }
 
   from('/dist/'){
-    include 'drlepus.ico'
+    include 'game.ico'
     include 'config.properties'
     // include 'steam_appid.txt'
     include 'jre/**'
