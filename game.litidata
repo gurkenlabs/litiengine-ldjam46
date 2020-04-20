@@ -2458,6 +2458,14 @@
    <image>iVBORw0KGgoAAAANSUhEUgAAADwAAAAUCAYAAADRA14pAAABR0lEQVR4Xu2TMU4DQQxF9zQ0FBScgBZxEKpUFBE9B0C5ASU9t+Ao3CHIG/3V18s4G+9SDNI+ySJev5m1nTAMGxsbG/+Z593++PN1mCJyOmvgfcwJ68xXEZcpNKyCrqgsqHp/1Q8q/YyE9PByN8r6S0csacibUdBx6F7yy/1wO4r0wFBbUNCV7wN/3NyPcWng6oJ68ydcZs3hguZesNavfAHX+OOgj6/f0yHP6Trus9aiC98H/Hx/m8IX0DpTWVBXvh6GwPC6+7qwuqCWTzf4S//sjH7nHFYD8/+guiA9o6uG6IrWmcxvuWk/Guj26bQVReReX+oLNhV+5gbhRF3vmfNb98fz9IwkhTZE/BfR8rMXqGH3MzeQ50PP+bw/nqdnfDsKOg7da/1ooOLzc0b1/sUv4OeM3vyzr545YZ05YZ05YZ05YZ35L3nYQMfvdckLAAAAAElFTkSuQmCC</image>
    <keyframes>120,120,120,500,120</keyframes>
   </sprite>
+  <sprite width="12" height="20" imageformat="PNG" name="willy-walk-down">
+   <image>iVBORw0KGgoAAAANSUhEUgAAACQAAAAUCAYAAADlep81AAAA/0lEQVR4Xu2UsQ0CMRRDbxoaCgomoEUMQkVFgegZALEBJT1bMAo7gBzw18fkknyBoDlLFveTl4tNcV03aNCXtVxtbqX5p8Ll9PV8sOe/hkIQtTJeDE/Xwkf5FGi2niSYv8pQ0X80yr+lb2kRKQCFeB/oOJomlwJFC0R5k4d1z0sL1C6I8inIfHt5Sc9ZWa/WAlQT7wOc9jtzKVC0QIjnIgC13/cqFYjyytoXebx4QLVAnxRQ51gLBACh6L7vBF+iBTBjPXcGazk+x5o0PawMxbC+APncJVjTwphzrEnTs3Gf/ItrBSAtW+PtAJ6LyZ/yTMsFnmnhm0KUVDuv+zrfAUH+jv4OX8+KAAAAAElFTkSuQmCC</image>
+   <keyframes>120,120,50</keyframes>
+  </sprite>
+  <sprite width="12" height="20" imageformat="PNG" name="willy-walk-up">
+   <image>iVBORw0KGgoAAAANSUhEUgAAACQAAAAUCAYAAADlep81AAAA2UlEQVR4Xu2UwQ2DMAxFsw+bVB2EU89V7wyA2II7W3SU7hBkJFvmyzGxStoLT/LB+Bk7oWpKFxcn0z+e2ct/Cg2fxyF/lkmC8r8uZS2Ejqa1vzVgoMNEbzTqSwNGsSHFDkCg6/rRhVr7gr5SrGmiA6L+tsjt9d59Y87R1dQegKnycQHM0Sea+vyQBAxd13gDoj668o+My5QW+uYAGJbrLmT96I4WsnroGbql9wso8wCL0gCu1fqWK6DsLUSge7afuvuQKTg/atB17LXQTo2/u2r3KhWRHqxjvgIPHp/MQ5BJpQAAAABJRU5ErkJggg==</image>
+   <keyframes>120,120,50</keyframes>
+  </sprite>
  </spriteSheets>
  <tilesets>
   <tileset firstgid="0" name="tiles-greenhouse" tilewidth="16" tileheight="16" tilecount="480" columns="24">
