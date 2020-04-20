@@ -281,14 +281,14 @@ public final class GameManager {
             tutorialActive = true;
 
             Game.loop().perform(1000, () -> {
-              tutorial("Howdy partner, let's learn how to farm, aii!").addListener(() -> {
-                tutorial("Today I've got to harvest 2 pumpkins!").addListener(() -> {
+              tutorial("Howdy partner, let's learn how to farm, aye?").addListener(() -> {
+                tutorial("Today I've got to harvest me 2 pumpkins!").addListener(() -> {
                   pumpkinCountVisible = true;
 
-                  tutorial("I gotta keep ma pumpkins alive until   6:00 PM!").addListener(() -> {
+                  tutorial("Gotta keep em pumpkins alive until        6:00 PM!").addListener(() -> {
                     clockVisible = true;
 
-                    tutorial("Let me grab ma water can first!").addListener(() -> {
+                    tutorial("Lemme grab mah water can first!").addListener(() -> {
                       LightSource light = Game.world().environment().getLightSource("canlight");
                       light.activate();
 
@@ -347,7 +347,7 @@ public final class GameManager {
     });
 
     Game.loop().perform(4000, () -> {
-      tutorial("Seems like you got it in you!").addListener(() -> {
+      tutorial("You're gettin' the hang of it!").addListener(() -> {
         tutorial("Let's see if you can handle the farm tomorrow...").addListener(() -> {
           Game.loop().perform(1000, () -> {
             endingFaded = true;
