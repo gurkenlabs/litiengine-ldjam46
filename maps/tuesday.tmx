@@ -540,5 +540,12 @@
     <property name="triggermessage" value="picked-up"/>
    </properties>
   </object>
+  <object id="17" name="canlight" type="LIGHTSOURCE" x="121" y="84" width="32" height="31">
+   <properties>
+    <property name="lightActive" type="bool" value="true"/>
+    <property name="lightColor" type="color" value="#ffffff"/>
+    <property name="lightShape" value="ellipse"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

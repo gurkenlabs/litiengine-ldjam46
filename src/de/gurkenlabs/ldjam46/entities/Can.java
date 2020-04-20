@@ -15,6 +15,7 @@ public class Can extends Prop {
   public String sendMessage(Object sender, String message) {
     if (message.equals("picked-up")) {
       Game.world().environment().remove(this);
+      Game.world().environment().remove("canlight");
       Farmer.instance().setHasCan(true);
     }
     return super.sendMessage(sender, message);

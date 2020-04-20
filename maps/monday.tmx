@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="14" name="monday">
  <properties>
+  <property name="AMBIENTLIGHT" value="#143333ff"/>
   <property name="GRAVITY" type="int" value="0"/>
   <property name="minPumpkins" value="2"/>
  </properties>
@@ -529,6 +530,13 @@
     <property name="triggerOneTime" type="bool" value="true"/>
     <property name="triggerTarget" value="11"/>
     <property name="triggermessage" value="picked-up"/>
+   </properties>
+  </object>
+  <object id="28" name="canlight" type="LIGHTSOURCE" x="176" y="113" width="32" height="31">
+   <properties>
+    <property name="lightActive" type="bool" value="true"/>
+    <property name="lightColor" type="color" value="#ffffff"/>
+    <property name="lightShape" value="ellipse"/>
    </properties>
   </object>
  </objectgroup>

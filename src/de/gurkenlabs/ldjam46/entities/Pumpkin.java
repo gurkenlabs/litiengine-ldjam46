@@ -30,7 +30,8 @@ public class Pumpkin extends Prop implements IUpdateable {
   public void loaded(Environment environment) {
     super.loaded(environment);
 
-    if (GameManager.getCurrentDay() == Day.Monday) {
+    // first and second level
+    if (GameManager.getCurrentDay() == null || GameManager.getCurrentDay() == Day.Monday) {
       this.getHitPoints().setBaseValue(50);
     } else {
       this.getHitPoints().setBaseValue(Game.random().nextInt(75, 100));

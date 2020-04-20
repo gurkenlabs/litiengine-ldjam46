@@ -193,7 +193,7 @@
     <property name="spritesheetName" value="well"/>
    </properties>
   </object>
-  <object id="8" name="farmer" type="SPAWNPOINT" x="232" y="40" width="16" height="16"/>
+  <object id="8" name="farmer" type="SPAWNPOINT" x="232" y="72" width="16" height="16"/>
   <object id="9" name="enemy1" type="SPAWNPOINT" x="32" y="128" width="16" height="16"/>
   <object id="10" name="enemy2" type="SPAWNPOINT" x="432" y="128" width="16" height="16"/>
   <object id="12" type="PROP" x="160" y="64" width="19" height="16">
@@ -354,7 +354,7 @@
     <property name="collisionType" value="STATIC"/>
    </properties>
   </object>
-  <object id="36" type="PROP" x="232" y="24" width="16" height="10">
+  <object id="36" type="PROP" x="232" y="29" width="16" height="10">
    <properties>
     <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
@@ -364,12 +364,19 @@
     <property name="spritesheetName" value="can"/>
    </properties>
   </object>
-  <object id="37" name="can-pickup" type="TRIGGER" x="224" y="12" width="32" height="31">
+  <object id="37" name="can-pickup" type="TRIGGER" x="224" y="17" width="32" height="31">
    <properties>
     <property name="triggerActivation" value="INTERACT"/>
     <property name="triggerOneTime" type="bool" value="true"/>
     <property name="triggerTarget" value="36"/>
     <property name="triggermessage" value="picked-up"/>
+   </properties>
+  </object>
+  <object id="38" name="canlight" type="LIGHTSOURCE" x="224" y="17" width="32" height="31">
+   <properties>
+    <property name="lightActive" type="bool" value="true"/>
+    <property name="lightColor" type="color" value="#ffffff"/>
+    <property name="lightShape" value="ellipse"/>
    </properties>
   </object>
  </objectgroup>
