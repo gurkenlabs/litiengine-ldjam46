@@ -1,5 +1,7 @@
 package de.gurkenlabs.ldjam46.entities;
 
+import java.awt.Color;
+
 import de.gurkenlabs.ldjam46.gfx.WaterSplashEmitter;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.abilities.Ability;
@@ -12,6 +14,7 @@ import de.gurkenlabs.litiengine.attributes.RangeAttribute;
 import de.gurkenlabs.litiengine.entities.ICombatEntity;
 import de.gurkenlabs.litiengine.entities.IEntity;
 import de.gurkenlabs.litiengine.entities.RelativeEntityComparator;
+import de.gurkenlabs.litiengine.graphics.OverlayPixelsImageEffect;
 
 @AbilityInfo(name = "WaterAbility", cooldown = 1000, range = 0, impact = 30, impactAngle = 360, value = 1, duration = 700)
 public class WaterAbility extends Ability {
@@ -85,6 +88,9 @@ public class WaterAbility extends Ability {
 
       WaterSplashEmitter splash = new WaterSplashEmitter(Farmer.instance());
       Game.world().environment().add(splash);
+
+      entity.animations().add(new OverlayPixelsImageEffect(120, new Color(255, 255, 255, 170)));
+      Game.loop().perform(130, () -> entity.animations().add(new OverlayPixelsImageEffect(120, new Color(16, 84, 167, 170))));
 
       Farmer.instance().movementBlocked = true;
       Game.loop().perform(700, () -> {

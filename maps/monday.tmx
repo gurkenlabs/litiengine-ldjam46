@@ -164,9 +164,9 @@
   <object id="8" name="farmer" type="SPAWNPOINT" x="224" y="128" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="12" name="Props">
-  <object id="5" type="PROP" x="303" y="176" width="19" height="16">
+  <object id="5" type="PROP" x="303" y="168" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>
@@ -381,9 +381,9 @@
     <property name="spritesheetName" value="can"/>
    </properties>
   </object>
-  <object id="12" type="PROP" x="223" y="224" width="19" height="16">
+  <object id="12" type="PROP" x="223" y="219" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>

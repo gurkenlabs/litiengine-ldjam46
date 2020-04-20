@@ -163,9 +163,9 @@
   <object id="8" name="farmer" type="SPAWNPOINT" x="272" y="50" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="12" name="Props">
-  <object id="5" type="PROP" x="288" y="192" width="19" height="16">
+  <object id="5" type="PROP" x="278" y="185" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>
@@ -181,9 +181,9 @@
     <property name="spritesheetName" value="pumpkin"/>
    </properties>
   </object>
-  <object id="6" type="PROP" x="250" y="128" width="19" height="16">
+  <object id="6" type="PROP" x="249" y="120" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>
@@ -199,9 +199,9 @@
     <property name="spritesheetName" value="pumpkin"/>
    </properties>
   </object>
-  <object id="7" type="PROP" x="415" y="112" width="19" height="16">
+  <object id="7" type="PROP" x="414" y="104" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>
@@ -228,9 +228,9 @@
     <property name="spritesheetName" value="well"/>
    </properties>
   </object>
-  <object id="9" type="PROP" x="380" y="192" width="19" height="16">
+  <object id="9" type="PROP" x="380" y="192" width="19" height="24">
    <properties>
-    <property name="addShadow" type="bool" value="false"/>
+    <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>
     <property name="collisionAlign" value="CENTER"/>
     <property name="collisionType" value="DYNAMIC"/>
