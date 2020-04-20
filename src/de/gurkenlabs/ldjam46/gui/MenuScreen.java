@@ -111,6 +111,7 @@ public class MenuScreen extends Screen implements IUpdateable {
     // Game.window().getRenderComponent().fadeOut(2500);
     Game.screens().display("GAME");
     GameManager.levelTransition();
+    Game.audio().playMusic(Resources.sounds().get("highlife.ogg"));
   }
 
   @Override

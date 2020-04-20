@@ -52,7 +52,7 @@ public class Farmer extends Creature {
   private boolean speechbubbleActive;
   private boolean grabSpeechbubbleActive;
   public boolean firstRefillEver = true;
-  
+
   public boolean movementBlocked;
 
   @Action()
@@ -68,7 +68,7 @@ public class Farmer extends Creature {
         if (area.getBoundingBox().intersects(this.getCollisionBox())) {
           this.waterAbility.getCharges().setToMax();
           if (firstRefillEver) {
-            SpeechBubble.create(this, "Hurry! The pumpkins need water!",
+            SpeechBubble.create(this, "Hurry! Mah pumpkins need water!",
                 GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
 
             if (firstRefillEver) {
@@ -94,7 +94,7 @@ public class Farmer extends Creature {
     } else if (this.hasCan() && !this.waterAbility.isOnCooldown() && this.waterAbility.getCharges().get() == 0
         && !speechbubbleActive) {
 
-      String text = firstRefillEver ? "I Need to use the fountain to refill ma can!" : "Need to refill ma can!";
+      String text = firstRefillEver ? "I need to use the fountain to refill ma can!" : "Need to refill ma can...";
       SpeechBubble bubble = SpeechBubble.create(this, text,
           GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
       speechbubbleActive = true;

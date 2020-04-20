@@ -14,6 +14,7 @@ import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.entities.Spawnpoint;
 import de.gurkenlabs.litiengine.environment.Environment;
 import de.gurkenlabs.litiengine.physics.IMovementController;
+import de.gurkenlabs.litiengine.util.geom.GeometricUtilities;
 
 @EntityInfo(width = 11, height = 20)
 @CollisionInfo(collision = false, collisionBoxWidth = 4, collisionBoxHeight = 4, align = Align.CENTER, valign = Valign.DOWN)
@@ -72,8 +73,22 @@ public class EnemyFarmer extends Creature {
 
   @Override
   public Direction getFacingDirection() {
-    Direction dir = Direction.fromAngle(this.getAngle());
-    return super.getFacingDirection();
+    double actual = GeometricUtilities.normalizeAngle(this.getAngle());
+
+    if (actual >= 0 && actual < 90 || actual > 270 && actual <= 360) {
+      return Direction.DOWN;
+    }
+    if (actual == 90) {
+      return Direction.RIGHT;
+    }
+    if (actual > 90 && actual < 270) {
+      return Direction.UP;
+    }
+    if (actual == 270) {
+      return Direction.LEFT;
+    }
+    return Direction.UNDEFINED;
+
   }
 
   public Spawnpoint getSpawn() {

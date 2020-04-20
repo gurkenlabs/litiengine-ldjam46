@@ -24,6 +24,7 @@ public class FarmerController extends KeyboardEntityController<Farmer> {
     }
 
     if (GameManager.getState() != GameState.INGAME || Farmer.instance().movementBlocked) {
+      this.getEntity().setAcceleration(0);
       this.setDx(0);
       this.setVelocityX(0);
       this.setDy(0);
