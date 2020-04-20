@@ -18,6 +18,7 @@ import de.gurkenlabs.litiengine.entities.MapArea;
 import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.entities.Trigger;
 import de.gurkenlabs.litiengine.graphics.CreatureShadowImageEffect;
+import de.gurkenlabs.litiengine.graphics.OverlayPixelsImageEffect;
 import de.gurkenlabs.litiengine.graphics.animation.Animation;
 import de.gurkenlabs.litiengine.graphics.animation.CreatureAnimationController;
 import de.gurkenlabs.litiengine.graphics.animation.IEntityAnimationController;
@@ -76,6 +77,8 @@ public class Farmer extends Creature {
         if (area.getBoundingBox().intersects(this.getCollisionBox())) {
           this.waterAbility.getCharges().setToMax();
           Game.audio().playSound("splash.ogg");
+          this.animations().add(new OverlayPixelsImageEffect(120, new Color(255, 255, 255, 170)));
+          Game.loop().perform(130, () -> this.animations().add(new OverlayPixelsImageEffect(120, new Color(16, 84, 167, 170))));
 
           for (LightSource light : Game.world().environment().getByTag(LightSource.class, "fountainlight")) {
             light.deactivate();
