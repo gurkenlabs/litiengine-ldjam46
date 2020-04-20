@@ -13,6 +13,7 @@ import de.gurkenlabs.ldjam46.entities.Farmer;
 import de.gurkenlabs.ldjam46.entities.Pumpkin;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.CollisionBox;
+import de.gurkenlabs.litiengine.entities.LightSource;
 import de.gurkenlabs.litiengine.entities.Spawnpoint;
 import de.gurkenlabs.litiengine.entities.behavior.AStarGrid;
 import de.gurkenlabs.litiengine.entities.behavior.AStarNode;
@@ -107,6 +108,7 @@ public final class GameManager {
   private static boolean tutorialActive;
   private static boolean tutorialEnding;
   private static boolean endingFaded;
+  private static boolean harvesting;
 
   // TODO: End screen after every day
   // TODO: track score (alive pumpkins * life) between levels
@@ -221,81 +223,110 @@ public final class GameManager {
     }
 
     state = GameState.LOADING;
+    harvesting = true;
+    int delay = harvestPumpkin();
+    levelFailed = false;
 
     final String currentMap = maps.get(day);
 
-    Game.window().getRenderComponent().fadeOut(1000);
-    Game.loop().perform(1000, () -> {
-      currentTime = null;
-      ingameStartedTick = 0;
-      if (Game.world().environment() != null && Game.world().environment().getMap().getName().equals(currentMap)) {
-
-        Game.world().environment().remove(Farmer.instance());
-        Game.world().reset(currentMap);
-      }
-
-      if (spawnEvents.containsKey(currentMap)) {
-        for (EnemyFarmerSpawnEvent event : spawnEvents.get(currentMap)) {
-          event.finished = false;
-        }
-      }
-
-      Game.world().loadEnvironment(currentMap);
-      currentDay = day;
-
-      Farmer.instance().getFartAbility().setEnabled(day.getDay() >= Day.Wednesday.getDay());
-      Game.world().environment().getAmbientLight().setColor(new Color(51, 51, 255, 50));
-
-      Game.window().getRenderComponent().fadeIn(1000);
-
+    Game.loop().perform(delay, () -> {
+      Game.window().getRenderComponent().fadeOut(1000);
       Game.loop().perform(1000, () -> {
-        state = GameState.LOCKED;
-        lastLoaded = Game.loop().getTicks();
-      });
+        harvesting = false;
+        currentTime = null;
+        ingameStartedTick = 0;
+        if (Game.world().environment() != null && Game.world().environment().getMap().getName().equals(currentMap)) {
 
-      if (currentDay == Day.Monday) {
-        Game.loop().perform(3000, () -> {
-          Game.world().camera().setZoom(2, 3000);
+          Game.world().environment().remove(Farmer.instance());
+          Game.world().reset(currentMap);
+        }
+
+        if (spawnEvents.containsKey(currentMap)) {
+          for (EnemyFarmerSpawnEvent event : spawnEvents.get(currentMap)) {
+            event.finished = false;
+          }
+        }
+
+        Game.world().loadEnvironment(currentMap);
+        currentDay = day;
+
+        Farmer.instance().getFartAbility().setEnabled(day.getDay() >= Day.Wednesday.getDay());
+        Game.world().environment().getAmbientLight().setColor(new Color(51, 51, 255, 50));
+
+        Game.window().getRenderComponent().fadeIn(1000);
+
+        Game.loop().perform(1000, () -> {
+          state = GameState.LOCKED;
+          lastLoaded = Game.loop().getTicks();
         });
-      }
 
-      Game.loop().perform(6000, () -> {
         if (currentDay == Day.Monday) {
-          // TUTORIAL
-          tutorialActive = true;
+          Game.loop().perform(3000, () -> {
+            Game.world().camera().setZoom(2, 3000);
+          });
+        }
 
-          Game.loop().perform(1000, () -> {
-            tutorial("Howdy partner, let's learn how to farm, aii!").addListener(() -> {
-              tutorial("Today I've got to harvest 2 pumpkins!").addListener(() -> {
-                pumpkinCountVisible = true;
+        Game.loop().perform(6000, () -> {
+          if (currentDay == Day.Monday) {
+            // TUTORIAL
+            tutorialActive = true;
 
-                tutorial("I gotta keep ma pumpkins alive until   6:00 PM!").addListener(() -> {
-                  clockVisible = true;
+            Game.loop().perform(1000, () -> {
+              tutorial("Howdy partner, let's learn how to farm, aii!").addListener(() -> {
+                tutorial("Today I've got to harvest 2 pumpkins!").addListener(() -> {
+                  pumpkinCountVisible = true;
 
-                  tutorial("Let me grab ma water can first!").addListener(() -> {
-                    Game.world().camera().setZoom(1, 2000);
-                    Game.loop().perform(2000, () -> {
-                      ingameStartedTick = Game.loop().getTicks();
-                      state = GameState.INGAME;
+                  tutorial("I gotta keep ma pumpkins alive until   6:00 PM!").addListener(() -> {
+                    clockVisible = true;
+
+                    tutorial("Let me grab ma water can first!").addListener(() -> {
+                      LightSource light = Game.world().environment().getLightSource("canlight");
+                      light.activate();
+
+                      Game.world().camera().setZoom(1, 2000);
+                      Game.loop().perform(2000, () -> {
+                        ingameStartedTick = Game.loop().getTicks();
+                        state = GameState.INGAME;
+                      });
                     });
                   });
                 });
               });
             });
-          });
-        } else {
-          ingameStartedTick = Game.loop().getTicks();
-          state = GameState.INGAME;
-        }
+          } else {
+            ingameStartedTick = Game.loop().getTicks();
+            state = GameState.INGAME;
+          }
 
-        // TODO WEdnesday tutorial tutorial("Gotta work all week to beat em other farmers!").addListener(() -> {
+          // TODO WEdnesday tutorial tutorial("Gotta work all week to beat em other farmers!").addListener(() -> {
+        });
       });
     });
+  }
+
+  private static int harvestPumpkin() {
+    int delay = 2000;
+    if (levelFailed || Game.world().environment() == null) {
+      return delay;
+    }
+
+    int i = 0;
+    for (Pumpkin pumpkin : Game.world().environment().getEntities(Pumpkin.class, p -> !p.isDead())) {
+      i++;
+      Game.loop().perform(i * 500, () -> {
+        pumpkin.harvest();
+      });
+    }
+
+    return delay + i * 500;
   }
 
   private static void endTutorial() {
     tutorialEnding = true;
     state = GameState.LOCKED;
+    for (LightSource l : Game.world().environment().getByTag(LightSource.class, "pumpkinlight")) {
+      l.deactivate();
+    }
     Game.world().camera().setFocus(Farmer.instance().getCenter());
 
     Game.loop().perform(2000, () -> {
@@ -503,7 +534,6 @@ public final class GameManager {
       levelFailed = true;
 
       Game.loop().perform(5000, () -> {
-        levelFailed = false;
         loadDay(currentDay);
       });
     } else {
@@ -525,5 +555,9 @@ public final class GameManager {
 
   public static boolean isClockVisible() {
     return clockVisible;
+  }
+
+  public static boolean isHarvesting() {
+    return harvesting && !isLevelFailed();
   }
 }

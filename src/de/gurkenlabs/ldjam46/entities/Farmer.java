@@ -12,9 +12,12 @@ import de.gurkenlabs.litiengine.entities.AnimationInfo;
 import de.gurkenlabs.litiengine.entities.CollisionInfo;
 import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.EntityInfo;
+import de.gurkenlabs.litiengine.entities.LightSource;
 import de.gurkenlabs.litiengine.entities.MapArea;
 import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.entities.Trigger;
+import de.gurkenlabs.litiengine.graphics.animation.Animation;
+import de.gurkenlabs.litiengine.graphics.animation.IEntityAnimationController;
 import de.gurkenlabs.litiengine.gui.SpeechBubble;
 import de.gurkenlabs.litiengine.physics.IMovementController;
 
@@ -65,6 +68,17 @@ public class Farmer extends Creature {
           if (firstRefillEver) {
             SpeechBubble.create(this, "Hurry! The pumpkins need water!",
                 GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
+
+            if (firstRefillEver) {
+              LightSource light = Game.world().environment().getLightSource("fountainlight");
+              light.deactivate();
+
+              Game.loop().perform(500, () -> {
+                for (LightSource l : Game.world().environment().getByTag(LightSource.class, "pumpkinlight")) {
+                  l.activate();
+                }
+              });
+            }
           }
 
           firstRefillEver = false;
@@ -82,6 +96,11 @@ public class Farmer extends Creature {
       SpeechBubble bubble = SpeechBubble.create(this, text,
           GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
       speechbubbleActive = true;
+      if (firstRefillEver) {
+        LightSource light = Game.world().environment().getLightSource("fountainlight");
+        light.activate();
+      }
+
       bubble.addListener(() -> {
         speechbubbleActive = false;
       });
@@ -111,6 +130,14 @@ public class Farmer extends Creature {
   @Override
   protected IMovementController createMovementController() {
     return new FarmerController(this);
+  }
+
+  @Override
+  protected IEntityAnimationController<?> createAnimationController() {
+    IEntityAnimationController<?> controller = super.createAnimationController();
+    controller.add(new Animation("keeper-celebrate", true, true));
+    controller.addRule(x -> GameManager.isHarvesting(), x -> "keeper-celebrate");
+    return controller;
   }
 
   public boolean hasCan() {
