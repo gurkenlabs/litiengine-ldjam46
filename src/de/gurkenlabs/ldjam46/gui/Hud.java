@@ -8,6 +8,7 @@ import de.gurkenlabs.ldjam46.GameManager;
 import de.gurkenlabs.ldjam46.GameManager.Day;
 import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.ldjam46.entities.Farmer;
+import de.gurkenlabs.ldjam46.gfx.HillBillyFonts;
 import de.gurkenlabs.litiengine.Align;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.Valign;
@@ -70,7 +71,7 @@ public class Hud extends GuiComponent {
       this.renderControls(g);
     } else if (GameManager.getTimeSinceLastLoad() > LEVEL_INFO_DURATION + 500) {
       g.setColor(Color.WHITE);
-      g.setFont(GameManager.GUI_FONT.deriveFont(80f));
+      g.setFont(HillBillyFonts.UI_FONT1.deriveFont(80f));
 
       Valign valign = GameManager.getCurrentDay() == Day.Saturday ? Valign.MIDDLE_TOP : Valign.MIDDLE;
       TextRenderer.render(g, "YOU ARE THE PUMPKING!", Align.CENTER, valign, 0, -80);
