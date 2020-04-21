@@ -11,6 +11,7 @@ import de.gurkenlabs.ldjam46.entities.Can;
 import de.gurkenlabs.ldjam46.entities.EnemyFarmer;
 import de.gurkenlabs.ldjam46.entities.Farmer;
 import de.gurkenlabs.ldjam46.entities.Pumpkin;
+import de.gurkenlabs.ldjam46.gfx.ConfettiEmitter;
 import de.gurkenlabs.ldjam46.gui.Hud;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.CollisionBox;
@@ -331,6 +332,7 @@ public final class GameManager {
         }
 
         if (currentDay == Day.Saturday) {
+          Game.world().environment().add(new ConfettiEmitter());
           Game.loop().perform(20000, () -> {
             Game.audio().fadeMusic((int) Game.time().toTicks(10000));
           });
@@ -562,7 +564,8 @@ public final class GameManager {
 
     if (!endingFaded && (currentHour == ENDING && currentMinutes > 0 || currentHour > ENDING)) {
       state = GameState.LOCKED;
-      // TODO show result and either reload current map or transition to the next level
+      // TODO show result and either reload current map or transition to the
+      // next level
       levelTransition();
       return;
     }
