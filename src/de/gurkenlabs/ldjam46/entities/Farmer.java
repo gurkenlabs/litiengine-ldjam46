@@ -94,7 +94,6 @@ public class Farmer extends Creature {
           }
 
           firstRefillEver = false;
-          System.out.println("water refilled");
         }
       }
     }
