@@ -208,6 +208,226 @@
       <property name="spritesheetName" value="car8"/>
      </properties>
     </object>
+    <object id="61" type="PROP" x="165" y="24" width="7" height="14">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="5.6000000000000005"/>
+      <property name="collisionboxWidth" type="float" value="2.8000000000000003"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="plant1"/>
+     </properties>
+    </object>
+    <object id="62" type="PROP" x="203" y="26" width="8" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="3.2"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="plant2"/>
+     </properties>
+    </object>
+    <object id="63" type="PROP" x="257" y="27" width="8" height="10">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.0"/>
+      <property name="collisionboxWidth" type="float" value="3.2"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="plant3"/>
+     </properties>
+    </object>
+    <object id="64" type="PROP" x="136" y="234" width="21" height="12">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.800000000000001"/>
+      <property name="collisionboxWidth" type="float" value="8.4"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="pig"/>
+     </properties>
+    </object>
+    <object id="65" type="PROP" x="192" y="232" width="14" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="5.6000000000000005"/>
+      <property name="flipHorizontally" type="bool" value="true"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="rooster"/>
+     </properties>
+    </object>
+    <object id="66" type="PROP" x="230" y="187" width="25" height="16">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="6.4"/>
+      <property name="collisionboxWidth" type="float" value="10.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="cow"/>
+     </properties>
+    </object>
+    <object id="67" type="PROP" x="206" y="206" width="25" height="16">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="6.4"/>
+      <property name="collisionboxWidth" type="float" value="10.0"/>
+      <property name="flipHorizontally" type="bool" value="true"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="cow"/>
+     </properties>
+    </object>
+    <object id="68" type="PROP" x="152" y="220" width="21" height="12">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.800000000000001"/>
+      <property name="collisionboxWidth" type="float" value="8.4"/>
+      <property name="flipHorizontally" type="bool" value="true"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="pig"/>
+     </properties>
+    </object>
+    <object id="69" type="PROP" x="212" y="237" width="14" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="5.6000000000000005"/>
+      <property name="flipHorizontally" type="bool" value="false"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="rooster"/>
+     </properties>
+    </object>
+    <object id="70" type="PROP" x="200" y="254" width="14" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="5.6000000000000005"/>
+      <property name="flipHorizontally" type="bool" value="true"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="rooster"/>
+     </properties>
+    </object>
+    <object id="71" type="PROP" x="175" y="244" width="14" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="5.6000000000000005"/>
+      <property name="flipHorizontally" type="bool" value="false"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="rooster"/>
+     </properties>
+    </object>
+    <object id="72" type="PROP" x="243" y="219" width="14" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="5.6000000000000005"/>
+      <property name="flipHorizontally" type="bool" value="true"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="rooster"/>
+     </properties>
+    </object>
+    <object id="73" type="PROP" x="48" y="132" width="15" height="9">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="3.6"/>
+      <property name="collisionboxWidth" value="15.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="dog"/>
+     </properties>
+    </object>
+    <object id="74" type="PROP" x="128" y="190" width="14" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="5.6000000000000005"/>
+      <property name="flipHorizontally" type="bool" value="true"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="rooster"/>
+     </properties>
+    </object>
+    <object id="75" type="PROP" x="245" y="257" width="14" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="5.6000000000000005"/>
+      <property name="flipHorizontally" type="bool" value="false"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="rooster"/>
+     </properties>
+    </object>
+    <object id="76" type="PROP" x="186" y="177" width="20" height="26">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="10.4"/>
+      <property name="collisionboxWidth" type="float" value="8.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="haybale"/>
+     </properties>
+    </object>
+    <object id="77" type="PROP" x="194" y="195" width="5" height="10">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.0"/>
+      <property name="collisionboxWidth" type="float" value="2.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="dungfork"/>
+     </properties>
+    </object>
+    <object id="78" type="PROP" x="169" y="171" width="20" height="26">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="10.4"/>
+      <property name="collisionboxWidth" type="float" value="8.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="haybale"/>
+     </properties>
+    </object>
+    <object id="79" type="PROP" x="195" y="171" width="20" height="26">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="10.4"/>
+      <property name="collisionboxWidth" type="float" value="8.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="haybale"/>
+     </properties>
+    </object>
+    <object id="80" type="PROP" x="156" y="254" width="10" height="7">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="2.8000000000000003"/>
+      <property name="collisionboxWidth" type="float" value="4.0"/>
+      <property name="flipHorizontally" type="bool" value="true"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="amphora4"/>
+     </properties>
+    </object>
+    <object id="81" type="PROP" x="149" y="197" width="21" height="12">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.800000000000001"/>
+      <property name="collisionboxWidth" type="float" value="8.4"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="pig"/>
+     </properties>
+    </object>
    </objectgroup>
    <objectgroup id="13" name="Lights">
     <object id="28" name="canlight" type="LIGHTSOURCE" x="120" y="39" width="32" height="31">
@@ -218,7 +438,7 @@
      </properties>
     </object>
    </objectgroup>
-   <objectgroup id="14" name="Collision">
+   <objectgroup id="14" name="Collision" visible="0">
     <object id="1" type="COLLISIONBOX" x="0" y="0" width="8" height="272">
      <properties>
       <property name="collisionType" value="STATIC"/>
@@ -770,17 +990,17 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
    </layer>
-   <objectgroup color="#0033ff" id="10" name="Areas">
+   <objectgroup color="#0033ff" id="10" name="Areas" visible="0">
     <object id="9" type="AREA" x="63" y="128" width="48" height="38">
      <properties>
       <property name="tags" value="refillwater"/>
      </properties>
     </object>
    </objectgroup>
-   <objectgroup id="11" name="Spawns">
+   <objectgroup id="11" name="Spawns" visible="0">
     <object id="8" name="farmer" type="SPAWNPOINT" x="224" y="128" width="16" height="16"/>
    </objectgroup>
-   <objectgroup id="12" name="Props">
+   <objectgroup id="12" name="Props" visible="1">
     <object id="5" type="PROP" x="303" y="168" width="19" height="24">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
@@ -810,9 +1030,29 @@
       <property name="spritesheetName" value="well"/>
      </properties>
     </object>
+    <object id="32" type="PROP" x="214" y="107" width="6" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" value="6.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="pushcart"/>
+     </properties>
+    </object>
+    <object id="33" type="PROP" x="243" y="106" width="16" height="8">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="3.2"/>
+      <property name="collisionboxWidth" value="16.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="bench2"/>
+     </properties>
+    </object>
    </objectgroup>
-   <objectgroup id="13" name="Lights"/>
-   <objectgroup id="14" name="Collision">
+   <objectgroup id="13" name="Lights" visible="0"/>
+   <objectgroup id="14" name="Collision" visible="0">
     <object id="1" type="COLLISIONBOX" x="0" y="0" width="16" height="272">
      <properties>
       <property name="collisionType" value="STATIC"/>
@@ -987,7 +1227,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
    </layer>
-   <objectgroup id="20" name="Emitters">
+   <objectgroup id="20" name="Emitters" visible="0">
     <object id="11" type="PROP" x="206" y="175" width="16" height="10">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
@@ -1595,6 +1835,107 @@
       <property name="collisionboxWidth" value="30.0"/>
       <property name="indestructible" type="bool" value="true"/>
       <property name="spritesheetName" value="well"/>
+     </properties>
+    </object>
+    <object id="37" type="PROP" x="213" y="205" width="16" height="14">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="5.6000000000000005"/>
+      <property name="collisionboxWidth" type="float" value="6.4"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="palletpumpkin"/>
+     </properties>
+    </object>
+    <object id="38" type="PROP" x="222" y="219" width="16" height="14">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="5.6000000000000005"/>
+      <property name="collisionboxWidth" type="float" value="6.4"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="palletpumpkin"/>
+     </properties>
+    </object>
+    <object id="39" type="PROP" x="231" y="209" width="11" height="9">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="3.6"/>
+      <property name="collisionboxWidth" type="float" value="4.4"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="pumpkin2"/>
+     </properties>
+    </object>
+    <object id="40" type="PROP" x="243" y="208" width="11" height="9">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="3.6"/>
+      <property name="collisionboxWidth" type="float" value="4.4"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="pumpkin2"/>
+     </properties>
+    </object>
+    <object id="41" type="PROP" x="303" y="213" width="16" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="6.4"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="pallet4"/>
+     </properties>
+    </object>
+    <object id="42" type="PROP" x="285" y="190" width="16" height="27">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="10.8"/>
+      <property name="collisionboxWidth" type="float" value="6.4"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="crate2"/>
+     </properties>
+    </object>
+    <object id="43" type="PROP" x="261" y="197" width="6" height="14">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="5.6000000000000005"/>
+      <property name="collisionboxWidth" type="float" value="2.4000000000000004"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="oven"/>
+     </properties>
+    </object>
+    <object id="44" type="PROP" x="357" y="206" width="11" height="16">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="6.4"/>
+      <property name="collisionboxWidth" type="float" value="4.4"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="outhouse1"/>
+     </properties>
+    </object>
+    <object id="45" type="PROP" x="326" y="235" width="6" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="2.4000000000000004"/>
+      <property name="flipHorizontally" type="bool" value="true"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="pushcart"/>
+     </properties>
+    </object>
+    <object id="46" type="PROP" x="327" y="233" width="8" height="7">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="2.8000000000000003"/>
+      <property name="collisionboxWidth" type="float" value="3.2"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="table3"/>
      </properties>
     </object>
    </objectgroup>
@@ -2215,57 +2556,57 @@
     <object id="8" name="farmer" type="SPAWNPOINT" x="272" y="50" width="16" height="16"/>
    </objectgroup>
    <objectgroup id="12" name="Props">
-    <object id="5" type="PROP" x="278" y="185" width="19" height="24">
+    <object id="5" type="PROP" x="278" y="188" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
       <property name="collisionAlign" value="CENTER"/>
       <property name="collisionType" value="DYNAMIC"/>
-      <property name="collisionValign" value="MIDDLE"/>
-      <property name="collisionboxHeight" value="16.0"/>
+      <property name="collisionValign" value="DOWN"/>
+      <property name="collisionboxHeight" value="8.0"/>
       <property name="collisionboxWidth" value="19"/>
       <property name="flipHorizontally" type="bool" value="false"/>
       <property name="flipVertically" type="bool" value="false"/>
       <property name="hitpoints" value="100"/>
       <property name="indestructible" type="bool" value="false"/>
       <property name="rotationSprite" value="NONE"/>
-      <property name="scaling" type="bool" value="true"/>
+      <property name="scaling" type="bool" value="false"/>
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="6" type="PROP" x="249" y="120" width="19" height="24">
+    <object id="6" type="PROP" x="249" y="128" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
       <property name="collisionAlign" value="CENTER"/>
       <property name="collisionType" value="DYNAMIC"/>
-      <property name="collisionValign" value="MIDDLE"/>
-      <property name="collisionboxHeight" value="16.0"/>
+      <property name="collisionValign" value="DOWN"/>
+      <property name="collisionboxHeight" value="10.0"/>
       <property name="collisionboxWidth" value="19"/>
       <property name="flipHorizontally" type="bool" value="false"/>
       <property name="flipVertically" type="bool" value="false"/>
       <property name="hitpoints" value="100"/>
       <property name="indestructible" type="bool" value="false"/>
       <property name="rotationSprite" value="NONE"/>
-      <property name="scaling" type="bool" value="true"/>
+      <property name="scaling" type="bool" value="false"/>
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="7" type="PROP" x="414" y="104" width="19" height="24">
+    <object id="7" type="PROP" x="414" y="112" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
       <property name="collisionAlign" value="CENTER"/>
       <property name="collisionType" value="DYNAMIC"/>
-      <property name="collisionValign" value="MIDDLE"/>
-      <property name="collisionboxHeight" value="16.0"/>
+      <property name="collisionValign" value="DOWN"/>
+      <property name="collisionboxHeight" value="8.0"/>
       <property name="collisionboxWidth" value="19"/>
       <property name="flipHorizontally" type="bool" value="false"/>
       <property name="flipVertically" type="bool" value="false"/>
       <property name="hitpoints" value="100"/>
       <property name="indestructible" type="bool" value="false"/>
       <property name="rotationSprite" value="NONE"/>
-      <property name="scaling" type="bool" value="true"/>
+      <property name="scaling" type="bool" value="false"/>
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
@@ -2280,22 +2621,62 @@
       <property name="spritesheetName" value="well"/>
      </properties>
     </object>
-    <object id="9" type="PROP" x="380" y="192" width="19" height="24">
+    <object id="9" type="PROP" x="383" y="191" width="19" height="18">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
       <property name="collisionAlign" value="CENTER"/>
       <property name="collisionType" value="DYNAMIC"/>
-      <property name="collisionValign" value="MIDDLE"/>
-      <property name="collisionboxHeight" value="16.0"/>
+      <property name="collisionValign" value="DOWN"/>
+      <property name="collisionboxHeight" value="8.0"/>
       <property name="collisionboxWidth" value="19"/>
       <property name="flipHorizontally" type="bool" value="false"/>
       <property name="flipVertically" type="bool" value="false"/>
       <property name="hitpoints" value="100"/>
       <property name="indestructible" type="bool" value="false"/>
       <property name="rotationSprite" value="NONE"/>
-      <property name="scaling" type="bool" value="true"/>
+      <property name="scaling" type="bool" value="false"/>
       <property name="spritesheetName" value="pumpkin"/>
+     </properties>
+    </object>
+    <object id="19" type="PROP" x="36" y="63" width="10" height="7">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="2.8000000000000003"/>
+      <property name="collisionboxWidth" value="10.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="amphora4"/>
+     </properties>
+    </object>
+    <object id="20" type="PROP" x="190" y="40" width="16" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" value="11.0"/>
+      <property name="collisionboxWidth" value="16.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="lockerroombench2"/>
+     </properties>
+    </object>
+    <object id="21" type="PROP" x="173" y="43" width="16" height="10">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" value="5.0"/>
+      <property name="collisionboxWidth" value="16.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="crate3"/>
+     </properties>
+    </object>
+    <object id="22" type="PROP" x="221" y="62" width="15" height="9">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" value="4.0"/>
+      <property name="collisionboxWidth" value="15.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="dog"/>
      </properties>
     </object>
    </objectgroup>
@@ -2890,6 +3271,76 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
+    <object id="38" type="PROP" x="340" y="33" width="16" height="27">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" value="12.0"/>
+      <property name="collisionboxWidth" value="16.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="crate2"/>
+     </properties>
+    </object>
+    <object id="39" type="PROP" x="17" y="56" width="37" height="35">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="14.0"/>
+      <property name="collisionboxWidth" value="37.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="car11"/>
+     </properties>
+    </object>
+    <object id="40" type="PROP" x="10" y="94" width="43" height="20">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="8.0"/>
+      <property name="collisionboxWidth" value="43.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="car1"/>
+     </properties>
+    </object>
+    <object id="41" type="PROP" x="411" y="103" width="24" height="23">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" value="2.0"/>
+      <property name="collisionboxWidth" value="24.0"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="cage1"/>
+     </properties>
+    </object>
+    <object id="42" type="PROP" x="414" y="110" width="14" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="5.6000000000000005"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="rooster"/>
+     </properties>
+    </object>
+    <object id="46" type="PROP" x="323" y="40" width="7" height="14">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="5.6000000000000005"/>
+      <property name="collisionboxWidth" type="float" value="2.8000000000000003"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="plant1"/>
+     </properties>
+    </object>
+    <object id="47" type="PROP" x="264" y="42" width="8" height="11">
+     <properties>
+      <property name="addShadow" type="bool" value="true"/>
+      <property name="collision" type="bool" value="true"/>
+      <property name="collisionboxHeight" type="float" value="4.4"/>
+      <property name="collisionboxWidth" type="float" value="3.2"/>
+      <property name="indestructible" type="bool" value="false"/>
+      <property name="spritesheetName" value="plant2"/>
+     </properties>
+    </object>
    </objectgroup>
    <objectgroup id="13" name="Lights"/>
    <objectgroup id="14" name="Collision">
@@ -3035,6 +3486,21 @@
       <property name="lightColor" type="color" value="#ffffff"/>
       <property name="lightShape" value="ellipse"/>
       <property name="tags" value="fountainlight"/>
+     </properties>
+    </object>
+    <object id="43" type="COLLISIONBOX" x="430" y="107" width="5" height="17">
+     <properties>
+      <property name="collisionType" value="STATIC"/>
+     </properties>
+    </object>
+    <object id="44" type="COLLISIONBOX" x="411" y="107" width="5" height="17">
+     <properties>
+      <property name="collisionType" value="STATIC"/>
+     </properties>
+    </object>
+    <object id="45" type="COLLISIONBOX" x="416" y="107" width="14" height="5">
+     <properties>
+      <property name="collisionType" value="STATIC"/>
      </properties>
     </object>
    </objectgroup>
@@ -3245,17 +3711,114 @@
   <sprite width="16" height="16" imageformat="PNG" name="placeholder-tileset">
    <image>iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAATUlEQVR42u3QMREAIAwAMZa6xAc7PjowIxJEdIPk7g18i56nUsYotdcs1aoMMMAAAwwwwAADDDDAAAMMMODDAQAAAAAAAAAAAAAAwHMu1WPiW3s7Gi8AAAAASUVORK5CYII=</image>
   </sprite>
+  <sprite width="8" height="12" imageformat="PNG" name="prop-amphora1">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAgAAAAMCAYAAABfnvydAAAAWklEQVR42mNggILjhw78f/z4MRwzIIO2xvr/IAXIGEURNgUgMbiCXHv9/8iKQOxZfsb/4ZIgzpFUZ7AECN/vKwRjsCJkBciYngrQHYohia4AxQfIACSAjGHiAFjpxTvqFDlbAAAAAElFTkSuQmCC</image>
+  </sprite>
+  <sprite width="7" height="14" imageformat="PNG" name="prop-amphora2">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAcAAAAOCAYAAADjXQYbAAAASklEQVR42mNgAIJZfsb/QXhrrC0cg8QZcu31wRIgGoZhCvFLIutGNp4BGWDoQJfA0IkugexqrJIYrsUqSdC1RHsFRBPnFXRFyHwAUuqVXRQcyYUAAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="8" height="11" imageformat="PNG" name="prop-amphora3">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAgAAAALCAYAAABCm8wlAAAAUklEQVR42mNgQAL3+wr/gzADNnAhy/V/rr0+GONUtDjC5j8IY0jAjAaZAsIgRXBTYDpgkjAFMI1wY5EVgCRgYnBT0BXAJYlSgKwIqyRRCnCFAwD3p3vZpznqagAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="10" height="7" imageformat="PNG" name="prop-amphora4">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAYAAAAxrNxjAAAAR0lEQVR42mNggIK325f8B2EGXACm4EKW638YH6tCkIL7fYVgDGKDMFbTkRXCFCDzsSpEVoBTMYyGaUQ2Ha4YpgBZIzIGiQEAobh+og0JhkUAAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="16" height="8" imageformat="PNG" name="prop-bed1-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAICAYAAADwdn+XAAAAbUlEQVR42mM4Mq/8/65du/7funXr/8ePH/8zkAAurW75z7BjSiFYMwyDDOHwykURg4mjY5DlDHMa08AuQHYFm20UXAwmjg2v6sqGGADSQA6GGwDyBjkYbAAQSIEMAdGkYCQ9VDAgMTGRZANgegCdT9RoaV5jGwAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="16" height="8" imageformat="PNG" name="prop-bench2-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAICAYAAADwdn+XAAAAQUlEQVR42mOYmOH1f3VNFAbe351KFGbAZQAxGG4APkzQABhwd3dHcAgAFLWEbCAqDEjFyJZQ7gUYUFNTI9oAZLUAMx/QZ5cluPYAAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="24" height="23" imageformat="PNG" name="prop-cage1">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABgAAAAXCAYAAAARIY8tAAAATUlEQVR42mNggIKwYO//1MQMyAAkYGNt8R9GwzC5fBiNYQE6G58csepobwGxmkjlw9lD3wJYrNMKMyAnM1rg0UgetWDUglELRi2ghgUAfiiHalg/7GsAAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="56" height="27" imageformat="PNG" name="prop-cage2">
+   <image>iVBORw0KGgoAAAANSUhEUgAAADgAAAAbCAYAAAApvkyGAAAAaklEQVR42u3WzQnAIAyA0YwltBt4FLr/JopgQPTkD0XDFwgx5vQEUZESX/DRUkodeeN9XNSqeWuvtQO265HZ3/3IzDbwVMC2AwAIECBAgCtAffmtptRfHYvJHQQIECBAgAABAgQIEOAcMAFxO3Nikbzv5gAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="28" height="31" imageformat="PNG" name="prop-cage3">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABwAAAAfCAYAAAD0ma06AAAAV0lEQVR42mNggIKwYO//tMQMyAAkYGNt8R9GwzC1+DAaw0J0Nq3k6GshsZoo5cPZoxaOWjhq4aiFtLcQVprTCzMgVyf0wKOJZtTCUQtHLRy1cNRCwhYCABKr0fmPDmO6AAAAAElFTkSuQmCC</image>
+  </sprite>
   <sprite width="16" height="10" imageformat="PNG" name="prop-can">
    <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAKCAYAAAC9vt6cAAAAeklEQVR42mOwsrb/D8LR8fn/GQgAkBpkDBYk1gBs8mAxZAOQFVXO2/d/yoYTKNircS0Y4zUApghmwIp95+H44K1XYHGsrkL3BswQZAxzBV4DYILEuACkByVQkF1ByAAMzeiG4DMAp2ZkQ0B+xWYAchjgBbDYwIaR1QEA2J3wHIHGD7gAAAAASUVORK5CYII=</image>
   </sprite>
+  <sprite width="43" height="20" imageformat="PNG" name="prop-car1-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAACsAAAAUCAYAAAAUccS4AAABKklEQVR42s2VwQ2DMAxFox4ZoStw6gI9V+oK6bUTdIUu0C249tg5WKP33lKMMDIhENsxVSN9gZLw/TCOca50nO5hE5mPzrSu67C7vsxlCzyA/j8sAd0KNgl8OR8DSFpTMexPavfzfo6wkjemsJzsSvwXs2sBC3MxfCrzuX1LCZiVghaWA6CFnZRYCawkeCnsJLspWO99tv6k2dkMtmmaVVDpgdEesAksti5u+9EGN4HFbgAKN8fvfwfP24P7OPtz/Za2LpGkwQthH1UVHC1mXMBMr/7dDGBZcVKw1AA6ARwwENwnjQpgEY4VJ/rt7qkBgOPDaAZzMyMlbO/TxeTGGbNOYfvrigmsxZ9NqxwsVdu2yDbAEsED8edBWEsp4sxh0Why8IxBFXH68QUo8irX48VOcAAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="43" height="20" imageformat="PNG" name="prop-car2-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAACsAAAAUCAYAAAAUccS4AAABM0lEQVR42s2VPQ7CMAyFIyZUsSAW1Cv0AGwcBIVbcAUuwMwFujJyjl6DnS3IFYbUTWLnT1DpSW0V218d51WpzOu8VkYq9evrvl0Yibqu+z1wDCwHrLU2fwUbAgZYEbBeKZMiyay6YH3q+372bn84jvqA7pZpQhhpVxFWuiMI+3zcysFSIFuuzmbBSoNdyThYCpwCO5nX6yZNUlgEtueYCg6XCLZ2ZymwD5YCV+ls7Mf54sANWNgc60qBtUeCs72JdcX836kQWOq7Um8GmdPXY0c3uDSNKQFba/3EujhY/DJULVhfHftwBscAguB0wtCD4J4mKwHrq0OBR1hX1+AZFmAwJnsHtbg+FzZUx+aCmmgI7TAMs63gYEsIcoXqgGawLkEA3R47SSlF1FEsMBnytoYkdV6/8F9A/VakVAAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="43" height="20" imageformat="PNG" name="prop-car3-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAACsAAAAUCAYAAAAUccS4AAABKUlEQVR42s2VwQ2DMAxFox5ZhVNPvXWCqhOkK/TUFbpAt+Ba9dQ5GKa3FCOMTAjEdkzVSF+gJHw/jGOcKx33c9hE5qMzres67N5Xc9kCD6D/D0tAt4JNAl+OpwCS1lQM+5Pa/TxfI6zkjSksJ7sS/8XsWsDCXAyfynxu31ICZqWgheUAaGEnJVYCKwleCjvJbgrWe5+tP2l2NoNtmmYVVHpgtAdsAouti9t+tMFNYLEbgMLN8fufP/D24D7O/ly/pa1LJGnwQthHVQVHixkXMNOrfzcDWFacFCw1gE4ABwwE90mjAliEY8WJfrt7agDg+DCawdzMSAnb+3QxuXHGrFPY/rpiAmvxZ9MqB0vVti2yDbBE8ED8eRDWUoo4c1g0mhw8Y1BFnH58ASZsPUk9RqYkAAAAAElFTkSuQmCC</image>
+  </sprite>
+  <sprite width="43" height="24" imageformat="PNG" name="prop-car5-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAACsAAAAYCAYAAABjswTDAAABN0lEQVR42tWWwQ2DMAxFc2aErsCJMZgBjmxAJ+kWXDsOO/TeG9WPauQGJ04oEED6aqr6x0/wcWqMczVNM+WSSblg6Ps+m6Khc4MSbFmWOvCZYFXgnFnlIlgvsFSoyddAq8Ud9NW5v4kZTgXlm6XUhkAl4NPDcmDy/ACfDRYahsEPe0Rm6a2Phe26bvYsxlbKWysN81Bt6mhEPYfF+rAZW9e1BcAnrUOiGvK/X8/jYWPF62fYR1FMV4C1d/UKsJTfS8QAoD+Z3VtrYKe7saAzLMUgJyxNCC7xj7kGq23yL6w70tw+/KAIxgCmtm3taQJhvRZa8nBQqY8LbGElAHynYw9m2uxrqtZkkHs4qK8P96AnnbjVOI6LR6HBbiHsFeoDLWAlweA+Hr7JVkroY1RgJ+TVHoroc/sA0gwuyAjrn+MAAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="43" height="24" imageformat="PNG" name="prop-car7-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAACsAAAAYCAYAAABjswTDAAABSElEQVR42s3Wzw2CMBQG8A7gxaM6As7gwSsxejMmHBnBORjCcGEJEzfwgPNgXs2XPEppS6UtJF/wD21/PApUCMt2P6y7VBGuGxo8rptkcQLTQVmWJcdawYAuHsuhwC4ho3OUY+nM+Hf1P7QpyzJoBmAVa4KqYOrwlOdBMsBibgLrAlWxdV0HiRHbNI0TNFllcecdzzdnLL9bo1WWgBw79XEVtbKfZ9Ub+LJfWR8ldAyOo320ygLLIVOegcBGqaz6zPTFhq7sayc6gXm69MpKLE0DDvbFRnmDAUt5V8ILG219oFuw4G7nSY2V00C3ykKlERPqH6xuHCcs76AoCvkmo9BnE9gHC9zYOKZl4pZ3QHA0Rmf0mw5smyJjUBrTNo56Yj0s7U2d0H/qZfONDcvTti1sPywPNVAvD7BzxmOcIRYd8cwN9RhHbl/Yqfjg2OPxCAAAAABJRU5ErkJggg==</image>
+  </sprite>
   <sprite width="80" height="35" imageformat="PNG" name="prop-car8-intact">
    <image>iVBORw0KGgoAAAANSUhEUgAAAFAAAAAjCAYAAAADp43CAAACuUlEQVR42u2ZsU7DMBCGAxMDC7CgiAeo1AXEABMPAGJgYEGBnQkhMdGBiQ0hsTFUQmLrwsDIwtoH6GuwMbCZ/oGrHNeOLxcnLSGVfrlJnd756519dqPo93Wxf63qVtSUFwbzcvku0n3SF6sxEF0Ay8D5twCrhtZogHXCuzm6awGWgdc4gFVBylNjAJ7tnqtZlDGw25gIRERgQHW2jUvhWbQtwBZgsW1cC1CwldMLX2qHw2Gu/iVAzs5BB9jr9VJ1u91UdN0CbAHWB5Dg6RBnDfB2JVJc1boTMQFGB09TAKFZA3xbX1QcwdcgECUAAe/xObJC/EsAfRCTJFGVANw4XLXCm4cULgowDyIAeiFKUxgQ9dJFvw4BMFmOlEScuc8G0KXBYDB1b+/kNJUI4ENnTR1vdlJgaEn6NfqUAQgQO0syESBu9BFAbuQSwK+PVz9A2w4EcDiSAvw8X1AhANoWOJItAisBaItAnKb44NERmQSguvpJRe6AbAP0ATQhSgCmzuJhyRwIQHnizoGw70rh/ppMXIAEUZ8XTWEBCQawCBhum5mMDYBVR6AJ0QXQhDh3AOGDCTFEBBYF7noOq/BcAyRoFI3wSVrCUBkjAains68EmmSOFCAdyVMbGmCR/awpgsitC7m1I4QFjvxMV2ECaPvDxyYAoy8ghU5hOBkCYFX9M2UMnKfI4rQ0YF24J41E2yLiA2j+gFUBdNnRxz4B2N3e8WoyP41XJUysEN4TxLIpzDmSQn/TvjnAEABddkyImQgEJFvkEbzxuGL0py8kA7+1XEyRWORvTVcdaIsu+gHz7IcAmGdH9ws2s5O3J/o4AIsq5ywhHo1GU/1D23f4lDtOKAOQbgIUvdel33el8PizLduzDDkBWn1x249DqoCdrLO26DMe2DIXkRLwYs/RnnNwhv24CnHsfAOrPAOFmcPi6AAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="37" height="35" imageformat="PNG" name="prop-car11-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAACUAAAAjCAYAAAATx8MeAAABfUlEQVR42u2XPUrEQBiG5wzaBVtlIQhaKQo2doqFiI3EQ1jHI9hsZydsl95D5BKeZeQN+8o4O/8ZZ1Zx4GE2w5d8T+Y3K4SlXL2cyNIIV0FA936ZzNPHXRJOsblSqeLVpUyCXqnb1VlxsSCpkmJRUi5yizmlTp/3ZY0tAXm9PYWgknXQ6qtR/0vNPmpCk43j6ESP9x1B2aT6vp9o23aC1zapWfvUr5eikCpWVUpcv21IgVipbKsPQq8rYRSrJrV3s2MUShm+bFJIDDF1G1Cvi0stF7vy/mgxSaAm6jViikuFYNrZf0wKJ7tPCDFZegoTNXROIamLlDmF/N+ELh4eJch9ILPHoqUgg4atkGLvqHJ/Toqftay3Yvj4koTf4LaFoJN1oiM5X0wFbeypkHpDas7wUajrOjkMwwR+U+z88MCLVYr7VMxfo/WcbHAvZSi3TtJQzNRDartRSh3GGEKlbOgLzlSaBI5tw8cYJDfdq7VnlfoSU0GbLqCjPUN8Ahc2/6Tpq6mGAAAAAElFTkSuQmCC</image>
+  </sprite>
+  <sprite width="37" height="35" imageformat="PNG" name="prop-car12-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAACUAAAAjCAYAAAATx8MeAAABJElEQVR42u2XTQ7CIBCFe45ewERWLk2Mce0RDO68gh6hN3DlCZq49yLeBzOmzyDyV6DQGEheaCa08zHAMG0aQ9ucO5Fbja3RgP31Hiz+eAbJChYLFQpeHEoH6ITadbfsYF5QOcFGQdmUGswKtTxdRImUQH6dkaJBOXuv01eir1DRV81UkXBdQcWgovJUhZorVLGUUKEq1FSZ/T8ixRgTJaHI/xfQ9nAUpNQwVC8FQREMGWYBhejIcH8HhbIW/SyWD5OEUIPrpCvykm50co6JySIbIuXT/0DFLB+AOOei7/u36BlgbL1wygiFPDXm12jYky29CxjADU5agOkiJNu1UPIyjpEvlEnqgdO1NkAr0/JhDDnXvavYk0J9wGSRTQVQpXyjeQEsNL6CWKieswAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="79" height="35" imageformat="PNG" name="prop-car13-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAE8AAAAjCAYAAADVAlenAAACTElEQVR42u3ZsU6DQBgH8HsAF0frA5iIS0cT0xhHG6Ob0eDGI6iP0LGbk5vp0sTdzcQ3cMDnQT/TP/n4cnBwcBy9QvIPirXf8esHB1SpLV/OnhZZ31EhLLQjly/v1ok/UqsEAdgWzxZ4xGsBGQze+eK1d8Cg8PoEDBKvKl0DBoF3nDxnPi5VqG4wnUc70+c6qNnWx3rEc433ONvPfMUHXie3aNiBt9sDbzEBuuos061bJR4NOooi73gmQJd4Vtd5gBvxGuJxOOANIYPHw0A5Hn3y/Hf5N/xPkiROUwboA08720q8KjgJSDt4NZ87yeDxcG4DXh04ibdarZxkq/DW63UtuLHzNgtmtovru9p4fDbc2c4jMI7X9PIkxM7DXYQR7+dzWYC4OdkzXjrQa/A6Wu9s5wGPwzS5BgNe351Hpw6feFRfyWs2WzzXnfd1qHLA2f1DRukajZ7XNcLDeW7onQc8QqOBDwKPDlsOaIvn+g4D3ca7bzB4lO+lssLr4/62azw8TsfaCk/3AACzKY9vvK4PW3wYCL6j0EX3MDTHk09R0IlIFVIbPF0dE17bCYOQ8AHw0DZ0Xp11AY/vUBzH/3caFPq5CtAGD1hldeo8lrLFA5ysDcDo9MiYHO9vmfAdoo14QxSgbTpA0yFdBkc1TXUkdNl1XpOvDDfnzNLa9DcA6jqOby/g0dr0xvIws40JjydNU4xN6bqvaerilUVOXBOespaWr2sbizq6xab21FSbkLRjLm7XD0CeTLuGs6ijOsTLAUXtqYSSkWP6BTErt3AQIoquAAAAAElFTkSuQmCC</image>
+  </sprite>
+  <sprite width="25" height="16" imageformat="PNG" name="prop-cow">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABkAAAAQCAYAAADj5tSrAAAA5klEQVR42rWSMQ7CMAxFcw0mFgbEiBgqJroACxtXgLNwgEgsXIEbMLBxAgZOY/QrfXDd1IkQtfQVN7H94rghGIsxChT+bcftQqBBAfvlTDRosI4IGbyjul61QPRvVfXxT4ddVtkuNIjPqCEl6sDk/koGagAhenYsZuOpzXzyBQFiQUj4tQsNwdpAHperWFAK4t061V0LQhA2eYAVhfRTeUpBUYPz7vwEhOUAXje8ZC8E9jyvG4AuZH1PjOGFkwBKF8YZvzlDivs6Rr+MC7FJ2sccuXqQXiPAJk3HI4FsfEmMayVJuZg3e+vbRq1l0/gAAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="16" height="19" imageformat="PNG" name="prop-crate1">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAATCAYAAACZZ43PAAABIUlEQVR42mMItdP9n+xp9h9Ee5upg2kYRuejy4H0MaR7mf0vj3D8r6cg9t9BV+G/p6kaUWyYPobiEJv/rUle/41VJP5H2uv+T/c2+++gI0+QDdNHuQGdyR7/55WG/wfRIFwTYQ9nYxNDZoP0Mayuifp/bFLu/4kZXmAahHd1pcPZyBgmDlIL04diAIi9oDgYTMMwjI8sDlMLMpABJAEywMdU5X8W0G9VkQ4E2fmBVpguAEm2xDn/n5kf8D/eSRcvG2QAzGIMAyZm+GBoKg6yQjEgw8cM1QUgv5DqAqxeQLcJm2uQDQAHIrFhADMMZAlVApGgAejeQQ9EeCwgpwNcziboAlgskJqQUAIRlheQ8wGuPIGSF2BegAliyw+48gJIHwAgB5EYfyS+KgAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="16" height="27" imageformat="PNG" name="prop-crate2">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAbCAYAAAB1NA+iAAABKElEQVR42mMItdP9n+xp9h9Ee5upg2kYRuejy4H0MaR7mf0vj3D8r6cg9t9BV+G/p6kaUWyYPobiEJv/rUle/41VJP5H2uv+T/c2+++gI0+QDdNHuQGdyR7/55WG/wfRIFwTYQ9nYxNDZoP0Mayuifp/bFLu/4kZXmAahHd1pcPZyBgmDlIL04diAIi9oDgYTMMwjI8sDlMLMpABJAEywMdU5X8W0G9VkQ4E2fmBVpguAEm2xDn/n5kf8D/eSRcvG2QAzGIMAyZm+GBoKg6yQjEgw8cM1QUgv5DqAqxeQLcJm2uQDQAHIrFhADMMZAlVApGgAejeQQ9EeCwgpwNczibLBaPpYOSlA1gskFqgoAQirExELg9xlY0oZSLMCzBBbOUirjIRpA8AyqmophIM0YMAAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="16" height="10" imageformat="PNG" name="prop-crate3">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAKCAYAAAC9vt6cAAAAxElEQVR42mMItdP9n+xp9h9Ee5upg2kYRuejy4H0MaR7mf0vj3D8r6cg9t9BV+G/p6kaUWyYPobiEJv/rUle/41VJP5H2uv+T/c2+++gI0+QDdNHuQGdyR7/55WG/wfRIFwTYQ9nYxNDZoP0Mayuifp/bFLu/4kZXmAahHd1pcPZyBgmDlIL04diAIi9oDgYTMMwjI8sDlMLMpABJAEywMdU5X8W0G9VkQ4E2fmBVthdgO58XF5B8QLMBTBBbN7A5QWQPgDuP1jP+u+ApgAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="15" height="9" imageformat="PNG" name="prop-dog">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAB4AAAAJCAYAAAAl45yBAAAAdElEQVR42mNgIBEkRwT+ZyATYOg111X7T6wmcizGqZdYi2FYS0sLrF5DVuw/uXpRLAdhZEUwDBMHacJmACV68RqALgbSiK6ZEr1wzdgMgfHdxYTBGD04KdGLoRkXJsZiXBhrIoBJgBINKXKU6sUtQUCOHL0AyWzTlwaUGdQAAAAASUVORK5CYII=</image>
+   <keyframes>200,120</keyframes>
+  </sprite>
+  <sprite width="5" height="10" imageformat="PNG" name="prop-dungfork">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAUAAAAKCAYAAAB8OZQwAAAALElEQVR42mNgAIKEhIT/MMyADDAEQODAinIiBRNkZAgIItsMdwHMVhSaaEEAXFIvGaarp2wAAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="20" height="26" imageformat="PNG" name="prop-haybale">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAABEUlEQVR42pWV3Q3CMAyE88oTEzAFKzELS3QE3tkAiSWYBeSHqy6Xu6RUslrl57N9dtLWzPN5Xr/v7TTY437urMba6sHm1+1irebKYdkSyiDehIjrrfAIBcylBzjAGFd4B9R0UsoM5u+aG2BJK7YE36EM0yomc/AOqDDXMql14ACcxrAjfZfmh5RX1XWR6fohQtciq9R5rAO6iiYn7MxG6I4TFmuk7AD7rIa6MemnqR8CJgmSvt1pgYYppVnUqulQFPXopOAbRlvHVlmL4aqrQEQcI+SFTi8HnKasqbj+dE5iyq5xXbMzzB491TClPL1kZ0WZmdM5Rri6dbSthpPCx8qJrlGrM8zv/5V/rv/U/ID9APtkrM2OuCXnAAAAAElFTkSuQmCC</image>
+  </sprite>
+  <sprite width="16" height="11" imageformat="PNG" name="prop-lockerroombench2-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAYAAAB24g05AAAAXklEQVR42mNggIJly5b9Z8ADkOVR1LqFRP0HYZAgjI0NI8sjsxkGHjj4BOF1Oj4M0otigJ64wP9MI2UwJtoAGABpBmEbKUGwASR7AdkAECbJC7gw0V4gJz5R9FBiAAAPlLC+o83NqAAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="24" height="11" imageformat="PNG" name="prop-market-cart">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABgAAAALCAYAAABlNU3NAAAApElEQVR42mNgAIKWOOf/51dP+M9Aa4DLIh9Tlf8wTJahuCwCYZChxUFWYDUgmmxLYC4HsUF4dU0UGCO7HoRhlpIdRCB8bFIuGMNcD7MM5gOY72CYLItghhcWFsBdD2LDLIFZCsJkWQYLBphFMINhlsN8CcJkWYbLApgYLDiRgxTZMhAbryWEgghb3CFbBvMNQV/AkiixyRTZMpAlRMUFuRkNZAkA+XMCAh39XZwAAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="11" height="16" imageformat="PNG" name="prop-outhouse1-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAsAAAAQCAYAAADAvYV+AAAAVUlEQVR42mNgAII8Oeb/hDADTGGPj8L/rdmWeGmwBmJMhZsOIgiZCqIxFBuLs4IxiA9jY1UMk8SG8ZqMjHE6A90GvG5GtoGgB0kKDVyKaGMyHRUTiwGPBEVqZZTp2QAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="6" height="14" imageformat="PNG" name="prop-oven-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAYAAAAOCAYAAAAMn20lAAAATUlEQVR42mNggAJjPc3/IMyADqTERf+DMIUSMPNR7AExnB0dUDBYEkSsTRJDwSgSF0olwRhDAqsOnHZglQACQyzONQRLQD1miMbGLgEAEAFfqUF85zUAAAAASUVORK5CYII=</image>
   </sprite>
   <sprite width="16" height="11" imageformat="PNG" name="prop-pallet4-intact">
    <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAYAAAB24g05AAAAW0lEQVR42mNI8bT5Xx3tB8aE2JPyEv6XR3qDaRibIdfP4X97cggYE2IvqMj435QQCKZhbJIMgLGHgQHI4TEIDIiwMfhPCWYIsdQDmwqiHTQV4Bgmjk8ORFPsAgCpCWpURWMy8wAAAABJRU5ErkJggg==</image>
   </sprite>
   <sprite width="16" height="14" imageformat="PNG" name="prop-palletpumpkin">
    <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAYAAAAmL5yKAAAAyUlEQVR42mNgwAMsss3+x++O+s9ACtjlrfz/ZyPbfxANMgCEL2Q4g/H//elgGq/mmwUsYM0gDLIdZACIjdOQFE+b/9XRfmAM04juApgrYJpBeFJewv/ySO//DLl+Dv/bk0PAGOYCmAEwGqYRRMPYCyoy/jclBGI3AKYZ2SBkQ4gyAN0lRBkQYWMADwdkDDIApAkWmCB1WA0AsXEZgqwZpBanATCX4MIwNXgNIIYNNwCfbcRghhBLPbCpINpBUwGOYeL45EA0xS4AAFqFpvV8sSjJAAAAAElFTkSuQmCC</image>
+  </sprite>
+  <sprite width="21" height="12" imageformat="PNG" name="prop-pig">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABUAAAAMCAYAAACNzvbFAAAAfElEQVR42mNgQAPbGuv+M1ATzEyK/w8zlCqGgwyBGQqjicF4Dby9cjkYgwzEZShMDTLGaThIMCwsDEUxyGBkTdgMRDccp0vRDScWo7iYkPdIMRQeweiRQ4xrsDkCp0txKcSHcYZplLbmfxBGV0SRocgRRi4mmKuQaXLUAgA/cN3QU3T96QAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="7" height="14" imageformat="PNG" name="prop-plant1-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAcAAAAOCAYAAADjXQYbAAAAb0lEQVR42nVPMRKAMAjLc+rKpJ2dHRz9g77AyY+jGVJprbnLFQgBCjyYd/PlnJzxuA0ecyhgkSIEdZEU5CQRIVcZ2YpyVTs1Fn/o7ovfiIcidnV3ttcWJ7Gm5IeZ8yWvnF+XRBZJxh9RZF7t08go3DYlZMF6lK94AAAAAElFTkSuQmCC</image>
+  </sprite>
+  <sprite width="8" height="11" imageformat="PNG" name="prop-plant2-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAgAAAALCAYAAABCm8wlAAAAX0lEQVR42mNgAAK/Gsv/LrlG/xkIAYsozf8wDSgSIN0gDFKAYRKyAMwEDFNgHJgJtgm6YAzWjMsEDBDkqfEfjjU0UBWCBJBxk5UVqiIQJ8/ICCwBwiA2VgXImKA1MHEAv9ZQJikN0zcAAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="8" height="10" imageformat="PNG" name="prop-plant3-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAgAAAAKCAYAAACJxx+AAAAAYUlEQVR42mNggAKdVob/IAzjK6Ux/gdhsASIAaPhEugAXSGyaShGwiRQTEG2Py9ID7vx8dF6YAxSUF1mA8ZwBTBJF11+OJ7YE4JQUFXq9B8ZgyRBNNwUdAUwjNUaZAwSBwD2d2J/pKGCrgAAAABJRU5ErkJggg==</image>
   </sprite>
   <sprite width="19" height="16" imageformat="PNG" name="prop-pumpkin">
    <image>iVBORw0KGgoAAAANSUhEUgAAABMAAAAQCAYAAAD0xERiAAAAxklEQVR42rXSsQ3CMBCFYReIRdgB0VOyQRpKkGhYgTFYBYqsQIuoGYLq0LP0o9MltuyCSE9nJ/DlTk5K4bJ3susrGWtV7Vk3XZvT2hT+GGsXtL8POR4kdNoNsRdAeK40YUC6B8Y9nyrokdoLSr9tPozaJF2Y3992K/tclqbKix7HbY6Nh1ybuhLwPC8ypDC+1hPQtz03HkjsjO6Aft0BlDB1BkYFUZ2MWjp6P6Ygj3rwf1gJ9Fgct4rVwBhhAjjVro92DozQF1f6jC/UHh+9AAAAAElFTkSuQmCC</image>
@@ -3272,11 +3835,30 @@
   <sprite width="6" height="11" imageformat="PNG" name="prop-pushcart-intact">
    <image>iVBORw0KGgoAAAANSUhEUgAAAAYAAAALCAYAAABcUvyWAAAASUlEQVR42mNgQAPJTvb/mwJ8/jNgk2DABkASgWYmJOrALwFyAQyDzAZJGOrp/UeRgOnAKQE2qtzT9T8Mg4wCYQdra0wHgIwBYQA6fjr3+kNVvwAAAABJRU5ErkJggg==</image>
   </sprite>
+  <sprite width="14" height="11" imageformat="PNG" name="prop-rooster">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABwAAAALCAYAAABs3u23AAAAg0lEQVR42mNgGAygQUPjP90tRMY0t/DIkSP/QZgult1bzQq2LMrPG0zjchC5HsGwDGYhDGPzOUyc2BDAZR6KD/Hhnp4elDgmpB5ZH14XgRSgs2GaYJbBgh7dYFz6CAYDSCGyAcgpGd0iYvQRHfbommDxB4t3YvXhBaDgQqbxpWxi9QEAA0QsmMQwtQAAAAAASUVORK5CYII=</image>
+   <keyframes>1000,120</keyframes>
+  </sprite>
+  <sprite width="7" height="7" imageformat="PNG" name="prop-sink1-intact">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAO0lEQVR42mNgQALPnj37z4ALYEiCBHBhsOTatWv/HzlyBAWDJbdu2YJbJwiAFKBjFLtBAhcuXABjmBgA1p1rlk0bVDkAAAAASUVORK5CYII=</image>
+  </sprite>
+  <sprite width="16" height="20" imageformat="PNG" name="prop-table1">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAYAAACEYr13AAAAP0lEQVR42mNoLEz7TwlmABEnlvaAOcva8klig2gGUjWNGjBqwKgBtDKA4vIABGAmMxAJMNRTxQC4c4g0AKYeAIwR5aeISw2PAAAAAElFTkSuQmCC</image>
+  </sprite>
+  <sprite width="16" height="28" imageformat="PNG" name="prop-table2">
+   <image>iVBORw0KGgoAAAANSUhEUgAAABAAAAAcCAYAAABoMT8aAAAAQ0lEQVR42mNoLEz7TwlmABEnlvaAOcva8klig2gGUjWNGjBqwKgBowaMGkBLAyiuF0AAZjIDkQBDPVUMgDuHSANg6gGdPznt5WWFRAAAAABJRU5ErkJggg==</image>
+  </sprite>
+  <sprite width="8" height="7" imageformat="PNG" name="prop-table3">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAANUlEQVR42mM4Nin3Pwhvb0+BY5gYCDNgE0RWzIAsgQ0ztMQ5/8eHGUAg3kkXwkACKGIUKQAA/itdN/u1To0AAAAASUVORK5CYII=</image>
+  </sprite>
   <sprite width="9" height="18" imageformat="PNG" name="prop-toilet1-intact">
    <image>iVBORw0KGgoAAAANSUhEUgAAAAkAAAASCAYAAACJgPRIAAAAbElEQVR42q2SwQnAMAhF3X+X3NINHMApXMKDRaiCJmlCqfAv4fnjFwGeYmatglpHEBFpFXwqsxeRpO083rSF0vD/QbP4aQ3e0VpTREwKNwdcM3CAKhzQCozvrt71LV0kNHCm4RLs8egK3KECNyLTkkRPWMLUAAAAAElFTkSuQmCC</image>
   </sprite>
+  <sprite width="8" height="22" imageformat="PNG" name="prop-torch1">
+   <image>iVBORw0KGgoAAAANSUhEUgAAAAgAAAAWCAYAAAD9091gAAAATElEQVR42mNgAIKo9Cn/sWEGZODoHodbkigFyIoYcIGixhn/u2dvIVMBSAKED5y+g1vRoDdhBCiAJRJYYMEwXBJdAkURKBUhY/SECwBaMr+eb0Ek+QAAAABJRU5ErkJggg==</image>
+  </sprite>
   <sprite width="30" height="48" imageformat="PNG" name="prop-well">
-   <image>iVBORw0KGgoAAAANSUhEUgAAAB4AAAAwCAYAAAAGlsrkAAACeUlEQVR4Xu2SMYsVQRCENzxQ7yWHgSCcYHjhIYqhhsaK8CJjBWMxuuB+gok/xJ+30gM11HzbPftUzN5AMdPdNVXdO7t8f3ZYA5+ePFy/PH3UzrFHLEQseD6g+9LwcwZpLD9vHrdD7IG4pLPyLs6ax8xlEGehKKfI6rGzRk6W0xdtE6tTkiqQ5waMnau6OG1iBf7GegudlWcjfH/ny9Q5Qps4ewe/WIFNZPBJHYt36nvAxZWnsU/kdWoR7a/O3kQE1jIOvwS/CHOxt4kJ79jBnJrwszdW5WPfvHE2qWqVEDWUIzegfPurK6K6y8AGKw1xmVteP3+wvr05rLEHgqSz8jIRWCN/BnEWrePxuP76cTfgw5sXDfefj398plYgPLqhG2fm/9IATafGzM9WiDNXrVK/LEzW2Xi2Sv2yMFln49kq9cvCZP0X41cXF+sewpg5otLvSwVe/Hh11fH1+nrIhTHzcVbsOMlYwjRmTsbMe6wmUuMovLy9bQVdzLom9j61NyL9yKfGfin2d5eXHYqDGwhjncnxnfob40CcfVoay8RrWd7vU38wFvyNMqhzQqJEGPPZurG/KY35CcPg8P7bBjJ2fhaH9mA8m9JFYjqaBvz/yOCDdWMn7P3V/MQOcl3PBxuMVSCRl/bAxqkV+Y1xZlAJ7cXU8vxg7B3pzIsUyGLeyfS6cUaQWPXWFU6ZfDAmwS/7mcKMnV811I0zM06aCWex38l4gcGYAowpWEF8fgmdz3/1hiAxvvUeTpl8MCbBL/uZwoydXzXUjWPRjJNmwlnsdzLeYKqVESvBCuLzS5SmWqcK7cVslj7TxQYyYcZ/bVYtilbgvWr9BvTA3wYSd0oaAAAAAElFTkSuQmCC</image>
+   <image>iVBORw0KGgoAAAANSUhEUgAAAB4AAAAwCAYAAAAGlsrkAAACHklEQVR42u1Wu0oDURQ8ZUBNmmAhCBEsUwZRLLW0VoRU1grWYmXhJ9j4IX7eylmYZXb23EeMSbULw32de+Y85obY+9mscTydHDYvp0ft3EdfA74GeN+B+/DB8wjwYd/L43bio8MvYY59dq5nvNa9CLAxdapZROcaTMkH9lDRNmMtGUcfIUeQChqBsg/jC9xj9ALzqPdR/9kepGwDWNQXzSzXrxJSQjOOlEcEpGqMhMIZ81lUoY44EgoTlkSUU3J03qk6qj9HnOoh95Hn2tuU0Cz1HqO3m3JU0kmkfMu939x7rXleuWdm1+cHze1y1vjocCPMsa/C0DO1zwE2hm+9Xjc/Xx89PNxctPh8Xm88V18O5zD9fDMi3yYAJc0S2wafO6+1HYlH4pF4/8RXk0lTghOXbKqJ9eLjfN7hdbHo7Tmx7vsca0YVMRwrse6BOLLlQJLEfnC5WrUHmt02peZA4J/L3yPmSz7eTacdsHZbhxNjrjY8qv8BscPnnK0Sg4TPon2+r/4tUjD3KAIiV8Cpwom1bR1xpFjNmMs8u38bAMRsH63dd484lyU78ewi4ugpMjixbKlTqo7KnPoNiJ7YoMe5t1hTjVTg0bseEEcEKUeltfri/UGp1YFezFUkFXTkL6nqml7XiCiVeVHVUWa1JVZ/f1Z1qcSl4EdVj6rer6q13LtUdfgXdNeqzv7/3ZWqN/m/btuq2v7jqy11rb9f9MDfBggnWLQAAAAASUVORK5CYII=</image>
   </sprite>
   <sprite width="96" height="54" imageformat="PNG" name="scorescreen">
    <image>iVBORw0KGgoAAAANSUhEUgAAAGAAAAA2CAYAAAA4T5zSAAAGjUlEQVR42u1aS4sdRRhtRXQkypAHRjQTJyYQ1DGDkfiIA4ITQQgIBkJQFEEQhRgMuIgLEdwJLrITxI1bl7rUhfgDhGxFXPofzKrlNJzh3JPvq37OdXLvLA5VXV1V3XNOfa++U33w2EP19xuPNEAfuLb28ExfrxUcZ6t7LNu+t27/OwjVFydWa4IvoWN6j32+pN6PxpZp38ECUHU/DQ4+XPu6Vl/KsQz7TiJAdEI47mbqL+vzl23fwQLQt7l/83G0aoa8h2vvR+sXfd9JYkAX/4h7fIlsXmntou47WIDInLh5yRdmvjUbX/R9RwmQ+TVN1/iymYl2Se8Wed9RMYBmxZdT83KfGaViJfNcln1HZUHZC2Upmveztcu07yQuyP0aX8DNVk9CVBVG44u+7+gsyM2NJlfKCqI1PrYs+44SoJSeRRlDVKRoIGtL4xZx31EuKDNDD1qZ+eqp8Q9Yy7LvJEE4CzBZjty1pF+GfZ+7+OQgVK+cOjCjJq4vbKw2Lft6reA4W64nlmnfwQJsrj1Y72M8Bgtw5czh+vPXTtZXzx+rLxy6t1606x8+2ax//3q73nj0QH3sgXvqk4dX6j++vTxzjTlA1/1LhL68stILSyFAhue3zu5grAAk9O0jR2ZwfX29OL7wAuD0/3TjbHPqAVzTKjjOsb4C6El2YvctwARAGwmAdqgAfsL7up99AUYK4GQOEWFfgJECkHRt+wixL8AEFpD5/igA6xj6SyGAgwL4WB8Bnj1+8A6345lOJwsYWkDcDQBJz6wdqt86v1lvP328aSPg3hNHV5v56KPN9stSz8gC3C1FaWm1yOSzVfIzITBO8FoF0b6OeRbUNxUtClD/U4Xt3SaEkqqk49RH1yoGgXvROBDVA1lt4NbQagEgnXjp6gv1+7++07TzJtKDpva7ChCR3mYN60cPzojnLe9zrHcamr04SFZ891e1Mz5PEd548VQYSF0MzMtcUBvhJSHYdyHa5nfdvyiACgHSXZx5CYD0ESTz04F+WuC4C0D0JWVKdBFrR4BbH2/X9W8fNS3I/eXiyfr2V/fv/CE/fvNZiGuXthrc/PRyg90QYPvsiQboExzTe23ux6HuY2qis+fimerGKpAG0ikATzcFQPv3zzcbctUa0JL0oSJkfp2nGwCxN66cqz9880z95XvnGnifiASgC+pqCer329A1npTizI4AIJ8A6SoA5kAEjQkkW9FVBJCllamTrr4eAmA+RABcAOLSq6dTATxryQKuEhrNLRGrpzrKtrIMakYAtCSdLQBi4W548tHPBOgiAkil724DBQC0HwlRqgOiPL8vSoRHWVIb8G4ViQP5TjzJx+mPyFeyI0soCeBwf86xaG42P0tDFXoaVRwvtjLr6UpsNubPrJREiqAgoagDkIriGn20uGa/K/kUQE8v3Yu6GF4zBjAOKHS9WlWUqhIuSEksF6N0n6Ti0wfb0lqi8lOsbkT9Psn2NlrfJgRJ9SAaAXPh33XMxeI8jSdR2qpxZWx2BpLhFbLvRl2r9MpJ0z4zHrofkk7QIvoGY1oAiPVg6lALIOkkXte3CaCBPktZu4ypmwYnGj8H/VdE5Msj8nkN0gneB/oK4Hl85O851rUOKMUJnzP01LoAAAVoE0GL2RkBogxG830GXwrgnyk4t48L0lOuJzuyAJx0d0O+3vf0FFXXjxHgz+v3zSQqmr5HArRZTBWRTwsAEAdAPuOBisI1UW3QRQB1LU6wkqXztCjTMU1RHb5+rABKKtqSG2qzmCpKJTlG4vnJQYnOLKavBUSZTUZsqRLWzCoSTNdMIYAKURKgzWJSAVh86TcfrQNwHamrnzUyn9i3Dij5+WiP3YwBPNWK6O+kv2+zmCorpkgyLUBjAaCnAKBr4guVRNDvO5lf19PK/ruvP9UgqgtKMcDXT5GGdgnQykFmMVVW1dKlaC2gVuHfizQg6wMAd0Xum0mqE+afHzLfXlqfxZV5COD+PrKYqvRJgUHYT79agH874gPVz7kAp7ce/18RpYNToG+G1Ajg2Q/7IF4DL16a5OO+ByIVQkXYKwJMXUBNkSHN1AGlgkzz/KECqAh7QYA+BdRuZUh31AEuAMl2EVwAd0V7UYAh7mG3MqS0Eo6sIfo1TNNQB1Xnw3XP3RZgavcwD1Slb/paD6gIei8SISJ/HiJM7R7mIoAT5D+60wr0uq12yO4NecGpBBjiHuYugJNM95P9B0TbT5Jjye8jwt36L5T/AYP/Gwt3MRAcAAAAAElFTkSuQmCC</image>
