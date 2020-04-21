@@ -57,8 +57,6 @@ public class Farmer extends Creature {
   private boolean grabSpeechbubbleActive;
   public boolean firstRefillEver = true;
 
-  public boolean movementBlocked;
-
   @Override
   public String getSpritesheetName() {
     return this.hasCan() ? "keepercan" : "keeper";

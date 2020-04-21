@@ -28,11 +28,8 @@ public class FarmerController extends KeyboardEntityController<Farmer> {
       GameManager.levelTransition();
     }
 
-    if (GameManager.getState() != GameState.INGAME || Farmer.instance().movementBlocked || GameManager.getCurrentDay() == Day.Saturday) {
-      this.getEntity().setAcceleration(0);
-      this.setDx(0);
+    if (GameManager.getState() != GameState.INGAME || GameManager.getCurrentDay() == Day.Saturday) {
       this.setVelocityX(0);
-      this.setDy(0);
       this.setVelocityY(0);
       return;
     }

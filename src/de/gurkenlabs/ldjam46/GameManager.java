@@ -437,7 +437,7 @@ public final class GameManager {
     int i = 0;
     for (Pumpkin pumpkin : Game.world().environment().getEntities(Pumpkin.class, p -> !p.isDead())) {
       i++;
-      Game.loop().perform(i * 500, () -> {
+      Game.loop().perform(1000 + i * 500, () -> {
         pumpkin.harvest();
       });
     }

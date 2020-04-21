@@ -36,7 +36,7 @@ public class WaterAbility extends Ability {
 
   @Override
   public boolean canCast() {
-    return super.canCast() && this.charges.get() > 0 && Farmer.instance().hasCan();
+    return super.canCast() && this.charges.get() > 0 && Farmer.instance().hasCan() && !Farmer.instance().getFartAbility().isActive();
   }
 
   private class WaterEffect extends Effect {
@@ -103,9 +103,9 @@ public class WaterAbility extends Ability {
 
       Game.audio().playSound("water.ogg");
 
-      Farmer.instance().movementBlocked = true;
+      Farmer.instance().setVelocity(20);
       Game.loop().perform(700, () -> {
-        Farmer.instance().movementBlocked = false;
+        Farmer.instance().setVelocity(70);
       });
     }
 

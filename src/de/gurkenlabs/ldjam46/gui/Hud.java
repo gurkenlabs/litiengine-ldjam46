@@ -112,7 +112,7 @@ public class Hud extends GuiComponent {
     if (GameManager.isLevelFailed()) {
       g.setColor(Color.WHITE);
       g.setFont(GameManager.GUI_FONT.deriveFont(48f));
-      TextRenderer.render(g, "YOU FAILED", Align.CENTER, Valign.MIDDLE);
+      TextRenderer.render(g, "YOU COULDN'T KEEP ENGOUGH PUMPKINS ALIVE", Align.CENTER, Valign.MIDDLE);
     }
   }
 
@@ -165,11 +165,11 @@ public class Hud extends GuiComponent {
 
     String currentTime = GameManager.getCurrentTime();
     if (currentTime.equals("6:00 PM")) {
-      g.setFont(GameManager.GUI_FONT.deriveFont(48f));
+      g.setFont(GameManager.GUI_FONT.deriveFont(64f));
     } else if (GameManager.currentHour > 16) {
-      g.setFont(GameManager.GUI_FONT.deriveFont(32f));
+      g.setFont(GameManager.GUI_FONT.deriveFont(48f));
     } else {
-      g.setFont(GameManager.GUI_FONT.deriveFont(24f));
+      g.setFont(GameManager.GUI_FONT.deriveFont(32f));
     }
 
     g.setColor(Color.WHITE);

@@ -3,6 +3,7 @@ package de.gurkenlabs.ldjam46.gfx;
 import java.awt.geom.Point2D;
 
 import de.gurkenlabs.ldjam46.entities.EnemyFarmer;
+import de.gurkenlabs.ldjam46.entities.Farmer;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.EntityMovedEvent;
 import de.gurkenlabs.litiengine.entities.IMobileEntity.EntityMovedListener;
@@ -17,6 +18,10 @@ public class WalkDustSpawner implements EntityMovedListener {
   @Override
   public void moved(EntityMovedEvent event) {
     if (event.getEntity() instanceof EnemyFarmer && event.getEntity().getVelocity().get() <= 70) {
+      return;
+    }
+    
+    if (event.getEntity() instanceof Farmer && event.getEntity().getVelocity().get() < 70) {
       return;
     }
 

@@ -36,7 +36,7 @@ public class FartAbility extends Ability {
 
   @Override
   public boolean canCast() {
-    return super.canCast() && isEnabled();
+    return super.canCast() && isEnabled() && !Farmer.instance().getWaterAbility().isActive();
   }
 
   private static class FartEffect extends Effect {
