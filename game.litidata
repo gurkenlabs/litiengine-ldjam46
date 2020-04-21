@@ -446,7 +446,7 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="83" type="PROP" x="55" y="200" width="19" height="16">
+    <object id="83" type="PROP" x="286" y="202" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
@@ -482,7 +482,7 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="85" type="PROP" x="286" y="207" width="19" height="16">
+    <object id="85" type="PROP" x="59" y="189" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
@@ -1956,7 +1956,7 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="48" type="PROP" x="103" y="64" width="19" height="16">
+    <object id="48" type="PROP" x="311" y="62" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
@@ -1974,7 +1974,7 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="49" type="PROP" x="149" y="64" width="19" height="16">
+    <object id="49" type="PROP" x="392" y="63" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
@@ -1992,7 +1992,7 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="50" type="PROP" x="309" y="64" width="19" height="16">
+    <object id="50" type="PROP" x="109" y="63" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
@@ -2028,7 +2028,7 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="52" type="PROP" x="392" y="64" width="19" height="16">
+    <object id="52" type="PROP" x="150" y="64" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
@@ -2625,7 +2625,7 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="35" type="PROP" x="414" y="109" width="19" height="16">
+    <object id="35" type="PROP" x="251" y="190" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
@@ -2643,7 +2643,7 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="36" type="PROP" x="261" y="193" width="19" height="16">
+    <object id="36" type="PROP" x="413" y="111" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
@@ -3279,7 +3279,7 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="40" type="PROP" x="109" y="220" width="19" height="16">
+    <object id="40" type="PROP" x="288" y="205" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
@@ -3315,7 +3315,7 @@
       <property name="spritesheetName" value="pumpkin"/>
      </properties>
     </object>
-    <object id="42" type="PROP" x="285" y="206" width="19" height="16">
+    <object id="42" type="PROP" x="110" y="220" width="19" height="16">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>

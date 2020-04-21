@@ -131,6 +131,9 @@ public class Hud extends GuiComponent {
       TextRenderer.render(g, GameManager.getCurrentDay().name(), Align.CENTER, valign, 0, 0);
     }
 
+    if (GameManager.getCurrentDay() == Day.Saturday) {
+      return;
+    }
     if (g.getClipBounds() != null && (GameManager.getCurrentDay() != Day.Saturday && GameManager.getState() == GameState.INGAME || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible())) {
       g.setColor(Color.WHITE);
       g.setFont(GameManager.GUI_FONT.deriveFont(24f));
