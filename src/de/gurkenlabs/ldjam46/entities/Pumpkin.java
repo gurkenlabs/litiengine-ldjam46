@@ -16,6 +16,7 @@ import de.gurkenlabs.litiengine.entities.Prop;
 import de.gurkenlabs.litiengine.environment.Environment;
 import de.gurkenlabs.litiengine.graphics.RenderType;
 import de.gurkenlabs.litiengine.graphics.animation.IEntityAnimationController;
+import de.gurkenlabs.litiengine.resources.Resources;
 
 @AnimationInfo(spritePrefix = "prop-pumpkin")
 public class Pumpkin extends Prop implements IUpdateable {
@@ -101,6 +102,7 @@ public class Pumpkin extends Prop implements IUpdateable {
     }
 
     if (this.getHitPoints().get() == 0) {
+      Game.audio().playSound(Resources.sounds().get("pumpkin-rot.ogg"), this);
       this.die();
     }
   }

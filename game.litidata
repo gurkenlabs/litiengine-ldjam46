@@ -2545,11 +2545,17 @@
 0,0,0,0,0,0,0,0,0,0,0,344,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
    </layer>
-   <objectgroup color="#0033ff" id="10" name="Areas"/>
-   <objectgroup id="11" name="Spawns">
+   <objectgroup color="#0033ff" id="10" name="Areas" visible="1">
+    <object id="33" type="AREA" x="50" y="58" width="48" height="38">
+     <properties>
+      <property name="tags" value="refillwater"/>
+     </properties>
+    </object>
+   </objectgroup>
+   <objectgroup id="11" name="Spawns" visible="1">
     <object id="1" name="farmer" type="SPAWNPOINT" x="272" y="50" width="16" height="16"/>
    </objectgroup>
-   <objectgroup id="12" name="Props">
+   <objectgroup id="12" name="Props" visible="1">
     <object id="3" type="PROP" x="57" y="41" width="30" height="48">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
@@ -3657,6 +3663,7 @@
   </sprite>
   <sprite width="12" height="20" imageformat="PNG" name="keeper-idle">
    <image>iVBORw0KGgoAAAANSUhEUgAAADAAAAAUCAYAAADLP76nAAABLElEQVR42t2UMQ6CMBSGOQ2LoycgegXv4AGI7q4ubi4uungAXZwcjLoa7+DODaqv5jWlvldoSwnY5KUtfC3/V9Ak+bd2OcyFWb0K/7yuBdU3JRyVR8AMzy1yFY7Nez3AVTgKT70mrjr9Bh7TkRB59q3HUY3heohwbF42DArB80lW6lHMV7gtXknoC7nweA8lq4SRv20WsoDDsY3X98UxmUkPu0uHsnDOGbsIt8H/iGDV4aqEXQ/I50CTVyHE/l6UTGEO10OFo/MYFHv43vQ59KHC0Xg9nCli3rNxNmFXHtdQHMUmcOI2AbzvI1yHDxbAkNQCPbyPsA/vmke1dDAWZrE/sM9GFM89gONtAi77y7ZazsT5tFUFc9u/RFM8J0DxlQK4qT7uC89+u13l3+xmpC06vCp+AAAAAElFTkSuQmCC</image>
+   <keyframes>500,120,200,120</keyframes>
   </sprite>
   <sprite width="13" height="20" imageformat="PNG" name="keeper-pout">
    <image>iVBORw0KGgoAAAANSUhEUgAAADQAAAAUCAYAAADC1B7dAAABPklEQVR42u2UMQ7CMAxFew0uwMLICRBcgTtwAAQDGysLGwsLSIgDwMLEgIC14g7s3CDgoF+5wUlJKkGKqGSldvxi+6dqkvz6c9gMlWmxMEHDXI4zJa3fZoJEQJJZpKi5TzHeIsR8Q14iSFdps08zpW4o7bWV6reelm6zd4pL+bXRSrkY2i/LBIuAA6nAaT7OrWjAbI5i1ADl9Lut3KrjFsa3TojYWTF9OEDmuxibmWrDd9XhDM/3FoGC6/NNby7rTW1IprhzmMfB1wdKhsI2EXidHMPqSJ+qt9g4LFODgXxf4rgIYGz5Icw7IrwIQRuUCJADiEuN+TLgJEbKR5MuEaQb1Q+aoBWfEXxbYy7GNpBvHV8RnE0WApEz/4GiH6je6CjTqswk08lA7XeLzMivMqMhJPL3qjIJ/UZdfuzMHXn/rVutdd7ZAAAAAElFTkSuQmCC</image>
@@ -3672,6 +3679,7 @@
   </sprite>
   <sprite width="13" height="20" imageformat="PNG" name="keepercan-idle">
    <image>iVBORw0KGgoAAAANSUhEUgAAADQAAAAUCAYAAADC1B7dAAABaUlEQVR42t2XIU/EQBCF+2vOIM+BIJfjL6AQWBzmAv4sBkGCwYABSQIGAyEEDscFiceg7h8MeSXTzA0702W73eRoMpnd9n3tvNeaVtV/P55uDknXSpt5fz6lUM8dQhGGRdqMB6aEUIpJflBKCL0yoVdp1Uq9ofnemGgy+qn5bbPG+RwhlGLqgweHkcn2aKmz0a4hlGYaUxL2zPB1Nh4TAjMvZ9O6oOV1GyPvz2tzPjn8xWBYF++9FP4aQknmlzGuWG1MCCnBpYZdfS6ILmeLJffY43yuEIoxPDh3fKNyj54rhN4ZOaw2pq95IXhsF4a5kDaox9vY2d0nzxA0XUOIYbIYYjPoEKCvb2w2kDajg4gNIZWRnGaC+sePL7q6f6OT61carG01hrBGWd+1DEJz1mAe4xmSesm1GoIQ9XB3Xtfx0YFpSHLQ8kO6MJYhi4syxDdHjx2Og+iD8bjWnzzt2Eos9JC+GIsLMd8UKvz4DEhDIQAAAABJRU5ErkJggg==</image>
+   <keyframes>500,120,200,120</keyframes>
   </sprite>
   <sprite width="13" height="20" imageformat="PNG" name="keepercan-walk-down">
    <image>iVBORw0KGgoAAAANSUhEUgAAAEEAAAAUCAYAAADStFABAAABj0lEQVR42tWVLU8EMRCG99ecQeJAkAv8BRQCi8NcDo/FIEgwGDAgScBgIBfCh+OCxGNQ9w+GvEtmM1um2053ablNJv3YeXbmfdvLVdUAz+PNAblRLfNjFYT370+npI1LaVyKIBbg5oeYXMaZmVyCctYxm22BNId9UdK4aKaPoPneJtFk/BPz22aO/f9gnPkmWAS1GOQ6EWT+0Lhks7kJNDXZHrdGbtptMIXJYVwfphEl4S4xKUwus5l5PjusA7k89/Ynm78YrdbBa59zKYxmnJyXZn4J4wj9F1sYN9dqdgpjOaDqc0F0+bJoXWmssT80oxlXnOHGecRvSK4xDs1oxg3FSC7qgORHXGH8zi2Uwsg9H9NVy8LwnsaopuEEd3b3Owshpy8j95ADXhOk1bIyvKcxqgkshpMxrq1vNFdcK5DCuAYiV47guwRZGe7Px7Se2ccXXd2/0cn1K41WtppEzBHax1OYGL4YIxORhHi4O6fjo2kdoY/HMiG+KOMmShG+a5bCxPKlmSgBQzCl6mrMN3g8bvWPPRu8AAAAAElFTkSuQmCC</image>
