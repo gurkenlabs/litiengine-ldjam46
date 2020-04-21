@@ -160,7 +160,7 @@ public class Hud extends GuiComponent {
 
   private void renderTime(Graphics2D g) {
 
-    if (GameManager.getCurrentTime() == null || !GameManager.isClockVisible()) {
+    if (GameManager.getCurrentTime() == null || !GameManager.isClockVisible() || GameManager.getCurrentDay() == null) {
       return;
     }
 
