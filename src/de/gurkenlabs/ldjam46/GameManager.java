@@ -223,6 +223,7 @@ public final class GameManager {
             Game.world().setCamera(new PositionLockCamera(Game.world().environment().get("pumpking")));
           } else {
             Game.world().setCamera(new Camera());
+            Game.world().camera().setClampToMap(true);
             Game.world().camera().setFocus(e.getCenter());
           }
           endingFaded = false;
