@@ -166,7 +166,7 @@ public class Hud extends GuiComponent {
     String currentTime = GameManager.getCurrentTime();
     if (currentTime.equals("6:00 PM")) {
       g.setFont(GameManager.GUI_FONT.deriveFont(64f));
-    } else if (GameManager.currentHour > 16) {
+    } else if (GameManager.currentHour > 15) {
       g.setFont(GameManager.GUI_FONT.deriveFont(48f));
     } else {
       g.setFont(GameManager.GUI_FONT.deriveFont(32f));
