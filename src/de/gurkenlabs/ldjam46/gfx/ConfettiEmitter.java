@@ -11,26 +11,25 @@ import de.gurkenlabs.litiengine.graphics.emitters.Emitter;
 import de.gurkenlabs.litiengine.graphics.emitters.particles.Particle;
 import de.gurkenlabs.litiengine.graphics.emitters.particles.RectangleFillParticle;
 
-@EmitterInfo(maxParticles = 5000, spawnAmount = 60, particleMinTTL = 500, particleMaxTTL = 8000, activateOnInit = true)
+@EmitterInfo(maxParticles = 300, spawnAmount = 60, particleMinTTL = 500, particleMaxTTL = 1500, activateOnInit = true)
 @EntityInfo(renderType = RenderType.OVERLAY)
 public class ConfettiEmitter extends Emitter {
 
   public ConfettiEmitter() {
     super();
-    this.setWidth(Game.window().getWidth() / Game.graphics().getBaseRenderScale());
-    this.setHeight(Game.window().getHeight() / Game.graphics().getBaseRenderScale());
+    this.setWidth(Game.world().environment().getMap().getSizeInPixels().getWidth());
+    this.setHeight(Game.world().environment().getMap().getSizeInPixels().getHeight());
 
   }
 
   @Override
   protected Particle createNewParticle() {
 
-    final float delta = Game.random().nextFloat(5);
-    final float dx = -delta;
-    final float dy = delta;
-    final float gravityX = 0.01f;
-    final float gravityY = 0.05f;
-    final float size = Game.random().nextFloat(4) / Game.graphics().getBaseRenderScale();
+    final float dx = 0;
+    final float dy = Game.random().nextFloat(2);
+    final float gravityX = 0;
+    final float gravityY = Game.random().nextFloat(.2f);
+    final float size = Game.random().nextFloat(3);
     int r = Game.random().nextInt(255);
     int g = Game.random().nextInt(255);
     int b = Game.random().nextInt(255);
