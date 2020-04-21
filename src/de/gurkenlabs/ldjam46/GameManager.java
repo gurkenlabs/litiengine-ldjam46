@@ -244,7 +244,7 @@ public final class GameManager {
     if (currentDay == null) {
       if (Game.isDebug()) {
         // CHANGE THIS TO TEST OTHER LEVELS AND SKIPP ALL OTHES
-        day = Day.Tuesday;
+        day = Day.Monday;
       } else {
         day = Day.Monday;
       }

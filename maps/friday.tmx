@@ -436,7 +436,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="14" name="Collision" visible="0">
+ <objectgroup id="14" name="Collision" visible="1">
   <object id="1" type="COLLISIONBOX" x="0" y="0" width="8" height="272">
    <properties>
     <property name="collisionType" value="STATIC"/>

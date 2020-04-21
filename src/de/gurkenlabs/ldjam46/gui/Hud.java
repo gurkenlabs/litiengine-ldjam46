@@ -126,7 +126,7 @@ public class Hud extends GuiComponent {
       TextRenderer.render(g, GameManager.getCurrentDay().name(), Align.CENTER, valign, 0, 0);
     }
 
-    if (GameManager.getCurrentDay() != Day.Saturday && GameManager.getState() == GameState.INGAME && g.getClipBounds() != null || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible()) {
+    if (g.getClipBounds() != null && (GameManager.getCurrentDay() != Day.Saturday && GameManager.getState() == GameState.INGAME || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible())) {
       g.setColor(Color.WHITE);
       g.setFont(GameManager.GUI_FONT.deriveFont(24f));
       TextRenderer.render(g, "req. harvest: " + GameManager.getRequiredPumpkins() + "x", Align.RIGHT, Valign.DOWN, -70, -PADDING);
