@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="14" name="monday">
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="21" nextobjectid="14">
  <properties>
-  <property name="AMBIENTLIGHT" value="#143333ff"/>
   <property name="GRAVITY" type="int" value="0"/>
   <property name="minPumpkins" value="2"/>
  </properties>
@@ -98,8 +97,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+335,335,335,335,335,335,335,335,335,335,335,0,0,0,0,0,0,0,335,335,335,335,335,335,335,335,335,335,335,335,
+0,0,0,0,0,0,0,0,0,0,0,335,335,335,335,335,335,335,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -191,6 +190,26 @@
     <property name="collisionboxWidth" value="30.0"/>
     <property name="indestructible" type="bool" value="true"/>
     <property name="spritesheetName" value="well"/>
+   </properties>
+  </object>
+  <object id="32" type="PROP" x="214" y="107" width="6" height="11">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="4.4"/>
+    <property name="collisionboxWidth" value="6.0"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="pushcart"/>
+   </properties>
+  </object>
+  <object id="33" type="PROP" x="243" y="106" width="16" height="8">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="3.2"/>
+    <property name="collisionboxWidth" value="16.0"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="bench2"/>
    </properties>
   </object>
  </objectgroup>
@@ -535,14 +554,14 @@
   <object id="28" name="canlight" type="LIGHTSOURCE" x="198" y="163" width="32" height="31">
    <properties>
     <property name="lightActive" type="bool" value="false"/>
-    <property name="lightColor" type="color" value="#ffffff"/>
+    <property name="lightColor" type="color" value="#ffffffff"/>
     <property name="lightShape" value="ellipse"/>
    </properties>
   </object>
   <object id="29" name="fountainlight" type="LIGHTSOURCE" x="56" y="107" width="62" height="62">
    <properties>
     <property name="lightActive" type="bool" value="false"/>
-    <property name="lightColor" type="color" value="#ffffff"/>
+    <property name="lightColor" type="color" value="#ffffffff"/>
     <property name="lightShape" value="ellipse"/>
     <property name="tags" value="fountainlight"/>
    </properties>
@@ -550,7 +569,7 @@
   <object id="30" type="LIGHTSOURCE" x="216" y="216" width="33" height="31">
    <properties>
     <property name="lightActive" type="bool" value="false"/>
-    <property name="lightColor" type="color" value="#ffffff"/>
+    <property name="lightColor" type="color" value="#ffffffff"/>
     <property name="lightShape" value="ellipse"/>
     <property name="tags" value="pumpkinlight"/>
    </properties>
@@ -558,7 +577,7 @@
   <object id="31" type="LIGHTSOURCE" x="295" y="168" width="33" height="31">
    <properties>
     <property name="lightActive" type="bool" value="false"/>
-    <property name="lightColor" type="color" value="#ffffff"/>
+    <property name="lightColor" type="color" value="#ffffffff"/>
     <property name="lightShape" value="ellipse"/>
     <property name="tags" value="pumpkinlight"/>
    </properties>
