@@ -96,6 +96,10 @@ public class Hud extends GuiComponent {
   }
 
   private void renderControls(Graphics2D g) {
+    if(g.getClipBounds() == null) {
+      return;
+    }
+        
     if (displayControl1) {
       double locationX = g.getClipBounds().getX() + Align.CENTER.getLocation(g.getClipBounds().getWidth(), CONTROLS1.getWidth());
       double locationY = g.getClipBounds().getY() + Valign.MIDDLE_TOP.getLocation(g.getClipBounds().getHeight(), CONTROLS1.getHeight());
