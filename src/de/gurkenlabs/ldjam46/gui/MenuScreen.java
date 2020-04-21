@@ -2,13 +2,16 @@ package de.gurkenlabs.ldjam46.gui;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import de.gurkenlabs.ldjam46.GameManager;
 import de.gurkenlabs.ldjam46.gfx.HillBillyFonts;
+import de.gurkenlabs.litiengine.Align;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.IUpdateable;
+import de.gurkenlabs.litiengine.Valign;
 import de.gurkenlabs.litiengine.graphics.ImageRenderer;
 import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.ImageComponent;
@@ -78,9 +81,15 @@ public class MenuScreen extends Screen implements IUpdateable {
     ImageRenderer.render(g, Imaging.scale(LOGO, scale), Game.window().getCenter().getX() - (scale * LOGO.getWidth()) / 2,
         Game.window().getHeight() * 2.5 / 8 - (scale * LOGO.getHeight()) / 2);
     g.setFont(HillBillyFonts.MENU_FONT);
-    g.setColor(Color.WHITE);
-    TextRenderer.renderWithOutline(g, "a Gurkenlabs game", Game.window().getWidth() * 1 / 32, Game.window().getHeight() * 30 / 32, Color.DARK_GRAY,
-        Game.window().getResolutionScale() * 4, true);
+    g.setColor(new Color(26, 47, 4));
+
+    RenderingHints originalHints = g.getRenderingHints();
+
+    TextRenderer.enableTextAntiAliasing(g);
+
+    TextRenderer.render(g, "a Gurkenlabs game", Align.CENTER, Valign.TOP, 0, 20);
+    g.setRenderingHints(originalHints);
+
     super.render(g);
   }
 

@@ -70,6 +70,7 @@ launch4j {
   bundledJrePath = 'jre'
   jvmOptions = ['-Xms256m', '-Xmx1024m']
   cmdLine = '-release'
+  splashFileName = 'made-with-litiengine.bmp'
 }
 
 task copyNativeLibs(type: Copy) {
@@ -87,6 +88,7 @@ task copyNativeLibs(type: Copy) {
   from('/dist/'){
     include 'game.ico'
     include 'config.properties'
+    include 'made-with-litiengine.bmp'
     // include 'steam_appid.txt'
     include 'jre/**'
   }

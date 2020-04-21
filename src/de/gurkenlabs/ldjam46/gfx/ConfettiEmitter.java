@@ -1,7 +1,6 @@
 package de.gurkenlabs.ldjam46.gfx;
 
 import java.awt.Color;
-import java.awt.geom.Point2D;
 
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.EmitterInfo;
