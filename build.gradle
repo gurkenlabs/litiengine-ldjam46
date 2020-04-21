@@ -7,7 +7,7 @@ apply plugin: 'application'
 
 // give your project a name
 archivesBaseName = "Pumpkin Keeper"
-version = "v0.0.1"
+version = "v1.0.0"
 targetCompatibility = "1.8.0"
 mainClassName = "de.gurkenlabs.ldjam46.Program"
 
