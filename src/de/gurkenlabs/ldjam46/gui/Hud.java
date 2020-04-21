@@ -69,7 +69,7 @@ public class Hud extends GuiComponent {
       this.renderLevelEnd(g);
 
       this.renderControls(g);
-    } else if (GameManager.getTimeSinceLastLoad() > LEVEL_INFO_DURATION + 500) {
+    } else if (GameManager.getTimeSinceLastLoad() > LEVEL_INFO_DURATION + 1000) {
       g.setColor(Color.WHITE);
       g.setFont(HillBillyFonts.UI_FONT1.deriveFont(80f));
 
@@ -96,10 +96,10 @@ public class Hud extends GuiComponent {
   }
 
   private void renderControls(Graphics2D g) {
-    if(g.getClipBounds() == null) {
+    if (g.getClipBounds() == null) {
       return;
     }
-        
+
     if (displayControl1) {
       double locationX = g.getClipBounds().getX() + Align.CENTER.getLocation(g.getClipBounds().getWidth(), CONTROLS1.getWidth());
       double locationY = g.getClipBounds().getY() + Valign.MIDDLE_TOP.getLocation(g.getClipBounds().getHeight(), CONTROLS1.getHeight());
@@ -125,7 +125,7 @@ public class Hud extends GuiComponent {
     final long timeSince = GameManager.getTimeSinceLastLoad();
     if (timeSince < LEVEL_INFO_DURATION && timeSince != 0) {
       g.setColor(Color.WHITE);
-      g.setFont(GameManager.GUI_FONT.deriveFont(56f));
+      g.setFont(HillBillyFonts.UI_FONT1.deriveFont(56f));
 
       Valign valign = GameManager.getCurrentDay() == Day.Saturday ? Valign.MIDDLE_TOP : Valign.MIDDLE;
       TextRenderer.render(g, GameManager.getCurrentDay().name(), Align.CENTER, valign, 0, 0);

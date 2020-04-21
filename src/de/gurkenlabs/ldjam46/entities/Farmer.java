@@ -19,11 +19,13 @@ import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.entities.Trigger;
 import de.gurkenlabs.litiengine.graphics.CreatureShadowImageEffect;
 import de.gurkenlabs.litiengine.graphics.OverlayPixelsImageEffect;
+import de.gurkenlabs.litiengine.graphics.Spritesheet;
 import de.gurkenlabs.litiengine.graphics.animation.Animation;
 import de.gurkenlabs.litiengine.graphics.animation.CreatureAnimationController;
 import de.gurkenlabs.litiengine.graphics.animation.IEntityAnimationController;
 import de.gurkenlabs.litiengine.gui.SpeechBubble;
 import de.gurkenlabs.litiengine.physics.IMovementController;
+import de.gurkenlabs.litiengine.resources.Resources;
 
 @EntityInfo(width = 11, height = 20)
 @CollisionInfo(collision = true, collisionBoxWidth = 8, collisionBoxHeight = 8, align = Align.CENTER, valign = Valign.DOWN)
@@ -38,11 +40,14 @@ public class Farmer extends Creature {
 
   private final FartAbility fartAbility = new FartAbility(this);
 
+  private Animation waterAnimation = new Animation(Resources.spritesheets().get("keeper-water"), false);
+
   private long lastWaterRefill;
   private boolean hasCan;
 
   private Farmer() {
     this.onMoved(new WalkDustSpawner());
+    this.animations().add(waterAnimation);
   }
 
   public static Farmer instance() {
@@ -100,6 +105,7 @@ public class Farmer extends Creature {
 
     if (this.waterAbility.canCast()) {
       this.waterAbility.cast();
+      this.animations().play(waterAnimation.getName());
     } else if (this.hasCan() && !this.waterAbility.isOnCooldown() && this.waterAbility.getCharges().get() == 0
         && !speechbubbleActive) {
 
@@ -115,7 +121,7 @@ public class Farmer extends Creature {
         speechbubbleActive = false;
       });
     } else if (!this.hasCan() && !grabSpeechbubbleActive) {
-      SpeechBubble bubble = SpeechBubble.create(this, "I need to grab mah can first!",
+      SpeechBubble bubble = SpeechBubble.create(this, "I need to grab mah trusty can first!",
           GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
       grabSpeechbubbleActive = true;
       bubble.addListener(() -> {

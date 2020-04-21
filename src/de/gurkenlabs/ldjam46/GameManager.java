@@ -384,9 +384,9 @@ public final class GameManager {
             tutorialActive = true;
 
             Game.loop().perform(1000, () -> {
-              tutorial("WATCH OUT!").addListener(() -> {
-                tutorial("Mah rivals Billy and Tilly tryna sabotage da harvest!").addListener(() -> {
-                  tutorial("Let's see if I can scare dem away!").addListener(() -> {
+              tutorial("DAG NAB IT!").addListener(() -> {
+                tutorial("Mah rivals Billy and Tilly tryna ruin the harvest!").addListener(() -> {
+                  tutorial("Let's see if I can scare em away...").addListener(() -> {
                     Farmer.instance().getFartAbility().setEnabled(true);
 
                     Game.world().camera().setZoom(1, 2000);
