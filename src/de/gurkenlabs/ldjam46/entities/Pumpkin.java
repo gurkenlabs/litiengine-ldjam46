@@ -64,10 +64,14 @@ public class Pumpkin extends Prop implements IUpdateable {
       final double currentWidth = width * (this.getHitPoints().get() / (double) this.getHitPoints().getMax());
       RoundRectangle2D actualRect = new RoundRectangle2D.Double(x, y, currentWidth, height, 1.5, 1.5);
 
-      g.setColor(new Color(40, 42, 43, 150));
+      g.setColor(new Color(40, 42, 43, 200));
       Game.graphics().renderShape(g, rect);
 
-      g.setColor(new Color(228, 59, 68));
+      if (this.getHitPoints().get() < 33) {
+        g.setColor(Color.RED);
+      } else {
+        g.setColor(new Color(225, 109, 115));
+      }
       Game.graphics().renderShape(g, actualRect);
     }, RenderType.OVERLAY);
   }
