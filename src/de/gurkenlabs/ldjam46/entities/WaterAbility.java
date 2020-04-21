@@ -84,7 +84,6 @@ public class WaterAbility extends Ability {
       Pumpkin pumpkin = (Pumpkin) entity;
       pumpkin.water();
 
-      System.out.println("pumpkin healed");
       WaterAbility.this.charges.modifyBaseValue(new AttributeModifier<>(Modification.SUBSTRACT, 1));
 
       for (LightSource light : Game.world().environment().getByTag(LightSource.class, "fountainlight")) {

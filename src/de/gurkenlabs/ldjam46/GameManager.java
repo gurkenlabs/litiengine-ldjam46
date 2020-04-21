@@ -433,7 +433,6 @@ public final class GameManager {
       return delay + i * 500;
     }
 
-    System.out.println("harvesting...");
     int i = 0;
     for (Pumpkin pumpkin : Game.world().environment().getEntities(Pumpkin.class, p -> !p.isDead())) {
       i++;
@@ -442,7 +441,6 @@ public final class GameManager {
       });
     }
 
-    System.out.println("processed " + i);
     return delay + i * 500;
   }
 

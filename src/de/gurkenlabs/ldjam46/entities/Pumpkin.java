@@ -106,8 +106,6 @@ public class Pumpkin extends Prop implements IUpdateable {
   }
 
   public void harvest() {
-
-    System.out.println("harvest " + this.getMapId());
     Game.world().environment().remove(this);
     Game.audio().playSound("harvest.ogg");
 
