@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Collection;
 
 import de.gurkenlabs.ldjam46.GameManager;
+import de.gurkenlabs.ldjam46.gfx.HillBillyFonts;
 import de.gurkenlabs.ldjam46.gfx.WalkDustSpawner;
 import de.gurkenlabs.litiengine.Align;
 import de.gurkenlabs.litiengine.Game;
@@ -89,7 +90,7 @@ public class Farmer extends Creature {
 
           if (firstRefillEver) {
             SpeechBubble.create(this, "Hurry! Mah pumpkins need water!",
-                GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
+                GameManager.SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE_FONT);
 
             Game.loop().perform(500, () -> {
               for (LightSource l : Game.world().environment().getByTag(LightSource.class, "pumpkinlight")) {
@@ -111,7 +112,7 @@ public class Farmer extends Creature {
 
       String text = firstRefillEver ? "I need to use the fountain to refill ma can!" : "Need to refill mah can...";
       SpeechBubble bubble = SpeechBubble.create(this, text,
-          GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
+          GameManager.SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE_FONT);
       speechbubbleActive = true;
       for (LightSource light : Game.world().environment().getByTag(LightSource.class, "fountainlight")) {
         light.activate();
@@ -122,7 +123,7 @@ public class Farmer extends Creature {
       });
     } else if (!this.hasCan() && !grabSpeechbubbleActive) {
       SpeechBubble bubble = SpeechBubble.create(this, "I need to grab mah trusty can first!",
-          GameManager.SPEECHBUBBLE_APPEARANCE, GameManager.SPEECHBUBBLE_FONT);
+          GameManager.SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE_FONT);
       grabSpeechbubbleActive = true;
       bubble.addListener(() -> {
         grabSpeechbubbleActive = false;

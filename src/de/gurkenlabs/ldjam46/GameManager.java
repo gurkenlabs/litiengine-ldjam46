@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.ldjam46.entities.Can;
 import de.gurkenlabs.ldjam46.entities.EnemyFarmer;
 import de.gurkenlabs.ldjam46.entities.Farmer;
 import de.gurkenlabs.ldjam46.entities.Pumpkin;
 import de.gurkenlabs.ldjam46.gfx.ConfettiEmitter;
+import de.gurkenlabs.ldjam46.gfx.HillBillyFonts;
 import de.gurkenlabs.ldjam46.gui.Hud;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.CollisionBox;
@@ -81,8 +83,6 @@ public final class GameManager {
     }
   }
 
-  public static final Font GUI_FONT = Resources.fonts().get("fsex300.ttf").deriveFont(10f);
-  public static final Font SPEECHBUBBLE_FONT = GUI_FONT.deriveFont(6f);
   public static final SpeechBubbleAppearance SPEECHBUBBLE_APPEARANCE = new SpeechBubbleAppearance(Color.BLACK, new Color(255, 255, 255, 200), Color.BLACK, 2);
 
   public static float INGAME_RENDER_SCALE = 4.001f;
@@ -162,7 +162,7 @@ public final class GameManager {
   }
 
   public static void init() {
-    GuiProperties.setDefaultFont(GUI_FONT);
+    GuiProperties.setDefaultFont(HillBillyFonts.PIXEL_UI_FONT);
     Game.audio().setListenerLocationCallback((e) -> Farmer.instance().getCenter());
     Game.audio().setMaxDistance(1000);
 
@@ -477,7 +477,7 @@ public final class GameManager {
   }
 
   private static SpeechBubble tutorial(String text) {
-    SpeechBubble bubble = SpeechBubble.create(Farmer.instance(), text, SPEECHBUBBLE_APPEARANCE, SPEECHBUBBLE_FONT);
+    SpeechBubble bubble = SpeechBubble.create(Farmer.instance(), text, SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE_FONT);
     int duration = 3000;
     if (text.contains("Billy and Tilly")) {
       duration = 4500;
@@ -613,6 +613,14 @@ public final class GameManager {
     return currentTime;
   }
 
+  public static int getCurrentHours() {
+    return currentHour;
+  }
+
+  public static int getCurrentMinutes() {
+    return currentMinutes;
+  }
+
   public static int getRequiredPumpkins() {
     if (Game.world().environment() == null) {
       return 0;
@@ -659,7 +667,7 @@ public final class GameManager {
   }
 
   public static boolean isClockVisible() {
-    return clockVisible || currentDay != null && currentDay.getDay() > Day.Monday.getDay();
+    return clockVisible || currentDay != null && currentDay.getDay() > Day.Monday.getDay() && GameManager.getState() == GameState.INGAME;
   }
 
   public static boolean isHarvesting() {
