@@ -70,6 +70,7 @@ public class MenuScreen extends Screen implements IUpdateable {
       comp.setForwardMouseEvents(false);
     });
 
+    this.mainMenu.setEnabled(true);
     this.mainMenu.getCellComponents().get(0).setHovered(true);
   }
 

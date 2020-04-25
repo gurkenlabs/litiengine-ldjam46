@@ -343,9 +343,9 @@ public final class GameManager {
             tutorialActive = true;
 
             Game.loop().perform(1000, () -> {
-              bubble("Howdy partner!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE_EMPHASIS, 2000).addListener(() -> {
+              bubble("Howdy partner!   ", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE_EMPHASIS, 2000).addListener(() -> {
                 bubble("Let's learn how to farm, aye?", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 3000).addListener(() -> {
-                  bubble("Today I gotta harvest me 2 pumpkins!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 3000).addListener(() -> {
+                  bubble("Today I gotta harvest me 2         pumpkins!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 3000).addListener(() -> {
                     pumpkinCountVisible = true;
 
                     bubble("Gotta keep enough pumpkins alive until 6:00 PM!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 3000).addListener(() -> {
