@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.ldjam46.entities.Can;
 import de.gurkenlabs.ldjam46.entities.EnemyFarmer;
 import de.gurkenlabs.ldjam46.entities.Farmer;
@@ -234,7 +233,7 @@ public final class GameManager {
     if (currentDay == null) {
       if (Game.isDebug()) {
         // CHANGE THIS TO TEST OTHER LEVELS AND SKIP ALL OTHES
-        day = Day.Monday;
+        day = Day.Friday;
       } else {
         day = Day.Monday;
       }
@@ -456,8 +455,8 @@ public final class GameManager {
     });
 
     Game.loop().perform(4000, () -> {
-      bubble("You're gettin' the hang of it!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 2000).addListener(() -> {
-        bubble("Let's see if you can handle da farm tomorrow...", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 2000).addListener(() -> {
+      bubble("Yer gettin' the hang of it!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 2000).addListener(() -> {
+        bubble("Show me more of em farming skills tomorrow...", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 2000).addListener(() -> {
           Game.loop().perform(1000, () -> {
             endingFaded = true;
             Game.world().camera().setZoom(1, 1000);

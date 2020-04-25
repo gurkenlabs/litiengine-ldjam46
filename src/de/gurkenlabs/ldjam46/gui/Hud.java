@@ -102,17 +102,8 @@ public class Hud extends GuiComponent {
     if (!Farmer.instance().getFartAbility().isEnabled() || GameManager.getState() != GameState.INGAME || g.getClipBounds() == null) {
       return;
     }
-    double backgroundWidth = g.getClipBounds().getWidth() * 2 / 16d;
-    double backgroundHeight = g.getClipBounds().getHeight() * 4 / 20d;
-    double backgroundX = g.getClipBounds().getWidth() - backgroundWidth;
-    double backgroundY = g.getClipBounds().getHeight() - backgroundHeight;
-    g.setColor(BG_COLOR);
-    g.fillRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
-    g.setColor(CONTOUR_COLOR);
-    g.drawRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
-
-    double imageLocationX = backgroundX + backgroundWidth / 2d - BEANS_SCALED.getSpriteWidth() / 2d;
-    double imageLocationY = backgroundY + backgroundHeight / 2d - BEANS_SCALED.getSpriteHeight() / 2d;
+    double imageLocationX = (g.getClipBounds().getWidth() * 31 / 32d) - BEANS_SCALED.getSpriteWidth();
+    double imageLocationY = (g.getClipBounds().getHeight() * 31 / 32d) - BEANS_SCALED.getSpriteHeight();
     double arcLocationX = imageLocationX + BEANS_SCALED.getSpriteWidth() * 1 / 36d;
     double arcLocationY = imageLocationY + BEANS_SCALED.getSpriteHeight() * 18 / 47d;
     double arcWidth = BEANS_SCALED.getSpriteWidth() * 22 / 36d;
@@ -223,15 +214,10 @@ public class Hud extends GuiComponent {
     }
 
     if (GameManager.getState() == GameState.INGAME && g.getClipBounds() != null) {
-      double backgroundWidth = g.getClipBounds().getWidth() * 2 / 16d;
-      double backgroundHeight = g.getClipBounds().getHeight() * 4 / 20d;
-      double backgroundX = 0;
-      double backgroundY = g.getClipBounds().getHeight() - backgroundHeight;
-      g.setColor(BG_COLOR);
-      g.fillRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
-      g.setColor(CONTOUR_COLOR);
-      g.drawRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
-      ImageRenderer.render(g, CAN_SCALED.getSprite(Farmer.instance().getWaterAbility().getCharges().get()), backgroundX + backgroundWidth / 2d - CAN_SCALED.getSpriteWidth() / 2d, backgroundY + backgroundHeight / 2d - CAN_SCALED.getSpriteHeight() / 2d);
+      double canX = g.getClipBounds().getWidth() * 1 / 32d;
+      double canY = (g.getClipBounds().getHeight() * 31 / 32d) - CAN_SCALED.getSpriteHeight();
+
+      ImageRenderer.render(g, CAN_SCALED.getSprite(Farmer.instance().getWaterAbility().getCharges().get()), canX, canY);
     }
   }
 
