@@ -83,7 +83,7 @@ public final class GameManager {
     }
   }
 
-  public static final SpeechBubbleAppearance SPEECHBUBBLE_APPEARANCE = new SpeechBubbleAppearance(Color.BLACK, new Color(255, 255, 255, 200), Color.BLACK, 2);
+  public static final SpeechBubbleAppearance SPEECHBUBBLE_APPEARANCE = new SpeechBubbleAppearance(Color.BLACK, new Color(255, 255, 255, 200), Color.BLACK, 4f);
 
   public static float INGAME_RENDER_SCALE = 4.001f;
 
@@ -162,7 +162,8 @@ public final class GameManager {
   }
 
   public static void init() {
-    GuiProperties.setDefaultFont(HillBillyFonts.PIXEL_UI_FONT);
+    GuiProperties.setDefaultFont(HillBillyFonts.PIXEL_UI);
+    SPEECHBUBBLE_APPEARANCE.setTextAntialiasing(true);
     Game.audio().setListenerLocationCallback((e) -> Farmer.instance().getCenter());
     Game.audio().setMaxDistance(1000);
 
@@ -244,7 +245,7 @@ public final class GameManager {
     Day day;
     if (currentDay == null) {
       if (Game.isDebug()) {
-        // CHANGE THIS TO TEST OTHER LEVELS AND SKIPP ALL OTHES
+        // CHANGE THIS TO TEST OTHER LEVELS AND SKIP ALL OTHES
         day = Day.Monday;
       } else {
         day = Day.Monday;
@@ -259,6 +260,7 @@ public final class GameManager {
     if (state == GameState.LOADING || transitioning) {
       return;
     }
+    pumpkinCountVisible = false;
 
     if (day == null) {
       currentDay = null;
@@ -277,6 +279,7 @@ public final class GameManager {
     transitioning = true;
     state = GameState.LOADING;
     harvesting = true;
+    clockVisible = false;
     int delay = harvestPumpkin();
 
     final String currentMap = maps.get(day);
@@ -328,7 +331,7 @@ public final class GameManager {
 
         if (currentDay == Day.Monday || currentDay == Day.Thursday) {
           Game.loop().perform(3000, () -> {
-            Game.world().camera().setZoom(2, 3000);
+            Game.world().camera().setZoom(1.6f, 3000);
           });
         }
 
@@ -352,27 +355,29 @@ public final class GameManager {
             tutorialActive = true;
 
             Game.loop().perform(1000, () -> {
-              tutorial("Howdy partner, let's learn how to farm, aye?").addListener(() -> {
-                tutorial("Today I gotta harvest me 2 pumpkins!").addListener(() -> {
-                  pumpkinCountVisible = true;
+              bubble("Howdy partner!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE_EMPHASIS, 2000).addListener(() -> {
+                bubble("Let's learn how to farm, aye?", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 3000).addListener(() -> {
+                  bubble("Today I gotta harvest me 2 pumpkins!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 3000).addListener(() -> {
+                    pumpkinCountVisible = true;
 
-                  tutorial("Gotta keep enough pumpkins alive until 6:00 PM!").addListener(() -> {
-                    clockVisible = true;
+                    bubble("Gotta keep enough pumpkins alive until 6:00 PM!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 3000).addListener(() -> {
+                      clockVisible = true;
 
-                    tutorial("Lemme grab mah water can first!").addListener(() -> {
-                      LightSource light = Game.world().environment().getLightSource("canlight");
-                      light.activate();
+                      bubble("Lemme grab mah water can first!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 3000).addListener(() -> {
+                        LightSource light = Game.world().environment().getLightSource("canlight");
+                        light.activate();
 
-                      Game.world().camera().setZoom(1, 2000);
-                      Game.loop().perform(2000, () -> {
-                        Hud.displayControl1 = true;
-                        Game.loop().perform(4000, () -> {
-                          Hud.displayControl1 = false;
+                        Game.world().camera().setZoom(1, 2000);
+                        Game.loop().perform(2000, () -> {
+                          Hud.displayControl1 = true;
+                          Game.loop().perform(4000, () -> {
+                            Hud.displayControl1 = false;
+                          });
+
+                          ingameStartedTick = Game.loop().getTicks();
+                          state = GameState.INGAME;
+                          transitioning = false;
                         });
-
-                        ingameStartedTick = Game.loop().getTicks();
-                        state = GameState.INGAME;
-                        transitioning = false;
                       });
                     });
                   });
@@ -384,9 +389,9 @@ public final class GameManager {
             tutorialActive = true;
 
             Game.loop().perform(1000, () -> {
-              tutorial("DAG NAB IT!").addListener(() -> {
-                tutorial("Mah rivals Billy and Tilly tryna ruin the harvest!").addListener(() -> {
-                  tutorial("Let's see if I can scare em away...").addListener(() -> {
+              bubble("DAG NAB IT!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE_EMPHASIS, 3000).addListener(() -> {
+                bubble("Mah rivals Billy and Tilly tryna ruin the harvest!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 4500).addListener(() -> {
+                  bubble("Let's see if I can scare em away...", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 3000).addListener(() -> {
                     Farmer.instance().getFartAbility().setEnabled(true);
 
                     Game.world().camera().setZoom(1, 2000);
@@ -411,6 +416,7 @@ public final class GameManager {
 
             ingameStartedTick = Game.loop().getTicks();
             state = GameState.INGAME;
+            clockVisible = true;
             transitioning = false;
           }
         });
@@ -450,6 +456,8 @@ public final class GameManager {
   private static void endTutorial() {
     tutorialEnding = true;
     state = GameState.LOCKED;
+    pumpkinCountVisible = false;
+
     for (LightSource l : Game.world().environment().getByTag(LightSource.class, "pumpkinlight")) {
       l.deactivate();
     }
@@ -460,8 +468,8 @@ public final class GameManager {
     });
 
     Game.loop().perform(4000, () -> {
-      tutorial("You're gettin' the hang of it!").addListener(() -> {
-        tutorial("Let's see if you can handle da farm tomorrow...").addListener(() -> {
+      bubble("You're gettin' the hang of it!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 2000).addListener(() -> {
+        bubble("Let's see if you can handle da farm tomorrow...", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 2000).addListener(() -> {
           Game.loop().perform(1000, () -> {
             endingFaded = true;
             Game.world().camera().setZoom(1, 1000);
@@ -476,15 +484,9 @@ public final class GameManager {
     // FORCE 6PM
   }
 
-  private static SpeechBubble tutorial(String text) {
-    SpeechBubble bubble = SpeechBubble.create(Farmer.instance(), text, SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE_FONT);
-    int duration = 3000;
-    if (text.contains("Billy and Tilly")) {
-      duration = 4500;
-    }
-
+  private static SpeechBubble bubble(String text, SpeechBubbleAppearance appearance, Font font, int duration) {
+    SpeechBubble bubble = SpeechBubble.create(Farmer.instance(), text, appearance, font);
     bubble.setTextDisplayTime(duration);
-
     return bubble;
   }
 

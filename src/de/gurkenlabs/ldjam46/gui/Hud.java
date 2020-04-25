@@ -15,6 +15,7 @@ import de.gurkenlabs.ldjam46.GameManager;
 import de.gurkenlabs.ldjam46.GameManager.Day;
 import de.gurkenlabs.ldjam46.GameManager.GameState;
 import de.gurkenlabs.ldjam46.entities.Farmer;
+import de.gurkenlabs.ldjam46.entities.Pumpkin;
 import de.gurkenlabs.ldjam46.gfx.HillBillyFonts;
 import de.gurkenlabs.litiengine.Align;
 import de.gurkenlabs.litiengine.Game;
@@ -31,13 +32,11 @@ import de.gurkenlabs.litiengine.util.geom.GeometricUtilities;
 import de.gurkenlabs.litiengine.util.geom.Trigonometry;
 
 public class Hud extends GuiComponent {
-  private static final int PADDING = 30;
+  private static final Color BG_COLOR;
+  private static final Color CONTOUR_COLOR;
 
   private static final BufferedImage PUMPKIN;
-  private static final BufferedImage DROP;
-  private static final BufferedImage DROP_DISABLED;
-  private static final BufferedImage FART;
-  private static final BufferedImage FART_DISABLED;
+  private static final BufferedImage PUMPKIN_DISABLED;
 
   private static final BufferedImage CONTROLS1;
   private static final BufferedImage CONTROLS2;
@@ -49,12 +48,8 @@ public class Hud extends GuiComponent {
   final int LEVEL_INFO_DURATION = 3500;
 
   static {
-    PUMPKIN = Imaging.scale(Resources.images().get("pumpkin-ui.png"), GameManager.INGAME_RENDER_SCALE / 2);
-    DROP = Imaging.scale(Resources.images().get("drop-ui.png"), GameManager.INGAME_RENDER_SCALE / 2);
-    DROP_DISABLED = Imaging.setOpacity(Imaging.scale(Resources.images().get("drop-disabled-ui.png"), GameManager.INGAME_RENDER_SCALE / 2), 0.5f);
-
-    FART = Imaging.scale(Resources.images().get("cloud-ui.png"), GameManager.INGAME_RENDER_SCALE);
-    FART_DISABLED = Imaging.setOpacity(Imaging.scale(Resources.images().get("cloud-disabled-ui.png"), GameManager.INGAME_RENDER_SCALE), 0.5f);
+    PUMPKIN = Imaging.scale(Resources.images().get("pumpkin-alive.png"), GameManager.INGAME_RENDER_SCALE * 0.8);
+    PUMPKIN_DISABLED = Imaging.scale(Resources.images().get("pumpkin-dead.png"), GameManager.INGAME_RENDER_SCALE * 0.8);
 
     CONTROLS1 = Resources.images().get("controls1.png");
     CONTROLS2 = Resources.images().get("controls2.png");
@@ -64,6 +59,9 @@ public class Hud extends GuiComponent {
     CAN_SCALED = new Spritesheet(Imaging.scale(CAN_ORIGINAL.getImage(), GameManager.INGAME_RENDER_SCALE), "can_scaled", CAN_ORIGINAL.getSpriteWidth() * (int) GameManager.INGAME_RENDER_SCALE, CAN_ORIGINAL.getSpriteHeight() * (int) GameManager.INGAME_RENDER_SCALE);
     BEANS_ORIGINAL = Resources.spritesheets().get("beans");
     BEANS_SCALED = new Spritesheet(Imaging.scale(BEANS_ORIGINAL.getImage(), GameManager.INGAME_RENDER_SCALE), "can_scaled", BEANS_ORIGINAL.getSpriteWidth() * (int) GameManager.INGAME_RENDER_SCALE, BEANS_ORIGINAL.getSpriteHeight() * (int) GameManager.INGAME_RENDER_SCALE);
+
+    BG_COLOR = new Color(0, 0, 0, 80);
+    CONTOUR_COLOR = new Color(76, 46, 32, 150);
   }
 
   public static boolean displayControl1;
@@ -79,10 +77,8 @@ public class Hud extends GuiComponent {
     if (Game.world().environment() == null) {
       return;
     }
-    g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-
+    TextRenderer.enableTextAntiAliasing(g);
     this.renderCurrentLevelInfo(g);
-
     if (GameManager.getCurrentDay() != Day.Saturday) {
       this.renderCanUI(g);
       this.renderFartUI(g);
@@ -92,35 +88,45 @@ public class Hud extends GuiComponent {
       this.renderLevelEnd(g);
 
       this.renderControls(g);
-    } else if (GameManager.getTimeSinceLastLoad() > LEVEL_INFO_DURATION + 1000) {
+    } else if (Game.time().sinceEnvironmentLoad() > LEVEL_INFO_DURATION + 1000) {
       g.setColor(Color.WHITE);
-      g.setFont(HillBillyFonts.UI_FONT1.deriveFont(80f));
+      g.setFont(HillBillyFonts.UI.deriveFont(80f));
 
       Valign valign = GameManager.getCurrentDay() == Day.Saturday ? Valign.MIDDLE_TOP : Valign.MIDDLE;
       TextRenderer.render(g, "YOU ARE THE PUMPKING!", Align.CENTER, valign, 0, -80);
+      g.setColor(Color.WHITE);
     }
-    g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
   }
 
   private void renderFartUI(Graphics2D g) {
-    if (!Farmer.instance().getFartAbility().isEnabled() || GameManager.getState() != GameState.INGAME) {
+    if (!Farmer.instance().getFartAbility().isEnabled() || GameManager.getState() != GameState.INGAME || g.getClipBounds() == null) {
       return;
     }
+    double backgroundWidth = g.getClipBounds().getWidth() * 2 / 16d;
+    double backgroundHeight = g.getClipBounds().getHeight() * 4 / 20d;
+    double backgroundX = g.getClipBounds().getWidth() - backgroundWidth;
+    double backgroundY = g.getClipBounds().getHeight() - backgroundHeight;
+    g.setColor(BG_COLOR);
+    g.fillRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
+    g.setColor(CONTOUR_COLOR);
+    g.drawRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
 
-    double imageLocationX = g.getClipBounds().getWidth() - BEANS_SCALED.getSpriteWidth() * 1.3d;
-    double imageLocationY = g.getClipBounds().getHeight() * 5 / 8d;
-    double arcLocationX = imageLocationX + BEANS_SCALED.getSpriteWidth() * 0.56d;
-    double arcLocationY = imageLocationY + BEANS_SCALED.getSpriteHeight() * 0.07d;
-    double arcWidth = BEANS_SCALED.getSpriteWidth() * 1 / 3d;
-    double arcHeight = BEANS_SCALED.getSpriteHeight() * 1 / 4d;
+    double imageLocationX = backgroundX + backgroundWidth / 2d - BEANS_SCALED.getSpriteWidth() / 2d;
+    double imageLocationY = backgroundY + backgroundHeight / 2d - BEANS_SCALED.getSpriteHeight() / 2d;
+    double arcLocationX = imageLocationX + BEANS_SCALED.getSpriteWidth() * 1 / 36d;
+    double arcLocationY = imageLocationY + BEANS_SCALED.getSpriteHeight() * 18 / 47d;
+    double arcWidth = BEANS_SCALED.getSpriteWidth() * 22 / 36d;
+    double arcHeight = BEANS_SCALED.getSpriteHeight() * 5 / 47d;
 
     if (!Farmer.instance().getFartAbility().isOnCooldown()) {
       ImageRenderer.render(g, BEANS_SCALED.getSprite(1), imageLocationX, imageLocationY);
     } else {
       ImageRenderer.render(g, BEANS_SCALED.getSprite(0), imageLocationX, imageLocationY);
       float cooldownProgress = Farmer.instance().getFartAbility().getRemainingCooldownInSeconds() / Farmer.instance().getFartAbility().getCooldownInSeconds();
-      g.setColor(Color.RED);
+      g.setColor(Color.WHITE);
+      g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
       ShapeRenderer.render(g, new Arc2D.Double(arcLocationX, arcLocationY, arcWidth, arcHeight, 90d, cooldownProgress * 360d, Arc2D.PIE));
+      g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
     }
   }
 
@@ -144,8 +150,10 @@ public class Hud extends GuiComponent {
 
   private void renderLevelEnd(Graphics2D g) {
     if (GameManager.isLevelFailed()) {
+      g.setColor(Color.BLACK);
+      g.setFont(HillBillyFonts.UI.deriveFont(48f));
+      TextRenderer.render(g, "YOU COULDN'T KEEP ENGOUGH PUMPKINS ALIVE", Align.CENTER, Valign.MIDDLE, -2, 2);
       g.setColor(Color.WHITE);
-      g.setFont(HillBillyFonts.PIXEL_UI_FONT.deriveFont(48f));
       TextRenderer.render(g, "YOU COULDN'T KEEP ENGOUGH PUMPKINS ALIVE", Align.CENTER, Valign.MIDDLE);
     }
   }
@@ -154,10 +162,10 @@ public class Hud extends GuiComponent {
     final long timeSince = GameManager.getTimeSinceLastLoad();
     if (timeSince < LEVEL_INFO_DURATION && timeSince != 0) {
       g.setColor(Color.BLACK);
-      g.setFont(HillBillyFonts.UI_FONT1.deriveFont(56f));
+      g.setFont(HillBillyFonts.UI.deriveFont(56f));
 
       Valign valign = GameManager.getCurrentDay() == Day.Saturday ? Valign.MIDDLE_TOP : Valign.MIDDLE;
-      TextRenderer.render(g, GameManager.getCurrentDay().name(), Align.CENTER, valign, -1, 1);
+      TextRenderer.render(g, GameManager.getCurrentDay().name(), Align.CENTER, valign, -2, 2);
 
       g.setColor(Color.WHITE);
       TextRenderer.render(g, GameManager.getCurrentDay().name(), Align.CENTER, valign, 0, 0);
@@ -168,13 +176,43 @@ public class Hud extends GuiComponent {
       return;
     }
     if (g.getClipBounds() != null && (GameManager.getCurrentDay() != Day.Saturday && GameManager.getState() == GameState.INGAME || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible())) {
-      g.setColor(Color.WHITE);
-      g.setFont(HillBillyFonts.PIXEL_UI_FONT.deriveFont(24f));
-      TextRenderer.render(g, "req. harvest: " + GameManager.getRequiredPumpkins() + "x", Align.RIGHT, Valign.DOWN, -70, -PADDING);
+      double pumpkinOffset = g.getClipBounds().getWidth() * 1 / 128d;
+      double backgroundWidth = (pumpkinOffset * (Game.world().environment().getEntities(Pumpkin.class).size() + 1)) + (Game.world().environment().getEntities(Pumpkin.class).size() * PUMPKIN.getWidth());
+      double backgroundHeight = g.getClipBounds().getHeight() * 1 / 20d;
+      double backgroundX = g.getClipBounds().getWidth() / 2d - backgroundWidth / 2d;
+      double backgroundY = g.getClipBounds().getHeight() - backgroundHeight;
+      double pumpkinY = g.getClipBounds().getHeight() - backgroundHeight / 2d - PUMPKIN.getHeight() / 2d;
+      int alive = Game.world().environment().getEntities(Pumpkin.class, x -> !x.isDead()).size();
+      int dead = Game.world().environment().getEntities(Pumpkin.class, Pumpkin::isDead).size();
 
-      double locationX = g.getClipBounds().getX() + Align.RIGHT.getLocation(g.getClipBounds().getWidth(), PUMPKIN.getWidth()) + -PADDING;
-      double locationY = g.getClipBounds().getY() + Valign.DOWN.getLocation(g.getClipBounds().getHeight(), PUMPKIN.getHeight()) + -PADDING;
-      ImageRenderer.render(g, PUMPKIN, locationX, locationY);
+      g.setColor(BG_COLOR);
+      g.fillRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
+      g.setColor(CONTOUR_COLOR);
+      g.drawRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
+
+      for (int i = 0; i < alive; i++) {
+        ImageRenderer.render(g, PUMPKIN, backgroundX + (i * PUMPKIN.getWidth()) + ((i + 1) * pumpkinOffset), pumpkinY);
+      }
+
+      for (int i = 0; i < dead; i++) {
+        ImageRenderer.render(g, PUMPKIN_DISABLED, backgroundX + ((alive + i) * PUMPKIN_DISABLED.getWidth()) + ((alive + i + 1) * pumpkinOffset), pumpkinY);
+      }
+
+      double minLineX = backgroundX + (GameManager.getRequiredPumpkins() * (PUMPKIN.getWidth() + pumpkinOffset) + pumpkinOffset / 2d);
+      double minLineY1 = pumpkinY - 5;
+      double minLineY2 = minLineY1 + PUMPKIN.getHeight() + 10;
+
+      g.setColor(Color.WHITE);
+      g.setStroke(new BasicStroke(3f));
+      g.draw(new Line2D.Double(minLineX, minLineY1, minLineX, minLineY2));
+
+      g.setColor(Color.BLACK);
+      g.setFont(HillBillyFonts.MENU.deriveFont(24f));
+
+      String min = "min.";
+      TextRenderer.render(g, min, minLineX - g.getFontMetrics().stringWidth(min) / 2d - 2, backgroundY - 3 + 2);
+      g.setColor(Color.WHITE);
+      TextRenderer.render(g, min, minLineX - g.getFontMetrics().stringWidth(min) / 2d, backgroundY - 3);
     }
 
   }
@@ -185,13 +223,21 @@ public class Hud extends GuiComponent {
     }
 
     if (GameManager.getState() == GameState.INGAME && g.getClipBounds() != null) {
-      ImageRenderer.render(g, CAN_SCALED.getSprite(Farmer.instance().getWaterAbility().getCharges().get()), g.getClipBounds().getWidth() - CAN_SCALED.getSpriteWidth() * 1.3, g.getClipBounds().getHeight() - CAN_SCALED.getSpriteHeight() * 1.3);
+      double backgroundWidth = g.getClipBounds().getWidth() * 2 / 16d;
+      double backgroundHeight = g.getClipBounds().getHeight() * 4 / 20d;
+      double backgroundX = 0;
+      double backgroundY = g.getClipBounds().getHeight() - backgroundHeight;
+      g.setColor(BG_COLOR);
+      g.fillRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
+      g.setColor(CONTOUR_COLOR);
+      g.drawRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
+      ImageRenderer.render(g, CAN_SCALED.getSprite(Farmer.instance().getWaterAbility().getCharges().get()), backgroundX + backgroundWidth / 2d - CAN_SCALED.getSpriteWidth() / 2d, backgroundY + backgroundHeight / 2d - CAN_SCALED.getSpriteHeight() / 2d);
     }
   }
 
   private void renderTime(Graphics2D g) {
 
-    if (GameManager.getCurrentTime() == null || !GameManager.isClockVisible() || GameManager.getCurrentDay() == null) {
+    if (GameManager.getCurrentTime() == null || !GameManager.isClockVisible() || GameManager.getCurrentDay() == null || g.getClipBounds() == null) {
       return;
     }
 
@@ -209,8 +255,6 @@ public class Hud extends GuiComponent {
     Line2D minuteArm = new Line2D.Double(centerX, centerY, centerX + minuteArmLength * Trigonometry.cosDeg(degminute), centerY + minuteArmLength * Trigonometry.sinDeg(degminute));
     Line2D hourArm = new Line2D.Double(centerX, centerY, centerX + hourArmLength * Trigonometry.cosDeg(deghour), centerY + hourArmLength * Trigonometry.sinDeg(deghour));
 
-    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
     g.setColor(Color.DARK_GRAY);
     g.setStroke(new BasicStroke(4f));
     g.draw(hourArm);
@@ -219,18 +263,19 @@ public class Hud extends GuiComponent {
     g.setStroke(new BasicStroke(2f));
     g.draw(minuteArm);
 
-    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_OFF);
-
     Rectangle2D textBounds = new Rectangle2D.Double(g.getClipBounds().getMaxX() - 0.75 * POCKETWATCH.getWidth(), 1.1 * POCKETWATCH.getHeight(), 0.77 * POCKETWATCH.getWidth(), POCKETWATCH.getHeight() / 4);
     if (GameManager.currentHour > 15) {
-      g.setFont(HillBillyFonts.MENU_FONT.deriveFont(48f));
+      g.setFont(HillBillyFonts.MENU.deriveFont(48f));
     } else {
-      g.setFont(HillBillyFonts.MENU_FONT.deriveFont(32f));
+      g.setFont(HillBillyFonts.MENU.deriveFont(32f));
     }
 
     g.setColor(Color.WHITE);
     TextRenderer.render(g, GameManager.getCurrentTime(), textBounds, Align.CENTER, Valign.DOWN, false);
-    g.setFont(HillBillyFonts.UI_FONT1);
+    g.setFont(HillBillyFonts.UI);
+    g.setColor(Color.BLACK);
+    TextRenderer.render(g, GameManager.getCurrentDay().name(), textBounds, Align.CENTER, Valign.TOP, -2, 2, true);
+    g.setColor(Color.WHITE);
     TextRenderer.render(g, GameManager.getCurrentDay().name(), textBounds, Align.CENTER, Valign.TOP, true);
   }
 }

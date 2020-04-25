@@ -42,7 +42,7 @@ public class MenuScreen extends Screen implements IUpdateable {
   private static final int cloud4YOffset = Game.random().nextInt(BG.getHeight() * 1 / 5);
   private static final int cloud5YOffset = Game.random().nextInt(BG.getHeight() * 1 / 5);
 
-  private static Color CARVING_COLOR = ColorHelper.decode("#593D35");
+  private static final Color CARVING_COLOR = ColorHelper.decode("#593D35");
 
   public long lastPlayed;
 
@@ -61,12 +61,12 @@ public class MenuScreen extends Screen implements IUpdateable {
 
     this.mainMenu.setForwardMouseEvents(false);
     this.mainMenu.getCellComponents().forEach(comp -> {
-      comp.setFont(HillBillyFonts.MENU_FONT);
+      comp.setFont(HillBillyFonts.MENU);
       comp.setSpriteSheet(Resources.spritesheets().get("button-background"));
       comp.getAppearance().setTextAntialiasing(true);
       comp.getAppearanceHovered().setTextAntialiasing(true);
       comp.getAppearance().setForeColor(CARVING_COLOR);
-      comp.getAppearanceHovered().setForeColor(CARVING_COLOR.brighter());
+      comp.getAppearanceHovered().setForeColor(CARVING_COLOR.darker());
       comp.setForwardMouseEvents(false);
     });
 
@@ -78,9 +78,8 @@ public class MenuScreen extends Screen implements IUpdateable {
     ImageRenderer.render(g, BG, 0, 0);
     this.renderScrollingStuff(g);
     double scale = 1.4 + 0.15 * Math.sin(Game.time().sinceEnvironmentLoad() / 400.0);
-    ImageRenderer.render(g, Imaging.scale(LOGO, scale), Game.window().getCenter().getX() - (scale * LOGO.getWidth()) / 2,
-        Game.window().getHeight() * 2.5 / 8 - (scale * LOGO.getHeight()) / 2);
-    g.setFont(HillBillyFonts.MENU_FONT);
+    ImageRenderer.render(g, Imaging.scale(LOGO, scale), Game.window().getCenter().getX() - (scale * LOGO.getWidth()) / 2, Game.window().getHeight() * 2.5 / 8 - (scale * LOGO.getHeight()) / 2);
+    g.setFont(HillBillyFonts.MENU);
     g.setColor(new Color(26, 47, 4));
 
     RenderingHints originalHints = g.getRenderingHints();
