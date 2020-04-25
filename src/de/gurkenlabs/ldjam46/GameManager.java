@@ -87,8 +87,6 @@ public final class GameManager {
 
   public static float INGAME_RENDER_SCALE = 4.001f;
 
-  public static final String MAP_PLAYGROUND = "playground";
-
   private static final Map<String, List<EnemyFarmerSpawnEvent>> spawnEvents = new ConcurrentHashMap<>();
   private static final Map<String, AStarGrid> grids = new ConcurrentHashMap<>();
   private static final Map<Day, String> maps = new ConcurrentHashMap<>();
@@ -123,12 +121,6 @@ public final class GameManager {
     maps.put(Day.Thursday, "thursday");
     maps.put(Day.Friday, "friday");
     maps.put(Day.Saturday, "saturday");
-
-    spawnEvents.put(MAP_PLAYGROUND, new ArrayList<>());
-    spawnEvents.get(MAP_PLAYGROUND).add(new EnemyFarmerSpawnEvent("enemy", 5000));
-    spawnEvents.get(MAP_PLAYGROUND).add(new EnemyFarmerSpawnEvent("enemy", 10000));
-    spawnEvents.get(MAP_PLAYGROUND).add(new EnemyFarmerSpawnEvent("enemy", 15000));
-    spawnEvents.get(MAP_PLAYGROUND).add(new EnemyFarmerSpawnEvent("enemy", 20000));
 
     spawnEvents.put(Day.Thursday.name().toLowerCase(), new ArrayList<>());
     spawnEvents.get(Day.Thursday.name().toLowerCase()).add(new EnemyFarmerSpawnEvent("enemy1", 5000));
@@ -177,11 +169,7 @@ public final class GameManager {
     Game.world().addListener(new EnvironmentListener() {
       @Override
       public void initialized(Environment e) {
-        if (e.getMap().getName().equals("playground")) {
-          Farmer.instance().getWaterAbility().getCharges().setBaseValue(2);
-        } else {
-          Farmer.instance().getWaterAbility().getCharges().setToMin();
-        }
+        Farmer.instance().getWaterAbility().getCharges().setToMin();
 
         Game.world().camera().setFocus(e.getCenter());
         Spawnpoint spawn = e.getSpawnpoint("farmer");
