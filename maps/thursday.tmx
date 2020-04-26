@@ -194,6 +194,215 @@
     <property name="spritesheetName" value="well"/>
    </properties>
   </object>
+  <object id="37" type="PROP" x="213" y="205" width="16" height="14">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="5.6000000000000005"/>
+    <property name="collisionboxWidth" type="float" value="6.4"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="palletpumpkin"/>
+   </properties>
+  </object>
+  <object id="38" type="PROP" x="222" y="219" width="16" height="14">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="5.6000000000000005"/>
+    <property name="collisionboxWidth" type="float" value="6.4"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="palletpumpkin"/>
+   </properties>
+  </object>
+  <object id="39" type="PROP" x="231" y="209" width="11" height="9">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="3.6"/>
+    <property name="collisionboxWidth" type="float" value="4.4"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="pumpkin2"/>
+   </properties>
+  </object>
+  <object id="40" type="PROP" x="243" y="208" width="11" height="9">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="3.6"/>
+    <property name="collisionboxWidth" type="float" value="4.4"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="pumpkin2"/>
+   </properties>
+  </object>
+  <object id="41" type="PROP" x="303" y="213" width="16" height="11">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="4.4"/>
+    <property name="collisionboxWidth" type="float" value="6.4"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="pallet4"/>
+   </properties>
+  </object>
+  <object id="42" type="PROP" x="285" y="190" width="16" height="27">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="10.8"/>
+    <property name="collisionboxWidth" type="float" value="6.4"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="crate2"/>
+   </properties>
+  </object>
+  <object id="43" type="PROP" x="261" y="197" width="6" height="14">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="5.6000000000000005"/>
+    <property name="collisionboxWidth" type="float" value="2.4000000000000004"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="oven"/>
+   </properties>
+  </object>
+  <object id="44" type="PROP" x="357" y="206" width="11" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="6.4"/>
+    <property name="collisionboxWidth" type="float" value="4.4"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="outhouse1"/>
+   </properties>
+  </object>
+  <object id="45" type="PROP" x="326" y="235" width="6" height="11">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="4.4"/>
+    <property name="collisionboxWidth" type="float" value="2.4000000000000004"/>
+    <property name="flipHorizontally" type="bool" value="true"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="pushcart"/>
+   </properties>
+  </object>
+  <object id="46" type="PROP" x="327" y="233" width="8" height="7">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionboxHeight" type="float" value="2.8000000000000003"/>
+    <property name="collisionboxWidth" type="float" value="3.2"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="spritesheetName" value="table3"/>
+   </properties>
+  </object>
+  <object id="47" type="PROP" x="66" y="63" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="DOWN"/>
+    <property name="collisionboxHeight" value="10.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="false"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="false"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
+  <object id="48" type="PROP" x="311" y="62" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="DOWN"/>
+    <property name="collisionboxHeight" value="10.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="false"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="false"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
+  <object id="49" type="PROP" x="392" y="63" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="DOWN"/>
+    <property name="collisionboxHeight" value="10.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="true"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="false"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
+  <object id="50" type="PROP" x="109" y="63" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="DOWN"/>
+    <property name="collisionboxHeight" value="10.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="true"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="false"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
+  <object id="51" type="PROP" x="347" y="64" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="DOWN"/>
+    <property name="collisionboxHeight" value="10.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="false"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="false"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
+  <object id="52" type="PROP" x="150" y="64" width="19" height="16">
+   <properties>
+    <property name="addShadow" type="bool" value="true"/>
+    <property name="collision" type="bool" value="true"/>
+    <property name="collisionAlign" value="CENTER"/>
+    <property name="collisionType" value="DYNAMIC"/>
+    <property name="collisionValign" value="DOWN"/>
+    <property name="collisionboxHeight" value="10.0"/>
+    <property name="collisionboxWidth" value="19"/>
+    <property name="flipHorizontally" type="bool" value="false"/>
+    <property name="flipVertically" type="bool" value="false"/>
+    <property name="hitpoints" value="100"/>
+    <property name="indestructible" type="bool" value="false"/>
+    <property name="rotationSprite" value="NONE"/>
+    <property name="scaling" type="bool" value="false"/>
+    <property name="spritesheetName" value="pumpkin"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="13" name="Lights">
   <object id="28" name="canlight" type="LIGHTSOURCE" x="225" y="76" width="32" height="31">
@@ -223,114 +432,6 @@
   <object id="4" type="COLLISIONBOX" x="16" y="256" width="464" height="16">
    <properties>
     <property name="collisionType" value="STATIC"/>
-   </properties>
-  </object>
-  <object id="12" type="PROP" x="159" y="58" width="19" height="24">
-   <properties>
-    <property name="addShadow" type="bool" value="true"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="collisionAlign" value="CENTER"/>
-    <property name="collisionType" value="DYNAMIC"/>
-    <property name="collisionValign" value="MIDDLE"/>
-    <property name="collisionboxHeight" value="16.0"/>
-    <property name="collisionboxWidth" value="19"/>
-    <property name="flipHorizontally" type="bool" value="false"/>
-    <property name="flipVertically" type="bool" value="false"/>
-    <property name="hitpoints" value="100"/>
-    <property name="indestructible" type="bool" value="false"/>
-    <property name="rotationSprite" value="NONE"/>
-    <property name="scaling" type="bool" value="true"/>
-    <property name="spritesheetName" value="pumpkin"/>
-   </properties>
-  </object>
-  <object id="13" type="PROP" x="63" y="58" width="19" height="24">
-   <properties>
-    <property name="addShadow" type="bool" value="true"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="collisionAlign" value="CENTER"/>
-    <property name="collisionType" value="DYNAMIC"/>
-    <property name="collisionValign" value="MIDDLE"/>
-    <property name="collisionboxHeight" value="16.0"/>
-    <property name="collisionboxWidth" value="19"/>
-    <property name="flipHorizontally" type="bool" value="false"/>
-    <property name="flipVertically" type="bool" value="false"/>
-    <property name="hitpoints" value="100"/>
-    <property name="indestructible" type="bool" value="false"/>
-    <property name="rotationSprite" value="NONE"/>
-    <property name="scaling" type="bool" value="true"/>
-    <property name="spritesheetName" value="pumpkin"/>
-   </properties>
-  </object>
-  <object id="14" type="PROP" x="397" y="59" width="19" height="24">
-   <properties>
-    <property name="addShadow" type="bool" value="true"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="collisionAlign" value="CENTER"/>
-    <property name="collisionType" value="DYNAMIC"/>
-    <property name="collisionValign" value="MIDDLE"/>
-    <property name="collisionboxHeight" value="16.0"/>
-    <property name="collisionboxWidth" value="19"/>
-    <property name="flipHorizontally" type="bool" value="false"/>
-    <property name="flipVertically" type="bool" value="false"/>
-    <property name="hitpoints" value="100"/>
-    <property name="indestructible" type="bool" value="false"/>
-    <property name="rotationSprite" value="NONE"/>
-    <property name="scaling" type="bool" value="true"/>
-    <property name="spritesheetName" value="pumpkin"/>
-   </properties>
-  </object>
-  <object id="15" type="PROP" x="305" y="59" width="19" height="24">
-   <properties>
-    <property name="addShadow" type="bool" value="true"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="collisionAlign" value="CENTER"/>
-    <property name="collisionType" value="DYNAMIC"/>
-    <property name="collisionValign" value="MIDDLE"/>
-    <property name="collisionboxHeight" value="16.0"/>
-    <property name="collisionboxWidth" value="19"/>
-    <property name="flipHorizontally" type="bool" value="false"/>
-    <property name="flipVertically" type="bool" value="false"/>
-    <property name="hitpoints" value="100"/>
-    <property name="indestructible" type="bool" value="false"/>
-    <property name="rotationSprite" value="NONE"/>
-    <property name="scaling" type="bool" value="true"/>
-    <property name="spritesheetName" value="pumpkin"/>
-   </properties>
-  </object>
-  <object id="16" type="PROP" x="350" y="59" width="19" height="24">
-   <properties>
-    <property name="addShadow" type="bool" value="true"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="collisionAlign" value="CENTER"/>
-    <property name="collisionType" value="DYNAMIC"/>
-    <property name="collisionValign" value="MIDDLE"/>
-    <property name="collisionboxHeight" value="16.0"/>
-    <property name="collisionboxWidth" value="19"/>
-    <property name="flipHorizontally" type="bool" value="false"/>
-    <property name="flipVertically" type="bool" value="false"/>
-    <property name="hitpoints" value="100"/>
-    <property name="indestructible" type="bool" value="false"/>
-    <property name="rotationSprite" value="NONE"/>
-    <property name="scaling" type="bool" value="true"/>
-    <property name="spritesheetName" value="pumpkin"/>
-   </properties>
-  </object>
-  <object id="17" type="PROP" x="111" y="58" width="19" height="24">
-   <properties>
-    <property name="addShadow" type="bool" value="true"/>
-    <property name="collision" type="bool" value="true"/>
-    <property name="collisionAlign" value="CENTER"/>
-    <property name="collisionType" value="DYNAMIC"/>
-    <property name="collisionValign" value="MIDDLE"/>
-    <property name="collisionboxHeight" value="16.0"/>
-    <property name="collisionboxWidth" value="19"/>
-    <property name="flipHorizontally" type="bool" value="false"/>
-    <property name="flipVertically" type="bool" value="false"/>
-    <property name="hitpoints" value="100"/>
-    <property name="indestructible" type="bool" value="false"/>
-    <property name="rotationSprite" value="NONE"/>
-    <property name="scaling" type="bool" value="true"/>
-    <property name="spritesheetName" value="pumpkin"/>
    </properties>
   </object>
   <object id="18" type="COLLISIONBOX" x="280" y="22" width="173" height="16">

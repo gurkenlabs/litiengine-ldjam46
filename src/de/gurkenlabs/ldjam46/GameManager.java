@@ -97,7 +97,9 @@ public final class GameManager {
 
   // time properties
   private static String currentTime;
-  public static int currentHour;
+
+  private static int totalHarvestedPumpkins, totalDeadPumpkins, totalRequiredPumpkins;
+  private static int currentHour;
   private static int currentMinutes;
 
   private static long lastLoaded;
@@ -241,6 +243,7 @@ public final class GameManager {
       day = currentDay.getNext();
     }
     loadDay(day);
+    totalRequiredPumpkins += getRequiredPumpkins();
   }
 
   public static synchronized void loadDay(Day day) {
@@ -377,7 +380,7 @@ public final class GameManager {
 
             Game.loop().perform(1000, () -> {
               bubble("DAG NAB IT!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE_EMPHASIS, 3000).addListener(() -> {
-                bubble("Mah rivals Billy and Tilly tryna ruin the harvest!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 4500).addListener(() -> {
+                bubble("Mah rivals Willy 'n Tilly tryna ruin the harvest!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 4500).addListener(() -> {
                   bubble("Let's see if I can scare em away...", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 3000).addListener(() -> {
                     Farmer.instance().getFartAbility().setEnabled(true);
 
@@ -436,6 +439,8 @@ public final class GameManager {
         pumpkin.harvest();
       });
     }
+    totalHarvestedPumpkins += i;
+    totalDeadPumpkins += Game.world().environment().getEntities(Pumpkin.class).size() - i;
 
     return delay + i * 500;
   }
@@ -608,6 +613,18 @@ public final class GameManager {
 
   public static int getCurrentMinutes() {
     return currentMinutes;
+  }
+
+  public static int getTotalHarvestedPumpkins() {
+    return totalHarvestedPumpkins;
+  }
+
+  public static int getTotalDeadPumpkins() {
+    return totalDeadPumpkins;
+  }
+
+  public static int getTotalRequiredPumpkins() {
+    return totalRequiredPumpkins;
   }
 
   public static int getRequiredPumpkins() {

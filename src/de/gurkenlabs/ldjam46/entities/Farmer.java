@@ -20,7 +20,6 @@ import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.entities.Trigger;
 import de.gurkenlabs.litiengine.graphics.CreatureShadowImageEffect;
 import de.gurkenlabs.litiengine.graphics.OverlayPixelsImageEffect;
-import de.gurkenlabs.litiengine.graphics.Spritesheet;
 import de.gurkenlabs.litiengine.graphics.animation.Animation;
 import de.gurkenlabs.litiengine.graphics.animation.CreatureAnimationController;
 import de.gurkenlabs.litiengine.graphics.animation.IEntityAnimationController;
@@ -110,7 +109,7 @@ public class Farmer extends Creature {
     } else if (this.hasCan() && !this.waterAbility.isOnCooldown() && this.waterAbility.getCharges().get() == 0
         && !speechbubbleActive) {
 
-      String text = firstRefillEver ? "I need to use the fountain to refill mah can!" : "Need to refill mah can...";
+      String text = firstRefillEver ? "I need to refill mah can at the well." : "Need to refill mah can...";
       SpeechBubble bubble = SpeechBubble.create(this, text,
           GameManager.SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE);
       speechbubbleActive = true;

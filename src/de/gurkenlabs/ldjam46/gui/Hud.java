@@ -6,9 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.Rectangle2D.Double;
 import java.awt.image.BufferedImage;
 
 import de.gurkenlabs.ldjam46.GameManager;
@@ -27,8 +25,6 @@ import de.gurkenlabs.litiengine.graphics.TextRenderer;
 import de.gurkenlabs.litiengine.gui.GuiComponent;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.gurkenlabs.litiengine.util.Imaging;
-import de.gurkenlabs.litiengine.util.MathUtilities;
-import de.gurkenlabs.litiengine.util.geom.GeometricUtilities;
 import de.gurkenlabs.litiengine.util.geom.Trigonometry;
 
 public class Hud extends GuiComponent {
@@ -163,48 +159,75 @@ public class Hud extends GuiComponent {
 
     }
 
-    if (GameManager.getCurrentDay() == Day.Saturday) {
+    if (g.getClipBounds() == null) {
       return;
     }
-    if (g.getClipBounds() != null && (GameManager.getCurrentDay() != Day.Saturday && GameManager.getState() == GameState.INGAME || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible())) {
-      double pumpkinOffset = g.getClipBounds().getWidth() * 1 / 128d;
-      double backgroundWidth = (pumpkinOffset * (Game.world().environment().getEntities(Pumpkin.class).size() + 1)) + (Game.world().environment().getEntities(Pumpkin.class).size() * PUMPKIN.getWidth());
-      double backgroundHeight = g.getClipBounds().getHeight() * 1 / 20d;
-      double backgroundX = g.getClipBounds().getWidth() / 2d - backgroundWidth / 2d;
-      double backgroundY = g.getClipBounds().getHeight() - backgroundHeight;
-      double pumpkinY = g.getClipBounds().getHeight() - backgroundHeight / 2d - PUMPKIN.getHeight() / 2d;
-      int alive = Game.world().environment().getEntities(Pumpkin.class, x -> !x.isDead()).size();
-      int dead = Game.world().environment().getEntities(Pumpkin.class, Pumpkin::isDead).size();
+    double pumpkinOffset;
+    double backgroundWidth;
+    double backgroundHeight = g.getClipBounds().getHeight() * 1 / 20d;
+    double backgroundX;
+    double backgroundY;
+    double pumpkinY;
+    double minLineX;
+    double minLineY1;
+    double minLineY2;
 
-      g.setColor(BG_COLOR);
-      g.fillRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
-      g.setColor(CONTOUR_COLOR);
-      g.drawRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
-
-      for (int i = 0; i < alive; i++) {
-        ImageRenderer.render(g, PUMPKIN, backgroundX + (i * PUMPKIN.getWidth()) + ((i + 1) * pumpkinOffset), pumpkinY);
-      }
-
-      for (int i = 0; i < dead; i++) {
-        ImageRenderer.render(g, PUMPKIN_DISABLED, backgroundX + ((alive + i) * PUMPKIN_DISABLED.getWidth()) + ((alive + i + 1) * pumpkinOffset), pumpkinY);
-      }
-
-      double minLineX = backgroundX + (GameManager.getRequiredPumpkins() * (PUMPKIN.getWidth() + pumpkinOffset) + pumpkinOffset / 2d);
-      double minLineY1 = pumpkinY - 5;
-      double minLineY2 = minLineY1 + PUMPKIN.getHeight() + 10;
-
-      g.setColor(Color.WHITE);
-      g.setStroke(new BasicStroke(3f));
-      g.draw(new Line2D.Double(minLineX, minLineY1, minLineX, minLineY2));
-
-      g.setColor(Color.BLACK);
-      g.setFont(HillBillyFonts.MENU.deriveFont(24f));
-
-      String min = "min.";
-      TextRenderer.render(g, min, minLineX - g.getFontMetrics().stringWidth(min) / 2d - 2, backgroundY - 3 + 2);
-      g.setColor(Color.WHITE);
-      TextRenderer.render(g, min, minLineX - g.getFontMetrics().stringWidth(min) / 2d, backgroundY - 3);
+    int alive;
+    int dead;
+    if ((GameManager.getCurrentDay() != Day.Saturday && GameManager.getState() == GameState.INGAME || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible())) {
+      pumpkinOffset = g.getClipBounds().getWidth() * 1 / 128d;
+      backgroundWidth = (Game.world().environment().getEntities(Pumpkin.class).size() * (PUMPKIN.getWidth() + pumpkinOffset) + pumpkinOffset);
+      backgroundX = g.getClipBounds().getWidth() / 2d - backgroundWidth / 2d;
+      backgroundY = g.getClipBounds().getHeight() - backgroundHeight;
+      pumpkinY = g.getClipBounds().getHeight() - backgroundHeight / 2d - PUMPKIN.getHeight() / 2d;
+      alive = Game.world().environment().getEntities(Pumpkin.class, x -> !x.isDead()).size();
+      dead = Game.world().environment().getEntities(Pumpkin.class, Pumpkin::isDead).size();
+      minLineX = backgroundX + (GameManager.getRequiredPumpkins() * (PUMPKIN.getWidth() + pumpkinOffset) + pumpkinOffset / 2d);
+      minLineY1 = pumpkinY - 5;
+      minLineY2 = minLineY1 + PUMPKIN.getHeight() + 10;
+    } else if (GameManager.getCurrentDay() == Day.Saturday && GameManager.getState() == GameState.LOCKED && Game.time().sinceEnvironmentLoad() > LEVEL_INFO_DURATION + 1000) {
+      pumpkinOffset = g.getClipBounds().getWidth() * 1 / 256d;
+      backgroundWidth = ((GameManager.getTotalHarvestedPumpkins() + GameManager.getTotalDeadPumpkins()) * (PUMPKIN.getWidth() + pumpkinOffset) + pumpkinOffset);
+      backgroundX = g.getClipBounds().getWidth() / 2d - backgroundWidth / 2d;
+      backgroundY = g.getClipBounds().getHeight() * 4 / 5d;
+      pumpkinY = backgroundY + backgroundHeight / 2d - PUMPKIN.getHeight() / 2d;
+      alive = GameManager.getTotalHarvestedPumpkins();
+      dead = GameManager.getTotalDeadPumpkins();
+      minLineX = backgroundX + (GameManager.getTotalRequiredPumpkins() * (PUMPKIN.getWidth() + pumpkinOffset) + pumpkinOffset / 2d);
+      minLineY1 = pumpkinY - 5;
+      minLineY2 = minLineY1 + PUMPKIN.getHeight() + 10;
+    } else {
+      return;
     }
+    g.setColor(BG_COLOR);
+    g.fillRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
+    g.setColor(CONTOUR_COLOR);
+    g.drawRect((int) (backgroundX), (int) (backgroundY), (int) (backgroundWidth), (int) (backgroundHeight));
+
+    for (int i = 0; i < alive; i++) {
+      ImageRenderer.render(g, PUMPKIN, backgroundX + (i * PUMPKIN.getWidth()) + ((i + 1) * pumpkinOffset), pumpkinY);
+    }
+
+    for (int i = 0; i < dead; i++) {
+      ImageRenderer.render(g, PUMPKIN_DISABLED, backgroundX + ((alive + i) * PUMPKIN_DISABLED.getWidth()) + ((alive + i + 1) * pumpkinOffset), pumpkinY);
+    }
+
+    g.setColor(Color.WHITE);
+    g.setStroke(new BasicStroke(3f));
+    g.draw(new Line2D.Double(minLineX, minLineY1, minLineX, minLineY2));
+
+    g.setColor(Color.BLACK);
+    g.setFont(HillBillyFonts.MENU.deriveFont(24f));
+
+    String min = "min.";
+    TextRenderer.render(g, min, minLineX - g.getFontMetrics().stringWidth(min) / 2d - 2, backgroundY - 3 + 2);
+    g.setColor(Color.WHITE);
+    TextRenderer.render(g, min, minLineX - g.getFontMetrics().stringWidth(min) / 2d, backgroundY - 3);
+
+    // System.out.println(String.format("harvested: %d. dead: %d. required: %d",
+    // GameManager.getTotalHarvestedPumpkins(),
+    // GameManager.getTotalDeadPumpkins(),
+    // GameManager.getTotalRequiredPumpkins()));
 
   }
 
@@ -250,7 +273,7 @@ public class Hud extends GuiComponent {
     g.draw(minuteArm);
 
     Rectangle2D textBounds = new Rectangle2D.Double(g.getClipBounds().getMaxX() - 0.75 * POCKETWATCH.getWidth(), 1.1 * POCKETWATCH.getHeight(), 0.77 * POCKETWATCH.getWidth(), POCKETWATCH.getHeight() / 4);
-    if (GameManager.currentHour > 15) {
+    if (GameManager.getCurrentHours() > 15) {
       g.setFont(HillBillyFonts.MENU.deriveFont(48f));
     } else {
       g.setFont(HillBillyFonts.MENU.deriveFont(32f));
