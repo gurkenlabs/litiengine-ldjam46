@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="22" nextobjectid="53">
+<map version="1.2" tiledversion="1.3.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="16" tileheight="16" infinite="0" nextlayerid="22" nextobjectid="53" name="friday">
  <properties>
   <property name="GRAVITY" type="int" value="0"/>
   <property name="minPumpkins" value="5"/>
@@ -333,7 +333,7 @@
     <property name="spritesheetName" value="rooster"/>
    </properties>
   </object>
-  <object id="73" type="PROP" x="34" y="210" width="15" height="9">
+  <object id="73" type="PROP" x="192" y="55" width="15" height="9">
    <properties>
     <property name="addShadow" type="bool" value="true"/>
     <property name="collision" type="bool" value="true"/>

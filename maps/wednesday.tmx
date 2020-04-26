@@ -3,7 +3,7 @@
  <properties>
   <property name="AMBIENTLIGHT" value="#14d2562f"/>
   <property name="GRAVITY" type="int" value="0"/>
-  <property name="minPumpkins" value="5"/>
+  <property name="minPumpkins" value="6"/>
  </properties>
  <tileset firstgid="1" source="tiles-greenhouse.tsx"/>
  <layer id="1" name="ground" width="30" height="17">

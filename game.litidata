@@ -335,7 +335,7 @@
       <property name="spritesheetName" value="rooster"/>
      </properties>
     </object>
-    <object id="73" type="PROP" x="34" y="210" width="15" height="9">
+    <object id="73" type="PROP" x="192" y="55" width="15" height="9">
      <properties>
       <property name="addShadow" type="bool" value="true"/>
       <property name="collision" type="bool" value="true"/>
@@ -2895,7 +2895,7 @@
    <properties>
     <property name="AMBIENTLIGHT" value="#14d2562f"/>
     <property name="GRAVITY" type="int" value="0"/>
-    <property name="minPumpkins" value="5"/>
+    <property name="minPumpkins" value="6"/>
    </properties>
    <tileset firstgid="1" source="tiles-greenhouse.tsx"/>
    <layer id="1" name="ground" width="30" height="17">

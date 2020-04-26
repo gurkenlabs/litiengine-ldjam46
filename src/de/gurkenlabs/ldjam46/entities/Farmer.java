@@ -88,7 +88,7 @@ public class Farmer extends Creature {
           }
 
           if (firstRefillEver) {
-            SpeechBubble.create(this, "Ya better hurry! Mah pumpkins need water!",
+            SpeechBubble.create(this, "Ya better hurry! Mah pumpkins need    water! ",
                 GameManager.SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE);
 
             Game.loop().perform(500, () -> {

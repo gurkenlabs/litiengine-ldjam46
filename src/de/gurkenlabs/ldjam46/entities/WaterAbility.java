@@ -16,9 +16,6 @@ import de.gurkenlabs.litiengine.entities.IEntity;
 import de.gurkenlabs.litiengine.entities.LightSource;
 import de.gurkenlabs.litiengine.entities.RelativeEntityComparator;
 import de.gurkenlabs.litiengine.graphics.OverlayPixelsImageEffect;
-import de.gurkenlabs.litiengine.graphics.animation.Animation;
-import de.gurkenlabs.litiengine.graphics.emitters.AnimationEmitter;
-import de.gurkenlabs.litiengine.resources.Resources;
 
 @AbilityInfo(name = "WaterAbility", cooldown = 1000, range = 0, impact = 30, impactAngle = 360, value = 1, duration = 700)
 public class WaterAbility extends Ability {

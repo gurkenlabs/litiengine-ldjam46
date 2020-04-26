@@ -13,7 +13,7 @@ import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.ICombatEntity;
 import de.gurkenlabs.litiengine.graphics.OverlayPixelsImageEffect;
 
-@AbilityInfo(name = "FartAbility", cooldown = 5000, range = 0, impact = 60, impactAngle = 360, value = 1, duration = 400, multiTarget = true)
+@AbilityInfo(name = "FartAbility", cooldown = 4000, range = 0, impact = 60, impactAngle = 360, value = 1, duration = 400, multiTarget = true)
 public class FartAbility extends Ability {
   private boolean enabled;
 

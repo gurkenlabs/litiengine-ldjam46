@@ -41,8 +41,8 @@ public final class GameManager {
 
   public enum Day {
     Monday(1, 2.0),
-    Tuesday(2, 1.6),
-    Wednesday(3, 2.0),
+    Tuesday(2, 1.0),
+    Wednesday(3, 1.4),
     Thursday(4, 2.0),
     Friday(5, 2.0),
     Saturday(6, 2.0);
@@ -235,7 +235,7 @@ public final class GameManager {
     if (currentDay == null) {
       if (Game.isDebug()) {
         // CHANGE THIS TO TEST OTHER LEVELS AND SKIP ALL OTHES
-        day = Day.Monday;
+        day = Day.Tuesday;
       } else {
         day = Day.Monday;
       }
@@ -380,7 +380,7 @@ public final class GameManager {
 
             Game.loop().perform(1000, () -> {
               bubble("DAG NAB IT!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE_EMPHASIS, 3000).addListener(() -> {
-                bubble("Mah rivals Willy 'n Tilly tryna ruin the harvest!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 4500).addListener(() -> {
+                bubble("Mah rivals Willy 'n Tilly tryna ruin the    harvest!", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 4500).addListener(() -> {
                   bubble("Let's see if I can scare em away...", SPEECHBUBBLE_APPEARANCE, HillBillyFonts.SPEECHBUBBLE, 3000).addListener(() -> {
                     Farmer.instance().getFartAbility().setEnabled(true);
 
