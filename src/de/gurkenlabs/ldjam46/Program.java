@@ -17,7 +17,7 @@ public class Program {
     // set meta information about the game
     Game.info().setName("Pumpkin Keeper");
     Game.info().setSubTitle("");
-    Game.info().setVersion("v1.0.0");
+    Game.info().setVersion("v1.1.0");
     Game.info().setWebsite("https://github.com/gurkenlabs/litiengine-ldjam46");
     Game.info().setDescription("");
 
