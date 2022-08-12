@@ -8,7 +8,7 @@ import de.gurkenlabs.litiengine.entities.EntityInfo;
 import de.gurkenlabs.litiengine.graphics.RenderType;
 import de.gurkenlabs.litiengine.graphics.emitters.Emitter;
 import de.gurkenlabs.litiengine.graphics.emitters.particles.Particle;
-import de.gurkenlabs.litiengine.graphics.emitters.particles.RectangleFillParticle;
+import de.gurkenlabs.litiengine.graphics.emitters.particles.RectangleParticle;
 
 @EmitterInfo(maxParticles = 300, spawnAmount = 60, particleMinTTL = 500, particleMaxTTL = 1500, activateOnInit = true)
 @EntityInfo(renderType = RenderType.OVERLAY)
@@ -33,7 +33,9 @@ public class ConfettiEmitter extends Emitter {
     int g = Game.random().nextInt(255);
     int b = Game.random().nextInt(255);
     int a = Game.random().nextInt(255);
-    return new RectangleFillParticle(size, size, new Color(r, g, b, a), this.getRandomParticleTTL()).setDeltaX(dx).setDeltaY(dy).setDeltaIncX(gravityX).setDeltaIncY(gravityY).setX(this.getRandomParticleX()).setY(this.getRandomParticleY());
+    return new RectangleParticle(size, size).setColor(new Color(r, g, b, a)).setTimeToLive((int) data().getParticleTTL().getRandomNumber())
+        .setVelocityX(dx).setVelocityY(dy).setAccelerationX(gravityX)
+        .setAccelerationY(gravityY).setX(data().getParticleOffsetX().getRandomNumber()).setY(data().getParticleOffsetY().getRandomNumber());
   }
 
 }

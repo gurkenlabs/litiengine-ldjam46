@@ -24,7 +24,7 @@ import de.gurkenlabs.litiengine.util.Imaging;
 
 public class MenuScreen extends Screen implements IUpdateable {
   private static final BufferedImage BG = Imaging.scale(Resources.images().get("landscape.png"), Game.window().getWidth(), Game.window().getHeight());
-  private static final BufferedImage LOGO = Imaging.scale(Resources.images().get("logo_trans.png"), Game.window().getWidth() * 1 / 6);
+  private static final BufferedImage LOGO = Imaging.scale(Resources.images().get("logo_trans.png"), Game.window().getWidth() / 6);
   private static final BufferedImage CLOUD1 = Imaging.setOpacity(Imaging.scale(Resources.images().get("cloud1.png"), 6f), .5f);
   private static final BufferedImage CLOUD2 = Imaging.setOpacity(Imaging.scale(Resources.images().get("cloud2.png"), 6f), .5f);
   private static final BufferedImage CLOUD3 = Imaging.setOpacity(Imaging.scale(Resources.images().get("cloud3.png"), 6f), .5f);
@@ -36,11 +36,11 @@ public class MenuScreen extends Screen implements IUpdateable {
   private static final int cloud3XOffset = Game.random().nextInt(BG.getWidth());
   private static final int cloud4XOffset = Game.random().nextInt(BG.getWidth());
   private static final int cloud5XOffset = Game.random().nextInt(BG.getWidth());
-  private static final int cloud1YOffset = Game.random().nextInt(BG.getHeight() * 1 / 5);
-  private static final int cloud2YOffset = Game.random().nextInt(BG.getHeight() * 1 / 5);
-  private static final int cloud3YOffset = Game.random().nextInt(BG.getHeight() * 1 / 5);
-  private static final int cloud4YOffset = Game.random().nextInt(BG.getHeight() * 1 / 5);
-  private static final int cloud5YOffset = Game.random().nextInt(BG.getHeight() * 1 / 5);
+  private static final int cloud1YOffset = Game.random().nextInt(BG.getHeight() / 5);
+  private static final int cloud2YOffset = Game.random().nextInt(BG.getHeight() / 5);
+  private static final int cloud3YOffset = Game.random().nextInt(BG.getHeight() / 5);
+  private static final int cloud4YOffset = Game.random().nextInt(BG.getHeight() / 5);
+  private static final int cloud5YOffset = Game.random().nextInt(BG.getHeight() / 5);
 
   private static final Color CARVING_COLOR = ColorHelper.decode("#593D35");
 
@@ -63,8 +63,7 @@ public class MenuScreen extends Screen implements IUpdateable {
     this.mainMenu.getCellComponents().forEach(comp -> {
       comp.setFont(HillBillyFonts.MENU);
       comp.setSpriteSheet(Resources.spritesheets().get("button-background"));
-      comp.getAppearance().setTextAntialiasing(true);
-      comp.getAppearanceHovered().setTextAntialiasing(true);
+      comp.setTextAntialiasing(true);
       comp.getAppearance().setForeColor(CARVING_COLOR);
       comp.getAppearanceHovered().setForeColor(CARVING_COLOR.darker());
       comp.setForwardMouseEvents(false);
@@ -79,7 +78,8 @@ public class MenuScreen extends Screen implements IUpdateable {
     ImageRenderer.render(g, BG, 0, 0);
     this.renderScrollingStuff(g);
     double scale = 1.4 + 0.15 * Math.sin(Game.time().sinceEnvironmentLoad() / 400.0);
-    ImageRenderer.render(g, Imaging.scale(LOGO, scale), Game.window().getCenter().getX() - (scale * LOGO.getWidth()) / 2, Game.window().getHeight() * 2.5 / 8 - (scale * LOGO.getHeight()) / 2);
+    ImageRenderer.render(g, Imaging.scale(LOGO, scale), Game.window().getCenter().getX() - (scale * LOGO.getWidth()) / 2,
+        Game.window().getHeight() * 2.5 / 8 - (scale * LOGO.getHeight()) / 2);
     g.setFont(HillBillyFonts.MENU);
     g.setColor(new Color(26, 47, 4));
 
@@ -128,12 +128,8 @@ public class MenuScreen extends Screen implements IUpdateable {
       if (event.getKeyCode() == KeyEvent.VK_ENTER || event.getKeyCode() == KeyEvent.VK_SPACE) {
         Game.audio().playSound("confirm.wav");
         switch (this.mainMenu.getCurrentSelection()) {
-        case 0:
-          this.startGame();
-          break;
-        case 1:
-          System.exit(0);
-          break;
+          case 0 -> this.startGame();
+          case 1 -> System.exit(0);
         }
 
       }

@@ -14,12 +14,12 @@ import de.gurkenlabs.litiengine.entities.EmitterInfo;
 import de.gurkenlabs.litiengine.entities.ICombatEntity;
 import de.gurkenlabs.litiengine.graphics.RenderType;
 import de.gurkenlabs.litiengine.graphics.Spritesheet;
-import de.gurkenlabs.litiengine.graphics.emitters.AnimationEmitter;
-import de.gurkenlabs.litiengine.graphics.emitters.SpritesheetEmitter;
+import de.gurkenlabs.litiengine.graphics.emitters.Emitter;
 import de.gurkenlabs.litiengine.resources.Resources;
 import de.gurkenlabs.litiengine.util.geom.GeometricUtilities;
+import java.awt.geom.Point2D.Double;
 
-@AbilityInfo(name = "StabAbility", cooldown = 5000, range = 0, impact = 30, impactAngle = 90, value = 10, duration = 400)
+@AbilityInfo(name = "StabAbility", cooldown = 5000, impact = 30, impactAngle = 90, value = 10, duration = 400)
 public class StabAbility extends Ability {
 
   protected StabAbility(Creature executor) {
@@ -53,29 +53,29 @@ public class StabAbility extends Ability {
       double angle = GeometricUtilities.calcRotationAngleInDegrees(this.getAbility().getPivot().getPoint(), closestInRange.getCenter());
 
       switch (Direction.fromAngle(angle)) {
-      case RIGHT:
-        x -= 1;
-        y -= 4;
-        sprite = "hit-right";
-        break;
-      case LEFT:
-        x -= 11;
-        y -= 4;
-        sprite = "hit-left";
-        break;
-      case UP:
-        x -= 9;
-        y -= 9;
-        sprite = "hit-top";
-        renderType = RenderType.SURFACE;
-        break;
-      default:
-        x -= 9;
-        y += 1;
-        break;
+        case RIGHT -> {
+          x -= 1;
+          y -= 4;
+          sprite = "hit-right";
+        }
+        case LEFT -> {
+          x -= 11;
+          y -= 4;
+          sprite = "hit-left";
+        }
+        case UP -> {
+          x -= 9;
+          y -= 9;
+          sprite = "hit-top";
+          renderType = RenderType.SURFACE;
+        }
+        default -> {
+          x -= 9;
+          y += 1;
+        }
       }
 
-      SpritesheetEmitter emitter = new StrikeEmitter(Resources.spritesheets().get(sprite), new Point2D.Double(x, y));
+      Emitter emitter = new StrikeEmitter(Resources.spritesheets().get(sprite), new Double(x, y));
       emitter.setRenderType(renderType);
       Game.world().environment().add(emitter);
     }
@@ -85,11 +85,12 @@ public class StabAbility extends Ability {
       return entity.equals(this.getAbility().getExecutor().getTarget());
     }
 
-    @EmitterInfo(particleMinTTL = 100, particleMaxTTL = 100, emitterTTL = 150, maxParticles = 1)
-    public class StrikeEmitter extends AnimationEmitter {
+    @EmitterInfo(particleMinTTL = 100, particleMaxTTL = 100, duration = 150, maxParticles = 1)
+    public static class StrikeEmitter extends Emitter {
 
       public StrikeEmitter(Spritesheet spriteSheet, Point2D origin) {
-        super(spriteSheet, origin);
+        super(origin);
+        data().setSpritesheet(spriteSheet);
       }
     }
 

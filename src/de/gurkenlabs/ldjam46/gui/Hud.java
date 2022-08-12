@@ -41,7 +41,7 @@ public class Hud extends GuiComponent {
   private static final Spritesheet CAN_ORIGINAL, CAN_SCALED;
   private static final Spritesheet BEANS_ORIGINAL, BEANS_SCALED;
 
-  final int LEVEL_INFO_DURATION = 3500;
+  static final int LEVEL_INFO_DURATION = 3500;
 
   static {
     PUMPKIN = Imaging.scale(Resources.images().get("pumpkin-alive.png"), GameManager.INGAME_RENDER_SCALE * 0.8);
@@ -52,9 +52,13 @@ public class Hud extends GuiComponent {
 
     POCKETWATCH = Imaging.scale(Resources.images().get("pocketwatch.png"), GameManager.INGAME_RENDER_SCALE);
     CAN_ORIGINAL = Resources.spritesheets().get("can");
-    CAN_SCALED = new Spritesheet(Imaging.scale(CAN_ORIGINAL.getImage(), GameManager.INGAME_RENDER_SCALE), "can_scaled", CAN_ORIGINAL.getSpriteWidth() * (int) GameManager.INGAME_RENDER_SCALE, CAN_ORIGINAL.getSpriteHeight() * (int) GameManager.INGAME_RENDER_SCALE);
+    CAN_SCALED = new Spritesheet(Imaging.scale(CAN_ORIGINAL.getImage(), GameManager.INGAME_RENDER_SCALE), "can_scaled",
+        CAN_ORIGINAL.getSpriteWidth() * (int) GameManager.INGAME_RENDER_SCALE,
+        CAN_ORIGINAL.getSpriteHeight() * (int) GameManager.INGAME_RENDER_SCALE);
     BEANS_ORIGINAL = Resources.spritesheets().get("beans");
-    BEANS_SCALED = new Spritesheet(Imaging.scale(BEANS_ORIGINAL.getImage(), GameManager.INGAME_RENDER_SCALE), "can_scaled", BEANS_ORIGINAL.getSpriteWidth() * (int) GameManager.INGAME_RENDER_SCALE, BEANS_ORIGINAL.getSpriteHeight() * (int) GameManager.INGAME_RENDER_SCALE);
+    BEANS_SCALED = new Spritesheet(Imaging.scale(BEANS_ORIGINAL.getImage(), GameManager.INGAME_RENDER_SCALE), "can_scaled",
+        BEANS_ORIGINAL.getSpriteWidth() * (int) GameManager.INGAME_RENDER_SCALE,
+        BEANS_ORIGINAL.getSpriteHeight() * (int) GameManager.INGAME_RENDER_SCALE);
 
     BG_COLOR = new Color(0, 0, 0, 80);
     CONTOUR_COLOR = new Color(76, 46, 32, 150);
@@ -109,7 +113,8 @@ public class Hud extends GuiComponent {
       ImageRenderer.render(g, BEANS_SCALED.getSprite(1), imageLocationX, imageLocationY);
     } else {
       ImageRenderer.render(g, BEANS_SCALED.getSprite(0), imageLocationX, imageLocationY);
-      float cooldownProgress = Farmer.instance().getFartAbility().getRemainingCooldownInSeconds() / Farmer.instance().getFartAbility().getCooldownInSeconds();
+      float cooldownProgress =
+          Farmer.instance().getFartAbility().getRemainingCooldownInSeconds() / Farmer.instance().getFartAbility().getCooldownInSeconds();
       g.setColor(Color.WHITE);
       g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
       ShapeRenderer.render(g, new Arc2D.Double(arcLocationX, arcLocationY, arcWidth, arcHeight, 90d, cooldownProgress * 360d, Arc2D.PIE));
@@ -141,7 +146,7 @@ public class Hud extends GuiComponent {
       g.setFont(HillBillyFonts.UI.deriveFont(48f));
       TextRenderer.render(g, "YOU COULDN'T KEEP ENGOUGH PUMPKINS ALIVE", Align.CENTER, Valign.MIDDLE, -2, 2);
       g.setColor(Color.WHITE);
-      TextRenderer.render(g, "YOU COULDN'T KEEP ENGOUGH PUMPKINS ALIVE", Align.CENTER, Valign.MIDDLE);
+      TextRenderer.render(g, "YOU COULDN'T KEEP ENGOUGH PUMPKINS ALIVE", Align.CENTER, Valign.MIDDLE, 0, 0);
     }
   }
 
@@ -174,7 +179,8 @@ public class Hud extends GuiComponent {
 
     int alive;
     int dead;
-    if ((GameManager.getCurrentDay() != Day.Saturday && GameManager.getState() == GameState.INGAME || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible())) {
+    if ((GameManager.getCurrentDay() != Day.Saturday && GameManager.getState() == GameState.INGAME
+        || GameManager.isTutorialActive() && GameManager.isPumpkinCountVisible())) {
       pumpkinOffset = g.getClipBounds().getWidth() * 1 / 128d;
       backgroundWidth = (Game.world().environment().getEntities(Pumpkin.class).size() * (PUMPKIN.getWidth() + pumpkinOffset) + pumpkinOffset);
       backgroundX = g.getClipBounds().getWidth() / 2d - backgroundWidth / 2d;
@@ -185,9 +191,11 @@ public class Hud extends GuiComponent {
       minLineX = backgroundX + (GameManager.getRequiredPumpkins() * (PUMPKIN.getWidth() + pumpkinOffset) + pumpkinOffset / 2d);
       minLineY1 = pumpkinY - 5;
       minLineY2 = minLineY1 + PUMPKIN.getHeight() + 10;
-    } else if (GameManager.getCurrentDay() == Day.Saturday && GameManager.getState() == GameState.LOCKED && Game.time().sinceEnvironmentLoad() > LEVEL_INFO_DURATION + 1000) {
+    } else if (GameManager.getCurrentDay() == Day.Saturday && GameManager.getState() == GameState.LOCKED
+        && Game.time().sinceEnvironmentLoad() > LEVEL_INFO_DURATION + 1000) {
       pumpkinOffset = g.getClipBounds().getWidth() * 1 / 256d;
-      backgroundWidth = ((GameManager.getTotalHarvestedPumpkins() + GameManager.getTotalDeadPumpkins()) * (PUMPKIN.getWidth() + pumpkinOffset) + pumpkinOffset);
+      backgroundWidth =
+          ((GameManager.getTotalHarvestedPumpkins() + GameManager.getTotalDeadPumpkins()) * (PUMPKIN.getWidth() + pumpkinOffset) + pumpkinOffset);
       backgroundX = g.getClipBounds().getWidth() / 2d - backgroundWidth / 2d;
       backgroundY = g.getClipBounds().getHeight() * 4 / 5d;
       pumpkinY = backgroundY + backgroundHeight / 2d - PUMPKIN.getHeight() / 2d;
@@ -209,7 +217,8 @@ public class Hud extends GuiComponent {
     }
 
     for (int i = 0; i < dead; i++) {
-      ImageRenderer.render(g, PUMPKIN_DISABLED, backgroundX + ((alive + i) * PUMPKIN_DISABLED.getWidth()) + ((alive + i + 1) * pumpkinOffset), pumpkinY);
+      ImageRenderer.render(g, PUMPKIN_DISABLED, backgroundX + ((alive + i) * PUMPKIN_DISABLED.getWidth()) + ((alive + i + 1) * pumpkinOffset),
+          pumpkinY);
     }
 
     g.setColor(Color.WHITE);
@@ -261,8 +270,10 @@ public class Hud extends GuiComponent {
     float degminute = (GameManager.getCurrentMinutes() / 60f) * 360 - 90;
     float deghour = ((GameManager.getCurrentHours() + GameManager.getCurrentMinutes() / 60f) / 12f) * 360 - 90;
 
-    Line2D minuteArm = new Line2D.Double(centerX, centerY, centerX + minuteArmLength * Trigonometry.cosDeg(degminute), centerY + minuteArmLength * Trigonometry.sinDeg(degminute));
-    Line2D hourArm = new Line2D.Double(centerX, centerY, centerX + hourArmLength * Trigonometry.cosDeg(deghour), centerY + hourArmLength * Trigonometry.sinDeg(deghour));
+    Line2D minuteArm = new Line2D.Double(centerX, centerY, centerX + minuteArmLength * Trigonometry.cosDeg(degminute),
+        centerY + minuteArmLength * Trigonometry.sinDeg(degminute));
+    Line2D hourArm = new Line2D.Double(centerX, centerY, centerX + hourArmLength * Trigonometry.cosDeg(deghour),
+        centerY + hourArmLength * Trigonometry.sinDeg(deghour));
 
     g.setColor(Color.DARK_GRAY);
     g.setStroke(new BasicStroke(4f));
@@ -272,7 +283,8 @@ public class Hud extends GuiComponent {
     g.setStroke(new BasicStroke(2f));
     g.draw(minuteArm);
 
-    Rectangle2D textBounds = new Rectangle2D.Double(g.getClipBounds().getMaxX() - 0.75 * POCKETWATCH.getWidth(), 1.1 * POCKETWATCH.getHeight(), 0.77 * POCKETWATCH.getWidth(), POCKETWATCH.getHeight() / 4);
+    Rectangle2D textBounds = new Rectangle2D.Double(g.getClipBounds().getMaxX() - 0.75 * POCKETWATCH.getWidth(), 1.1 * POCKETWATCH.getHeight(),
+        0.77 * POCKETWATCH.getWidth(), POCKETWATCH.getHeight() / 4d);
     if (GameManager.getCurrentHours() > 15) {
       g.setFont(HillBillyFonts.MENU.deriveFont(48f));
     } else {

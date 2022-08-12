@@ -8,7 +8,7 @@ apply plugin: 'application'
 // give your project a name
 archivesBaseName = "Pumpkin Keeper"
 version = "v1.1.0"
-targetCompatibility = "1.8.0"
+targetCompatibility = "18"
 mainClassName = "de.gurkenlabs.ldjam46.Program"
 
 repositories {
@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-  implementation project(':litiengine')
+  implementation 'de.gurkenlabs:litiengine:0.5.1'
 }
 
 sourceSets {
@@ -39,10 +39,10 @@ jar {
     exclude 'META-INF/services/**'
   }
 
-  // make sure to only include service providers from the litiengine when directly referencing the project
-  from ("${project(':litiengine').projectDir}/resources/") {
-    include 'META-INF/services/**'
-  }
+//  // make sure to only include service providers from the litiengine when directly referencing the project
+//  from ("${project(':litiengine').projectDir}/resources/") {
+//    include 'META-INF/services/**'
+//  }
 
   from 'game.litidata'
 

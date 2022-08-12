@@ -29,8 +29,7 @@ public class FarmerController extends KeyboardEntityController<Farmer> {
     }
 
     if (GameManager.getState() != GameState.INGAME || GameManager.getCurrentDay() == Day.Saturday) {
-      this.setVelocityX(0);
-      this.setVelocityY(0);
+      this.setVelocity(0);
       return;
     }
 

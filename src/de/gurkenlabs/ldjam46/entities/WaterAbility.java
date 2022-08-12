@@ -84,7 +84,7 @@ public class WaterAbility extends Ability {
       Pumpkin pumpkin = (Pumpkin) entity;
       pumpkin.water();
 
-      WaterAbility.this.charges.modifyBaseValue(new AttributeModifier<>(Modification.SUBSTRACT, 1));
+      WaterAbility.this.charges.modifyBaseValue(new AttributeModifier<>(Modification.SUBTRACT, 1));
 
       for (LightSource light : Game.world().environment().getByTag(LightSource.class, "fountainlight")) {
         if (WaterAbility.this.charges.get() == 0) {
@@ -103,9 +103,7 @@ public class WaterAbility extends Ability {
       Game.audio().playSound("water.ogg");
 
       Farmer.instance().setVelocity(20);
-      Game.loop().perform(700, () -> {
-        Farmer.instance().setVelocity(70);
-      });
+      Game.loop().perform(700, () -> Farmer.instance().setVelocity(70));
     }
 
     @Override

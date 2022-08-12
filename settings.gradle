@@ -1,3 +1,1 @@
 rootProject.name = 'litiengine-ldjam46'
-include ":litiengine"
-project(":litiengine").projectDir = file("litiengine")

@@ -9,7 +9,7 @@ import de.gurkenlabs.litiengine.entities.EntityMovedEvent;
 import de.gurkenlabs.litiengine.entities.IMobileEntity.EntityMovedListener;
 import de.gurkenlabs.litiengine.graphics.RenderType;
 import de.gurkenlabs.litiengine.graphics.Spritesheet;
-import de.gurkenlabs.litiengine.graphics.emitters.AnimationEmitter;
+import de.gurkenlabs.litiengine.graphics.emitters.Emitter;
 import de.gurkenlabs.litiengine.resources.Resources;
 
 public class WalkDustSpawner implements EntityMovedListener {
@@ -20,7 +20,7 @@ public class WalkDustSpawner implements EntityMovedListener {
     if (event.getEntity() instanceof EnemyFarmer && event.getEntity().getVelocity().get() <= 70) {
       return;
     }
-    
+
     if (event.getEntity() instanceof Farmer && event.getEntity().getVelocity().get() < 70) {
       return;
     }
@@ -36,8 +36,10 @@ public class WalkDustSpawner implements EntityMovedListener {
 
     this.lastWalkDust = Game.loop().getTicks();
 
-    Point2D walkLocation = new Point2D.Double(event.getEntity().getCollisionBoxCenter().getX() - walkDustSprite.getSpriteWidth() / 2.0, event.getEntity().getCollisionBoxCenter().getY() - walkDustSprite.getSpriteHeight() / 2.0);
-    AnimationEmitter walkDust = new AnimationEmitter(walkDustSprite, walkLocation);
+    Point2D walkLocation = new Point2D.Double(event.getEntity().getCollisionBoxCenter().getX() - walkDustSprite.getSpriteWidth() / 2.0,
+        event.getEntity().getCollisionBoxCenter().getY() - walkDustSprite.getSpriteHeight() / 2.0);
+    Emitter walkDust = new Emitter(walkLocation);
+    walkDust.data().setSpritesheet(walkDustSprite);
     walkDust.setRenderType(RenderType.NORMAL);
     Game.world().environment().add(walkDust);
   }
